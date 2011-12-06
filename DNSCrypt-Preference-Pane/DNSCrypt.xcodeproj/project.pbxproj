@@ -1,0 +1,376 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0946B0C613F47F53008277C6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0946B0C513F47F53008277C6 /* Cocoa.framework */; };
+		0946B0C813F47F53008277C6 /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0946B0C713F47F53008277C6 /* PreferencePanes.framework */; };
+		0946B0D213F47F53008277C6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0946B0D013F47F53008277C6 /* InfoPlist.strings */; };
+		0946B0D613F47F53008277C6 /* DNSCrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 0946B0D513F47F53008277C6 /* DNSCrypt.m */; };
+		0946B0D813F47F53008277C6 /* DNSCrypt.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0946B0D713F47F53008277C6 /* DNSCrypt.tiff */; };
+		0946B0DB13F47F53008277C6 /* DNSCrypt.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0946B0D913F47F53008277C6 /* DNSCrypt.xib */; };
+		0946B0E413F48065008277C6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0946B0E313F48065008277C6 /* Security.framework */; };
+		09640E95145CA4AD008B37EC /* opendns_logo_300.png in Resources */ = {isa = PBXBuildFile; fileRef = 09640E94145CA4AD008B37EC /* opendns_logo_300.png */; };
+		09A13ABC145F2D8700B227A4 /* ajax-loader.gif in Resources */ = {isa = PBXBuildFile; fileRef = 09A13ABB145F2D8700B227A4 /* ajax-loader.gif */; };
+		4B36C4651468B87A0085B07C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B36C4641468B87A0085B07C /* WebKit.framework */; };
+		4B89D983147CA39200872F60 /* dnscrypt_256.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B89D982147CA39200872F60 /* dnscrypt_256.png */; };
+		4BABEA28144F5A7B006AEF34 /* led_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BABEA1F144F5A7B006AEF34 /* led_green.png */; };
+		4BABEA29144F5A7B006AEF34 /* led_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BABEA20144F5A7B006AEF34 /* led_yellow.png */; };
+		4BABEA2A144F5A7B006AEF34 /* led_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BABEA21144F5A7B006AEF34 /* led_red.png */; };
+		4BABEA2B144F5A7B006AEF34 /* shield_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BABEA22144F5A7B006AEF34 /* shield_yellow.png */; };
+		4BABEA2C144F5A7B006AEF34 /* shield_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BABEA23144F5A7B006AEF34 /* shield_red.png */; };
+		4BABEA2D144F5A7B006AEF34 /* shield_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BABEA24144F5A7B006AEF34 /* shield_green.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0946B0C213F47F53008277C6 /* DNSCrypt.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DNSCrypt.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
+		0946B0C513F47F53008277C6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		0946B0C713F47F53008277C6 /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = System/Library/Frameworks/PreferencePanes.framework; sourceTree = SDKROOT; };
+		0946B0CA13F47F53008277C6 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		0946B0CB13F47F53008277C6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		0946B0CC13F47F53008277C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0946B0CF13F47F53008277C6 /* DNSCrypt-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DNSCrypt-Info.plist"; sourceTree = "<group>"; };
+		0946B0D113F47F53008277C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0946B0D313F47F53008277C6 /* DNSCrypt-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DNSCrypt-Prefix.pch"; sourceTree = "<group>"; };
+		0946B0D413F47F53008277C6 /* DNSCrypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNSCrypt.h; sourceTree = "<group>"; };
+		0946B0D513F47F53008277C6 /* DNSCrypt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DNSCrypt.m; sourceTree = "<group>"; };
+		0946B0D713F47F53008277C6 /* DNSCrypt.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = DNSCrypt.tiff; sourceTree = "<group>"; };
+		0946B0DA13F47F53008277C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DNSCrypt.xib; sourceTree = "<group>"; };
+		0946B0E113F48056008277C6 /* SecurityFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SecurityFoundation.framework; path = System/Library/Frameworks/SecurityFoundation.framework; sourceTree = SDKROOT; };
+		0946B0E313F48065008277C6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		09640E94145CA4AD008B37EC /* opendns_logo_300.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = opendns_logo_300.png; sourceTree = "<group>"; };
+		09A13ABB145F2D8700B227A4 /* ajax-loader.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "ajax-loader.gif"; sourceTree = "<group>"; };
+		4B36C4641468B87A0085B07C /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		4B89D982147CA39200872F60 /* dnscrypt_256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dnscrypt_256.png; sourceTree = "<group>"; };
+		4BABEA1F144F5A7B006AEF34 /* led_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = led_green.png; sourceTree = "<group>"; };
+		4BABEA20144F5A7B006AEF34 /* led_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = led_yellow.png; sourceTree = "<group>"; };
+		4BABEA21144F5A7B006AEF34 /* led_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = led_red.png; sourceTree = "<group>"; };
+		4BABEA22144F5A7B006AEF34 /* shield_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield_yellow.png; sourceTree = "<group>"; };
+		4BABEA23144F5A7B006AEF34 /* shield_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield_red.png; sourceTree = "<group>"; };
+		4BABEA24144F5A7B006AEF34 /* shield_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield_green.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0946B0BD13F47F53008277C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B36C4651468B87A0085B07C /* WebKit.framework in Frameworks */,
+				0946B0E413F48065008277C6 /* Security.framework in Frameworks */,
+				0946B0C613F47F53008277C6 /* Cocoa.framework in Frameworks */,
+				0946B0C813F47F53008277C6 /* PreferencePanes.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0946B0B513F47F52008277C6 = {
+			isa = PBXGroup;
+			children = (
+				0946B0CD13F47F53008277C6 /* DNSCrypt */,
+				0946B0C413F47F53008277C6 /* Frameworks */,
+				0946B0C313F47F53008277C6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0946B0C313F47F53008277C6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0946B0C213F47F53008277C6 /* DNSCrypt.prefPane */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0946B0C413F47F53008277C6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0946B0C513F47F53008277C6 /* Cocoa.framework */,
+				0946B0C913F47F53008277C6 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0946B0C913F47F53008277C6 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0946B0CA13F47F53008277C6 /* AppKit.framework */,
+				0946B0CB13F47F53008277C6 /* CoreData.framework */,
+				0946B0CC13F47F53008277C6 /* Foundation.framework */,
+				0946B0C713F47F53008277C6 /* PreferencePanes.framework */,
+				0946B0E313F48065008277C6 /* Security.framework */,
+				0946B0E113F48056008277C6 /* SecurityFoundation.framework */,
+				4B36C4641468B87A0085B07C /* WebKit.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		0946B0CD13F47F53008277C6 /* DNSCrypt */ = {
+			isa = PBXGroup;
+			children = (
+				0946B0D413F47F53008277C6 /* DNSCrypt.h */,
+				0946B0D513F47F53008277C6 /* DNSCrypt.m */,
+				0946B0D713F47F53008277C6 /* DNSCrypt.tiff */,
+				4B89D982147CA39200872F60 /* dnscrypt_256.png */,
+				0946B0D913F47F53008277C6 /* DNSCrypt.xib */,
+				0946B0CE13F47F53008277C6 /* Supporting Files */,
+			);
+			path = DNSCrypt;
+			sourceTree = "<group>";
+		};
+		0946B0CE13F47F53008277C6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4BABEA1E144F5A67006AEF34 /* Status */,
+				09640E94145CA4AD008B37EC /* opendns_logo_300.png */,
+				0946B0CF13F47F53008277C6 /* DNSCrypt-Info.plist */,
+				0946B0D013F47F53008277C6 /* InfoPlist.strings */,
+				0946B0D313F47F53008277C6 /* DNSCrypt-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4BABEA1E144F5A67006AEF34 /* Status */ = {
+			isa = PBXGroup;
+			children = (
+				09A13ABB145F2D8700B227A4 /* ajax-loader.gif */,
+				4BABEA1F144F5A7B006AEF34 /* led_green.png */,
+				4BABEA20144F5A7B006AEF34 /* led_yellow.png */,
+				4BABEA21144F5A7B006AEF34 /* led_red.png */,
+				4BABEA22144F5A7B006AEF34 /* shield_yellow.png */,
+				4BABEA23144F5A7B006AEF34 /* shield_red.png */,
+				4BABEA24144F5A7B006AEF34 /* shield_green.png */,
+			);
+			name = Status;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		0946B0BE13F47F53008277C6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0946B0C113F47F53008277C6 /* DNSCrypt */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0946B0DE13F47F53008277C6 /* Build configuration list for PBXNativeTarget "DNSCrypt" */;
+			buildPhases = (
+				0946B0BC13F47F53008277C6 /* Sources */,
+				0946B0BD13F47F53008277C6 /* Frameworks */,
+				0946B0BE13F47F53008277C6 /* Headers */,
+				0946B0BF13F47F53008277C6 /* Resources */,
+				0946B0C013F47F53008277C6 /* Rez */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DNSCrypt;
+			productName = DNSCrypt;
+			productReference = 0946B0C213F47F53008277C6 /* DNSCrypt.prefPane */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0946B0B713F47F52008277C6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 0946B0BA13F47F52008277C6 /* Build configuration list for PBXProject "DNSCrypt" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0946B0B513F47F52008277C6;
+			productRefGroup = 0946B0C313F47F53008277C6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0946B0C113F47F53008277C6 /* DNSCrypt */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0946B0BF13F47F53008277C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0946B0D213F47F53008277C6 /* InfoPlist.strings in Resources */,
+				0946B0D813F47F53008277C6 /* DNSCrypt.tiff in Resources */,
+				0946B0DB13F47F53008277C6 /* DNSCrypt.xib in Resources */,
+				4BABEA28144F5A7B006AEF34 /* led_green.png in Resources */,
+				4BABEA29144F5A7B006AEF34 /* led_yellow.png in Resources */,
+				4BABEA2A144F5A7B006AEF34 /* led_red.png in Resources */,
+				4BABEA2B144F5A7B006AEF34 /* shield_yellow.png in Resources */,
+				4BABEA2C144F5A7B006AEF34 /* shield_red.png in Resources */,
+				4BABEA2D144F5A7B006AEF34 /* shield_green.png in Resources */,
+				09640E95145CA4AD008B37EC /* opendns_logo_300.png in Resources */,
+				09A13ABC145F2D8700B227A4 /* ajax-loader.gif in Resources */,
+				4B89D983147CA39200872F60 /* dnscrypt_256.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXRezBuildPhase section */
+		0946B0C013F47F53008277C6 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXRezBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0946B0BC13F47F53008277C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0946B0D613F47F53008277C6 /* DNSCrypt.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0946B0D013F47F53008277C6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0946B0D113F47F53008277C6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0946B0D913F47F53008277C6 /* DNSCrypt.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0946B0DA13F47F53008277C6 /* en */,
+			);
+			name = DNSCrypt.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0946B0DC13F47F53008277C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_OBJC_GC = supported;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		0946B0DD13F47F53008277C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_OBJC_GC = supported;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		0946B0DF13F47F53008277C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DNSCrypt/DNSCrypt-Prefix.pch";
+				INFOPLIST_FILE = "DNSCrypt/DNSCrypt-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/PreferencePanes";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = prefPane;
+			};
+			name = Debug;
+		};
+		0946B0E013F47F53008277C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DNSCrypt/DNSCrypt-Prefix.pch";
+				INFOPLIST_FILE = "DNSCrypt/DNSCrypt-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/PreferencePanes";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = prefPane;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0946B0BA13F47F52008277C6 /* Build configuration list for PBXProject "DNSCrypt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0946B0DC13F47F53008277C6 /* Debug */,
+				0946B0DD13F47F53008277C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0946B0DE13F47F53008277C6 /* Build configuration list for PBXNativeTarget "DNSCrypt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0946B0DF13F47F53008277C6 /* Debug */,
+				0946B0E013F47F53008277C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0946B0B713F47F52008277C6 /* Project object */;
+}

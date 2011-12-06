@@ -1,0 +1,267 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		09080E931458B8DB00A85DAE /* SocketListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 09080E921458B8DB00A85DAE /* SocketListener.m */; };
+		09080E971458DDE300A85DAE /* DNSUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = 09080E961458DDE300A85DAE /* DNSUpdater.m */; };
+		097388CE1456007900EAF57F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 097388CD1456007900EAF57F /* Foundation.framework */; };
+		097388D11456007900EAF57F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 097388D01456007900EAF57F /* main.m */; };
+		097388DC145600E600EAF57F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 097388DB145600E600EAF57F /* SystemConfiguration.framework */; };
+		09859652145669720037CE16 /* DNSGlobalSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 09859651145669720037CE16 /* DNSGlobalSettings.m */; };
+		09C03F83145A29C1009804EF /* ProxySpawner.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C03F82145A29C1009804EF /* ProxySpawner.m */; };
+		09E8DB95145FB58E00B1DECF /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E8DB94145FB58E00B1DECF /* CoreServices.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		097388C71456007900EAF57F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		09080E911458B8DB00A85DAE /* SocketListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketListener.h; sourceTree = "<group>"; };
+		09080E921458B8DB00A85DAE /* SocketListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketListener.m; sourceTree = "<group>"; };
+		09080E951458DDE300A85DAE /* DNSUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNSUpdater.h; sourceTree = "<group>"; };
+		09080E961458DDE300A85DAE /* DNSUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNSUpdater.m; sourceTree = "<group>"; };
+		097388C91456007900EAF57F /* dns-updater */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "dns-updater"; sourceTree = BUILT_PRODUCTS_DIR; };
+		097388CD1456007900EAF57F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		097388D01456007900EAF57F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		097388D31456007900EAF57F /* dns-updater-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "dns-updater-Prefix.pch"; sourceTree = "<group>"; };
+		097388DB145600E600EAF57F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		09859650145669720037CE16 /* DNSGlobalSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DNSGlobalSettings.h; sourceTree = "<group>"; };
+		09859651145669720037CE16 /* DNSGlobalSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DNSGlobalSettings.m; sourceTree = "<group>"; };
+		09C03F81145A29C1009804EF /* ProxySpawner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProxySpawner.h; sourceTree = "<group>"; };
+		09C03F82145A29C1009804EF /* ProxySpawner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProxySpawner.m; sourceTree = "<group>"; };
+		09E8DB94145FB58E00B1DECF /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		097388C61456007900EAF57F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09E8DB95145FB58E00B1DECF /* CoreServices.framework in Frameworks */,
+				097388CE1456007900EAF57F /* Foundation.framework in Frameworks */,
+				097388DC145600E600EAF57F /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		097388BE1456007900EAF57F = {
+			isa = PBXGroup;
+			children = (
+				097388CF1456007900EAF57F /* dns-updater */,
+				097388CC1456007900EAF57F /* Frameworks */,
+				097388CA1456007900EAF57F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		097388CA1456007900EAF57F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				097388C91456007900EAF57F /* dns-updater */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		097388CC1456007900EAF57F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				09E8DB94145FB58E00B1DECF /* CoreServices.framework */,
+				097388CD1456007900EAF57F /* Foundation.framework */,
+				097388DB145600E600EAF57F /* SystemConfiguration.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		097388CF1456007900EAF57F /* dns-updater */ = {
+			isa = PBXGroup;
+			children = (
+				097388D01456007900EAF57F /* main.m */,
+				09080E951458DDE300A85DAE /* DNSUpdater.h */,
+				09080E961458DDE300A85DAE /* DNSUpdater.m */,
+				09859650145669720037CE16 /* DNSGlobalSettings.h */,
+				09859651145669720037CE16 /* DNSGlobalSettings.m */,
+				09C03F81145A29C1009804EF /* ProxySpawner.h */,
+				09C03F82145A29C1009804EF /* ProxySpawner.m */,
+				09080E911458B8DB00A85DAE /* SocketListener.h */,
+				09080E921458B8DB00A85DAE /* SocketListener.m */,
+				097388D21456007900EAF57F /* Supporting Files */,
+			);
+			path = "dns-updater";
+			sourceTree = "<group>";
+		};
+		097388D21456007900EAF57F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				097388D31456007900EAF57F /* dns-updater-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		097388C81456007900EAF57F /* dns-updater */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 097388D81456007900EAF57F /* Build configuration list for PBXNativeTarget "dns-updater" */;
+			buildPhases = (
+				097388C51456007900EAF57F /* Sources */,
+				097388C61456007900EAF57F /* Frameworks */,
+				097388C71456007900EAF57F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "dns-updater";
+			productName = "dns-updater";
+			productReference = 097388C91456007900EAF57F /* dns-updater */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		097388C01456007900EAF57F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 097388C31456007900EAF57F /* Build configuration list for PBXProject "dns-updater" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 097388BE1456007900EAF57F;
+			productRefGroup = 097388CA1456007900EAF57F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				097388C81456007900EAF57F /* dns-updater */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		097388C51456007900EAF57F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				097388D11456007900EAF57F /* main.m in Sources */,
+				09859652145669720037CE16 /* DNSGlobalSettings.m in Sources */,
+				09080E931458B8DB00A85DAE /* SocketListener.m in Sources */,
+				09080E971458DDE300A85DAE /* DNSUpdater.m in Sources */,
+				09C03F83145A29C1009804EF /* ProxySpawner.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		097388D61456007900EAF57F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_OBJC_GC = unsupported;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		097388D71456007900EAF57F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_OBJC_GC = unsupported;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		097388D91456007900EAF57F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "dns-updater/dns-updater-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		097388DA1456007900EAF57F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "dns-updater/dns-updater-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		097388C31456007900EAF57F /* Build configuration list for PBXProject "dns-updater" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				097388D61456007900EAF57F /* Debug */,
+				097388D71456007900EAF57F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		097388D81456007900EAF57F /* Build configuration list for PBXNativeTarget "dns-updater" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				097388D91456007900EAF57F /* Debug */,
+				097388DA1456007900EAF57F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 097388C01456007900EAF57F /* Project object */;
+}
