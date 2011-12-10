@@ -142,6 +142,13 @@ BOOL checkBoxesHaveBeenInitialized = NO;
     return [config writeToFile: prefPaneConfigFile atomically: YES];
 }
 
+- (void) setReadOnly: (BOOL) readOnly {
+    enableOpenDNSButton.enabled = !readOnly;
+    enableDNSCryptButton.enabled = !readOnly;
+    useHTTPSButton.enabled = !readOnly;    
+    enableInsecureDNSButton.enabled = !readOnly;
+}
+
 - (BOOL) loadPrefPaneConfig
 {
     NSString *prefPaneConfigFile = [self getPrefPaneConfigFile];
@@ -159,6 +166,9 @@ BOOL checkBoxesHaveBeenInitialized = NO;
     NSNumber *enableInsecure_ = [config objectForKey: @"enableInsecure"];
     if ([enableInsecure_ isKindOfClass: [NSNumber class]]) {
         enableInsecure = [enableInsecure_ boolValue];
+    }
+    if ([self sendCommandToConfigUpdater: @"dc.w $4E71"] == FALSE) {
+        [self setReadOnly: YES];
     }
     return TRUE;
 }
