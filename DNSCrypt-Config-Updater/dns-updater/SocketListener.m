@@ -18,6 +18,7 @@
 DNSUpdater *_updater;
 ProxySpawner *_proxySpawner;
 NSMutableData *_commandBuffer;
+gid_t gid;
 
 - (id) initWithDNSUpdater: (DNSUpdater *) updater andProxySpawner: (ProxySpawner *)proxySpawner
 {
@@ -128,6 +129,23 @@ NSMutableData *_commandBuffer;
     [fh readInBackgroundAndNotify];    
 }
 
+- (BOOL) updateSocketPerms
+{
+    const char *refOwnerFile = [kREF_OWNER_FILE cStringUsingEncoding: NSUTF8StringEncoding];
+    struct stat st;
+    BOOL ret = TRUE;
+    
+    if (stat(refOwnerFile, &st) != 0) {
+        return FALSE;
+    }
+    const char *sockParentDir = [kSOCK_PARENT_DIR cStringUsingEncoding: NSUTF8StringEncoding];
+    ret &= ! chown(sockParentDir, st.st_uid, gid);
+    const char *sockPath = [kSOCK_PATH cStringUsingEncoding: NSUTF8StringEncoding];
+    ret &= ! chown(sockPath, st.st_uid, gid);
+
+    return ret;
+}
+
 - (BOOL) createListener
 {
     mode_t sockParentDirPerms = (mode_t) kSOCK_PARENT_DIR_PERMS;
@@ -150,8 +168,11 @@ NSMutableData *_commandBuffer;
         chmod(sockParentDir, sockParentDirPerms);        
     }
     if (group != NULL) {
-        chown(sockParentDir, (uid_t) 0, group->gr_gid);
+        gid = group->gr_gid;
+    } else {
+        gid = (gid_t) 0;
     }
+    chown(sockParentDir, (uid_t) 0, gid);
     const char *sockPath = [kSOCK_PATH cStringUsingEncoding: NSUTF8StringEncoding];
     size_t sockPathSize = strlen(sockPath) + (size_t) 1U;
     struct sockaddr_un *su;
@@ -177,9 +198,7 @@ NSMutableData *_commandBuffer;
         return FALSE;
     }
     free(su);
-    if (group != NULL) {
-        chown(sockPath, (uid_t) 0, group->gr_gid);
-    }
+    chown(sockPath, (uid_t) 0, gid);
     chmod(sockPath, sockPerms);
     umask(previousMask);
     NSFileHandle *fh = [[NSFileHandle alloc] initWithFileDescriptor: fd closeOnDealloc: TRUE];
@@ -191,6 +210,9 @@ NSMutableData *_commandBuffer;
                selector:@selector(commandRead:)
                    name:@"NSFileHandleReadCompletionNotification"
                  object:nil];
+    
+    [NSTimer scheduledTimerWithTimeInterval: kSOCK_REFRESH_RATE target: self selector: @selector(updateSocketPerms) userInfo: nil repeats: YES];
+    
     return TRUE;
 }
 
