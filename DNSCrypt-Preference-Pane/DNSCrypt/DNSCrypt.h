@@ -9,7 +9,7 @@
 #import <PreferencePanes/PreferencePanes.h>
 #import <WebKit/WebKit.h>
 
-#define kDNSCRYPT_PACKAGE_VERSION @"0.7"
+#define kDNSCRYPT_PACKAGE_VERSION @"0.8"
 
 #define KDNSCRYPT_CONFIG_UPDATER_LABEL @"com.opendns.osx.DNSCryptConfigUpdater"
 #define KDNSCRYPT_PROXY_LABEL @"com.opendns.osx.DNSCryptProxy"
