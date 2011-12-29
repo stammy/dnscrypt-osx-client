@@ -10,6 +10,17 @@
 
 @implementation ProxySpawner
 
+@synthesize arguments = _arguments;
+
+- (id) init {
+    if (! (self = [super init])) {
+        return nil;
+    }
+    _arguments = nil;
+    
+    return self;
+}
+
 - (BOOL) registerLaunchdLabelWithArguments: (NSArray *) arguments
 {
     NSArray *launchdBaseArguments = [NSArray arrayWithObjects: @"submit", @"-l", KDNSCRYPT_PROXY_LABEL, @"--", kDNSCRYPT_PROXY_PATH, nil];
@@ -71,6 +82,7 @@
     task.arguments = launchdArguments;
     [task launch];
     [task waitUntilExit];
+    _arguments = arguments;
 
     return TRUE;
 }
@@ -84,7 +96,7 @@
     task.standardError = [NSFileHandle fileHandleWithNullDevice];
     [task launch];
     [task waitUntilExit];
-
+    _arguments = nil;
     [self unregisterLaunchdLabel];
 
     return TRUE;

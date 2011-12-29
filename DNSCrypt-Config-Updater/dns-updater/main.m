@@ -15,6 +15,7 @@ static DNSUpdater *dnsUpdater;
 
 static void restoreVanilla(void)
 {
+    dnsUpdater.enableSaveSettings = NO;
     if (dnsUpdater) {
         NSLog(@"Restoring vanilla configuration");
         dnsUpdater.wantedState = kDNS_CONFIGURATION_VANILLA;
@@ -47,9 +48,10 @@ int main(void)
         signal(SIGTERM, sigQuitHandler);
         signal(SIGXCPU, sigQuitHandler);
         [dnsUpdater start];
+        [dnsUpdater loadDNSSettings];
         [[NSRunLoop currentRunLoop] run];
         restoreVanilla();
-    }
+    }    
     return 0;
 }
 

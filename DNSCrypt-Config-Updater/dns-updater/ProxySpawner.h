@@ -13,7 +13,11 @@
 #define KDNSCRYPT_PROXY_LABEL @"com.opendns.osx.DNSCryptProxy"
 #define kDNSCRYPT_PROXY_PATH @"/usr/local/sbin/dnscrypt-proxy"
 
-@interface ProxySpawner : NSObject
+@interface ProxySpawner : NSObject {
+    NSArray *_arguments;
+}
+
+@property (strong) NSArray *arguments;
 
 - (BOOL) startWithArguments: (NSArray *) suppliedArguments;
 - (BOOL) stop;

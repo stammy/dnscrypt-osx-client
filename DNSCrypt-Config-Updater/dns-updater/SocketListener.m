@@ -71,18 +71,22 @@ gid_t gid;
 
 - (BOOL) commandParseProxy: (NSArray *) commandAsComponents
 {
+    BOOL ret = FALSE;
+    
     if (commandAsComponents.count < 2U) {
         return FALSE;
     }
     NSString *action = [commandAsComponents objectAtIndex: 1U];
     if ([action isEqualToString: @"STOP"]) {
-        return [_proxySpawner stop];
+        ret = [_proxySpawner stop];
+        [_updater saveDNSSettings];
     } else if ([action isEqualToString: @"START"]) {
         NSArray *suppliedArguments = [commandAsComponents subarrayWithRange: NSMakeRange(2U, commandAsComponents.count - 2U)];
         [_proxySpawner stop];
-        return [_proxySpawner startWithArguments: suppliedArguments];
+        ret = [_proxySpawner startWithArguments: suppliedArguments];
+        [_updater saveDNSSettings];        
     }
-    return FALSE;
+    return ret;
 }
 
 - (BOOL) commandParse: (NSString *) command

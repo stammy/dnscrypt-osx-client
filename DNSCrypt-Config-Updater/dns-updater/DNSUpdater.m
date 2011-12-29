@@ -12,18 +12,34 @@
 @implementation DNSUpdater
 
 @synthesize state;
-@synthesize wantedState;
-@synthesize enableFallback;
+@synthesize enableSaveSettings;
 
 ProxySpawner *_proxySpawner;
 NSArray *resolversForLocalhost;
 NSArray *resolversForOpenDNS;
 NSArray *resolversList;
-NSDictionary *settings;
 DNSGlobalSettings *configuration;
 CFHostRef hostR;
 NSTimer *asyncResolutionTimer;
 NSUInteger asyncResolutionFailures;
+
+- (DNSConfigurationState) wantedState {
+    return _wantedState;
+}
+
+- (void) setWantedState:(DNSConfigurationState) wantedState {
+    _wantedState = wantedState;
+    [self saveDNSSettings];
+}
+
+- (BOOL) enableFallback {
+    return _enableFallback;
+}
+
+- (void) setEnableFallback: (BOOL)enableFallback {
+    _enableFallback = enableFallback;
+    [self saveDNSSettings];
+}
 
 - (id) initWithProxySpawner: (ProxySpawner *) proxySpawner;
 {
@@ -31,23 +47,23 @@ NSUInteger asyncResolutionFailures;
         return nil;
     }
     _proxySpawner = proxySpawner;
-    state = wantedState = kDNS_CONFIGURATION_VANILLA;
+    state = self.wantedState = kDNS_CONFIGURATION_VANILLA;
     resolversForLocalhost = [NSArray arrayWithObjects: kRESOLVER_IP_LOCALHOST, nil];
     resolversForOpenDNS = [NSArray arrayWithObjects: kRESOLVER_IP_OPENDNS1, kRESOLVER_IP_OPENDNS2, nil];
     resolversList = [NSArray arrayWithObjects: resolversForLocalhost, resolversForOpenDNS, nil];
-    settings = nil;
     configuration = [[DNSGlobalSettings alloc] init];
     hostR = nil;
     asyncResolutionTimer = nil;
     asyncResolutionFailures = 0U;
-    enableFallback = NO;
+    self.enableFallback = NO;
+    enableSaveSettings = YES;
 
     if ([configuration isRunningWithResolvers: resolversForLocalhost]) {
         NSLog(@"Current configuration is localhost, not vanilla");
-        wantedState = state = kDNS_CONFIGURATION_LOCALHOST;
+        self.wantedState = state = kDNS_CONFIGURATION_LOCALHOST;
     } else if ([configuration isRunningWithResolvers: resolversForOpenDNS]) {
         NSLog(@"Current configuration is opendns, not vanilla");
-        wantedState = state = kDNS_CONFIGURATION_OPENDNS;
+        self.wantedState = state = kDNS_CONFIGURATION_OPENDNS;
     }
     return self;
 }
@@ -58,7 +74,7 @@ NSUInteger asyncResolutionFailures;
         if (state != kDNS_CONFIGURATION_LOCALHOST) {
             NSLog(@"Supposed state was not LOCALHOST but it actually is");
             state = kDNS_CONFIGURATION_UNKNOWN;
-            wantedState = kDNS_CONFIGURATION_LOCALHOST;
+            self.wantedState = kDNS_CONFIGURATION_LOCALHOST;
             NSArray *proxyArguments = [NSArray arrayWithObjects: @"--resolver-address=" kRESOLVER_IP_DNSCRYPT, nil];
             [_proxySpawner startWithArguments: proxyArguments];
         }
@@ -73,28 +89,28 @@ NSUInteger asyncResolutionFailures;
         }
         state = kDNS_CONFIGURATION_VANILLA;
     }
-    if (state == wantedState) {
+    if (state == self.wantedState) {
         return;
     }
 
     [configuration backupExceptResolversList: resolversList];
-    if (wantedState == kDNS_CONFIGURATION_VANILLA) {
+    if (self.wantedState == kDNS_CONFIGURATION_VANILLA) {
         if ([configuration revertResolvers] == TRUE) {
-            state = wantedState;
+            state = self.wantedState;
             NSLog(@"Back to a vanilla configuration");
         } else {
             NSLog(@"* loadSettings failed");
         }
-    } else if (wantedState == kDNS_CONFIGURATION_LOCALHOST) {
+    } else if (self.wantedState == kDNS_CONFIGURATION_LOCALHOST) {
         if ([configuration setResolvers: resolversForLocalhost] == TRUE) {
-            state = wantedState;
+            state = self.wantedState;
             NSLog(@"Configuration switched to localhost");
         } else {
             NSLog(@"* setResolvers failed");
         }
-    } else if (wantedState == kDNS_CONFIGURATION_OPENDNS) {
+    } else if (self.wantedState == kDNS_CONFIGURATION_OPENDNS) {
         if ([configuration setResolvers: resolversForOpenDNS] == TRUE) {
-            state = wantedState;
+            state = self.wantedState;
             NSLog(@"Configuration switched to opendns");
         } else {
             NSLog(@"* setResolvers failed");
@@ -112,7 +128,7 @@ NSUInteger asyncResolutionFailures;
 - (void) fallback
 {
     NSLog(@"Falling back to vanilla configuration");
-    wantedState = kDNS_CONFIGURATION_VANILLA;
+    self.wantedState = kDNS_CONFIGURATION_VANILLA;
 }
 
 - (BOOL) asyncResolutionFailed
@@ -164,7 +180,7 @@ static void asyncResolutionDone(CFHostRef hostReplyR, CFHostInfoType typeInfo, c
 
 - (void) performAsyncResolution
 {
-    if (enableFallback == NO) {
+    if (self.enableFallback == NO) {
         return;
     }
     if (hostR) {
@@ -185,7 +201,7 @@ static void asyncResolutionDone(CFHostRef hostReplyR, CFHostInfoType typeInfo, c
 - (void) configurationChanged
 {
     NSLog(@"CONFIGURATION_CHANGED notification received");
-    if (enableFallback == NO) {
+    if (self.enableFallback == NO) {
         return;
     }
     [self performSelector: @selector(performAsyncResolution) withObject: self afterDelay: kINTERVAL_BEFORE_ASYNC_RESOLUTION];
@@ -195,6 +211,83 @@ static void asyncResolutionDone(CFHostRef hostReplyR, CFHostInfoType typeInfo, c
 {
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(configurationChanged) name:@"CONFIGURATION_CHANGED" object: nil];
     [self periodicallyUpdate];
+}
+
+- (NSString *) getSupportDirectory {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSLocalDomainMask, YES);
+    NSString *path = nil;
+    NSError *error = nil;
+    BOOL isDirectory;
+    
+    for (path in paths) {
+        if ([[NSFileManager defaultManager] fileExistsAtPath: path isDirectory: &isDirectory] == FALSE || isDirectory == FALSE) {
+            continue;
+        }
+        path = [path stringByAppendingPathComponent: kDNSCRYPT_APPLICATION_SUPPORT_DIR];
+        if ([[NSFileManager defaultManager] createDirectoryAtPath: path withIntermediateDirectories: TRUE attributes: nil error: &error] == TRUE) {
+            return path;
+        }
+    }
+    NSLog(@"Error: [%@]", error);
+    return nil;
+}
+
+- (NSString *) getDNSSettingsFile
+{
+    NSString *supportDirectory = [self getSupportDirectory];
+    if (! supportDirectory) {
+        return nil;
+    }
+    return [supportDirectory stringByAppendingPathComponent: kDNS_SETTINGS_FILE];
+}
+
+- (BOOL) saveDNSSettings
+{
+    if (enableSaveSettings == NO) {
+        return TRUE;
+    }
+    NSString *settingsFile = [self getDNSSettingsFile];    
+    if (! settingsFile) {
+        return FALSE;
+    }
+    NSLog(@"Saving DNS settings");
+    NSArray *proxyArguments = [_proxySpawner arguments];
+    if (! proxyArguments) {
+        proxyArguments = [NSArray array];
+    }
+    NSDictionary *settings = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt: self.wantedState], @"wantedState", [NSNumber numberWithBool: self.enableFallback], @"enableFallback", proxyArguments, @"proxyArguments", nil];
+    return [settings writeToFile: settingsFile atomically: TRUE];
+}
+
+- (BOOL) loadDNSSettings
+{
+    NSString *settingsFile = [self getDNSSettingsFile];    
+    if (! settingsFile) {
+        return FALSE;
+    }
+    NSLog(@"Loading DNS settings");
+    NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile: settingsFile];
+    if (!settings) {
+        return FALSE;
+    }
+    NSNumber *wantedStateN = [settings objectForKey: @"wantedState"];
+    if (wantedStateN) {
+        self.wantedState = [wantedStateN intValue];
+    }
+    NSNumber *enableFallbackN = [settings objectForKey: @"enableFallback"];
+    if (enableFallbackN) {
+        self.enableFallback = [enableFallbackN boolValue];
+    }
+    NSArray *proxyArguments = [settings objectForKey: @"proxyArguments"];
+    if (proxyArguments && [proxyArguments count] > 0U) {
+        NSLog(@"Starting the proxy with previous arguments: [%@]", proxyArguments);
+        [_proxySpawner stop];
+        [_proxySpawner startWithArguments: proxyArguments];
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName: @"CONFIGURATION_CHANGED" object: self userInfo: nil];
+    [self saveDNSSettings];
+    
+    return wantedStateN || enableFallbackN;
 }
 
 @end

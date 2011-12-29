@@ -28,20 +28,26 @@ typedef enum {
 
 #define kASYNC_RESOLUTION_MAX_ATTEMPTS 3U
 
+#define kDNSCRYPT_APPLICATION_SUPPORT_DIR @"DNSCrypt Updater"
+#define kDNS_SETTINGS_FILE @"settings-v1.plist"
 
 @interface DNSUpdater : NSObject {
     DNSConfigurationState state;
-    DNSConfigurationState wantedState;
-    BOOL enableFallback;
+    DNSConfigurationState _wantedState;
+    BOOL _enableFallback;
+    BOOL enableSaveSettings;
 }
 
 @property (assign) DNSConfigurationState state;
-@property (assign) DNSConfigurationState wantedState;
-@property (assign) BOOL enableFallback;
+@property (assign) BOOL enableSaveSettings;
+@property (readwrite) DNSConfigurationState wantedState;
+@property (readwrite) BOOL enableFallback;
 
 - (id) initWithProxySpawner: (ProxySpawner *) proxySpawner;
 - (void) start;
 - (void) periodicallyUpdate;
 - (void) update;
+- (BOOL) saveDNSSettings;
+- (BOOL) loadDNSSettings;
 
 @end
