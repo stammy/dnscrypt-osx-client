@@ -169,6 +169,8 @@ BOOL checkBoxesHaveBeenInitialized = NO;
     }
     if ([self sendCommandToConfigUpdater: @"dc.w $4E71"] == FALSE) {
         [self setReadOnly: YES];
+    } else {
+        [self setReadOnly: FALSE];
     }
     return TRUE;
 }
