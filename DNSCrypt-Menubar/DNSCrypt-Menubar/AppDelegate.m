@@ -43,13 +43,16 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     
     switch (currentState) {
         case kDNS_CONFIGURATION_OPENDNS:
-            led = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"led_yellow.png"]];
+            led = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"yes-opendns-no-crypt.png"]];
             break;
         case kDNS_CONFIGURATION_LOCALHOST:
-            led = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"led_green.png"]];
+            led = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"yes-opendns-yes-crypt.png"]];
+            break;
+        case kDNS_CONFIGURATION_VANILLA:
+            led = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"no-opendns.png"]];
             break;
         default:
-            led = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"led_red.png"]];
+            led = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"no-network.png"]];
     }
     _statusItem.image = led;
 }

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0906D82E14B4D9AC0093FA7D /* no-network.png in Resources */ = {isa = PBXBuildFile; fileRef = 0906D82A14B4D9AC0093FA7D /* no-network.png */; };
+		0906D82F14B4D9AC0093FA7D /* no-opendns.png in Resources */ = {isa = PBXBuildFile; fileRef = 0906D82B14B4D9AC0093FA7D /* no-opendns.png */; };
+		0906D83014B4D9AC0093FA7D /* yes-opendns-no-crypt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0906D82C14B4D9AC0093FA7D /* yes-opendns-no-crypt.png */; };
+		0906D83114B4D9AC0093FA7D /* yes-opendns-yes-crypt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0906D82D14B4D9AC0093FA7D /* yes-opendns-yes-crypt.png */; };
 		09651148147D832D007FEE31 /* dnscrypt.icns in Resources */ = {isa = PBXBuildFile; fileRef = 09651147147D832D007FEE31 /* dnscrypt.icns */; };
 		096AEEFA1468A11E009F2AA4 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 096AEEF91468A11E009F2AA4 /* dsa_pub.pem */; };
 		09972870147CCE41004E7017 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0997286F147CCE41004E7017 /* Sparkle.framework */; };
@@ -17,9 +21,6 @@
 		09A13AE2145F3B9000B227A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 09A13AE0145F3B9000B227A4 /* Credits.rtf */; };
 		09A13AE5145F3B9000B227A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A13AE4145F3B9000B227A4 /* AppDelegate.m */; };
 		09A13AE8145F3B9000B227A4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09A13AE6145F3B9000B227A4 /* MainMenu.xib */; };
-		09A13AF1145F3C0300B227A4 /* led_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 09A13AEE145F3C0300B227A4 /* led_green.png */; };
-		09A13AF2145F3C0300B227A4 /* led_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 09A13AEF145F3C0300B227A4 /* led_red.png */; };
-		09A13AF3145F3C0300B227A4 /* led_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 09A13AF0145F3C0300B227A4 /* led_yellow.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,6 +37,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0906D82A14B4D9AC0093FA7D /* no-network.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-network.png"; sourceTree = "<group>"; };
+		0906D82B14B4D9AC0093FA7D /* no-opendns.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-opendns.png"; sourceTree = "<group>"; };
+		0906D82C14B4D9AC0093FA7D /* yes-opendns-no-crypt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yes-opendns-no-crypt.png"; sourceTree = "<group>"; };
+		0906D82D14B4D9AC0093FA7D /* yes-opendns-yes-crypt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yes-opendns-yes-crypt.png"; sourceTree = "<group>"; };
 		09651147147D832D007FEE31 /* dnscrypt.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = dnscrypt.icns; path = ../dnscrypt.icns; sourceTree = "<group>"; };
 		096AEEF91468A11E009F2AA4 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		0997286F147CCE41004E7017 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
@@ -52,9 +57,6 @@
 		09A13AE3145F3B9000B227A4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		09A13AE4145F3B9000B227A4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		09A13AE7145F3B9000B227A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		09A13AEE145F3C0300B227A4 /* led_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = led_green.png; sourceTree = "<group>"; };
-		09A13AEF145F3C0300B227A4 /* led_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = led_red.png; sourceTree = "<group>"; };
-		09A13AF0145F3C0300B227A4 /* led_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = led_yellow.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,10 +129,11 @@
 				09A13ADD145F3B9000B227A4 /* main.m */,
 				09A13ADF145F3B9000B227A4 /* DNSCrypt-Menubar-Prefix.pch */,
 				09A13AE0145F3B9000B227A4 /* Credits.rtf */,
-				09A13AEE145F3C0300B227A4 /* led_green.png */,
-				09A13AEF145F3C0300B227A4 /* led_red.png */,
-				09A13AF0145F3C0300B227A4 /* led_yellow.png */,
 				096AEEF91468A11E009F2AA4 /* dsa_pub.pem */,
+				0906D82A14B4D9AC0093FA7D /* no-network.png */,
+				0906D82B14B4D9AC0093FA7D /* no-opendns.png */,
+				0906D82C14B4D9AC0093FA7D /* yes-opendns-no-crypt.png */,
+				0906D82D14B4D9AC0093FA7D /* yes-opendns-yes-crypt.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -189,11 +192,12 @@
 				09A13ADC145F3B9000B227A4 /* InfoPlist.strings in Resources */,
 				09A13AE2145F3B9000B227A4 /* Credits.rtf in Resources */,
 				09A13AE8145F3B9000B227A4 /* MainMenu.xib in Resources */,
-				09A13AF1145F3C0300B227A4 /* led_green.png in Resources */,
-				09A13AF2145F3C0300B227A4 /* led_red.png in Resources */,
-				09A13AF3145F3C0300B227A4 /* led_yellow.png in Resources */,
 				096AEEFA1468A11E009F2AA4 /* dsa_pub.pem in Resources */,
 				09651148147D832D007FEE31 /* dnscrypt.icns in Resources */,
+				0906D82E14B4D9AC0093FA7D /* no-network.png in Resources */,
+				0906D82F14B4D9AC0093FA7D /* no-opendns.png in Resources */,
+				0906D83014B4D9AC0093FA7D /* yes-opendns-no-crypt.png in Resources */,
+				0906D83114B4D9AC0093FA7D /* yes-opendns-yes-crypt.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
