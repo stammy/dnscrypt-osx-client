@@ -167,10 +167,14 @@ BOOL checkBoxesHaveBeenInitialized = NO;
     if ([enableInsecure_ isKindOfClass: [NSNumber class]]) {
         enableInsecure = [enableInsecure_ boolValue];
     }
-    if ([self sendCommandToConfigUpdater: @"dc.w $4E71"] == FALSE) {
-        [self setReadOnly: YES];
-    } else {
-        [self setReadOnly: FALSE];
+    SInt32 OSXversionMajor, OSXversionMinor;
+    if (Gestalt(gestaltSystemVersionMajor, &OSXversionMajor) == noErr && Gestalt(gestaltSystemVersionMinor, &OSXversionMinor) == noErr &&
+       OSXversionMajor == 10 && OSXversionMinor >= 7) {
+        if ([self sendCommandToConfigUpdater: @"dc.w $4E71"] == FALSE) {
+            [self setReadOnly: YES];
+        } else {
+            [self setReadOnly: FALSE];
+        }
     }
     return TRUE;
 }
