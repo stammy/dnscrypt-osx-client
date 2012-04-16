@@ -258,7 +258,7 @@ BOOL checkBoxesHaveBeenInitialized = NO;
             statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_red.png"]] autorelease];
             break;
         case kDNS_CONFIGURATION_OPENDNS:
-            statusText.stringValue = NSLocalizedString(@"Unprotected", @"Status");
+            statusText.stringValue = NSLocalizedString(@"Unencrypted", @"Status");
             statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_yellow.png"]] autorelease];
             break;
         case kDNS_CONFIGURATION_LOCALHOST:
