@@ -57,7 +57,7 @@ BOOL checkBoxesHaveBeenInitialized = NO;
     CFSocketSetSocketFlags(socket, CFSocketGetSocketFlags(socket) & ~kCFSocketCloseOnInvalidate);
     int fd = CFSocketGetNative(socket);
     NSData *address = [NSData dataWithBytes: su length: SUN_LEN(su)];
-    CFSocketError err = CFSocketConnectToAddress(socket, (__bridge CFDataRef) address, 30.0);
+    CFSocketError err = CFSocketConnectToAddress(socket, (CFDataRef) address, 30.0);
     free(su);
     if (err != kCFSocketSuccess) {
         CFRelease(socket);
