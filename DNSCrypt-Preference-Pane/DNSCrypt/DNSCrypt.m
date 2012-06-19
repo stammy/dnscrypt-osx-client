@@ -319,19 +319,19 @@ BOOL checkBoxesHaveBeenInitialized = NO;
     [feedbackWebView setDrawsBackground:false];
     [feedbackWebView setShouldUpdateWhileOffscreen:true];
     [feedbackWebView setUIDelegate:self];
-    NSString *feedbackURLText = [NSString stringWithString:@"http://dnscrypt.opendns.com/feedback.php"];
+    NSString *feedbackURLText = @"http://dnscrypt.opendns.com/feedback.php";
     [[feedbackWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:feedbackURLText]]];
 
     [releaseNotesWebView setDrawsBackground:false];
     [releaseNotesWebView setShouldUpdateWhileOffscreen:true];
     [releaseNotesWebView setUIDelegate:self];
-    NSString *releaseNotesURLText = [NSString stringWithString:@"http://dnscrypt.opendns.com/releasenotes.php"];
+    NSString *releaseNotesURLText = @"http://dnscrypt.opendns.com/releasenotes.php";
     [[releaseNotesWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:releaseNotesURLText]]];
 
     [aboutWebView setDrawsBackground:false];
     [aboutWebView setShouldUpdateWhileOffscreen:true];
     [aboutWebView setUIDelegate:self];
-    NSString *aboutURLText = [NSString stringWithString:@"http://dnscrypt.opendns.com/about.php"];
+    NSString *aboutURLText = @"http://dnscrypt.opendns.com/about.php";
     [[aboutWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:aboutURLText]]];
 
 }
