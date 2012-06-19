@@ -370,7 +370,7 @@ BOOL checkBoxesHaveBeenInitialized = NO;
         if (useHTTPSPort == NO) {
             proxyStartCommand = @"PROXY START --resolver-address=" kDNSCRYPT_RESOLVER;
         } else {
-            proxyStartCommand = @"PROXY START --tcp-port=443 --resolver-address=" kDNSCRYPT_RESOLVER;
+            proxyStartCommand = @"PROXY START --tcp-only --resolver-port=443 --resolver-address=" kDNSCRYPT_RESOLVER;
         }
         [self sendCommandToConfigUpdater: proxyStartCommand];
         [self sendCommandToConfigUpdater: @"CONFIG LOCALHOST"];
