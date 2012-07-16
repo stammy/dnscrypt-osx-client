@@ -49,7 +49,7 @@
 }
 
 - (BOOL) argumentsAreWhiteListed: (NSArray *) arguments {
-    NSArray *whiteListedPrefixes = [NSArray arrayWithObjects: @"--tcp-only", @"--resolver-port=", @"--resolver-address=2620:0:ccc:", @"--resolver-address=2620:0:ccd:", @"--resolver-address=208.67.", nil];
+    NSArray *whiteListedPrefixes = [NSArray arrayWithObjects: @"--tcp-only", @"--resolver-address=2620:0:ccc:", @"--resolver-address=2620:0:ccd:", @"--resolver-address=208.67.", nil];
     BOOL found;
     
     for (NSString *argument in arguments) {

@@ -368,9 +368,9 @@ BOOL checkBoxesHaveBeenInitialized = NO;
         NSString *proxyStartCommand;
 
         if (useHTTPSPort == NO) {
-            proxyStartCommand = @"PROXY START --resolver-address=" kDNSCRYPT_RESOLVER;
+            proxyStartCommand = @"PROXY START --resolver-address=" kDNSCRYPT_RESOLVER ":53";
         } else {
-            proxyStartCommand = @"PROXY START --tcp-only --resolver-port=443 --resolver-address=" kDNSCRYPT_RESOLVER;
+            proxyStartCommand = @"PROXY START --tcp-only --resolver-address=" kDNSCRYPT_RESOLVER ":443";
         }
         [self sendCommandToConfigUpdater: proxyStartCommand];
         [self sendCommandToConfigUpdater: @"CONFIG LOCALHOST"];
