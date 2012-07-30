@@ -17,7 +17,7 @@
   <key>ExitTimeout</key>
   <integer>30</integer>
   <key>ThrottleInterval</key>
-  <integer>1</integer>
+  <integer>0</integer>
   <key>Nice</key>
   <integer>1</integer>
   <key>UserName</key>
