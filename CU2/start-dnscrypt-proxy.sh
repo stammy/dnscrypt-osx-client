@@ -2,6 +2,8 @@
 
 . common.inc
 
+FAMILYSHIELD_FILE="${CONTROL_DIR}/familyshield"
+
 init_interfaces
 
 mkdir -p -- "$DNSCRYPT_BASE_DIR" || exit 1
@@ -46,27 +48,42 @@ try_resolver() {
 }
 
 [ -r "$PROXY_PID_FILE" ] && kill $(cat "$PROXY_PID_FILE") && sleep 1
+
 ping6 -c 1 2620:0:ccc::2 > /dev/null 2>&1
 ipv6_supported="no"
 [ $? = 0 ] && ipv6_supported="yes"
+
+familyshield_wanted="no"
+[ -r "$FAMILYSHIELD_FILE" ] && familyshield_wanted="yes"
+
 wait_pids=""
-if [ ipv6_supported = "yes" ]; then
-  try_resolver 2000 "--resolver-address=[2620:0:ccc::2]:443" &
+if [ x"$familyshield_wanted" = "xyes" ]; then
+  try_resolver 4000 "--resolver-address=208.67.220.123:443" &
   wait_pids="$wait_pids $!"
-  try_resolver 2001 "--resolver-address=[2620:0:ccc::2]:53" &
-  wait_pids="$wait_pids $!"    
-  try_resolver 2002 "--resolver-address=[2620:0:ccc::2]:443 --tcp-only" &
-  wait_pids="$wait_pids $!"    
-  try_resolver 2003 "--resolver-address=[2620:0:ccc::2]:53 --tcp-only" &
+  try_resolver 4001 "--resolver-address=208.67.220.123:53" &
+  wait_pids="$wait_pids $!"
+  try_resolver 4002 "--resolver-address=208.67.220.123:443 --tcp-only" &
+  wait_pids="$wait_pids $!"
+  try_resolver 4003 "--resolver-address=208.67.220.123:53 --tcp-only" &
   wait_pids="$wait_pids $!"
 fi
-try_resolver 2004 "--resolver-address=208.67.220.220:443" &
+if [ x"$ipv6_supported" = "xyes" ]; then
+  try_resolver 5000 "--resolver-address=[2620:0:ccc::2]:443" &
+  wait_pids="$wait_pids $!"
+  try_resolver 5001 "--resolver-address=[2620:0:ccc::2]:53" &
+  wait_pids="$wait_pids $!"    
+  try_resolver 5002 "--resolver-address=[2620:0:ccc::2]:443 --tcp-only" &
+  wait_pids="$wait_pids $!"    
+  try_resolver 5003 "--resolver-address=[2620:0:ccc::2]:53 --tcp-only" &
+  wait_pids="$wait_pids $!"
+fi
+try_resolver 5004 "--resolver-address=208.67.220.220:443" &
 wait_pids="$wait_pids $!"    
-try_resolver 2005 "--resolver-address=208.67.220.220:53" &
+try_resolver 5005 "--resolver-address=208.67.220.220:53" &
 wait_pids="$wait_pids $!"    
-try_resolver 2006 "--resolver-address=208.67.220.220:443 --tcp-only" &
+try_resolver 5006 "--resolver-address=208.67.220.220:443 --tcp-only" &
 wait_pids="$wait_pids $!"    
-try_resolver 2007 "--resolver-address=208.67.220.220:53 --tcp-only" &    
+try_resolver 5007 "--resolver-address=208.67.220.220:53 --tcp-only" &
 wait_pids="$wait_pids $!"    
 
 for pid in $wait_pids; do
