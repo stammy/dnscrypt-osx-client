@@ -18,10 +18,7 @@ mkdir -p -- "$RES_DIR" || exit 1
 PID_DIR="${PROBES_BASE_DIR}/pids" || exit 1
 mkdir -p -- "$PID_DIR" || exit 1
 
-DNSCRYPT_PROXY_BASE_DIR="${DNSCRYPT_BASE_DIR}/dnscrypt-proxy"
 mkdir -p -- "$DNSCRYPT_PROXY_BASE_DIR" || exit 1
-
-PROXY_PID_FILE="${DNSCRYPT_PROXY_BASE_DIR}/dnscrypt-proxy.pid"
 
 try_resolver() {
   local priority="$1"
@@ -47,7 +44,7 @@ try_resolver() {
   done
 }
 
-[ -r "$PROXY_PID_FILE" ] && kill $(cat "$PROXY_PID_FILE") && sleep 1
+./stop-dnscrypt-proxy.sh
 
 ping6 -c 1 2620:0:ccc::2 > /dev/null 2>&1
 ipv6_supported="no"
