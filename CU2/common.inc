@@ -1,5 +1,5 @@
 
-DNSCRYPT_BASE_DIR='/var/run/dnscrypt'
+DNSCRYPT_BASE_DIR='/Library/Application Support/DNSCrypt'
 
 CONTROL_DIR="${DNSCRYPT_BASE_DIR}/control"
 DNSCRYPT_PROXY_BASE_DIR="${DNSCRYPT_BASE_DIR}/dnscrypt-proxy"
