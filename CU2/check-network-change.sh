@@ -16,7 +16,7 @@ ifs=$(echo $ifs)
 typeset -A found
 ips=""
 for i in $ifs; do
-  ips_i=$(ipconfig getpacket $i | fgrep 'domain_name_server' | \
+  ips_i=$(ipconfig getpacket "$i" 2> /dev/null | fgrep 'domain_name_server' | \
           sed -e 's/^.*{//' -e 's/,/ /g' -e 's/}//' )
   for ip_i in $ips_i; do
     if [ ! ${found["$ip_i"]} ]; then
