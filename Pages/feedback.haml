@@ -1,0 +1,54 @@
+!!! 5
+%html{lang: "en"}  
+  %head  
+    %meta{charset: "utf-8"}
+    %title DNSCrypt feedback form
+    %style{type: "text/css"}
+      :sass
+        body
+          font:
+            family: arial, helvetica, sans-serif
+        form
+          margin: 10px auto
+          width: 500px
+          p
+            margin: 0.25em 0
+          .error
+            background: #fbb
+            color: #000
+        fieldset
+          border: none
+          padding: 0
+        label
+          float: left
+          width: 100px
+          text-align: right
+          padding-right: 1em
+        input
+          width: 200px
+        input[type=submit]
+          width: auto
+        textarea
+          width: 300px
+          height: 200px
+        #submit
+          text-align: center
+  %body
+    %form{action: "feedback.php", method: "post", action: "{{form_url}}"}
+      %h1 Feedback
+      %fieldset
+        %p
+          %label{for: "name"} Name:
+          %input{type: "text", name: "name", autofocus: true,
+                 required: true, value: "{{name}}",
+                 class: "{{class_name}}"}
+        %p
+          %label{for: "email"} Email:
+          %input{type: "email", name: "email",
+                 placeholder: "email@example.com", required: true,
+                 value: "{{email}}", class: "{{class_email}}"}
+        %p
+          %label{for: "feedback"} Feedback:
+          %textarea{name: "feedback", class: "{{class_feedback}}"} {{feedback}}
+      %fieldset#submit
+        %input{type: "submit"}
