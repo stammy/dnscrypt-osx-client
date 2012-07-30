@@ -5,7 +5,7 @@
   <key>Label</key>
   <string>com.opendns.osx.DNSCryptConsoleChange</string>
   <key>KeepAlive</key>
-  <false/>
+  <true/>
   <key>RunAtLoad</key>
   <true/>
   <key>WorkingDirectory</key>
@@ -17,9 +17,9 @@
   <key>ExitTimeout</key>
   <integer>30</integer>
   <key>ThrottleInterval</key>
-  <integer>0</integer>
+  <integer>15</integer>
   <key>Nice</key>
-  <integer>1</integer>
+  <integer>15</integer>
   <key>UserName</key>
   <string>root</string>
   <key>WatchPaths</key>
