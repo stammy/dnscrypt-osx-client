@@ -1,11 +1,11 @@
 #! /bin/ksh
 # /Library/Preferences/SystemConfiguration
 
+. common.inc
+
 NETWORK_STATE_FILE="${STATES_DIR}/network-state"
 DHCP_DNS_FILE="${STATES_DIR}/dhcp-dns"
 AIRPORT_TOOL="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport"
-
-. common.inc
 
 mkdir -p "$STATES_DIR" || exit 1
 
