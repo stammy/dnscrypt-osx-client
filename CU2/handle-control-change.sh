@@ -1,6 +1,6 @@
 #! /bin/sh
 
-. common.inc
+. ./common.inc
 
 if [ -e "$DNSCRYPT_FILE" ]; then
   exec ./switch-to-dnscrypt.sh

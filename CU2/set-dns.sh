@@ -1,5 +1,7 @@
 #! /bin/sh
 
+. ./common.inc
+
 servers="$*"
 
 [ $# -lt 1 ] && exit 1

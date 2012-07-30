@@ -1,6 +1,6 @@
 #! /bin/ksh
 
-. common.inc
+. ./common.inc
 
 PAUSE_MAX=10
 PAUSE_INCREMENT=0.1

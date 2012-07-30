@@ -1,6 +1,6 @@
 #! /bin/sh
 
-. common.inc
+. ./common.inc
 
 FAMILYSHIELD_FILE="${CONTROL_DIR}/familyshield"
 

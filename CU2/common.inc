@@ -1,6 +1,8 @@
 
 DNSCRYPT_BASE_DIR='/Library/Application Support/DNSCrypt'
 
+cd -- "${DNSCRYPT_BASE_DIR}/scripts" || exit 1
+
 CONTROL_DIR="${DNSCRYPT_BASE_DIR}/control"
 DNSCRYPT_PROXY_BASE_DIR="${DNSCRYPT_BASE_DIR}/dnscrypt-proxy"
 PROXY_PID_FILE="${DNSCRYPT_PROXY_BASE_DIR}/dnscrypt-proxy.pid"
@@ -15,7 +17,7 @@ INTERFACE_PROXY_MASK="24"
 INTERFACE_PROBES="127.0.0.55"
 INTERFACE_PROBES_MASK="24"
 
-export PATH="${DNSCRYPT_BASE_DIR/bin}:${DNSCRYPT_BASE_DIR/scripts}:$PATH"
+export PATH="${DNSCRYPT_BASE_DIR}/bin:${DNSCRYPT_BASE_DIR}/scripts:$PATH"
 
 init_interfaces() {
   sudo ifconfig lo0 alias ${INTERFACE_UNBOUND}/${INTERFACE_UNBOUND_MASK}

@@ -1,6 +1,6 @@
 #! /bin/sh
 
-. common.inc
+. ./common.inc
 
 [ -e "$DNSCRYPT_FILE" ] && exit 0
 

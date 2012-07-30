@@ -1,7 +1,7 @@
 #! /bin/ksh
 # /Library/Preferences/SystemConfiguration
 
-. common.inc
+. ./common.inc
 
 NETWORK_STATE_FILE="${STATES_DIR}/network-state"
 DHCP_DNS_FILE="${STATES_DIR}/dhcp-dns"
