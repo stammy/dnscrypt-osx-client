@@ -2,6 +2,7 @@
 
 . common.inc
 
+pgrep -x dnscrypt-proxy | egrep '[0-9]+' > /dev/null || exit 0
 [ ! -r "$PROXY_PID_FILE" ] && exit 0
 pid=$(cat "$PROXY_PID_FILE")
 [ $pid -lt 2 ] && exit 0
