@@ -4,7 +4,6 @@
 
 PAUSE_MAX=10
 PAUSE_INCREMENT=0.1
-DNSCRYPT_FILE="${CONTROL_DIR}/dnscrypt"
 
 [ ! -e "$DNSCRYPT_FILE" ] && exit 0
 
