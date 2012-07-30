@@ -2,9 +2,13 @@
 
 . ./common.inc
 
+touch "${STATES_DIR}/updating"
 if [ -e "$DNSCRYPT_FILE" ]; then
-  exec ./switch-to-dnscrypt.sh
+  ./switch-to-dnscrypt.sh
 else
   ./stop-dnscrypt-proxy.sh
-  exec ./switch-to-dhcp.sh
+  ./switch-to-dhcp.sh
 fi
+rm -f "${STATES_DIR}/updating"
+rm -f "${STATES_DIR}/update-request"
+
