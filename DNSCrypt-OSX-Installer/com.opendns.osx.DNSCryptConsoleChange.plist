@@ -5,7 +5,7 @@
   <key>Label</key>
   <string>com.opendns.osx.DNSCryptConsoleChange</string>
   <key>KeepAlive</key>
-  <true/>
+  <false/>
   <key>RunAtLoad</key>
   <true/>
   <key>WorkingDirectory</key>
@@ -17,7 +17,7 @@
   <key>ExitTimeout</key>
   <integer>30</integer>
   <key>ThrottleInterval</key>
-  <integer>15</integer>
+  <integer>0</integer>
   <key>Nice</key>
   <integer>15</integer>
   <key>UserName</key>
@@ -25,6 +25,7 @@
   <key>WatchPaths</key>
   <array>
     <string>/dev/console</string>
+    <string>/var/run/utmpx</string>
   </array>
 </dict>
 </plist>
