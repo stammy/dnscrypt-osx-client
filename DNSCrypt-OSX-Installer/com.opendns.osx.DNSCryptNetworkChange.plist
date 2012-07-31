@@ -9,10 +9,10 @@
   <key>RunAtLoad</key>
   <true/>
   <key>WorkingDirectory</key>
-  <string>/Library/Application Support/DNSCrypt/scripts</string>
+  <string>/Library/PreferencePanes/DNSCrypt.prefPane/Contents/Resources/usr/scripts</string>
   <key>ProgramArguments</key>
   <array>
-    <string>/Library/Application Support/DNSCrypt/scripts/handle-network-change.sh</string>
+    <string>/Library/PreferencePanes/DNSCrypt.prefPane/Contents/Resources/usr/scripts/handle-network-change.sh</string>
   </array>
   <key>ExitTimeout</key>
   <integer>30</integer>
