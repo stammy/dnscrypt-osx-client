@@ -2,8 +2,6 @@
 
 . ./common.inc
 
-FAMILYSHIELD_FILE="${CONTROL_DIR}/familyshield"
-
 init_interfaces
 
 mkdir -p -- "$DNSCRYPT_VAR_BASE_DIR" || exit 1

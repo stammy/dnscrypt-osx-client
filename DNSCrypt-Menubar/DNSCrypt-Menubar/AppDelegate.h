@@ -35,10 +35,12 @@ typedef enum {
 @property (strong) IBOutlet NSMenuItem *familyShieldMenuItem;
 @property (strong) IBOutlet NSMenuItem *dnscryptMenuItem;
 @property (strong) IBOutlet NSMenuItem *fallbackMenuItem;
+@property (strong) IBOutlet NSMenuItem *opendnsMenuItem;
 
 - (IBAction)preferencesMenuItemPushed:(NSMenuItem *)sender;
 - (IBAction)dnscryptMenuItemPushed:(NSMenuItem *)sender;
 - (IBAction)familyShieldMenuItemPushed:(NSMenuItem *)sender;
 - (IBAction)fallbackMenuItemPushed:(NSMenuItem *)sender;
+- (IBAction)opendnsMenuItemPushed:(NSMenuItem *)sender;
 
 @end

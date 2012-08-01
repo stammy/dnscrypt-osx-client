@@ -53,9 +53,18 @@
 							<string key="NSResourceName">NSMenuMixedState</string>
 						</object>
 					</object>
+					<object class="NSMenuItem" id="512564254">
+						<reference key="NSMenu" ref="705716806"/>
+						<string key="NSTitle">Fallback to insecure</string>
+						<string key="NSKeyEquiv">x</string>
+						<int key="NSKeyEquivModMask">1048576</int>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="720710128"/>
+						<reference key="NSMixedImage" ref="1029721002"/>
+					</object>
 					<object class="NSMenuItem" id="947483772">
 						<reference key="NSMenu" ref="705716806"/>
-						<string key="NSTitle">Enable FamilyShield</string>
+						<string key="NSTitle">Always use FamilyShield</string>
 						<string key="NSKeyEquiv">f</string>
 						<int key="NSKeyEquivModMask">1048576</int>
 						<int key="NSMnemonicLoc">2147483647</int>
@@ -64,8 +73,8 @@
 					</object>
 					<object class="NSMenuItem" id="31983378">
 						<reference key="NSMenu" ref="705716806"/>
-						<string key="NSTitle">Fallback to insecure</string>
-						<string key="NSKeyEquiv">x</string>
+						<string key="NSTitle">Always use OpenDNS</string>
+						<string key="NSKeyEquiv">o</string>
 						<int key="NSKeyEquivModMask">1048576</int>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="720710128"/>
@@ -286,14 +295,6 @@
 					<int key="connectionID">578</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">fallbackMenuItem</string>
-						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="31983378"/>
-					</object>
-					<int key="connectionID">579</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">dnscryptMenuItemPushed:</string>
 						<reference key="source" ref="976324537"/>
@@ -313,9 +314,25 @@
 					<object class="IBActionConnection" key="connection">
 						<string key="label">fallbackMenuItemPushed:</string>
 						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="512564254"/>
+					</object>
+					<int key="connectionID">584</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">opendnsMenuItem</string>
+						<reference key="source" ref="976324537"/>
 						<reference key="destination" ref="31983378"/>
 					</object>
-					<int key="connectionID">582</int>
+					<int key="connectionID">587</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">opendnsMenuItemPushed:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="31983378"/>
+					</object>
+					<int key="connectionID">588</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
@@ -378,6 +395,7 @@
 							<reference ref="947483772"/>
 							<reference ref="31983378"/>
 							<reference ref="392357407"/>
+							<reference ref="512564254"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -471,6 +489,11 @@
 						<reference key="object" ref="392357407"/>
 						<reference key="parent" ref="705716806"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">583</int>
+						<reference key="object" ref="512564254"/>
+						<reference key="parent" ref="705716806"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -497,12 +520,13 @@
 				<string key="572.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="574.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="576.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="583.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">582</int>
+			<int key="maxID">588</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -513,6 +537,7 @@
 						<string key="dnscryptMenuItemPushed:">NSMenuItem</string>
 						<string key="fallbackMenuItemPushed:">NSMenuItem</string>
 						<string key="familyShieldMenuItemPushed:">NSMenuItem</string>
+						<string key="opendnsMenuItemPushed:">NSMenuItem</string>
 						<string key="preferencesMenuItemPushed:">NSMenuItem</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
@@ -528,6 +553,10 @@
 							<string key="name">familyShieldMenuItemPushed:</string>
 							<string key="candidateClassName">NSMenuItem</string>
 						</object>
+						<object class="IBActionInfo" key="opendnsMenuItemPushed:">
+							<string key="name">opendnsMenuItemPushed:</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
 						<object class="IBActionInfo" key="preferencesMenuItemPushed:">
 							<string key="name">preferencesMenuItemPushed:</string>
 							<string key="candidateClassName">NSMenuItem</string>
@@ -538,6 +567,7 @@
 						<string key="dnscryptMenuItem">NSMenuItem</string>
 						<string key="fallbackMenuItem">NSMenuItem</string>
 						<string key="familyShieldMenuItem">NSMenuItem</string>
+						<string key="opendnsMenuItem">NSMenuItem</string>
 						<string key="statusConfigurationMenuItem">NSMenuItem</string>
 						<string key="statusResolversMenuItem">NSMenuItem</string>
 						<string key="versionMenuItem">NSMenuItem</string>
@@ -558,6 +588,10 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="familyShieldMenuItem">
 							<string key="name">familyShieldMenuItem</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="opendnsMenuItem">
+							<string key="name">opendnsMenuItem</string>
 							<string key="candidateClassName">NSMenuItem</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="statusConfigurationMenuItem">
