@@ -765,7 +765,56 @@
 								</dict>
 								<dict>
 									<key>CHILDREN</key>
-									<array/>
+									<array>
+										<dict>
+											<key>CHILDREN</key>
+											<array/>
+											<key>GID</key>
+											<integer>0</integer>
+											<key>PATH</key>
+											<string>/Users/j/OpenDNS/DNSCrypt/OSX/dnscrypt-osx-client/DNSCrypt-OSX-Installer/com.opendns.osx.DNSCryptConsoleChange.plist</string>
+											<key>PATH_TYPE</key>
+											<integer>0</integer>
+											<key>PERMISSIONS</key>
+											<integer>420</integer>
+											<key>TYPE</key>
+											<integer>3</integer>
+											<key>UID</key>
+											<integer>0</integer>
+										</dict>
+										<dict>
+											<key>CHILDREN</key>
+											<array/>
+											<key>GID</key>
+											<integer>0</integer>
+											<key>PATH</key>
+											<string>/Users/j/OpenDNS/DNSCrypt/OSX/dnscrypt-osx-client/DNSCrypt-OSX-Installer/com.opendns.osx.DNSCryptControlChange.plist</string>
+											<key>PATH_TYPE</key>
+											<integer>0</integer>
+											<key>PERMISSIONS</key>
+											<integer>420</integer>
+											<key>TYPE</key>
+											<integer>3</integer>
+											<key>UID</key>
+											<integer>0</integer>
+										</dict>
+										<dict>
+											<key>CHILDREN</key>
+											<array/>
+											<key>GID</key>
+											<integer>0</integer>
+											<key>PATH</key>
+											<string>/Users/j/OpenDNS/DNSCrypt/OSX/dnscrypt-osx-client/DNSCrypt-OSX-Installer/com.opendns.osx.DNSCryptNetworkChange.plist</string>
+											<key>PATH_TYPE</key>
+											<integer>0</integer>
+											<key>PERMISSIONS</key>
+											<integer>420</integer>
+											<key>TYPE</key>
+											<integer>3</integer>
+											<key>UID</key>
+											<integer>0</integer>
+										</dict>
+									</array>
 									<key>GID</key>
 									<integer>0</integer>
 									<key>PATH</key>
@@ -1126,9 +1175,19 @@
 			<key>PACKAGE_SCRIPTS</key>
 			<dict>
 				<key>POSTINSTALL_PATH</key>
-				<dict/>
+				<dict>
+					<key>PATH</key>
+					<string>/Users/j/OpenDNS/DNSCrypt/OSX/dnscrypt-osx-client/DNSCrypt-OSX-Installer/Scripts/dnscrypt-prefpane-postinstall.sh</string>
+					<key>PATH_TYPE</key>
+					<integer>0</integer>
+				</dict>
 				<key>PREINSTALL_PATH</key>
-				<dict/>
+				<dict>
+					<key>PATH</key>
+					<string>/Users/j/OpenDNS/DNSCrypt/OSX/dnscrypt-osx-client/DNSCrypt-OSX-Installer/Scripts/dnscrypt-prefpane-preinstall.sh</string>
+					<key>PATH_TYPE</key>
+					<integer>0</integer>
+				</dict>
 				<key>RESOURCES</key>
 				<array/>
 			</dict>
