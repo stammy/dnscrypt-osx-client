@@ -2,7 +2,7 @@
 
 . ./common.inc
 
-lockfile "$HANDLERS_LOCK_FILE"
+lockfile -1 -r 30 -l 60 "$HANDLERS_LOCK_FILE" || exit 1
 
 touch "${STATES_DIR}/updating"
 if [ -e "$DNSCRYPT_FILE" ]; then
