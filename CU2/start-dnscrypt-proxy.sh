@@ -58,43 +58,43 @@ familyshield_wanted="no"
 
 wait_pids=""
 if [ x"$familyshield_wanted" = "xyes" ]; then
-  try_resolver 4000 '208.67.220.123 UDP port 443' \
+  try_resolver 4000 'FamilyShield using DNSCrypt on UDP port 443' \
     "--resolver-address=208.67.220.123:443" &
   wait_pids="$wait_pids $!"
-  try_resolver 4001 '208.67.220.123 UDP port 53' \
+  try_resolver 4001 'FamilyShield using DNSCrypt on UDP port 53' \
     "--resolver-address=208.67.220.123:53" &
   wait_pids="$wait_pids $!"
-  try_resolver 4002 '208.67.220.123 TCP port 443' \
+  try_resolver 4002 'FamilyShield using DNSCrypt on TCP port 443' \
     "--resolver-address=208.67.220.123:443 --tcp-only" &
   wait_pids="$wait_pids $!"
-  try_resolver 4003 '208.67.220.123 TCP port 53' \
+  try_resolver 4003 'FamilyShield using DNSCrypt on TCP port 53' \
     "--resolver-address=208.67.220.123:53 --tcp-only" &
   wait_pids="$wait_pids $!"
 fi
 if [ x"$ipv6_supported" = "xyes" ]; then
-  try_resolver 5000 '2620:0:ccc::2 UDP port 443' \
+  try_resolver 5000 'OpenDNS IPv6 using DNSCrypt on UDP port 443' \
     "--resolver-address=[2620:0:ccc::2]:443" &
   wait_pids="$wait_pids $!"
-  try_resolver 5001 '2620:0:ccc::2 UDP port 53' \
+  try_resolver 5001 'OpenDNS IPv6 using DNSCrypt on UDP port 53' \
     "--resolver-address=[2620:0:ccc::2]:53" &
   wait_pids="$wait_pids $!"
-  try_resolver 5002 '2620:0:ccc::2 TCP port 443' \
+  try_resolver 5002 'OpenDNS IPv6 using DNSCrypt on TCP port 443' \
     "--resolver-address=[2620:0:ccc::2]:443 --tcp-only" &
   wait_pids="$wait_pids $!"    
-  try_resolver 5003 '2620:0:ccc::2 TCP port 53' \
+  try_resolver 5003 'OpenDNS IPv6 using DNSCrypt on TCP port 53' \
     "--resolver-address=[2620:0:ccc::2]:53 --tcp-only" &
   wait_pids="$wait_pids $!"
 fi
-try_resolver 5004 '208.67.220.220 UDP port 443' \
+try_resolver 5004 'OpenDNS using DNSCrypt on UDP port 443' \
   "--resolver-address=208.67.220.220:443" &
 wait_pids="$wait_pids $!"
-try_resolver 5005 '208.67.220.220 UDP port 53' \
+try_resolver 5005 'OpenDNS using DNSCrypt on UDP port 53' \
   "--resolver-address=208.67.220.220:53" &
 wait_pids="$wait_pids $!"    
-try_resolver 5006 '208.67.220.220 TCP port 443' \
+try_resolver 5006 'OpenDNS using DNSCrypt on TCP port 443' \
   "--resolver-address=208.67.220.220:443 --tcp-only" &
 wait_pids="$wait_pids $!"    
-try_resolver 5007 '208.67.220.220 TCP port 53' \
+try_resolver 5007 'OpenDNS using DNSCrypt on TCP port 53' \
   "--resolver-address=208.67.220.220:53 --tcp-only" &
 wait_pids="$wait_pids $!"    
 
