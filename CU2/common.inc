@@ -5,6 +5,7 @@ DNSCRYPT_VAR_BASE_DIR='/Library/Application Support/DNSCrypt'
 cd -- "${DNSCRYPT_USR_BASE_DIR}/scripts" || exit 1
 
 CONTROL_DIR="${DNSCRYPT_VAR_BASE_DIR}/control"
+TICKETS_DIR="${CONTROL_DIR}/tickets"
 DNSCRYPT_PROXY_BASE_DIR="${DNSCRYPT_VAR_BASE_DIR}/dnscrypt-proxy"
 PROXY_PID_FILE="${DNSCRYPT_PROXY_VAR_BASE_DIR}/dnscrypt-proxy.pid"
 STATES_DIR="${DNSCRYPT_VAR_BASE_DIR}/states"
