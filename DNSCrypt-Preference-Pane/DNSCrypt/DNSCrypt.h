@@ -47,10 +47,6 @@ typedef enum {
 
 - (IBAction)enableOpenDNSButtonPressed:(NSButton *)sender;
 - (IBAction)enableDNSCryptButtonPressed:(NSButton *)sender;
-- (IBAction)enableInsecureDNSButtonPressed:(NSButton *)sender;
-- (IBAction)enableHTTPSButtonPressed:(NSButton *)sender;
 - (IBAction)openDNSLinkPushed:(NSButton *)sender;
-
-
 
 @end

@@ -6,8 +6,6 @@
 //  Copyright (c) 2011 OpenDNS, Inc. All rights reserved.
 //
 
-#include <sys/un.h>
-#include <netinet/in.h>
 #import "DNSCrypt.h"
 
 @implementation DNSCrypt
@@ -24,17 +22,7 @@
 @synthesize useHTTPSButton;
 @synthesize currentResolverTextField;
 
-DNSConfigurationState state;
-BOOL useHTTPSPort = NO;
-BOOL enableInsecure = NO;
-BOOL checkBoxesHaveBeenInitialized = NO;
-
-- (void) setReadOnly: (BOOL) readOnly {
-    enableOpenDNSButton.enabled = !readOnly;
-    enableDNSCryptButton.enabled = !readOnly;
-    useHTTPSButton.enabled = !readOnly;    
-    enableInsecureDNSButton.enabled = !readOnly;
-}
+DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 
 - (void) initializeCheckBoxesWithState: (DNSConfigurationState) currentState
 {
@@ -47,18 +35,13 @@ BOOL checkBoxesHaveBeenInitialized = NO;
         case kDNS_CONFIGURATION_LOCALHOST:
             enableOpenDNSButton.state = NSOnState;
             enableDNSCryptButton.state = NSOnState;
-            if (useHTTPSPort) {
-                useHTTPSButton.state = NSOnState;
-            }
             break;
 
         default:
             enableOpenDNSButton.state = NSOffState;
             enableDNSCryptButton.state = NSOffState;
     }
-    if (enableInsecure) {
-        enableInsecureDNSButton.state = NSOnState;
-    }
+    enableInsecureDNSButton.state = NSOnState;
 }
 
 - (BOOL) updateStatusWithCurrentConfig
@@ -107,9 +90,6 @@ BOOL checkBoxesHaveBeenInitialized = NO;
             return FALSE;
     }
 
-    if (checkBoxesHaveBeenInitialized == NO) {
-        [self initializeCheckBoxesWithState: currentState];
-    }
     return TRUE;
 }
 
@@ -129,7 +109,7 @@ BOOL checkBoxesHaveBeenInitialized = NO;
 
 - (void) mainViewDidLoad
 {
-    state = kDNS_CONFIGURATION_UNKNOWN;
+    currentState = kDNS_CONFIGURATION_UNKNOWN;
     [self periodicallyUpdateStatusWithCurrentConfig];
     [previewNotesWebView setDrawsBackground:false];
 
@@ -180,34 +160,20 @@ BOOL checkBoxesHaveBeenInitialized = NO;
     return nil;
 }
 
-- (void) resetCheckBoxesHaveBeenInitialized
-{
-    checkBoxesHaveBeenInitialized = NO;
-}
-
 - (BOOL) updateConfig
 {
-    checkBoxesHaveBeenInitialized = YES;
     [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(resetCheckBoxesHaveBeenInitialized) object: nil];
     [self performSelector: @selector(resetCheckBoxesHaveBeenInitialized) withObject: self afterDelay:kCHECKBOXES_FREEZE_DELAY];
     if (enableDNSCryptButton.state == NSOffState) {
         if (enableOpenDNSButton.state == NSOffState) {
-            state = kDNS_CONFIGURATION_VANILLA;
+            currentState = kDNS_CONFIGURATION_VANILLA;
         } else {
-            state = kDNS_CONFIGURATION_OPENDNS;
+            currentState = kDNS_CONFIGURATION_OPENDNS;
         }
     } else {
     }
     [self periodicallyUpdateStatusWithCurrentConfig];
     [self showSpinners];
-
-    return TRUE;
-}
-
-- (BOOL) updateInsecure {
-    if (enableInsecure) {
-    } else {
-    }
 
     return TRUE;
 }
@@ -234,25 +200,8 @@ BOOL checkBoxesHaveBeenInitialized = NO;
 - (IBAction)enableInsecureDNSButtonPressed:(NSButton *)sender
 {
     if (sender.state == NSOnState) {
-        enableInsecure = YES;
     } else {
-        enableInsecure = NO;
     }
-    [self updateInsecure];
-}
-
-- (IBAction)enableHTTPSButtonPressed:(NSButton *)sender
-{
-    if (sender.state == NSOnState) {
-        useHTTPSPort = YES;
-    } else {
-        useHTTPSPort = NO;
-    }
-    if (useHTTPSPort == YES) {
-        enableDNSCryptButton.state = NSOnState;
-        enableOpenDNSButton.state = NSOnState;
-    }
-    [self updateConfig];
 }
 
 - (IBAction)openDNSLinkPushed:(NSButton *)sender
