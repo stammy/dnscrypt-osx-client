@@ -30,8 +30,8 @@ try_resolver() {
     case "$line" in
       *Proxying\ from\ *)
         answers=$(exec dig +time=1 +short +tries=2 -p $priority \
-          @"$INTERFACE_PROBES" dailymotion.com 2> /dev/null | \
-          fgrep -v 67.215.65. | wc -l)
+          TXT @"$INTERFACE_PROBES" debug.opendns.com. 2> /dev/null | \
+          fgrep -ic 'dnscrypt enabled')
         [ -r "$pid_file" ] && kill $(cat -- "$pid_file")
         if [ $answers -gt 0 ]; then
           echo "$args" > "${RES_DIR}/${priority}"
