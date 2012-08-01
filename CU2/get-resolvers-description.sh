@@ -1,5 +1,11 @@
 #! /bin/sh
 
+. ./common.inc
+
+if [ -e "${STATES_DIR}/updating" ]; then
+  echo 'Updating'
+  exit 0
+fi
 name='None'
 level=0
 while read resolver; do
@@ -48,4 +54,4 @@ while read resolver; do
     ;;
   esac
 done
-echo $name
+echo "$name"

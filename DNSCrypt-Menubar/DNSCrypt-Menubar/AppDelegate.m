@@ -56,6 +56,8 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     } else if ([stateDescription isEqualToString: @"OpenDNS IPv6"]) {
     } else if ([stateDescription isEqualToString: @"Localhost"]) {
     } else if ([stateDescription isEqualToString: @"Localhost IPv6"]) {
+    } else if ([stateDescription isEqualToString: @"None"]) {
+    } else if ([stateDescription isEqualToString: @"Updating"]) {
     }
 }
 
@@ -74,6 +76,13 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
         return TRUE;
     }
     return FALSE;
+}
+
+- (void) updateLedStatusWaiting
+{
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSImage *led = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"no-network.png"]];
+    _statusItem.image = led;   
 }
 
 - (void) updateLedStatus
@@ -111,6 +120,10 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
         currentState = kDNS_CONFIGURATION_OPENDNS;
     } else if ([stateDescription isEqualToString: @"OpenDNS IPv6"]) {
         currentState = kDNS_CONFIGURATION_OPENDNS;
+    } else if ([stateDescription isEqualToString: @"None"]) {
+        currentState = kDNS_CONFIGURATION_UNKNOWN;
+    } else if ([stateDescription isEqualToString: @"Updating"]) {
+        currentState = kDNS_CONFIGURATION_UNKNOWN;
     } else if (stateDescription.length > 0) {
         currentState = kDNS_CONFIGURATION_VANILLA;
     }
@@ -126,7 +139,7 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 - (void) periodicallyUpdateStatusWithCurrentConfig {
     [self updateStatusWithCurrentConfig];
     [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(periodicallyUpdateStatusWithCurrentConfig) object: nil];
-    [self performSelector: @selector(periodicallyUpdateStatusWithCurrentConfig) withObject:nil afterDelay: 2.5];
+    [self performSelector: @selector(periodicallyUpdateStatusWithCurrentConfig) withObject:nil afterDelay: 5.0];
 }
 
 - (void) awakeFromNib
@@ -164,12 +177,14 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 }
 
 - (BOOL) setDNSCryptOn {
+    [self updateLedStatusWaiting];
     NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./switch-to-dnscrypt.sh", nil]];
     NSLog(@"%@", res);
     return TRUE;
 }
 
 - (BOOL) setDNSCryptOff {
+    [self updateLedStatusWaiting];
     NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./switch-to-dhcp.sh", nil]];
     NSLog(@"%@", res);
     return TRUE;
