@@ -10,15 +10,13 @@ mkdir -p -- "$DNSCRYPT_VAR_BASE_DIR" || exit 1
 
 PROBES_BASE_DIR='${DNSCRYPT_VAR_BASE_DIR}/probes'
 rm -fr $PROBES_BASE_DIR || exit 1
-mkdir -p -- "$PROBES_VAR_BASE_DIR" || exit 1
+mkdir -p -- "$PROBES_BASE_DIR" || exit 1
 
-RES_DIR="${PROBES_VAR_BASE_DIR}/results" || exit 1
+RES_DIR="${PROBES_BASE_DIR}/results" || exit 1
 mkdir -p -- "$RES_DIR" || exit 1
 
-PID_DIR="${PROBES_VAR_BASE_DIR}/pids" || exit 1
+PID_DIR="${PROBES_BASE_DIR}/pids" || exit 1
 mkdir -p -- "$PID_DIR" || exit 1
-
-mkdir -p -- "$DNSCRYPT_PROXY_VAR_BASE_DIR" || exit 1
 
 try_resolver() {
   local priority="$1"
