@@ -283,9 +283,9 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     [self periodicallyUpdateStatusWithCurrentConfig];
 
     NSString *version = kDNSCRYPT_PACKAGE_VERSION;
-    NSString *softwareBlurbFormat = NSLocalizedString(@"This software (v: %@) encrypts DNS packets between your computer and OpenDNS.  This prevents man-in-the-middle attacks and snooping of DNS traffic by ISPs or others.", @"Description of what the package does - %@ is replaced by the version number");
+    NSString *softwareBlurbFormat = NSLocalizedString(@"This software (v: %@) encrypts and authenticates DNS packets between your computer and OpenDNS. This prevents man-in-the-middle attacks and snooping of DNS traffic by ISPs or others.", @"Description of what the package does - %@ is replaced by the version number");
     NSString *provideFeedback = NSLocalizedString(@"Please help by providing feedback!", @"Ask for feedback");
-    NSString *describeTCPWorkaround = NSLocalizedString(@"If you have a firewall or other middleware mangling your packets, try enabling DNSCrypt with TCP over port 443.", @"Describe what the TCP/443 checkbox does");
+    NSString *describePorts = NSLocalizedString(@"DNSCrypt can use UDP and TCP ports 53 and 443.", @"Describe what ports DNSCrypt uses");
     NSString *describeFallback = NSLocalizedString(@"If you prefer reliability over security, enable fallback to insecure DNS.", @"Describe what the 'fallback to insecure mode' checkbox does");
 
     NSMutableString *htmlString = [NSMutableString stringWithString: @"<html><body style=\"font-family:Helvetica, sans-serif; font-size: 11px; color: #333; margin: 0px; padding: 2px 0px;\">"];
@@ -296,7 +296,7 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     [htmlString appendString: provideFeedback];
     [htmlString appendString: @"</strong>"];
     [htmlString appendString: @"<ul style=\"list-style-position: inside; list-style-type: square; padding-left: 0px; margin-top: 0; margin-bottom: 0; \">"];
-    [htmlString appendFormat: @"<li>%@</li>", describeTCPWorkaround];
+    [htmlString appendFormat: @"<li>%@</li>", describePorts];
     [htmlString appendFormat: @"<li>%@</li>", describeFallback];
     [htmlString appendString: @"</ul>"];
     [htmlString appendString: @"</body></html>"];
