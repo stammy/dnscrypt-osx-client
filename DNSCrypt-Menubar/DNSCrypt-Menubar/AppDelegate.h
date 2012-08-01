@@ -21,6 +21,10 @@
 @property (strong) NSStatusItem *statusItem;
 @property (strong) IBOutlet NSMenuItem *versionMenuItem;
 
+#define kREFRESH_DELAY 2.0
+#define kCHECKBOXES_AFTER_CHANGE_DELAY 8.0
+#define kMAX_TRIES_AFTER_CHANGE (30 / kREFRESH_DELAY)
+
 typedef enum {
     kDNS_CONFIGURATION_UNKNOWN, kDNS_CONFIGURATION_VANILLA, kDNS_CONFIGURATION_LOCALHOST, kDNS_CONFIGURATION_OPENDNS
 } DNSConfigurationState;

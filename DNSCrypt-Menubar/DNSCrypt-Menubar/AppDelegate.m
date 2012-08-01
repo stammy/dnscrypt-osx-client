@@ -23,6 +23,14 @@
 
 DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 
+- (void) setCheckBoxesEnabled: (BOOL) enabled
+{
+    [_dnscryptMenuItem setEnabled: enabled];
+    [_opendnsMenuItem setEnabled: enabled];
+    [_familyShieldMenuItem setEnabled: enabled];
+    [_fallbackMenuItem setEnabled: enabled];
+}
+
 - (NSString *) fromCommand: (NSString *) launchPath withArguments: (NSArray *) arguments
 {
     NSPipe *pipe = [NSPipe pipe];
@@ -91,14 +99,20 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     return FALSE;
 }
 
-- (void) updateLedStatusWaiting
+- (void) showSpinners
 {
+    [self setCheckBoxesEnabled: FALSE];
+
     NSBundle *bundle = [NSBundle mainBundle];
     NSImage *led = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"no-network.png"]];
     _statusItem.image = led;
     [led release];
     
     [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./gui-push-conf-change.sh prefpane", nil]];
+    
+    [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(periodicallyUpdateStatusWithCurrentConfig) object: nil];
+    [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(waitForUpdate) object: nil];
+    [self performSelector: @selector(waitForUpdate) withObject: self afterDelay:kREFRESH_DELAY];
 }
 
 - (void) updateLedStatus
@@ -151,8 +165,26 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     NSLog(@"%@", res);
     if ([res isEqualToString: @"yes"]) {
         [self initState];
-    }    
+    }
+    [self setCheckBoxesEnabled: TRUE];
+
     return TRUE;
+}
+
+- (void) waitForUpdate {
+    NSString *res;
+    static unsigned int tries;
+    
+    res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-tickets-count.sh", nil]];
+    if (res.length <= 0 || [res isEqualToString: @"0"] || tries > kMAX_TRIES_AFTER_CHANGE) {
+        tries = 0U;
+        [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./create-ticket.sh", nil]];
+        [self periodicallyUpdateStatusWithCurrentConfig];
+        return;
+    }
+    tries++;
+    [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(waitForUpdate) object: nil];
+    [self performSelector: @selector(waitForUpdate) withObject: self afterDelay:kREFRESH_DELAY];
 }
 
 - (void) periodicallyUpdateStatusWithCurrentConfig {
@@ -197,57 +229,57 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 }
 
 - (BOOL) setDNSCryptOn {
-    [self updateLedStatusWaiting];
-    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./switch-to-dnscrypt.sh", nil]];
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./switch-to-dnscrypt.sh && ./create-ticket.sh", nil]];
     NSLog(@"%@", res);
     return TRUE;
 }
 
 - (BOOL) setDNSCryptOff {
-    [self updateLedStatusWaiting];
-    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./switch-to-dhcp.sh", nil]];
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./switch-to-dhcp.sh && ./create-ticket.sh", nil]];
     NSLog(@"%@", res);
     return TRUE;
 }
 
 - (BOOL) setFamilyShieldOn {
-    [self updateLedStatusWaiting];
-    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./switch-familyshield-on.sh", nil]];
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./switch-familyshield-on.sh && ./create-ticket.sh", nil]];
     NSLog(@"%@", res);
     return TRUE;
 }
 
 - (BOOL) setFamilyShieldOff {
-    [self updateLedStatusWaiting];
-    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./switch-familyshield-off.sh", nil]];
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./switch-familyshield-off.sh && ./create-ticket.sh", nil]];
     NSLog(@"%@", res);
     return TRUE;
 }
 
 - (BOOL) setInsecureOpenDNSOn {
-    [self updateLedStatusWaiting];
-    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./switch-insecure-opendns-on.sh", nil]];
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./switch-insecure-opendns-on.sh && ./create-ticket.sh", nil]];
     NSLog(@"%@", res);
     return TRUE;
 }
 
 - (BOOL) setInsecureOpenDNSOff {
-    [self updateLedStatusWaiting];
-    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./switch-insecure-opendns-off.sh", nil]];
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./switch-insecure-opendns-off.sh && ./create-ticket.sh", nil]];
     NSLog(@"%@", res);
     return TRUE;
 }
 
 - (BOOL) setFallbackOn {
-    [self updateLedStatusWaiting];
-    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./switch-fallback-on.sh", nil]];
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./switch-fallback-on.sh && ./create-ticket.sh", nil]];
     NSLog(@"%@", res);
     return TRUE;
 }
 
 - (BOOL) setFallbackOff {
-    [self updateLedStatusWaiting];
-    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./switch-fallback-off.sh", nil]];
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./switch-fallback-off.sh && ./create-ticket.sh", nil]];
     NSLog(@"%@", res);
     return TRUE;
 }
