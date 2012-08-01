@@ -33,3 +33,4 @@ for domain in $DOMAINS_EXCEPTIONS; do
     echo "nameserver ${name_server}" >> "${RESOLVER_DIR}/${domain}"
   done
 done
+exit 0

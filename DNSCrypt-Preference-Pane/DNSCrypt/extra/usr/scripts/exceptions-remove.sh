@@ -7,3 +7,4 @@ RESOLVER_DIR='/etc/resolver'
 for domain in $DOMAINS_EXCEPTIONS; do
   rm -f "${RESOLVER_DIR}/${domain}"
 done
+exit 0

@@ -28,3 +28,5 @@ while :; do
   fi
   break
 done
+
+exec ./exceptions-add.sh
