@@ -31,13 +31,14 @@ typedef enum {
     AuthorizationRef auth;
 }
 
-@property (weak) IBOutlet NSButton *enableOpenDNSButton;
 @property (weak) IBOutlet NSButton *enableDNSCryptButton;
-@property (weak) IBOutlet NSTextField *currentResolverTextField;
+@property (weak) IBOutlet NSButton *enableOpenDNSButton;
+@property (weak) IBOutlet NSButton *familyShieldButton;
 @property (weak) IBOutlet NSButton *enableInsecureDNSButton;
+
+@property (weak) IBOutlet NSTextField *currentResolverTextField;
 @property (weak) IBOutlet NSImageView *statusImageView;
 @property (weak) IBOutlet NSTextField *statusText;
-@property (weak) IBOutlet NSButton *useHTTPSButton;
 @property (weak) IBOutlet WebView *previewNotesWebView;
 @property (weak) IBOutlet WebView *releaseNotesWebView;
 @property (weak) IBOutlet WebView *feedbackWebView;

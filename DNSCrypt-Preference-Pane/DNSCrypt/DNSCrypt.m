@@ -14,15 +14,37 @@
 @synthesize feedbackWebView;
 @synthesize aboutWebView;
 
-@synthesize enableOpenDNSButton;
 @synthesize enableDNSCryptButton;
+@synthesize enableOpenDNSButton;
 @synthesize enableInsecureDNSButton;
+@synthesize familyShieldButton;
 @synthesize statusImageView;
 @synthesize statusText;
-@synthesize useHTTPSButton;
 @synthesize currentResolverTextField;
 
 DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
+
+- (NSString *) fromCommand: (NSString *) launchPath withArguments: (NSArray *) arguments
+{
+    NSPipe *pipe = [NSPipe pipe];
+    NSTask *task = [[NSTask alloc] init];
+    NSData *data;
+    NSString *result;
+    task.launchPath = launchPath;
+    task.arguments = arguments;
+    task.standardOutput = pipe;
+    [task launch];
+    data = [[pipe fileHandleForReading] readDataToEndOfFile];
+    [task waitUntilExit];
+    [task release];
+    result = [[[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding] autorelease];
+    if ([result hasSuffix: @"\n"]) {
+        result = [result substringToIndex: result.length - 1];
+    }
+    return result;
+}
+
+
 
 - (void) initializeCheckBoxesWithState: (DNSConfigurationState) currentState
 {
@@ -182,7 +204,6 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 {
     if (sender.state == NSOffState && enableDNSCryptButton.state != NSOffState) {
         enableDNSCryptButton.state = NSOffState;
-        useHTTPSButton.state = NSOffState;
     }
     [self updateConfig];
 }
@@ -192,7 +213,6 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     if (sender.state == NSOnState && enableOpenDNSButton.state != NSOnState) {
         enableOpenDNSButton.state = NSOnState;
     } else if (sender.state == NSOffState) {
-        useHTTPSButton.state = NSOffState;
     }
     [self updateConfig];
 }
