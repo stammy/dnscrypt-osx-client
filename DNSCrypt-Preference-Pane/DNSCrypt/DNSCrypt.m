@@ -76,24 +76,99 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 
 }
 
+- (BOOL) setDNSCryptOn {
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./switch-to-dnscrypt.sh", nil]];
+    NSLog(@"%@", res);
+    return TRUE;
+}
+
+- (BOOL) setDNSCryptOff {
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./switch-to-dhcp.sh", nil]];
+    NSLog(@"%@", res);
+    return TRUE;
+}
+
+- (BOOL) setFamilyShieldOn {
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./switch-familyshield-on.sh", nil]];
+    NSLog(@"%@", res);
+    return TRUE;
+}
+
+- (BOOL) setFamilyShieldOff {
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./switch-familyshield-off.sh", nil]];
+    NSLog(@"%@", res);
+    return TRUE;
+}
+
+- (BOOL) setInsecureOpenDNSOn {
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./switch-insecure-opendns-on.sh", nil]];
+    NSLog(@"%@", res);
+    return TRUE;
+}
+
+- (BOOL) setInsecureOpenDNSOff {
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./switch-insecure-opendns-off.sh", nil]];
+    NSLog(@"%@", res);
+    return TRUE;
+}
+
+- (BOOL) setFallbackOn {
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./switch-fallback-on.sh", nil]];
+    NSLog(@"%@", res);
+    return TRUE;
+}
+
+- (BOOL) setFallbackOff {
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./switch-fallback-off.sh", nil]];
+    NSLog(@"%@", res);
+    return TRUE;
+}
+
 - (IBAction)dnscryptButtonPressed:(NSButton *)sender
 {
-    
+    if (sender.state != 0) {
+        [self setDNSCryptOn];
+    } else {
+        [self setDNSCryptOff];
+    }
 }
 
 - (IBAction)opendnsButtonPressed:(NSButton *)sender
 {
-    
+    if (sender.state != 0) {
+        [self setFamilyShieldOn];
+    } else {
+        sender.state = 0;
+        [self setFamilyShieldOff];
+    }
 }
 
 - (IBAction)familyShieldButtonPressed:(NSButton *)sender
 {
-    
+    if (sender.state != 0) {
+        [self setInsecureOpenDNSOn];
+    } else {
+        sender.state = 0;
+        [self setInsecureOpenDNSOff];
+    }
 }
 
 - (IBAction)fallbackButtonPressed:(NSButton *)sender
 {
-    
+    if (sender.state != 0) {
+        [self setFallbackOn];
+    } else {
+        sender.state = 0;
+        [self setFallbackOff];
+    }
 }
 
 - (void) initializeCheckBoxesWithState: (DNSConfigurationState) currentState
@@ -249,30 +324,6 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     [self showSpinners];
 
     return TRUE;
-}
-
-- (IBAction)xenableOpenDNSButtonPressed:(NSButton *)sender
-{
-    if (sender.state == NSOffState && _dnscryptButton.state != NSOffState) {
-        _dnscryptButton.state = NSOffState;
-    }
-    [self updateConfig];
-}
-
-- (IBAction)xenableDNSCryptButtonPressed:(NSButton *)sender
-{
-    if (sender.state == NSOnState && _opendnsButton.state != NSOnState) {
-        _opendnsButton.state = NSOnState;
-    } else if (sender.state == NSOffState) {
-    }
-    [self updateConfig];
-}
-
-- (IBAction)xenableInsecureDNSButtonPressed:(NSButton *)sender
-{
-    if (sender.state == NSOnState) {
-    } else {
-    }
 }
 
 - (IBAction)openDNSLinkPushed:(NSButton *)sender
