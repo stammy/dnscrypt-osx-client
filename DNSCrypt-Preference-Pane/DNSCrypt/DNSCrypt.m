@@ -215,8 +215,6 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 
 - (BOOL) updateStatusWithCurrentConfig
 {
-    currentState = kDNS_CONFIGURATION_UNKNOWN;
-
     NSString *stateDescription = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./get-current-resolvers.sh | ./get-resolvers-description.sh", nil]];
     NSLog(@"%@", stateDescription);
     if ([stateDescription isEqualToString: @"FamilyShield"]) {
@@ -230,8 +228,6 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     } else if ([stateDescription isEqualToString: @"None"]) {
         currentState = kDNS_CONFIGURATION_UNKNOWN;
     } else if ([stateDescription isEqualToString: @"Updating"]) {
-        currentState = kDNS_CONFIGURATION_UNKNOWN;
-        return FALSE;
     } else if (stateDescription.length > 0) {
         currentState = kDNS_CONFIGURATION_VANILLA;
     }
