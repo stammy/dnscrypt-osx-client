@@ -81,7 +81,6 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     if ([res isEqualToString: @"yes"]) {
         [_fallbackButton setState: 1];
     }
-
 }
 
 - (BOOL) setDNSCryptOn {
@@ -176,26 +175,6 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     }
 }
 
-- (void) initializeCheckBoxesWithState: (DNSConfigurationState) currentState
-{
-    switch (currentState) {
-        case kDNS_CONFIGURATION_OPENDNS:
-            _opendnsButton.state = NSOnState;
-            _dnscryptButton.state = NSOffState;
-            break;
-
-        case kDNS_CONFIGURATION_LOCALHOST:
-            _opendnsButton.state = NSOnState;
-            _dnscryptButton.state = NSOnState;
-            break;
-
-        default:
-            _opendnsButton.state = NSOffState;
-            _dnscryptButton.state = NSOffState;
-    }
-    _fallbackButton.state = NSOnState;
-}
-
 - (void) updateLedStatus
 {
     NSBundle *bundle = [NSBundle bundleWithIdentifier: @"com.opendns.osx.DNSCrypt"];
@@ -254,6 +233,22 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     return TRUE;
 }
 
+- (void) waitForUpdate {
+    NSString *res;
+    static unsigned int tries;
+    
+    res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-tickets-count.sh", nil]];
+    if (res.length <= 0 || [res isEqualToString: @"0"] || tries > kMAX_TRIES_AFTER_CHANGE) {
+        tries = 0U;
+        [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./create-ticket.sh", nil]];
+        [self periodicallyUpdateStatusWithCurrentConfig];
+        return;
+    }
+    tries++;
+    [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(waitForUpdate) object: nil];
+    [self performSelector: @selector(waitForUpdate) withObject: self afterDelay:kREFRESH_DELAY];
+}
+
 - (void) showSpinners {
     NSBundle *bundle = [NSBundle bundleWithIdentifier: kBUNDLE_IDENTIFIER];
 
@@ -265,7 +260,8 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./gui-push-conf-change.sh menubar", nil]];
     
     [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(periodicallyUpdateStatusWithCurrentConfig) object: nil];
-    [self performSelector: @selector(periodicallyUpdateStatusWithCurrentConfig) withObject: self afterDelay:kCHECKBOXES_AFTER_CHANGE_DELAY];
+    [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(waitForUpdate) object: nil];
+    [self performSelector: @selector(waitForUpdate) withObject: self afterDelay:kREFRESH_DELAY];
 }
 
 - (void) periodicallyUpdateStatusWithCurrentConfig {
@@ -325,22 +321,6 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     defaultMenuItems:(NSArray *)defaultMenuItems
 {
     return nil;
-}
-
-- (BOOL) updateConfig
-{
-    if (_dnscryptButton.state == NSOffState) {
-        if (_opendnsButton.state == NSOffState) {
-            currentState = kDNS_CONFIGURATION_VANILLA;
-        } else {
-            currentState = kDNS_CONFIGURATION_OPENDNS;
-        }
-    } else {
-    }
-    [self periodicallyUpdateStatusWithCurrentConfig];
-    [self showSpinners];
-
-    return TRUE;
 }
 
 - (IBAction)openDNSLinkPushed:(NSButton *)sender

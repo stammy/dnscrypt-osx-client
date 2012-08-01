@@ -7,7 +7,6 @@ PROCESSED_TICKETS_FILE="${STATES_DIR}/processed-tickets"
 update() {
   lockfile -1 -r 30 -l 60 "$HANDLERS_LOCK_FILE" || exit 1
 
-
   if [ -e "$DNSCRYPT_FILE" ]; then
     ./switch-to-dnscrypt-if-required.sh
   else
