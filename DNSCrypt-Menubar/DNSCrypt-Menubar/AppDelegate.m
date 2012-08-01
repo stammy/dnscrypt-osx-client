@@ -139,6 +139,7 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
         currentState = kDNS_CONFIGURATION_UNKNOWN;
     } else if ([stateDescription isEqualToString: @"Updating"]) {
         currentState = kDNS_CONFIGURATION_UNKNOWN;
+        return FALSE;
     } else if (stateDescription.length > 0) {
         currentState = kDNS_CONFIGURATION_VANILLA;
     }

@@ -144,20 +144,18 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 - (IBAction)opendnsButtonPressed:(NSButton *)sender
 {
     if (sender.state != 0) {
-        [self setFamilyShieldOn];
+        [self setInsecureOpenDNSOn];
     } else {
-        sender.state = 0;
-        [self setFamilyShieldOff];
+        [self setInsecureOpenDNSOn];
     }
 }
 
 - (IBAction)familyShieldButtonPressed:(NSButton *)sender
 {
     if (sender.state != 0) {
-        [self setInsecureOpenDNSOn];
+        [self setFamilyShieldOn];
     } else {
-        sender.state = 0;
-        [self setInsecureOpenDNSOff];
+        [self setFamilyShieldOff];
     }
 }
 
@@ -166,7 +164,6 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     if (sender.state != 0) {
         [self setFallbackOn];
     } else {
-        sender.state = 0;
         [self setFallbackOff];
     }
 }
@@ -191,30 +188,8 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     _fallbackButton.state = NSOnState;
 }
 
-- (BOOL) updateStatusWithCurrentConfig
+- (void) updateLedStatus
 {
-    DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
-
-    NSError *err;
-    NSString *resolvConf = [NSString stringWithContentsOfFile: @"/etc/resolv.conf" encoding: NSISOLatin1StringEncoding error: &err];
-    if (resolvConf) {
-        NSMutableArray *resolvers = [[[NSMutableArray alloc] init] autorelease];
-        NSMutableString *resolversString = [[[NSMutableString alloc] init] autorelease];
-        NSArray *lines = [resolvConf componentsSeparatedByString: @"\n"];
-        for (NSString *line in lines) {
-            line = [line stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-            NSArray *entry = [line componentsSeparatedByCharactersInSet: [NSCharacterSet whitespaceCharacterSet]];
-            if (![[entry objectAtIndex: 0U] isEqualToString: @"nameserver"]) {
-                continue;
-            }
-            NSString *resolver = [entry objectAtIndex: 1U];
-            [resolvers addObject: resolver];
-            [resolversString appendFormat: @"%s%@", (resolversString.length > 0 ? "\n" : ""), resolver];
-        }
-        currentState = kDNS_CONFIGURATION_VANILLA;
-       _currentResolverTextField.stringValue = resolversString;
-    }
-
     NSBundle *bundle = [NSBundle bundleWithIdentifier: @"com.opendns.osx.DNSCrypt"];
     switch (currentState) {
         case kDNS_CONFIGURATION_UNKNOWN:
@@ -234,8 +209,36 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
             _statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_green.png"]] autorelease];
             break;
         default:
-            return FALSE;
+            return;
     }
+}
+
+- (BOOL) updateStatusWithCurrentConfig
+{
+    currentState = kDNS_CONFIGURATION_UNKNOWN;
+
+    NSString *stateDescription = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./get-current-resolvers.sh | ./get-resolvers-description.sh", nil]];
+    NSLog(@"%@", stateDescription);
+    if ([stateDescription isEqualToString: @"FamilyShield"]) {
+        currentState = kDNS_CONFIGURATION_OPENDNS;
+    } else if ([stateDescription isEqualToString: @"DNSCrypt"]) {
+        currentState = kDNS_CONFIGURATION_LOCALHOST;
+    } else if ([stateDescription isEqualToString: @"OpenDNS"]) {
+        currentState = kDNS_CONFIGURATION_OPENDNS;
+    } else if ([stateDescription isEqualToString: @"OpenDNS IPv6"]) {
+        currentState = kDNS_CONFIGURATION_OPENDNS;
+    } else if ([stateDescription isEqualToString: @"None"]) {
+        currentState = kDNS_CONFIGURATION_UNKNOWN;
+    } else if ([stateDescription isEqualToString: @"Updating"]) {
+        currentState = kDNS_CONFIGURATION_UNKNOWN;
+        return FALSE;
+    } else if (stateDescription.length > 0) {
+        currentState = kDNS_CONFIGURATION_VANILLA;
+    }
+    [self updateLedStatus];
+    
+    NSString *currentResolvers = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./get-current-resolvers.sh | ./get-upstream-resolvers.sh", nil]];
+    _currentResolverTextField.stringValue = currentResolvers;
 
     return TRUE;
 }

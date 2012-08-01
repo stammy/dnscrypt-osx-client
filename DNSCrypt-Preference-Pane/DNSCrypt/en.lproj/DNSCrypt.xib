@@ -65,6 +65,7 @@
 							<string key="NSFrame">{{13, 10}, {563, 359}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="1025762247"/>
 							<string key="NSReuseIdentifierKey">_NS:461</string>
 							<array class="NSMutableArray" key="NSTabViewItems">
 								<object class="NSTabViewItem" id="19707695">
@@ -79,7 +80,7 @@
 												<string key="NSFrame">{{15, 238}, {204, 22}}</string>
 												<reference key="NSSuperview" ref="1025762247"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="891532389"/>
+												<reference key="NSNextKeyView" ref="300098131"/>
 												<string key="NSReuseIdentifierKey">_NS:239</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="743617070">
@@ -95,7 +96,7 @@
 													<reference key="NSControlView" ref="894789954"/>
 													<int key="NSButtonFlags">1211912448</int>
 													<int key="NSButtonFlags2">2</int>
-													<object class="NSCustomResource" key="NSNormalImage" id="220837555">
+													<object class="NSCustomResource" key="NSNormalImage" id="338365942">
 														<string key="NSClassName">NSImage</string>
 														<string key="NSResourceName">NSSwitch</string>
 													</object>
@@ -115,7 +116,7 @@
 												<string key="NSFrame">{{15, 212}, {245, 24}}</string>
 												<reference key="NSSuperview" ref="1025762247"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="894789954"/>
+												<reference key="NSNextKeyView" ref="891532389"/>
 												<string key="NSReuseIdentifierKey">_NS:239</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="555340075">
@@ -127,7 +128,7 @@
 													<reference key="NSControlView" ref="300098131"/>
 													<int key="NSButtonFlags">1211912448</int>
 													<int key="NSButtonFlags2">2</int>
-													<reference key="NSNormalImage" ref="220837555"/>
+													<reference key="NSNormalImage" ref="338365942"/>
 													<reference key="NSAlternateImage" ref="875688652"/>
 													<string key="NSAlternateContents"/>
 													<string key="NSKeyEquivalent"/>
@@ -158,7 +159,7 @@
 													<reference key="NSControlView" ref="410495287"/>
 													<int key="NSButtonFlags">1211912448</int>
 													<int key="NSButtonFlags2">2</int>
-													<reference key="NSNormalImage" ref="220837555"/>
+													<reference key="NSNormalImage" ref="338365942"/>
 													<reference key="NSAlternateImage" ref="875688652"/>
 													<string key="NSAlternateContents"/>
 													<string key="NSKeyEquivalent"/>
@@ -173,6 +174,7 @@
 												<string key="NSFrame">{{15, 133}, {204, 22}}</string>
 												<reference key="NSSuperview" ref="1025762247"/>
 												<reference key="NSWindow"/>
+												<reference key="NSNextKeyView" ref="240318099"/>
 												<string key="NSReuseIdentifierKey">_NS:239</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="805275804">
@@ -184,7 +186,7 @@
 													<reference key="NSControlView" ref="384170040"/>
 													<int key="NSButtonFlags">1211912448</int>
 													<int key="NSButtonFlags2">2</int>
-													<reference key="NSNormalImage" ref="220837555"/>
+													<reference key="NSNormalImage" ref="338365942"/>
 													<reference key="NSAlternateImage" ref="875688652"/>
 													<string key="NSAlternateContents"/>
 													<string key="NSKeyEquivalent"/>
@@ -262,7 +264,7 @@
 											<object class="NSTextField" id="496861916">
 												<reference key="NSNextResponder" ref="1025762247"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{26, 2}, {240, 78}}</string>
+												<string key="NSFrame">{{14, -3}, {240, 83}}</string>
 												<reference key="NSSuperview" ref="1025762247"/>
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="855319081"/>
@@ -295,7 +297,7 @@
 												<string key="NSFrame">{{115, 283}, {125, 19}}</string>
 												<reference key="NSSuperview" ref="1025762247"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="300098131"/>
+												<reference key="NSNextKeyView" ref="894789954"/>
 												<string key="NSReuseIdentifierKey">_NS:3596</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSTextFieldCell" key="NSCell" id="118313349">
@@ -424,7 +426,6 @@
 												<string key="NSFrame">{{323, 190}, {183, 32}}</string>
 												<reference key="NSSuperview" ref="1025762247"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="821865429"/>
 												<string key="NSReuseIdentifierKey">_NS:2419</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="675161177">
@@ -1247,9 +1248,6 @@
 						<string key="familyShieldButtonPressed:">NSButton</string>
 						<string key="openDNSLinkPushed:">NSButton</string>
 						<string key="opendnsButtonPressed:">NSButton</string>
-						<string key="xenableDNSCryptButtonPressed:">NSButton</string>
-						<string key="xenableInsecureDNSButtonPressed:">NSButton</string>
-						<string key="xenableOpenDNSButtonPressed:">NSButton</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="dnscryptButtonPressed:">
@@ -1270,18 +1268,6 @@
 						</object>
 						<object class="IBActionInfo" key="opendnsButtonPressed:">
 							<string key="name">opendnsButtonPressed:</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBActionInfo" key="xenableDNSCryptButtonPressed:">
-							<string key="name">xenableDNSCryptButtonPressed:</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBActionInfo" key="xenableInsecureDNSButtonPressed:">
-							<string key="name">xenableInsecureDNSButtonPressed:</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBActionInfo" key="xenableOpenDNSButtonPressed:">
-							<string key="name">xenableOpenDNSButtonPressed:</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
 					</dictionary>
