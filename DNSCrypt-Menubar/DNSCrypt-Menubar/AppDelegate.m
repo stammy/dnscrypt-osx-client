@@ -116,7 +116,7 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     }
     [self updateLedStatus];
     
-    NSString *currentResolvers = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./get-current-resolvers.sh", nil]];
+    NSString *currentResolvers = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./get-current-resolvers.sh | ./get-upstream-resolvers.sh", nil]];
     _statusConfigurationMenuItem.title = stateDescription;
     _statusResolversMenuItem.title = currentResolvers;
     
@@ -164,14 +164,14 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 }
 
 - (BOOL) setDNSCryptOn {
-    NSString *fileName = [NSString stringWithFormat: kDNSCRYPT_CONTROL_DIR @"/dnscrypt"];
-    [@"on" writeToFile: fileName atomically: NO encoding: NSUTF8StringEncoding error: nil];
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./switch-to-dnscrypt.sh", nil]];
+    NSLog(@"%@", res);
     return TRUE;
 }
 
 - (BOOL) setDNSCryptOff {
-    NSString *fileName = [NSString stringWithFormat: kDNSCRYPT_CONTROL_DIR @"/dnscrypt"];
-    [[NSFileManager defaultManager] removeItemAtPath: fileName error: nil];
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./switch-to-dhcp.sh", nil]];
+    NSLog(@"%@", res);
     return TRUE;
 }
 
