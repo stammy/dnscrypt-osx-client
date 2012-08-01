@@ -97,6 +97,8 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     NSImage *led = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"no-network.png"]];
     _statusItem.image = led;
     [led release];
+    
+    [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./gui-push-conf-change.sh prefpane", nil]];
 }
 
 - (void) updateLedStatus
@@ -149,6 +151,11 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     _statusConfigurationMenuItem.title = stateDescription;
     _statusResolversMenuItem.title = currentResolvers;
     
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./gui-pop-conf-change.sh menubar", nil]];
+    NSLog(@"%@", res);
+    if ([res isEqualToString: @"yes"]) {
+        [self initState];
+    }    
     return TRUE;
 }
 

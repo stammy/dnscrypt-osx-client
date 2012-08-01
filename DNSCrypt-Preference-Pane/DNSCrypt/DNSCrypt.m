@@ -239,7 +239,12 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     
     NSString *currentResolvers = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./get-current-resolvers.sh | ./get-upstream-resolvers.sh", nil]];
     _currentResolverTextField.stringValue = currentResolvers;
-
+    
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./gui-pop-conf-change.sh prefpane", nil]];
+    NSLog(@"%@", res);
+    if ([res isEqualToString: @"yes"]) {
+        [self initState];
+    }
     return TRUE;
 }
 
@@ -249,6 +254,8 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     _statusText.stringValue = @"";
     _statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"ajax-loader.gif"]] autorelease];
     _currentResolverTextField.stringValue = @"";
+    
+    [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./gui-push-conf-change.sh menubar", nil]];
 }
 
 - (void) periodicallyUpdateStatusWithCurrentConfig {
