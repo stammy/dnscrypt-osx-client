@@ -29,119 +29,6 @@ BOOL useHTTPSPort = NO;
 BOOL enableInsecure = NO;
 BOOL checkBoxesHaveBeenInitialized = NO;
 
-- (BOOL) ensureConfigUpdaterIsRunning
-{
-    NSArray *arguments = [NSArray arrayWithObjects: @"start", KDNSCRYPT_CONFIG_UPDATER_LABEL, nil];
-    NSTask *task = [[[NSTask alloc] init] autorelease];
-    task.launchPath = KLAUNCHCTL_PATH;
-    task.arguments = arguments;
-    task.standardError = [NSFileHandle fileHandleWithNullDevice];
-    [task launch];
-    [task waitUntilExit];
-
-    return FALSE;
-}
-
-- (BOOL) sendCommandToConfigUpdater: (NSString *) command storeResultTo: (__autoreleasing NSData **) dataP withMaxSize: (NSUInteger) maxSize
-{
-    const char *sockPath = [kSOCK_PATH cStringUsingEncoding: NSUTF8StringEncoding];
-    size_t sockPathSize = strlen(sockPath) + (size_t) 1U;
-    struct sockaddr_un *su;
-    assert(sockPathSize < sizeof su->sun_path);
-    socklen_t sun_len = (socklen_t) (sizeof *su) + (socklen_t) sockPathSize;
-    su = calloc(1U, sun_len);
-    su->sun_family = AF_UNIX;
-    memcpy(su->sun_path, sockPath, sockPathSize);
-    su->sun_len = SUN_LEN(su);
-    CFSocketRef socket = CFSocketCreate(kCFAllocatorDefault, PF_UNIX, SOCK_DGRAM, IPPROTO_IP, 0, NULL, NULL);
-    CFSocketSetSocketFlags(socket, CFSocketGetSocketFlags(socket) & ~kCFSocketCloseOnInvalidate);
-    int fd = CFSocketGetNative(socket);
-    NSData *address = [NSData dataWithBytes: su length: SUN_LEN(su)];
-    CFSocketError err = CFSocketConnectToAddress(socket, (CFDataRef) address, 30.0);
-    free(su);
-    if (err != kCFSocketSuccess) {
-        CFRelease(socket);
-        return FALSE;
-    }
-    NSFileHandle *fh = [[[NSFileHandle alloc] initWithFileDescriptor: fd closeOnDealloc: TRUE] autorelease];
-    CFRelease(socket);
-    NSData *data = [command dataUsingEncoding: NSUTF8StringEncoding];
-    NSAssert(data.length <= UINT32_MAX, @"data.length > UINT32_MAX");
-    uint32_t dataLen = (uint32_t) data.length;
-    [fh writeData: [NSData dataWithBytes: &dataLen length: sizeof dataLen]];
-    [fh writeData: data];
-    if (dataP && maxSize) {
-        *dataP = [fh readDataOfLength: maxSize];
-    }
-    [fh closeFile];
-
-    return TRUE;
-}
-
-- (BOOL) sendCommandToConfigUpdater: (NSString *) command
-{
-    return [self sendCommandToConfigUpdater: command storeResultTo: nil withMaxSize: 0U];
-}
-
-- (BOOL) resolversForService: (NSArray *) resolversForService includeResolvers:(NSArray *) resolvers
-{
-    NSUInteger matches = 0U;
-
-    for (NSString *resolverForService in resolversForService) {
-        if ([resolvers containsObject: resolverForService]) {
-            matches++;
-        } else {
-            break;
-        }
-    }
-    if (matches >= resolvers.count) {
-        return TRUE;
-    }
-    return FALSE;
-}
-
-- (NSString *) getSupportDirectory
-{
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
-    NSString *path = nil;
-    NSError *error = nil;
-    BOOL isDirectory;
-
-    for (path in paths) {
-        if ([[NSFileManager defaultManager] fileExistsAtPath: path isDirectory: &isDirectory] == FALSE || isDirectory == FALSE) {
-            continue;
-        }
-        path = [path stringByAppendingPathComponent: kDNSCRYPT_PREFPANE_SUPPORT_DIR];
-        if ([[NSFileManager defaultManager] createDirectoryAtPath: path withIntermediateDirectories: TRUE attributes: nil error: &error] == TRUE) {
-            return path;
-        }
-    }
-    NSLog(@"Error: [%@]", error);
-    return nil;
-}
-
-- (NSString *) getPrefPaneConfigFile
-{
-    NSString *supportDirectory = [self getSupportDirectory];
-    if (! supportDirectory) {
-        return nil;
-    }
-    return [supportDirectory stringByAppendingPathComponent: kDNSCRYPT_PREFPANE_FILE];
-}
-
-- (BOOL) savePrefPaneConfig
-{
-    NSString *prefPaneConfigFile = [self getPrefPaneConfigFile];
-    if (prefPaneConfigFile == nil) {
-        return FALSE;
-    }
-    NSDictionary *config = [[[NSDictionary alloc] initWithObjectsAndKeys:
-                            [NSNumber numberWithBool: useHTTPSPort], @"useHTTPSPort",
-                            [NSNumber numberWithBool: enableInsecure], @"enableInsecure",
-                            nil] autorelease];
-    return [config writeToFile: prefPaneConfigFile atomically: YES];
-}
-
 - (void) setReadOnly: (BOOL) readOnly {
     enableOpenDNSButton.enabled = !readOnly;
     enableDNSCryptButton.enabled = !readOnly;
@@ -149,39 +36,8 @@ BOOL checkBoxesHaveBeenInitialized = NO;
     enableInsecureDNSButton.enabled = !readOnly;
 }
 
-- (BOOL) loadPrefPaneConfig
-{
-    NSString *prefPaneConfigFile = [self getPrefPaneConfigFile];
-    if (prefPaneConfigFile == nil) {
-        return FALSE;
-    }
-    NSDictionary *config = [NSDictionary dictionaryWithContentsOfFile: prefPaneConfigFile];
-    if (config == nil) {
-        return FALSE;
-    }
-    NSNumber *useHTTPSPort_ = [config objectForKey: @"useHTTPSPort"];
-    if ([useHTTPSPort_ isKindOfClass: [NSNumber class]]) {
-        useHTTPSPort = [useHTTPSPort_ boolValue];
-    }
-    NSNumber *enableInsecure_ = [config objectForKey: @"enableInsecure"];
-    if ([enableInsecure_ isKindOfClass: [NSNumber class]]) {
-        enableInsecure = [enableInsecure_ boolValue];
-    }
-    SInt32 OSXversionMajor, OSXversionMinor;
-    if (Gestalt(gestaltSystemVersionMajor, &OSXversionMajor) == noErr && Gestalt(gestaltSystemVersionMinor, &OSXversionMinor) == noErr &&
-       OSXversionMajor == 10 && OSXversionMinor >= 7) {
-        if ([self sendCommandToConfigUpdater: @"dc.w $4E71"] == FALSE) {
-            [self setReadOnly: YES];
-        } else {
-            [self setReadOnly: FALSE];
-        }
-    }
-    return TRUE;
-}
-
 - (void) initializeCheckBoxesWithState: (DNSConfigurationState) currentState
 {
-    [self loadPrefPaneConfig];
     switch (currentState) {
         case kDNS_CONFIGURATION_OPENDNS:
             enableOpenDNSButton.state = NSOnState;
@@ -208,8 +64,6 @@ BOOL checkBoxesHaveBeenInitialized = NO;
 - (BOOL) updateStatusWithCurrentConfig
 {
     DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
-    NSArray *resolversForLocalhost = [NSArray arrayWithObjects: kRESOLVER_IP_LOCALHOST, nil];
-    NSArray *resolversForOpenDNS = [NSArray arrayWithObjects: kRESOLVER_IP_OPENDNS1, kRESOLVER_IP_OPENDNS2, nil];
 
     NSError *err;
     NSString *resolvConf = [NSString stringWithContentsOfFile: @"/etc/resolv.conf" encoding: NSISOLatin1StringEncoding error: &err];
@@ -227,24 +81,8 @@ BOOL checkBoxesHaveBeenInitialized = NO;
             [resolvers addObject: resolver];
             [resolversString appendFormat: @"%s%@", (resolversString.length > 0 ? "\n" : ""), resolver];
         }
-        if ([self resolversForService: resolvers includeResolvers: resolversForLocalhost]) {
-            currentState = kDNS_CONFIGURATION_LOCALHOST;
-        } else if ([self resolversForService: resolvers includeResolvers: resolversForOpenDNS]) {
-            currentState = kDNS_CONFIGURATION_OPENDNS;
-        } else {
-            currentState = kDNS_CONFIGURATION_VANILLA;
-        }
-        if ([resolversString isEqualToString: kRESOLVER_IP_LOCALHOST]) {
-            NSString *dnsCryptString;
-
-            if (useHTTPSPort == NO) {
-                dnsCryptString = NSLocalizedString(@"%@\nusing DNSCrypt", @"Current resolver when DNSCrypt has been enabled");
-            } else {
-                dnsCryptString = NSLocalizedString(@"%@\nusing DNSCrypt/HTTPS", @"Current resolver when DNSCrypt has been enabled on the HTTPS port");
-            }
-            resolversString = [NSString stringWithFormat: dnsCryptString, kDNSCRYPT_RESOLVER];
-        }
-        currentResolverTextField.stringValue = resolversString;
+        currentState = kDNS_CONFIGURATION_VANILLA;
+       currentResolverTextField.stringValue = resolversString;
     }
 
     NSBundle *bundle = [NSBundle bundleWithIdentifier: @"com.opendns.osx.DNSCrypt"];
@@ -292,7 +130,6 @@ BOOL checkBoxesHaveBeenInitialized = NO;
 - (void) mainViewDidLoad
 {
     state = kDNS_CONFIGURATION_UNKNOWN;
-    [self ensureConfigUpdaterIsRunning];
     [self periodicallyUpdateStatusWithCurrentConfig];
     [previewNotesWebView setDrawsBackground:false];
 
@@ -353,44 +190,24 @@ BOOL checkBoxesHaveBeenInitialized = NO;
     checkBoxesHaveBeenInitialized = YES;
     [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(resetCheckBoxesHaveBeenInitialized) object: nil];
     [self performSelector: @selector(resetCheckBoxesHaveBeenInitialized) withObject: self afterDelay:kCHECKBOXES_FREEZE_DELAY];
-    [self ensureConfigUpdaterIsRunning];
     if (enableDNSCryptButton.state == NSOffState) {
         if (enableOpenDNSButton.state == NSOffState) {
-            [self sendCommandToConfigUpdater: @"CONFIG VANILLA"];
-            [self sendCommandToConfigUpdater: @"PROXY STOP"];
             state = kDNS_CONFIGURATION_VANILLA;
         } else {
-            [self sendCommandToConfigUpdater: @"CONFIG OPENDNS"];
-            [self sendCommandToConfigUpdater: @"PROXY STOP"];
             state = kDNS_CONFIGURATION_OPENDNS;
         }
     } else {
-        NSString *proxyStartCommand;
-
-        if (useHTTPSPort == NO) {
-            proxyStartCommand = @"PROXY START --resolver-address=" kDNSCRYPT_RESOLVER ":53";
-        } else {
-            proxyStartCommand = @"PROXY START --tcp-only --resolver-address=" kDNSCRYPT_RESOLVER ":443";
-        }
-        [self sendCommandToConfigUpdater: proxyStartCommand];
-        [self sendCommandToConfigUpdater: @"CONFIG LOCALHOST"];
-        state = kDNS_CONFIGURATION_LOCALHOST;
     }
     [self periodicallyUpdateStatusWithCurrentConfig];
     [self showSpinners];
-    [self savePrefPaneConfig];
 
     return TRUE;
 }
 
 - (BOOL) updateInsecure {
-    [self ensureConfigUpdaterIsRunning];
     if (enableInsecure) {
-        [self sendCommandToConfigUpdater: @"FALLBACK ON"];
     } else {
-        [self sendCommandToConfigUpdater: @"FALLBACK OFF"];
     }
-    [self savePrefPaneConfig];
 
     return TRUE;
 }

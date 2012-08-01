@@ -9,29 +9,17 @@
 #import <PreferencePanes/PreferencePanes.h>
 #import <WebKit/WebKit.h>
 
-#define kDNSCRYPT_PACKAGE_VERSION @"0.10"
+#define kDNSCRYPT_PACKAGE_VERSION @"0.12"
 
 #define KDNSCRYPT_CONFIG_UPDATER_LABEL @"com.opendns.osx.DNSCryptConfigUpdater"
 #define KDNSCRYPT_PROXY_LABEL @"com.opendns.osx.DNSCryptProxy"
 
-#define KLAUNCHCTL_PATH @"/bin/launchctl"
-
-#define kSOCK_GRAND_PARENT_DIR @"/var/run"
-#define kSOCK_PARENT_DIR kSOCK_GRAND_PARENT_DIR @"/com.opendns.osx.DNSCryptConfigUpdater"
-#define kSOCK_PATH kSOCK_PARENT_DIR @"/sock"
-
 #define kDNSCRYPT_PREFPANE_SUPPORT_DIR @"DNSCrypt Prefpane"
 #define kDNSCRYPT_PREFPANE_FILE @"PrefPane.plist"
-
-#define kRESOLVER_IP_LOCALHOST @"127.0.0.1"
-#define kRESOLVER_IP_OPENDNS1  @"208.67.220.220"
-#define kRESOLVER_IP_OPENDNS2  @"208.67.222.222"
 
 #define kOPENDNS_URL @"http://www.opendns.com"
 
 #define kBUNDLE_IDENTIFIER @"com.opendns.osx.DNSCrypt"
-
-#define kDNSCRYPT_RESOLVER @"208.67.220.220"
 
 #define kCHECKBOXES_FREEZE_DELAY 5.5
 
