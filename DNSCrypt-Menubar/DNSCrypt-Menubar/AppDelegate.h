@@ -14,6 +14,10 @@
 #define kDNSCRYPT_RESOLVER     @"208.67.220.220"
 
 #define kDNSCRYPT_PREFPANE_APP_PATH @"/Library/PreferencePanes/DNSCrypt.prefPane"
+#define kDNSCRYPT_USR_BASE_DIR kDNSCRYPT_PREFPANE_APP_PATH @"/Contents/Resources/usr"
+#define kDNSCRIPT_SCRIPTS_BASE_DIR kDNSCRYPT_USR_BASE_DIR @"/scripts"
+#define kDNSCRYPT_VAR_BASE_DIR @"/Library/Application Support/DNSCrypt"
+#define kDNSCRYPT_CONTROL_DIR kDNSCRYPT_VAR_BASE_DIR @"/control"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
@@ -28,7 +32,13 @@ typedef enum {
 
 @property (strong) IBOutlet NSMenuItem *statusResolversMenuItem;
 @property (strong) IBOutlet NSMenuItem *statusConfigurationMenuItem;
+@property (strong) IBOutlet NSMenuItem *familyShieldMenuItem;
+@property (strong) IBOutlet NSMenuItem *dnscryptMenuItem;
+@property (strong) IBOutlet NSMenuItem *fallbackMenuItem;
 
 - (IBAction)preferencesMenuItemPushed:(NSMenuItem *)sender;
+- (IBAction)dnscryptMenuItemPushed:(NSMenuItem *)sender;
+- (IBAction)familyShieldMenuItemPushed:(NSMenuItem *)sender;
+- (IBAction)fallbackMenuItemPushed:(NSMenuItem *)sender;
 
 @end

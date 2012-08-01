@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1070</int>
-		<string key="IBDocument.SystemVersion">11C73</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1938</string>
-		<string key="IBDocument.AppKitVersion">1138.23</string>
-		<string key="IBDocument.HIToolboxVersion">567.00</string>
+		<int key="IBDocument.SystemTarget">1080</int>
+		<string key="IBDocument.SystemVersion">12A269</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2818</string>
+		<string key="IBDocument.AppKitVersion">1187</string>
+		<string key="IBDocument.HIToolboxVersion">624.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">1938</string>
+			<string key="NS.object.0">2818</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
+			<string>NSCustomObject</string>
 			<string>NSMenu</string>
 			<string>NSMenuItem</string>
-			<string>NSCustomObject</string>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -40,8 +40,8 @@
 				<array class="NSMutableArray" key="NSMenuItems">
 					<object class="NSMenuItem" id="1061864523">
 						<reference key="NSMenu" ref="705716806"/>
-						<string key="NSTitle">DNSCrypt Preferences</string>
-						<string key="NSKeyEquiv">,</string>
+						<string key="NSTitle">Enable DNSCrypt</string>
+						<string key="NSKeyEquiv">e</string>
 						<int key="NSKeyEquivModMask">1048576</int>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<object class="NSCustomResource" key="NSOnImage" id="720710128">
@@ -52,6 +52,43 @@
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">NSMenuMixedState</string>
 						</object>
+					</object>
+					<object class="NSMenuItem" id="947483772">
+						<reference key="NSMenu" ref="705716806"/>
+						<string key="NSTitle">Enable FamilyShield</string>
+						<string key="NSKeyEquiv">f</string>
+						<int key="NSKeyEquivModMask">1048576</int>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="720710128"/>
+						<reference key="NSMixedImage" ref="1029721002"/>
+					</object>
+					<object class="NSMenuItem" id="31983378">
+						<reference key="NSMenu" ref="705716806"/>
+						<string key="NSTitle">Fallback to insecure</string>
+						<string key="NSKeyEquiv">x</string>
+						<int key="NSKeyEquivModMask">1048576</int>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="720710128"/>
+						<reference key="NSMixedImage" ref="1029721002"/>
+					</object>
+					<object class="NSMenuItem" id="392357407">
+						<reference key="NSMenu" ref="705716806"/>
+						<bool key="NSIsDisabled">YES</bool>
+						<bool key="NSIsSeparator">YES</bool>
+						<string key="NSTitle"/>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="720710128"/>
+						<reference key="NSMixedImage" ref="1029721002"/>
+					</object>
+					<object class="NSMenuItem" id="721984748">
+						<reference key="NSMenu" ref="705716806"/>
+						<string key="NSTitle">DNSCrypt Preferences</string>
+						<string key="NSKeyEquiv">,</string>
+						<int key="NSKeyEquivModMask">1048576</int>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="720710128"/>
+						<reference key="NSMixedImage" ref="1029721002"/>
 					</object>
 					<object class="NSMenuItem" id="669888296">
 						<reference key="NSMenu" ref="705716806"/>
@@ -201,14 +238,6 @@
 					<int key="connectionID">543</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">preferencesMenuItemPushed:</string>
-						<reference key="source" ref="976324537"/>
-						<reference key="destination" ref="1061864523"/>
-					</object>
-					<int key="connectionID">548</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">statusConfigurationMenuItem</string>
 						<reference key="source" ref="976324537"/>
@@ -231,6 +260,62 @@
 						<reference key="destination" ref="472006404"/>
 					</object>
 					<int key="connectionID">568</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">preferencesMenuItemPushed:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="721984748"/>
+					</object>
+					<int key="connectionID">571</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">familyShieldMenuItem</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="947483772"/>
+					</object>
+					<int key="connectionID">577</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">dnscryptMenuItem</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="1061864523"/>
+					</object>
+					<int key="connectionID">578</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">fallbackMenuItem</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="31983378"/>
+					</object>
+					<int key="connectionID">579</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">dnscryptMenuItemPushed:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="1061864523"/>
+					</object>
+					<int key="connectionID">580</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">familyShieldMenuItemPushed:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="947483772"/>
+					</object>
+					<int key="connectionID">581</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">fallbackMenuItemPushed:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="31983378"/>
+					</object>
+					<int key="connectionID">582</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
@@ -289,6 +374,10 @@
 							<reference ref="580228755"/>
 							<reference ref="472006404"/>
 							<reference ref="512706455"/>
+							<reference ref="721984748"/>
+							<reference ref="947483772"/>
+							<reference ref="31983378"/>
+							<reference ref="392357407"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -362,6 +451,26 @@
 						<reference key="object" ref="512706455"/>
 						<reference key="parent" ref="705716806"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">570</int>
+						<reference key="object" ref="721984748"/>
+						<reference key="parent" ref="705716806"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">572</int>
+						<reference key="object" ref="947483772"/>
+						<reference key="parent" ref="705716806"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">574</int>
+						<reference key="object" ref="31983378"/>
+						<reference key="parent" ref="705716806"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">576</int>
+						<reference key="object" ref="392357407"/>
+						<reference key="parent" ref="705716806"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -384,31 +493,51 @@
 				<string key="564.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="565.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="566.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="570.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="572.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="574.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="576.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">568</int>
+			<int key="maxID">582</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">AppDelegate</string>
 					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">preferencesMenuItemPushed:</string>
-						<string key="NS.object.0">NSMenuItem</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">preferencesMenuItemPushed:</string>
-						<object class="IBActionInfo" key="NS.object.0">
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="dnscryptMenuItemPushed:">NSMenuItem</string>
+						<string key="fallbackMenuItemPushed:">NSMenuItem</string>
+						<string key="familyShieldMenuItemPushed:">NSMenuItem</string>
+						<string key="preferencesMenuItemPushed:">NSMenuItem</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="dnscryptMenuItemPushed:">
+							<string key="name">dnscryptMenuItemPushed:</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+						<object class="IBActionInfo" key="fallbackMenuItemPushed:">
+							<string key="name">fallbackMenuItemPushed:</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+						<object class="IBActionInfo" key="familyShieldMenuItemPushed:">
+							<string key="name">familyShieldMenuItemPushed:</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+						<object class="IBActionInfo" key="preferencesMenuItemPushed:">
 							<string key="name">preferencesMenuItemPushed:</string>
 							<string key="candidateClassName">NSMenuItem</string>
 						</object>
-					</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="dnscryptMenu">NSMenu</string>
+						<string key="dnscryptMenuItem">NSMenuItem</string>
+						<string key="fallbackMenuItem">NSMenuItem</string>
+						<string key="familyShieldMenuItem">NSMenuItem</string>
 						<string key="statusConfigurationMenuItem">NSMenuItem</string>
 						<string key="statusResolversMenuItem">NSMenuItem</string>
 						<string key="versionMenuItem">NSMenuItem</string>
@@ -418,6 +547,18 @@
 						<object class="IBToOneOutletInfo" key="dnscryptMenu">
 							<string key="name">dnscryptMenu</string>
 							<string key="candidateClassName">NSMenu</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="dnscryptMenuItem">
+							<string key="name">dnscryptMenuItem</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="fallbackMenuItem">
+							<string key="name">fallbackMenuItem</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="familyShieldMenuItem">
+							<string key="name">familyShieldMenuItem</string>
+							<string key="candidateClassName">NSMenuItem</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="statusConfigurationMenuItem">
 							<string key="name">statusConfigurationMenuItem</string>
@@ -478,8 +619,8 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NSMenuCheckmark">{9, 8}</string>
-			<string key="NSMenuMixedState">{7, 2}</string>
+			<string key="NSMenuCheckmark">{11, 11}</string>
+			<string key="NSMenuMixedState">{10, 3}</string>
 		</dictionary>
 	</data>
 </archive>

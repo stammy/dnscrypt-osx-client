@@ -12,12 +12,52 @@
 @implementation AppDelegate
 @synthesize statusResolversMenuItem = _statusResolversMenuItem;
 @synthesize statusConfigurationMenuItem = _statusConfigurationMenuItem;
+@synthesize familyShieldMenuItem = _familyShieldMenuItem;
+@synthesize dnscryptMenuItem = _dnscryptMenuItem;
+@synthesize fallbackMenuItem = _fallbackMenuItem;
 @synthesize window = _window;
 @synthesize dnscryptMenu = _dnscryptMenu;
 @synthesize statusItem = _statusItem;
 @synthesize versionMenuItem = _versionMenuItem;
 
 DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
+
+- (NSString *) fromCommand: (NSString *) launchPath withArguments: (NSArray *) arguments
+{
+    NSPipe *pipe = [NSPipe pipe];
+    NSTask *task = [[NSTask alloc] init];
+    NSData *data;
+    NSString *result;
+    task.launchPath = launchPath;
+    task.arguments = arguments;
+    task.standardOutput = pipe;
+    [task launch];
+    data = [[pipe fileHandleForReading] readDataToEndOfFile];
+    [task waitUntilExit];
+    result = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
+    if ([result hasSuffix: @"\n"]) {
+        result = [result substringToIndex: result.length - 1];
+    }
+    return result;
+}
+
+- (void) initState
+{
+    NSString *stateDescription = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./get-current-resolvers.sh | ./get-resolvers-description.sh", nil]];
+    NSLog(@"%@", stateDescription);
+    [_dnscryptMenuItem setState: 0];
+    [_familyShieldMenuItem setState: 0];
+    [_fallbackMenuItem setState: 0];
+    if ([stateDescription isEqualToString: @"FamilyShield"]) {
+        [_familyShieldMenuItem setState: 1];
+    } else if ([stateDescription isEqualToString: @"DNSCrypt"]) {
+        [_dnscryptMenuItem setState: 1];
+    } else if ([stateDescription isEqualToString: @"OpenDNS"]) {
+    } else if ([stateDescription isEqualToString: @"OpenDNS IPv6"]) {
+    } else if ([stateDescription isEqualToString: @"Localhost"]) {
+    } else if ([stateDescription isEqualToString: @"Localhost IPv6"]) {
+    }
+}
 
 - (BOOL) resolversForService: (NSArray *) resolversForService includeResolvers:(NSArray *) resolvers
 {
@@ -60,47 +100,25 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 - (BOOL) updateStatusWithCurrentConfig
 {    
     currentState = kDNS_CONFIGURATION_UNKNOWN;
-    NSArray *resolversForLocalhost = [NSArray arrayWithObjects: kRESOLVER_IP_LOCALHOST, nil];
-    NSArray *resolversForOpenDNS = [NSArray arrayWithObjects: kRESOLVER_IP_OPENDNS1, kRESOLVER_IP_OPENDNS2, nil];
     
-    NSError *err;
-    NSString *resolvConf = [NSString stringWithContentsOfFile: @"/etc/resolv.conf" encoding: NSISOLatin1StringEncoding error: &err];
-    NSString *currentStateString = @"";
-    NSMutableString *resolversString = [[NSMutableString alloc] init];
-    if (! resolvConf) {
-        currentState = kDNS_CONFIGURATION_UNKNOWN;
-        currentStateString = NSLocalizedString(@"Network unavailable", @"Current state");
-        [resolversString appendString: NSLocalizedString(@"None", @"No current state")];
-    } else {
-        NSMutableArray *resolvers = [[NSMutableArray alloc] init];
-        NSArray *lines = [resolvConf componentsSeparatedByString: @"\n"];
-        for (NSString *line_ in lines) {            
-            NSString *line = [line_ stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-            NSArray *entry = [line componentsSeparatedByCharactersInSet: [NSCharacterSet whitespaceCharacterSet]];
-            if (![[entry objectAtIndex: 0U] isEqualToString: @"nameserver"]) {
-                continue;
-            }
-            NSString *resolver = [entry objectAtIndex: 1U];
-            [resolvers addObject: resolver];
-            [resolversString appendFormat: @"%s%@", (resolversString.length > 0 ? ", " : ""), resolver];            
-        }
-        if ([self resolversForService: resolvers includeResolvers: resolversForLocalhost]) {
-            currentState = kDNS_CONFIGURATION_LOCALHOST;
-            currentStateString = NSLocalizedString(@"DNSCrypt", @"Current state");
-        } else if ([self resolversForService: resolvers includeResolvers: resolversForOpenDNS]) {
-            currentStateString = NSLocalizedString(@"OpenDNS", @"Current state");        
-            currentState = kDNS_CONFIGURATION_OPENDNS;
-        } else {
-            currentStateString = NSLocalizedString(@"Default", @"Current state");
-            currentState = kDNS_CONFIGURATION_VANILLA;
-        }
-        if ([resolversString isEqualToString: kRESOLVER_IP_LOCALHOST]) {
-            resolversString = [NSString stringWithFormat: NSLocalizedString(@"%@\nusing DNSCrypt", @"Current resolver when DNSCrypt has been enabled"), kDNSCRYPT_RESOLVER];
-        }
+    NSString *stateDescription = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./get-current-resolvers.sh | ./get-resolvers-description.sh", nil]];
+    NSLog(@"%@", stateDescription);
+    if ([stateDescription isEqualToString: @"FamilyShield"]) {
+        currentState = kDNS_CONFIGURATION_OPENDNS;
+    } else if ([stateDescription isEqualToString: @"DNSCrypt"]) {
+        currentState = kDNS_CONFIGURATION_LOCALHOST;
+    } else if ([stateDescription isEqualToString: @"OpenDNS"]) {
+        currentState = kDNS_CONFIGURATION_OPENDNS;
+    } else if ([stateDescription isEqualToString: @"OpenDNS IPv6"]) {
+        currentState = kDNS_CONFIGURATION_OPENDNS;
+    } else if (stateDescription.length > 0) {
+        currentState = kDNS_CONFIGURATION_VANILLA;
     }
     [self updateLedStatus];
-    _statusConfigurationMenuItem.title = currentStateString;
-    _statusResolversMenuItem.title = resolversString;
+    
+    NSString *currentResolvers = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./get-current-resolvers.sh", nil]];
+    _statusConfigurationMenuItem.title = stateDescription;
+    _statusResolversMenuItem.title = currentResolvers;
     
     return TRUE;
 }
@@ -117,10 +135,13 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     _statusItem.highlightMode = TRUE;
     _statusItem.toolTip = @"DNSCrypt";
     _statusItem.menu = _dnscryptMenu;
-    
+        
     NSString *versionStringFormat = NSLocalizedString(@"Client version: %@", @"Current version in the menu");
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     _versionMenuItem.title = [NSString stringWithFormat: versionStringFormat, version];
+    
+    [self initState];
+    
     [self periodicallyUpdateStatusWithCurrentConfig];
     [self updateLedStatus];
 }
@@ -140,6 +161,39 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
             return;
         }
     }
+}
+
+- (BOOL) setDNSCryptOn {
+    NSString *fileName = [NSString stringWithFormat: kDNSCRYPT_CONTROL_DIR @"/dnscrypt"];
+    [@"on" writeToFile: fileName atomically: NO encoding: NSUTF8StringEncoding error: nil];
+    return TRUE;
+}
+
+- (BOOL) setDNSCryptOff {
+    NSString *fileName = [NSString stringWithFormat: kDNSCRYPT_CONTROL_DIR @"/dnscrypt"];
+    [[NSFileManager defaultManager] removeItemAtPath: fileName error: nil];
+    return TRUE;
+}
+
+- (IBAction)dnscryptMenuItemPushed:(NSMenuItem *)sender
+{
+    if (sender.state == 0) {
+        sender.state = 1;
+        [self setDNSCryptOn];
+    } else {
+        sender.state = 0;
+        [self setDNSCryptOff];
+    }
+}
+
+- (IBAction)familyShieldMenuItemPushed:(NSMenuItem *)sender
+{
+
+}
+
+- (IBAction)fallbackMenuItemPushed:(NSMenuItem *)sender
+{
+
 }
 
 @end
