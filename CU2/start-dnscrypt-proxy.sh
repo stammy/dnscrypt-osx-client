@@ -8,7 +8,7 @@ init_interfaces
 
 mkdir -p -- "$DNSCRYPT_VAR_BASE_DIR" || exit 1
 
-PROBES_BASE_DIR='${DNSCRYPT_VAR_BASE_DIR}/probes'
+PROBES_BASE_DIR="${DNSCRYPT_VAR_BASE_DIR}/probes"
 rm -fr $PROBES_BASE_DIR || exit 1
 mkdir -p -- "$PROBES_BASE_DIR" || exit 1
 

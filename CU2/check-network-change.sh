@@ -7,7 +7,7 @@ DHCP_DNS_FILE="${STATES_DIR}/dhcp-dns"
 AIRPORT_TOOL="/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport"
 
 mkdir -p "$STATES_DIR" || exit 1
-ips=$(./get-current-resolvers.sh)
+ips=$(./get-dhcp-resolvers.sh)
 echo "$ips" > "$DHCP_DNS_FILE"
 
 ssid=$("$AIRPORT_TOOL" -I 2>&1 | fgrep '[^B]SSID: ')
