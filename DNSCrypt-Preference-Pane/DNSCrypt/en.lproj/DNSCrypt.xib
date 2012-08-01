@@ -65,7 +65,6 @@
 							<string key="NSFrame">{{13, 10}, {563, 359}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="1025762247"/>
 							<string key="NSReuseIdentifierKey">_NS:461</string>
 							<array class="NSMutableArray" key="NSTabViewItems">
 								<object class="NSTabViewItem" id="19707695">
@@ -74,42 +73,6 @@
 										<reference key="NSNextResponder" ref="821865429"/>
 										<int key="NSvFlags">256</int>
 										<array class="NSMutableArray" key="NSSubviews">
-											<object class="NSButton" id="300098131">
-												<reference key="NSNextResponder" ref="1025762247"/>
-												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{15, 212}, {245, 24}}</string>
-												<reference key="NSSuperview" ref="1025762247"/>
-												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="894789954"/>
-												<string key="NSReuseIdentifierKey">_NS:239</string>
-												<bool key="NSEnabled">YES</bool>
-												<object class="NSButtonCell" key="NSCell" id="555340075">
-													<int key="NSCellFlags">67108864</int>
-													<int key="NSCellFlags2">0</int>
-													<string key="NSContents">Enable OpenDNS</string>
-													<object class="NSFont" key="NSSupport" id="176030688">
-														<string key="NSName">LucidaGrande-Bold</string>
-														<double key="NSSize">14</double>
-														<int key="NSfFlags">16</int>
-													</object>
-													<string key="NSCellIdentifier">_NS:239</string>
-													<reference key="NSControlView" ref="300098131"/>
-													<int key="NSButtonFlags">1211912448</int>
-													<int key="NSButtonFlags2">2</int>
-													<object class="NSCustomResource" key="NSNormalImage" id="268975194">
-														<string key="NSClassName">NSImage</string>
-														<string key="NSResourceName">NSSwitch</string>
-													</object>
-													<object class="NSButtonImageSource" key="NSAlternateImage" id="875688652">
-														<string key="NSImageName">NSSwitch</string>
-													</object>
-													<string key="NSAlternateContents"/>
-													<string key="NSKeyEquivalent"/>
-													<int key="NSPeriodicDelay">200</int>
-													<int key="NSPeriodicInterval">25</int>
-												</object>
-												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-											</object>
 											<object class="NSButton" id="894789954">
 												<reference key="NSNextResponder" ref="1025762247"/>
 												<int key="NSvFlags">268</int>
@@ -123,13 +86,22 @@
 													<int key="NSCellFlags">67108864</int>
 													<int key="NSCellFlags2">0</int>
 													<string key="NSContents">Enable DNSCrypt</string>
-													<reference key="NSSupport" ref="176030688"/>
+													<object class="NSFont" key="NSSupport" id="176030688">
+														<string key="NSName">LucidaGrande-Bold</string>
+														<double key="NSSize">14</double>
+														<int key="NSfFlags">16</int>
+													</object>
 													<string key="NSCellIdentifier">_NS:239</string>
 													<reference key="NSControlView" ref="894789954"/>
 													<int key="NSButtonFlags">1211912448</int>
 													<int key="NSButtonFlags2">2</int>
-													<reference key="NSNormalImage" ref="268975194"/>
-													<reference key="NSAlternateImage" ref="875688652"/>
+													<object class="NSCustomResource" key="NSNormalImage" id="220837555">
+														<string key="NSClassName">NSImage</string>
+														<string key="NSResourceName">NSSwitch</string>
+													</object>
+													<object class="NSButtonImageSource" key="NSAlternateImage" id="875688652">
+														<string key="NSImageName">NSSwitch</string>
+													</object>
 													<string key="NSAlternateContents"/>
 													<string key="NSKeyEquivalent"/>
 													<int key="NSPeriodicDelay">200</int>
@@ -137,29 +109,25 @@
 												</object>
 												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 											</object>
-											<object class="NSButton" id="384170040">
+											<object class="NSButton" id="300098131">
 												<reference key="NSNextResponder" ref="1025762247"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{15, 133}, {204, 22}}</string>
+												<string key="NSFrame">{{15, 212}, {245, 24}}</string>
 												<reference key="NSSuperview" ref="1025762247"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView"/>
+												<reference key="NSNextKeyView" ref="894789954"/>
 												<string key="NSReuseIdentifierKey">_NS:239</string>
 												<bool key="NSEnabled">YES</bool>
-												<object class="NSButtonCell" key="NSCell" id="805275804">
+												<object class="NSButtonCell" key="NSCell" id="555340075">
 													<int key="NSCellFlags">67108864</int>
 													<int key="NSCellFlags2">0</int>
-													<string key="NSContents">Fallback to insecure DNS</string>
-													<object class="NSFont" key="NSSupport" id="1059912458">
-														<string key="NSName">LucidaGrande</string>
-														<double key="NSSize">14</double>
-														<int key="NSfFlags">16</int>
-													</object>
+													<string key="NSContents">Enable OpenDNS</string>
+													<reference key="NSSupport" ref="176030688"/>
 													<string key="NSCellIdentifier">_NS:239</string>
-													<reference key="NSControlView" ref="384170040"/>
+													<reference key="NSControlView" ref="300098131"/>
 													<int key="NSButtonFlags">1211912448</int>
 													<int key="NSButtonFlags2">2</int>
-													<reference key="NSNormalImage" ref="268975194"/>
+													<reference key="NSNormalImage" ref="220837555"/>
 													<reference key="NSAlternateImage" ref="875688652"/>
 													<string key="NSAlternateContents"/>
 													<string key="NSKeyEquivalent"/>
@@ -181,12 +149,42 @@
 													<int key="NSCellFlags">67108864</int>
 													<int key="NSCellFlags2">0</int>
 													<string key="NSContents">Enable Familyshield</string>
-													<reference key="NSSupport" ref="1059912458"/>
+													<object class="NSFont" key="NSSupport" id="1059912458">
+														<string key="NSName">LucidaGrande</string>
+														<double key="NSSize">14</double>
+														<int key="NSfFlags">16</int>
+													</object>
 													<string key="NSCellIdentifier">_NS:239</string>
 													<reference key="NSControlView" ref="410495287"/>
 													<int key="NSButtonFlags">1211912448</int>
 													<int key="NSButtonFlags2">2</int>
-													<reference key="NSNormalImage" ref="268975194"/>
+													<reference key="NSNormalImage" ref="220837555"/>
+													<reference key="NSAlternateImage" ref="875688652"/>
+													<string key="NSAlternateContents"/>
+													<string key="NSKeyEquivalent"/>
+													<int key="NSPeriodicDelay">200</int>
+													<int key="NSPeriodicInterval">25</int>
+												</object>
+												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
+											</object>
+											<object class="NSButton" id="384170040">
+												<reference key="NSNextResponder" ref="1025762247"/>
+												<int key="NSvFlags">268</int>
+												<string key="NSFrame">{{15, 133}, {204, 22}}</string>
+												<reference key="NSSuperview" ref="1025762247"/>
+												<reference key="NSWindow"/>
+												<string key="NSReuseIdentifierKey">_NS:239</string>
+												<bool key="NSEnabled">YES</bool>
+												<object class="NSButtonCell" key="NSCell" id="805275804">
+													<int key="NSCellFlags">67108864</int>
+													<int key="NSCellFlags2">0</int>
+													<string key="NSContents">Fallback to insecure DNS</string>
+													<reference key="NSSupport" ref="1059912458"/>
+													<string key="NSCellIdentifier">_NS:239</string>
+													<reference key="NSControlView" ref="384170040"/>
+													<int key="NSButtonFlags">1211912448</int>
+													<int key="NSButtonFlags2">2</int>
+													<reference key="NSNormalImage" ref="220837555"/>
 													<reference key="NSAlternateImage" ref="875688652"/>
 													<string key="NSAlternateContents"/>
 													<string key="NSKeyEquivalent"/>
@@ -700,38 +698,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">enableInsecureDNSButton</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="384170040"/>
-					</object>
-					<int key="connectionID">301</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">enableInsecureDNSButtonPressed:</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="384170040"/>
-					</object>
-					<int key="connectionID">293</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">useHTTPSButton</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="410495287"/>
-					</object>
-					<int key="connectionID">308</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">enableHTTPSButtonPressed:</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="410495287"/>
-					</object>
-					<int key="connectionID">309</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">statusText</string>
 						<reference key="source" ref="294453543"/>
 						<reference key="destination" ref="908408940"/>
@@ -740,43 +706,11 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">enableDNSCryptButton</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="894789954"/>
-					</object>
-					<int key="connectionID">300</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">enableDNSCryptButtonPressed:</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="894789954"/>
-					</object>
-					<int key="connectionID">292</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">currentResolverTextField</string>
 						<reference key="source" ref="294453543"/>
 						<reference key="destination" ref="496861916"/>
 					</object>
 					<int key="connectionID">296</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">enableOpenDNSButton</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="300098131"/>
-					</object>
-					<int key="connectionID">294</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">enableOpenDNSButtonPressed:</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="300098131"/>
-					</object>
-					<int key="connectionID">291</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -825,6 +759,70 @@
 						<reference key="destination" ref="1000382251"/>
 					</object>
 					<int key="connectionID">359</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">dnscryptButton</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="894789954"/>
+					</object>
+					<int key="connectionID">363</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">opendnsButton</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="300098131"/>
+					</object>
+					<int key="connectionID">364</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">fallbackButton</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="384170040"/>
+					</object>
+					<int key="connectionID">365</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">familyShieldButton</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="410495287"/>
+					</object>
+					<int key="connectionID">366</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">dnscryptButtonPressed:</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="894789954"/>
+					</object>
+					<int key="connectionID">368</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">opendnsButtonPressed:</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="300098131"/>
+					</object>
+					<int key="connectionID">369</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">familyShieldButtonPressed:</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="410495287"/>
+					</object>
+					<int key="connectionID">371</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">fallbackButtonPressed:</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="384170040"/>
+					</object>
+					<int key="connectionID">372</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -905,12 +903,12 @@
 							<reference ref="908408940"/>
 							<reference ref="193986403"/>
 							<reference ref="429164099"/>
-							<reference ref="300098131"/>
 							<reference ref="894789954"/>
 							<reference ref="384170040"/>
-							<reference ref="410495287"/>
 							<reference ref="487940586"/>
 							<reference ref="240318099"/>
+							<reference ref="300098131"/>
+							<reference ref="410495287"/>
 							<reference ref="496861916"/>
 						</array>
 						<reference key="parent" ref="19707695"/>
@@ -1236,7 +1234,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">362</int>
+			<int key="maxID">372</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1244,46 +1242,61 @@
 					<string key="className">DNSCrypt</string>
 					<string key="superclassName">NSPreferencePane</string>
 					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="enableDNSCryptButtonPressed:">NSButton</string>
-						<string key="enableHTTPSButtonPressed:">NSButton</string>
-						<string key="enableInsecureDNSButtonPressed:">NSButton</string>
-						<string key="enableOpenDNSButtonPressed:">NSButton</string>
+						<string key="dnscryptButtonPressed:">NSButton</string>
+						<string key="fallbackButtonPressed:">NSButton</string>
+						<string key="familyShieldButtonPressed:">NSButton</string>
 						<string key="openDNSLinkPushed:">NSButton</string>
+						<string key="opendnsButtonPressed:">NSButton</string>
+						<string key="xenableDNSCryptButtonPressed:">NSButton</string>
+						<string key="xenableInsecureDNSButtonPressed:">NSButton</string>
+						<string key="xenableOpenDNSButtonPressed:">NSButton</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="enableDNSCryptButtonPressed:">
-							<string key="name">enableDNSCryptButtonPressed:</string>
+						<object class="IBActionInfo" key="dnscryptButtonPressed:">
+							<string key="name">dnscryptButtonPressed:</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
-						<object class="IBActionInfo" key="enableHTTPSButtonPressed:">
-							<string key="name">enableHTTPSButtonPressed:</string>
+						<object class="IBActionInfo" key="fallbackButtonPressed:">
+							<string key="name">fallbackButtonPressed:</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
-						<object class="IBActionInfo" key="enableInsecureDNSButtonPressed:">
-							<string key="name">enableInsecureDNSButtonPressed:</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBActionInfo" key="enableOpenDNSButtonPressed:">
-							<string key="name">enableOpenDNSButtonPressed:</string>
+						<object class="IBActionInfo" key="familyShieldButtonPressed:">
+							<string key="name">familyShieldButtonPressed:</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
 						<object class="IBActionInfo" key="openDNSLinkPushed:">
 							<string key="name">openDNSLinkPushed:</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
+						<object class="IBActionInfo" key="opendnsButtonPressed:">
+							<string key="name">opendnsButtonPressed:</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBActionInfo" key="xenableDNSCryptButtonPressed:">
+							<string key="name">xenableDNSCryptButtonPressed:</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBActionInfo" key="xenableInsecureDNSButtonPressed:">
+							<string key="name">xenableInsecureDNSButtonPressed:</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBActionInfo" key="xenableOpenDNSButtonPressed:">
+							<string key="name">xenableOpenDNSButtonPressed:</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="aboutWebView">WebView</string>
 						<string key="currentResolverTextField">NSTextField</string>
-						<string key="enableDNSCryptButton">NSButton</string>
-						<string key="enableInsecureDNSButton">NSButton</string>
-						<string key="enableOpenDNSButton">NSButton</string>
+						<string key="dnscryptButton">NSButton</string>
+						<string key="fallbackButton">NSButton</string>
+						<string key="familyShieldButton">NSButton</string>
 						<string key="feedbackWebView">WebView</string>
+						<string key="opendnsButton">NSButton</string>
 						<string key="previewNotesWebView">WebView</string>
 						<string key="releaseNotesWebView">WebView</string>
 						<string key="statusImageView">NSImageView</string>
 						<string key="statusText">NSTextField</string>
-						<string key="useHTTPSButton">NSButton</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="aboutWebView">
@@ -1294,21 +1307,25 @@
 							<string key="name">currentResolverTextField</string>
 							<string key="candidateClassName">NSTextField</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="enableDNSCryptButton">
-							<string key="name">enableDNSCryptButton</string>
+						<object class="IBToOneOutletInfo" key="dnscryptButton">
+							<string key="name">dnscryptButton</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="enableInsecureDNSButton">
-							<string key="name">enableInsecureDNSButton</string>
+						<object class="IBToOneOutletInfo" key="fallbackButton">
+							<string key="name">fallbackButton</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="enableOpenDNSButton">
-							<string key="name">enableOpenDNSButton</string>
+						<object class="IBToOneOutletInfo" key="familyShieldButton">
+							<string key="name">familyShieldButton</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="feedbackWebView">
 							<string key="name">feedbackWebView</string>
 							<string key="candidateClassName">WebView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="opendnsButton">
+							<string key="name">opendnsButton</string>
+							<string key="candidateClassName">NSButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="previewNotesWebView">
 							<string key="name">previewNotesWebView</string>
@@ -1325,10 +1342,6 @@
 						<object class="IBToOneOutletInfo" key="statusText">
 							<string key="name">statusText</string>
 							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="useHTTPSButton">
-							<string key="name">useHTTPSButton</string>
-							<string key="candidateClassName">NSButton</string>
 						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">

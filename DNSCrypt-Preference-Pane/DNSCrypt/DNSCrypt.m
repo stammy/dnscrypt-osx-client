@@ -9,18 +9,18 @@
 #import "DNSCrypt.h"
 
 @implementation DNSCrypt
-@synthesize previewNotesWebView;
-@synthesize releaseNotesWebView;
-@synthesize feedbackWebView;
-@synthesize aboutWebView;
+@synthesize previewNotesWebView = _previewNotesWebView;
+@synthesize releaseNotesWebView = _releaseNotesWebView;
+@synthesize feedbackWebView = _feedbackWebView;
+@synthesize aboutWebView = _aboutWebView;
 
-@synthesize enableDNSCryptButton;
-@synthesize enableOpenDNSButton;
-@synthesize enableInsecureDNSButton;
-@synthesize familyShieldButton;
-@synthesize statusImageView;
-@synthesize statusText;
-@synthesize currentResolverTextField;
+@synthesize dnscryptButton = _dnscryptButton;
+@synthesize opendnsButton = _opendnsButton;
+@synthesize fallbackButton = _fallbackButton;
+@synthesize familyShieldButton = _familyShieldButton;
+@synthesize statusImageView = _statusImageView;
+@synthesize statusText = _statusText;
+@synthesize currentResolverTextField = _currentResolverTextField;
 
 DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 
@@ -44,26 +44,76 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     return result;
 }
 
+- (void) initState
+{
+    NSString *res;
 
+    _dnscryptButton.state = 0;
+    _familyShieldButton.state = 0;
+    _opendnsButton.state = 0;
+    _fallbackButton.state = 0;
+    
+    res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-dnscrypt-status.sh", nil]];
+    NSLog(@"%@", res);
+    if ([res isEqualToString: @"yes"]) {
+        [_dnscryptButton setState: 1];
+    }
+    res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-familyshield-status.sh", nil]];
+    NSLog(@"%@", res);
+    if ([res isEqualToString: @"yes"]) {
+        [_familyShieldButton setState: 1];
+    }
+    res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-insecure-opendns-status.sh", nil]];
+    NSLog(@"%@", res);
+    if ([res isEqualToString: @"yes"]) {
+        [_opendnsButton setState: 1];
+    }
+    res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-fallback-status.sh", nil]];
+    NSLog(@"%@", res);
+    if ([res isEqualToString: @"yes"]) {
+        [_fallbackButton setState: 1];
+    }
+
+}
+
+- (IBAction)dnscryptButtonPressed:(NSButton *)sender
+{
+    
+}
+
+- (IBAction)opendnsButtonPressed:(NSButton *)sender
+{
+    
+}
+
+- (IBAction)familyShieldButtonPressed:(NSButton *)sender
+{
+    
+}
+
+- (IBAction)fallbackButtonPressed:(NSButton *)sender
+{
+    
+}
 
 - (void) initializeCheckBoxesWithState: (DNSConfigurationState) currentState
 {
     switch (currentState) {
         case kDNS_CONFIGURATION_OPENDNS:
-            enableOpenDNSButton.state = NSOnState;
-            enableDNSCryptButton.state = NSOffState;
+            _opendnsButton.state = NSOnState;
+            _dnscryptButton.state = NSOffState;
             break;
 
         case kDNS_CONFIGURATION_LOCALHOST:
-            enableOpenDNSButton.state = NSOnState;
-            enableDNSCryptButton.state = NSOnState;
+            _opendnsButton.state = NSOnState;
+            _dnscryptButton.state = NSOnState;
             break;
 
         default:
-            enableOpenDNSButton.state = NSOffState;
-            enableDNSCryptButton.state = NSOffState;
+            _opendnsButton.state = NSOffState;
+            _dnscryptButton.state = NSOffState;
     }
-    enableInsecureDNSButton.state = NSOnState;
+    _fallbackButton.state = NSOnState;
 }
 
 - (BOOL) updateStatusWithCurrentConfig
@@ -87,26 +137,26 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
             [resolversString appendFormat: @"%s%@", (resolversString.length > 0 ? "\n" : ""), resolver];
         }
         currentState = kDNS_CONFIGURATION_VANILLA;
-       currentResolverTextField.stringValue = resolversString;
+       _currentResolverTextField.stringValue = resolversString;
     }
 
     NSBundle *bundle = [NSBundle bundleWithIdentifier: @"com.opendns.osx.DNSCrypt"];
     switch (currentState) {
         case kDNS_CONFIGURATION_UNKNOWN:
-            statusText.stringValue = NSLocalizedString(@"No network", @"Status");
-            statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_red.png"]] autorelease];
+            _statusText.stringValue = NSLocalizedString(@"No network", @"Status");
+            _statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_red.png"]] autorelease];
             break;
         case kDNS_CONFIGURATION_VANILLA:
-            statusText.stringValue = NSLocalizedString(@"Unprotected", @"Status");
-            statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_red.png"]] autorelease];
+            _statusText.stringValue = NSLocalizedString(@"Unprotected", @"Status");
+            _statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_red.png"]] autorelease];
             break;
         case kDNS_CONFIGURATION_OPENDNS:
-            statusText.stringValue = NSLocalizedString(@"Unencrypted", @"Status");
-            statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_yellow.png"]] autorelease];
+            _statusText.stringValue = NSLocalizedString(@"Unencrypted", @"Status");
+            _statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_yellow.png"]] autorelease];
             break;
         case kDNS_CONFIGURATION_LOCALHOST:
-            statusText.stringValue = NSLocalizedString(@"Protected", @"Status");
-            statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_green.png"]] autorelease];
+            _statusText.stringValue = NSLocalizedString(@"Protected", @"Status");
+            _statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_green.png"]] autorelease];
             break;
         default:
             return FALSE;
@@ -118,9 +168,9 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 - (void) showSpinners {
     NSBundle *bundle = [NSBundle bundleWithIdentifier: kBUNDLE_IDENTIFIER];
 
-    statusText.stringValue = @"";
-    statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"ajax-loader.gif"]] autorelease];
-    currentResolverTextField.stringValue = @"";
+    _statusText.stringValue = @"";
+    _statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"ajax-loader.gif"]] autorelease];
+    _currentResolverTextField.stringValue = @"";
 }
 
 - (void) periodicallyUpdateStatusWithCurrentConfig {
@@ -132,8 +182,10 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 - (void) mainViewDidLoad
 {
     currentState = kDNS_CONFIGURATION_UNKNOWN;
+    [_previewNotesWebView setDrawsBackground:false];
+    
+    [self initState];
     [self periodicallyUpdateStatusWithCurrentConfig];
-    [previewNotesWebView setDrawsBackground:false];
 
     NSString *version = kDNSCRYPT_PACKAGE_VERSION;
     NSString *softwareBlurbFormat = NSLocalizedString(@"This software (v: %@) encrypts DNS packets between your computer and OpenDNS.  This prevents man-in-the-middle attacks and snooping of DNS traffic by ISPs or others.", @"Description of what the package does - %@ is replaced by the version number");
@@ -153,26 +205,25 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     [htmlString appendFormat: @"<li>%@</li>", describeFallback];
     [htmlString appendString: @"</ul>"];
     [htmlString appendString: @"</body></html>"];
-    [[previewNotesWebView mainFrame] loadHTMLString:htmlString baseURL:[NSURL URLWithString:@"file:///"]];
+    [[_previewNotesWebView mainFrame] loadHTMLString:htmlString baseURL:[NSURL URLWithString:@"file:///"]];
 
-    [feedbackWebView setDrawsBackground:false];
-    [feedbackWebView setShouldUpdateWhileOffscreen:true];
-    [feedbackWebView setUIDelegate:self];
+    [_feedbackWebView setDrawsBackground:false];
+    [_feedbackWebView setShouldUpdateWhileOffscreen:true];
+    [_feedbackWebView setUIDelegate:self];
     NSString *feedbackURLText = @"http://dnscrypt.opendns.com/feedback.php";
-    [[feedbackWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:feedbackURLText]]];
+    [[_feedbackWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:feedbackURLText]]];
 
-    [releaseNotesWebView setDrawsBackground:false];
-    [releaseNotesWebView setShouldUpdateWhileOffscreen:true];
-    [releaseNotesWebView setUIDelegate:self];
+    [_releaseNotesWebView setDrawsBackground:false];
+    [_releaseNotesWebView setShouldUpdateWhileOffscreen:true];
+    [_releaseNotesWebView setUIDelegate:self];
     NSString *releaseNotesURLText = @"http://dnscrypt.opendns.com/releasenotes.php";
-    [[releaseNotesWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:releaseNotesURLText]]];
+    [[_releaseNotesWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:releaseNotesURLText]]];
 
-    [aboutWebView setDrawsBackground:false];
-    [aboutWebView setShouldUpdateWhileOffscreen:true];
-    [aboutWebView setUIDelegate:self];
+    [_aboutWebView setDrawsBackground:false];
+    [_aboutWebView setShouldUpdateWhileOffscreen:true];
+    [_aboutWebView setUIDelegate:self];
     NSString *aboutURLText = @"http://dnscrypt.opendns.com/about.php";
-    [[aboutWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:aboutURLText]]];
-
+    [[_aboutWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:aboutURLText]]];
 }
 
 - (NSArray *)webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element
@@ -186,8 +237,8 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 {
     [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(resetCheckBoxesHaveBeenInitialized) object: nil];
     [self performSelector: @selector(resetCheckBoxesHaveBeenInitialized) withObject: self afterDelay:kCHECKBOXES_FREEZE_DELAY];
-    if (enableDNSCryptButton.state == NSOffState) {
-        if (enableOpenDNSButton.state == NSOffState) {
+    if (_dnscryptButton.state == NSOffState) {
+        if (_opendnsButton.state == NSOffState) {
             currentState = kDNS_CONFIGURATION_VANILLA;
         } else {
             currentState = kDNS_CONFIGURATION_OPENDNS;
@@ -200,24 +251,24 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     return TRUE;
 }
 
-- (IBAction)enableOpenDNSButtonPressed:(NSButton *)sender
+- (IBAction)xenableOpenDNSButtonPressed:(NSButton *)sender
 {
-    if (sender.state == NSOffState && enableDNSCryptButton.state != NSOffState) {
-        enableDNSCryptButton.state = NSOffState;
+    if (sender.state == NSOffState && _dnscryptButton.state != NSOffState) {
+        _dnscryptButton.state = NSOffState;
     }
     [self updateConfig];
 }
 
-- (IBAction)enableDNSCryptButtonPressed:(NSButton *)sender
+- (IBAction)xenableDNSCryptButtonPressed:(NSButton *)sender
 {
-    if (sender.state == NSOnState && enableOpenDNSButton.state != NSOnState) {
-        enableOpenDNSButton.state = NSOnState;
+    if (sender.state == NSOnState && _opendnsButton.state != NSOnState) {
+        _opendnsButton.state = NSOnState;
     } else if (sender.state == NSOffState) {
     }
     [self updateConfig];
 }
 
-- (IBAction)enableInsecureDNSButtonPressed:(NSButton *)sender
+- (IBAction)xenableInsecureDNSButtonPressed:(NSButton *)sender
 {
     if (sender.state == NSOnState) {
     } else {

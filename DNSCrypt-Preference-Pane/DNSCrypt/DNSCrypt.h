@@ -11,11 +11,11 @@
 
 #define kDNSCRYPT_PACKAGE_VERSION @"0.12"
 
-#define KDNSCRYPT_CONFIG_UPDATER_LABEL @"com.opendns.osx.DNSCryptConfigUpdater"
-#define KDNSCRYPT_PROXY_LABEL @"com.opendns.osx.DNSCryptProxy"
-
-#define kDNSCRYPT_PREFPANE_SUPPORT_DIR @"DNSCrypt Prefpane"
-#define kDNSCRYPT_PREFPANE_FILE @"PrefPane.plist"
+#define kDNSCRYPT_PREFPANE_APP_PATH @"/Library/PreferencePanes/DNSCrypt.prefPane"
+#define kDNSCRYPT_USR_BASE_DIR kDNSCRYPT_PREFPANE_APP_PATH @"/Contents/Resources/usr"
+#define kDNSCRIPT_SCRIPTS_BASE_DIR kDNSCRYPT_USR_BASE_DIR @"/scripts"
+#define kDNSCRYPT_VAR_BASE_DIR @"/Library/Application Support/DNSCrypt"
+#define kDNSCRYPT_CONTROL_DIR kDNSCRYPT_VAR_BASE_DIR @"/control"
 
 #define kOPENDNS_URL @"http://www.opendns.com"
 
@@ -31,10 +31,10 @@ typedef enum {
     AuthorizationRef auth;
 }
 
-@property (weak) IBOutlet NSButton *enableDNSCryptButton;
-@property (weak) IBOutlet NSButton *enableOpenDNSButton;
+@property (weak) IBOutlet NSButton *dnscryptButton;
+@property (weak) IBOutlet NSButton *opendnsButton;
 @property (weak) IBOutlet NSButton *familyShieldButton;
-@property (weak) IBOutlet NSButton *enableInsecureDNSButton;
+@property (weak) IBOutlet NSButton *fallbackButton;
 
 @property (weak) IBOutlet NSTextField *currentResolverTextField;
 @property (weak) IBOutlet NSImageView *statusImageView;
@@ -46,8 +46,11 @@ typedef enum {
 
 - (void) mainViewDidLoad;
 
-- (IBAction)enableOpenDNSButtonPressed:(NSButton *)sender;
-- (IBAction)enableDNSCryptButtonPressed:(NSButton *)sender;
+- (IBAction)dnscryptButtonPressed:(NSButton *)sender;
+- (IBAction)opendnsButtonPressed:(NSButton *)sender;
+- (IBAction)familyShieldButtonPressed:(NSButton *)sender;
+- (IBAction)fallbackButtonPressed:(NSButton *)sender;
+
 - (IBAction)openDNSLinkPushed:(NSButton *)sender;
 
 @end
