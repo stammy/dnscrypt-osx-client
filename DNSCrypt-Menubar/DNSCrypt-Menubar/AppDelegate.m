@@ -35,7 +35,8 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     [task launch];
     data = [[pipe fileHandleForReading] readDataToEndOfFile];
     [task waitUntilExit];
-    result = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
+    [task release];
+    result = [[[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding] autorelease];
     if ([result hasSuffix: @"\n"]) {
         result = [result substringToIndex: result.length - 1];
     }
@@ -94,7 +95,8 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 {
     NSBundle *bundle = [NSBundle mainBundle];
     NSImage *led = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"no-network.png"]];
-    _statusItem.image = led;   
+    _statusItem.image = led;
+    [led release];
 }
 
 - (void) updateLedStatus
@@ -116,6 +118,7 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
             led = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"no-network.png"]];
     }
     _statusItem.image = led;
+    [led release];
 }
 
 - (BOOL) updateStatusWithCurrentConfig
@@ -156,7 +159,8 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 
 - (void) awakeFromNib
 {
-    _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];    
+    _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+    [_statusItem retain];
     _statusItem.highlightMode = TRUE;
     _statusItem.toolTip = @"DNSCrypt";
     _statusItem.menu = _dnscryptMenu;
