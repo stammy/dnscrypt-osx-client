@@ -24,6 +24,14 @@
 
 DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 
+- (void) setCheckBoxesEnabled: (BOOL) enabled
+{
+    [_dnscryptButton setEnabled: enabled];
+    [_opendnsButton setEnabled: enabled];
+    [_familyShieldButton setEnabled: enabled];
+    [_fallbackButton setEnabled: enabled];
+}
+
 - (NSString *) fromCommand: (NSString *) launchPath withArguments: (NSArray *) arguments
 {
     NSPipe *pipe = [NSPipe pipe];
@@ -241,23 +249,29 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     if ([res isEqualToString: @"yes"]) {
         [self initState];
     }
+    [self setCheckBoxesEnabled: TRUE];
+    
     return TRUE;
 }
 
 - (void) showSpinners {
     NSBundle *bundle = [NSBundle bundleWithIdentifier: kBUNDLE_IDENTIFIER];
 
-    _statusText.stringValue = @"";
+    [self setCheckBoxesEnabled: FALSE];
+    _statusText.stringValue = NSLocalizedString(@"Updating", @"Updating network configuraiton");
     _statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"ajax-loader.gif"]] autorelease];
     _currentResolverTextField.stringValue = @"";
     
     [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./gui-push-conf-change.sh menubar", nil]];
+    
+    [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(periodicallyUpdateStatusWithCurrentConfig) object: nil];
+    [self performSelector: @selector(periodicallyUpdateStatusWithCurrentConfig) withObject: self afterDelay:kCHECKBOXES_AFTER_CHANGE_DELAY];
 }
 
 - (void) periodicallyUpdateStatusWithCurrentConfig {
     [self updateStatusWithCurrentConfig];
     [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(periodicallyUpdateStatusWithCurrentConfig) object: nil];
-    [self performSelector: @selector(periodicallyUpdateStatusWithCurrentConfig) withObject:nil afterDelay: 0.7];
+    [self performSelector: @selector(periodicallyUpdateStatusWithCurrentConfig) withObject:nil afterDelay: kREFRESH_DELAY];
 }
 
 - (void) mainViewDidLoad
@@ -310,14 +324,11 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 - (NSArray *)webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element
     defaultMenuItems:(NSArray *)defaultMenuItems
 {
-    // disable right-click context menu
     return nil;
 }
 
 - (BOOL) updateConfig
 {
-    [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(resetCheckBoxesHaveBeenInitialized) object: nil];
-    [self performSelector: @selector(resetCheckBoxesHaveBeenInitialized) withObject: self afterDelay:kCHECKBOXES_FREEZE_DELAY];
     if (_dnscryptButton.state == NSOffState) {
         if (_opendnsButton.state == NSOffState) {
             currentState = kDNS_CONFIGURATION_VANILLA;
