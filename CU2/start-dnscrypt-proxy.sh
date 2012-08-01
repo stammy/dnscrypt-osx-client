@@ -9,21 +9,27 @@ init_interfaces
 mkdir -p -- "$DNSCRYPT_VAR_BASE_DIR" || exit 1
 
 PROBES_BASE_DIR="${DNSCRYPT_VAR_BASE_DIR}/probes"
-rm -fr $PROBES_BASE_DIR || exit 1
+rm -fr "$PROBES_BASE_DIR" || exit 1
 mkdir -p -- "$PROBES_BASE_DIR" || exit 1
 
 RES_DIR="${PROBES_BASE_DIR}/results" || exit 1
 mkdir -p -- "$RES_DIR" || exit 1
+
+DESCRIPTIONS_DIR="${PROBES_BASE_DIR}/results-descriptions" || exit 1
+mkdir -p -- "$DESCRIPTIONS_DIR" || exit 1
 
 PID_DIR="${PROBES_BASE_DIR}/pids" || exit 1
 mkdir -p -- "$PID_DIR" || exit 1
 
 try_resolver() {
   local priority="$1"
-  local pid_file="${PID_DIR}/${priority}.pid"
+  shift
+  local description="$1"
   shift
   local args="$*"
+  local pid_file="${PID_DIR}/${priority}.pid"
 
+  rm -f "${RES_DIR}/${priority}"
   exec alarmer 3 dnscrypt-proxy --pid="$pid_file" 2>&1 \
     --local-address="${INTERFACE_PROBES}:${priority}" $args | \
   while read line; do
@@ -35,6 +41,7 @@ try_resolver() {
         [ -r "$pid_file" ] && kill $(cat -- "$pid_file")
         if [ $answers -gt 0 ]; then
           echo "$args" > "${RES_DIR}/${priority}"
+          echo "$description" > "${DESCRIPTIONS_DIR}/${priority}"
         fi
         ;;
       *) ;;
@@ -53,32 +60,44 @@ familyshield_wanted="no"
 
 wait_pids=""
 if [ x"$familyshield_wanted" = "xyes" ]; then
-  try_resolver 4000 "--resolver-address=208.67.220.123:443" &
+  try_resolver 4000 '208.67.220.123 UDP port 443' \
+    "--resolver-address=208.67.220.123:443" &
   wait_pids="$wait_pids $!"
-  try_resolver 4001 "--resolver-address=208.67.220.123:53" &
+  try_resolver 4001 '208.67.220.123 UDP port 53' \
+    "--resolver-address=208.67.220.123:53" &
   wait_pids="$wait_pids $!"
-  try_resolver 4002 "--resolver-address=208.67.220.123:443 --tcp-only" &
+  try_resolver 4002 '208.67.220.123 TCP port 443' \
+    "--resolver-address=208.67.220.123:443 --tcp-only" &
   wait_pids="$wait_pids $!"
-  try_resolver 4003 "--resolver-address=208.67.220.123:53 --tcp-only" &
+  try_resolver 4003 '208.67.220.123 TCP port 53' \
+    "--resolver-address=208.67.220.123:53 --tcp-only" &
   wait_pids="$wait_pids $!"
 fi
 if [ x"$ipv6_supported" = "xyes" ]; then
-  try_resolver 5000 "--resolver-address=[2620:0:ccc::2]:443" &
+  try_resolver 5000 '2620:0:ccc::2 UDP port 443' \
+    "--resolver-address=[2620:0:ccc::2]:443" &
   wait_pids="$wait_pids $!"
-  try_resolver 5001 "--resolver-address=[2620:0:ccc::2]:53" &
+  try_resolver 5001 '2620:0:ccc::2 UDP port 53' \
+    "--resolver-address=[2620:0:ccc::2]:53" &
+  wait_pids="$wait_pids $!"
+  try_resolver 5002 '2620:0:ccc::2 TCP port 443' \
+    "--resolver-address=[2620:0:ccc::2]:443 --tcp-only" &
   wait_pids="$wait_pids $!"    
-  try_resolver 5002 "--resolver-address=[2620:0:ccc::2]:443 --tcp-only" &
-  wait_pids="$wait_pids $!"    
-  try_resolver 5003 "--resolver-address=[2620:0:ccc::2]:53 --tcp-only" &
+  try_resolver 5003 '2620:0:ccc::2 TCP port 53' \
+    "--resolver-address=[2620:0:ccc::2]:53 --tcp-only" &
   wait_pids="$wait_pids $!"
 fi
-try_resolver 5004 "--resolver-address=208.67.220.220:443" &
+try_resolver 5004 '208.67.220.220 UDP port 443' \
+  "--resolver-address=208.67.220.220:443" &
+wait_pids="$wait_pids $!"
+try_resolver 5005 '208.67.220.220 UDP port 53' \
+  "--resolver-address=208.67.220.220:53" &
 wait_pids="$wait_pids $!"    
-try_resolver 5005 "--resolver-address=208.67.220.220:53" &
+try_resolver 5006 '208.67.220.220 TCP port 443' \
+  "--resolver-address=208.67.220.220:443 --tcp-only" &
 wait_pids="$wait_pids $!"    
-try_resolver 5006 "--resolver-address=208.67.220.220:443 --tcp-only" &
-wait_pids="$wait_pids $!"    
-try_resolver 5007 "--resolver-address=208.67.220.220:53 --tcp-only" &
+try_resolver 5007 '208.67.220.220 TCP port 53' \
+  "--resolver-address=208.67.220.220:53 --tcp-only" &
 wait_pids="$wait_pids $!"    
 
 for pid in $wait_pids; do
@@ -89,7 +108,6 @@ done
 
 [ x"$best_file" = "x" ] && exit 1
 best_args=$(cat "${RES_DIR}/${best_file}")
-
 dnscrypt-proxy $best_args --local-address="${INTERFACE_PROXY}" \
   --pidfile="$PROXY_PID_FILE" --daemonize || exit 1
 
@@ -99,3 +117,10 @@ while [ $i -lt 30 ]; do
   sleep 0.1
   i=$((i + 1))
 done
+
+if [ $i -ge 30 ]; then
+  ./switch-to-dhcp.sh
+  exit 1
+fi
+mv "${DESCRIPTIONS_DIR}/${best_file}" \
+   "${STATES_DIR}/dnscrypt-proxy-description" 2>/dev/null || exit 0
