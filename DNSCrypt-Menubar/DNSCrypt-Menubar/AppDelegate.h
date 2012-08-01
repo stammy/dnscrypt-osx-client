@@ -8,11 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-#define kRESOLVER_IP_LOCALHOST @"127.0.0.1"
-#define kRESOLVER_IP_OPENDNS1  @"208.67.220.220"
-#define kRESOLVER_IP_OPENDNS2  @"208.67.222.222"
-#define kDNSCRYPT_RESOLVER     @"208.67.220.220"
-
 #define kDNSCRYPT_PREFPANE_APP_PATH @"/Library/PreferencePanes/DNSCrypt.prefPane"
 #define kDNSCRYPT_USR_BASE_DIR kDNSCRYPT_PREFPANE_APP_PATH @"/Contents/Resources/usr"
 #define kDNSCRIPT_SCRIPTS_BASE_DIR kDNSCRYPT_USR_BASE_DIR @"/scripts"
