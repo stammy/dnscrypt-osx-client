@@ -1668,9 +1668,19 @@
 			<key>PACKAGE_SCRIPTS</key>
 			<dict>
 				<key>POSTINSTALL_PATH</key>
-				<dict/>
+				<dict>
+					<key>PATH</key>
+					<string>/Users/j/OpenDNS/DNSCrypt/OSX/dnscrypt-osx-client/DNSCrypt-OSX-Installer/Scripts/dnscrypt-menubar-postinstall.sh</string>
+					<key>PATH_TYPE</key>
+					<integer>0</integer>
+				</dict>
 				<key>PREINSTALL_PATH</key>
-				<dict/>
+				<dict>
+					<key>PATH</key>
+					<string>/Users/j/OpenDNS/DNSCrypt/OSX/dnscrypt-osx-client/DNSCrypt-OSX-Installer/Scripts/dnscrypt-menubar-preinstall.sh</string>
+					<key>PATH_TYPE</key>
+					<integer>0</integer>
+				</dict>
 				<key>RESOURCES</key>
 				<array/>
 			</dict>
