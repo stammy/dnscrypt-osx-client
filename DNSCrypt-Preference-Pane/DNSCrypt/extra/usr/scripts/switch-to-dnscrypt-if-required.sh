@@ -8,7 +8,7 @@ PAUSE_INCREMENT=0.1
 [ ! -e "$DNSCRYPT_FILE" ] && exit 0
 
 pause=0
-while :; do
+while [ -e "$DNSCRYPT_FILE" ]; do
   if [ $pause -lt $PAUSE_MAX ]; then
     pause=$((pause + $PAUSE_INCREMENT))
   fi
@@ -28,5 +28,9 @@ while :; do
   fi
   break
 done
+
+if [ ! -e "$DNSCRYPT_FILE" ]; then
+  touch "$CONTROL_DIR"
+fi
 
 exec ./exceptions-add.sh
