@@ -7,12 +7,19 @@ PAUSE_INCREMENT=0.1
 
 [ ! -e "$DNSCRYPT_FILE" ] && exit 0
 
+current_resolvers=$(./get-current-resolvers.sh)
+if [ "$current_resolvers" = '127.0.0.54' ]; then
+  if [ ! -e "$PROXY_PID_FILE" ]; then
+    ./start-dnscrypt-proxy.sh || ./switch-to-dhcp.sh
+  fi
+fi
+
 pause=0
 while [ -e "$DNSCRYPT_FILE" ]; do
   if [ $pause -lt $PAUSE_MAX ]; then
     pause=$((pause + $PAUSE_INCREMENT))
   fi
-  sleep $pause  
+  sleep $pause
   ./check-hijacking.sh || continue
   ./start-dnscrypt-proxy.sh || continue
   ./check-local-dns.sh || continue
