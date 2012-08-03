@@ -28,8 +28,8 @@ try_resolver() {
   local pid_file="${PID_DIR}/${priority}.pid"
 
   rm -f "${RES_DIR}/${priority}"
-  exec alarmer 3 dnscrypt-proxy --pid="$pid_file" 2>&1 \
-    --local-address="${INTERFACE_PROBES}:${priority}" $args | \
+  exec alarmer 3 dnscrypt-proxy --user=daemon --pid="$pid_file" \
+    --local-address="${INTERFACE_PROBES}:${priority}" $args 2>&1 | \
   while read line; do
     case "$line" in
       *Proxying\ from\ *)
@@ -107,7 +107,7 @@ done
 [ x"$best_file" = "x" ] && exit 1
 best_args=$(cat "${RES_DIR}/${best_file}")
 dnscrypt-proxy $best_args --local-address="${INTERFACE_PROXY}" \
-  --pidfile="$PROXY_PID_FILE" --daemonize
+  --pidfile="$PROXY_PID_FILE" --user=daemon --daemonize
 if [ $? != 0 ]; then
   [ -r "$PROXY_PID_FILE" ] && kill $(cat -- "$PROXY_PID_FILE")
   sleep 1
@@ -117,7 +117,7 @@ if [ $? != 0 ]; then
   killall -9 dnscrypt-proxy
   sleep 1
   dnscrypt-proxy $best_args --local-address="${INTERFACE_PROXY}" \
-    --pidfile="$PROXY_PID_FILE" --daemonize || exit 1
+    --pidfile="$PROXY_PID_FILE" --user=daemon --daemonize || exit 1
 fi
 
 i=0
