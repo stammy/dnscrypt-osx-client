@@ -28,7 +28,7 @@ try_resolver() {
   local pid_file="${PID_DIR}/${priority}.pid"
 
   rm -f "${RES_DIR}/${priority}"
-  exec alarmer 3 dnscrypt-proxy --user=daemon --pid="$pid_file" \
+  exec alarmer 3 dnscrypt-proxy --pid="$pid_file" \
     --local-address="${INTERFACE_PROBES}:${priority}" $args 2>&1 | \
   while read line; do
     case "$line" in
