@@ -107,7 +107,18 @@ done
 [ x"$best_file" = "x" ] && exit 1
 best_args=$(cat "${RES_DIR}/${best_file}")
 dnscrypt-proxy $best_args --local-address="${INTERFACE_PROXY}" \
-  --pidfile="$PROXY_PID_FILE" --daemonize || exit 1
+  --pidfile="$PROXY_PID_FILE" --daemonize
+if [ $? != 0 ]; then
+  [ -r "$PROXY_PID_FILE" ] && kill $(cat -- "$PROXY_PID_FILE")
+  sleep 1
+  killall dnscrypt-proxy
+  sleep 1
+  rm -f "$PROXY_PID_FILE"
+  killall -9 dnscrypt-proxy
+  sleep 1
+  dnscrypt-proxy $best_args --local-address="${INTERFACE_PROXY}" \
+    --pidfile="$PROXY_PID_FILE" --daemonize || exit 1
+fi
 
 i=0
 while [ $i -lt 30 ]; do
