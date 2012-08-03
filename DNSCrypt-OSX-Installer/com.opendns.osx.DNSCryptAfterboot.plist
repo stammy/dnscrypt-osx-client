@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
   <key>Label</key>
-  <string>com.opendns.osx.DNSCryptNetworkChange</string>
+  <string>com.opendns.osx.DNSCryptAfterboot</string>
   <key>KeepAlive</key>
   <false/>
   <key>RunAtLoad</key>
@@ -12,7 +12,7 @@
   <string>/Library/PreferencePanes/DNSCrypt.prefPane/Contents/Resources/usr/scripts</string>
   <key>ProgramArguments</key>
   <array>
-    <string>/Library/PreferencePanes/DNSCrypt.prefPane/Contents/Resources/usr/scripts/handle-network-change.sh</string>
+    <string>/Library/PreferencePanes/DNSCrypt.prefPane/Contents/Resources/usr/scripts/afterboot.sh</string>
   </array>
   <key>ExitTimeOut</key>
   <integer>300</integer>
@@ -22,9 +22,5 @@
   <integer>1</integer>
   <key>UserName</key>
   <string>root</string>
-  <key>WatchPaths</key>
-  <array>
-    <string>/Library/Preferences/SystemConfiguration</string>
-  </array>
 </dict>
 </plist>

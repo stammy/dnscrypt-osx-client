@@ -14,8 +14,8 @@
   <array>
     <string>/Library/PreferencePanes/DNSCrypt.prefPane/Contents/Resources/usr/scripts/handle-control-change.sh</string>
   </array>
-  <key>ExitTimeout</key>
-  <integer>30</integer>
+  <key>ExitTimeOut</key>
+  <integer>300</integer>
   <key>ThrottleInterval</key>
   <integer>0</integer>
   <key>Nice</key>

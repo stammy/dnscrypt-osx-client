@@ -5,8 +5,8 @@ exec 2>/dev/null
 /bin/mkdir -p '/Library/Application Support/DNSCrypt/control'
 /bin/mkdir -p '/Library/Application Support/DNSCrypt/dnscrypt-proxy'
 /bin/mkdir -p '/Library/Application Support/DNSCrypt/probes'
-/bin/mkdir -p '/Library/Application Support/DNSCrypt/tickets'
 /bin/mkdir -p '/Library/Application Support/DNSCrypt/states'
+/bin/mkdir -p '/Library/Application Support/DNSCrypt/tickets'
 /usr/sbin/chown -R 0:0 '/Library/Application Support/DNSCrypt'
 /bin/chmod 710 '/Library/Application Support/DNSCrypt'
 
@@ -20,6 +20,7 @@ if [ $? != 0 ]; then
 fi
 
 /bin/launchctl load -D local
+/bin/launchctl start com.opendns.osx.DNSCryptAfterboot
 /bin/launchctl start com.opendns.osx.DNSCryptConsoleChange
 /bin/launchctl start com.opendns.osx.DNSCryptControlChange
 /bin/launchctl start com.opendns.osx.DNSCryptNetworkChange

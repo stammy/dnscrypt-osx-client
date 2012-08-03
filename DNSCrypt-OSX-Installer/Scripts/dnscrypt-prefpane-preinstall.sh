@@ -10,6 +10,7 @@ fi
 /bin/rm -f '/Library/LaunchDaemons/com.opendns.osx.DNSCryptConfigUpdater.plist'
 /bin/rm -rf '/Library/Application Support/DNSCrypt Updater'
 
+/bin/launchctl remove com.opendns.osx.DNSCryptAfterboot
 /bin/launchctl remove com.opendns.osx.DNSCryptConsoleChange
 /bin/launchctl remove com.opendns.osx.DNSCryptControlChange
 /bin/launchctl remove com.opendns.osx.DNSCryptNetworkChange
