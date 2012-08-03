@@ -7,7 +7,7 @@ cd -- "${DNSCRYPT_USR_BASE_DIR}/scripts" || exit 1
 CONTROL_DIR="${DNSCRYPT_VAR_BASE_DIR}/control"
 TICKETS_DIR="${DNSCRYPT_VAR_BASE_DIR}/tickets"
 DNSCRYPT_PROXY_BASE_DIR="${DNSCRYPT_VAR_BASE_DIR}/dnscrypt-proxy"
-PROXY_PID_FILE="${DNSCRYPT_PROXY_VAR_BASE_DIR}/dnscrypt-proxy.pid"
+PROXY_PID_FILE="/var/run/dnscrypt-proxy.pid"
 STATES_DIR="${DNSCRYPT_VAR_BASE_DIR}/states"
 
 DNSCRYPT_FILE="${CONTROL_DIR}/dnscrypt"
