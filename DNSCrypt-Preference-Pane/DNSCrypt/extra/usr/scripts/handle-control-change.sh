@@ -19,12 +19,14 @@ update() {
 
 touch "${STATES_DIR}/updating"
 
+updated='no'
 while :; do
   find "$TICKETS_DIR" -type f -name 'ticket-*' > "$PROCESSED_TICKETS_FILE"
-  update
-  if [ ! -s "$PROCESSED_TICKETS_FILE" ]; then
+  if [ ! -s "$PROCESSED_TICKETS_FILE" -a "$updated" = 'yes' ]; then
     break
   fi
+  update
+  updated='yes'
   while read ticket_file; do
     rm -f "$ticket_file"
   done < "$PROCESSED_TICKETS_FILE"

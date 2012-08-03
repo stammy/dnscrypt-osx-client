@@ -2,6 +2,8 @@
 
 . ./common.inc
 
+tickets_count=$(./get-tickets_count)
+[ "$tickets_count" != '0' ] && exit 0
 [ ! -e "$FALLBACK_FILE" ] && exit 0
 ./check-network-change.sh || exit 0
 

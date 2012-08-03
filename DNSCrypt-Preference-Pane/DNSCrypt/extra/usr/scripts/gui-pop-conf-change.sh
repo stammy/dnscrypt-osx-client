@@ -12,8 +12,8 @@ case "$pname" in
 esac
 
 changed='no'
-if [ -e "${CONTROL_DIR}/gui-change-${pname}" ]; then
-  rm -f "${CONTROL_DIR}/gui-change-${pname}"
+if [ -e "${TICKETS_DIR}/gui-change-${pname}" ]; then
+  rm -f "${TICKETS_DIR}/gui-change-${pname}"
   changed='yes'
 fi
 

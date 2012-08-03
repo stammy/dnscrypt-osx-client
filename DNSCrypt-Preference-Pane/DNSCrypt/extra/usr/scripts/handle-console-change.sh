@@ -8,7 +8,8 @@ if [ ! -d "$DNSCRYPT_VAR_BASE_DIR" ]; then
   mkdir -p "$DNSCRYPT_VAR_BASE_DIR" || exit 1
   chown -R 0:0 "$DNSCRYPT_VAR_BASE_DIR"
 fi
+mkdir -p "$CONTROL_DIR" || exit 1
 mkdir -p "$TICKETS_DIR" || exit 1
-eval $(stat -s "$CONTROL_DIR") || exit 1
 chown -R "${wanted_uid}:0" "$CONTROL_DIR"
+chown -R "${wanted_uid}:0" "$TICKETS_DIR"
 find "$DNSCRYPT_VAR_BASE_DIR" -type d -exec chmod 755 {} \;

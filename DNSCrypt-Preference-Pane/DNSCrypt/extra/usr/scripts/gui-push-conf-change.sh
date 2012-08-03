@@ -11,4 +11,4 @@ case "$pname" in
   *) exit 1;;
 esac
 
-touch "${CONTROL_DIR}/gui-change-${pname}"
+touch "${TICKETS_DIR}/gui-change-${pname}"
