@@ -2,4 +2,4 @@
 
 . ./common.inc
 
-exec ./handle-control-change.sh
+exec ./handle-control-change.sh --boot

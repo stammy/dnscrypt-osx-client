@@ -7,6 +7,8 @@ PAUSE_INCREMENT=0.1
 
 [ ! -e "$DNSCRYPT_FILE" ] && exit 0
 
+./set-dns-to-dhcp.sh
+
 pause=0
 while [ -e "$DNSCRYPT_FILE" ]; do
   current_resolvers=$(./get-current-resolvers.sh)

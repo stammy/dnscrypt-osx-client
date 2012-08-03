@@ -2,10 +2,10 @@
 
 . ./common.inc
 
-tickets_count=$(./get-tickets_count)
+tickets_count=$(./get-tickets-count.sh)
 [ "$tickets_count" != '0' ] && exit 0
 
-if [ $1 != '--boot' ]; then
+if [ x"$1" != 'x--boot' ]; then
   [ ! -e "$FALLBACK_FILE" ] && exit 0
   ./check-network-change.sh || exit 0
 fi
