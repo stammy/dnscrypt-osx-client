@@ -19,11 +19,13 @@ if [ $? != 0 ]; then
     '/Library/Application Support/DNSCrypt/tickets'
 fi
 
-/bin/launchctl load -D local
-/bin/launchctl start com.opendns.osx.DNSCryptAfterboot
-/bin/launchctl start com.opendns.osx.DNSCryptConsoleChange
-/bin/launchctl start com.opendns.osx.DNSCryptControlChange
-/bin/launchctl start com.opendns.osx.DNSCryptNetworkChange
+for service in com.opendns.osx.DNSCryptAfterboot \
+               com.opendns.osx.DNSCryptConsoleChange \
+               com.opendns.osx.DNSCryptControlChange \
+               com.opendns.osx.DNSCryptNetworkChange; do
+  /bin/launchctl load "/Library/LaunchDaemons/${service}.plist"
+  /bin/launchctl start "$service"
+done
 
 /usr/bin/touch '/Library/Application Support/DNSCrypt/control'
 

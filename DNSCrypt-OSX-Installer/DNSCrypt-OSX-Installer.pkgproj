@@ -1229,7 +1229,7 @@
 				<key>AUTHENTICATION</key>
 				<integer>1</integer>
 				<key>CONCLUSION_ACTION</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>IDENTIFIER</key>
 				<string>com.opendns.osx.dnscryptClient.DNSCrypt</string>
 				<key>LOCATION</key>
@@ -1722,7 +1722,7 @@
 				<key>AUTHENTICATION</key>
 				<integer>1</integer>
 				<key>CONCLUSION_ACTION</key>
-				<integer>0</integer>
+				<integer>4</integer>
 				<key>IDENTIFIER</key>
 				<string>com.opendns.osx.dnscryptClient.DNSCrypt-Menubar</string>
 				<key>LOCATION</key>
