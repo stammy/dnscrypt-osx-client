@@ -23,7 +23,7 @@ INTERFACE_PROXY_MASK="24"
 INTERFACE_PROBES="127.0.0.55"
 INTERFACE_PROBES_MASK="24"
 
-DOMAINS_EXCEPTIONS='routerlogin.net lan local localdomain private intranet'
+DOMAINS_EXCEPTIONS='routerlogin.net lan localdomain private intranet'
 
 export PATH="${DNSCRYPT_USR_BASE_DIR}/bin:${DNSCRYPT_USR_BASE_DIR}/scripts:$PATH"
 
