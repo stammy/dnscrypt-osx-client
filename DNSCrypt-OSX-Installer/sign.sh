@@ -1,6 +1,6 @@
 #! /bin/sh
 
-VERSION='0.12-dev'
+VERSION='0.12'
 
 cd build || exit 1
 (
@@ -15,4 +15,12 @@ done
 )
 rm -fr DNSCrypt-OSX.mpkg
 productsign --sign 'Developer ID Application' DNSCrypt.mpkg DNSCrypt-OSX.mpkg
-zip -9 -r "dnscrypt-osx-gui-${VERSION}.zip" DNSCrypt-OSX.mpkg
+zip -9 -r "dnscrypt-osx-client-${VERSION}.zip" DNSCrypt-OSX.mpkg
+rm -fr dstroot
+rm -f "dnscrypt-osx-client-${VERSION}.dmg"
+mkdir dstroot
+mv DNSCrypt-OSX.mpkg dstroot
+hdiutil create "dnscrypt-osx-client-${VERSION}.dmg" -srcfolder dstroot
+
+mv dstroot/DNSCrypt-OSX.mpkg .
+rm -fr dstroot
