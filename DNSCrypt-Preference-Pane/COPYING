@@ -13,3 +13,8 @@
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
+
+The get-dhcp-resolvers.sh and check-network-change.sh scripts use code
+snippets from the dnssec-trigger project, by Wouter Wijngaards, NLnet
+Labs. (great and similar project, check it out:
+http://www.nlnetlabs.nl/projects/dnssec-trigger/)
