@@ -5,37 +5,41 @@
     <title>DNSCrypt feedback form</title>
     <style type='text/css'>
       body {
-        font-family: arial, helvetica, sans-serif; }
-      
+        font-family: arial, helvetica, sans-serif;
+        margin: 0; }
+
+      h1 {
+        margin: 0; }
+
       form {
-        margin: 10px auto;
+        margin: 0 auto;
         width: 500px; }
         form p {
           margin: 0.25em 0; }
         form .error {
           background: #ffbbbb;
           color: black; }
-      
+
       fieldset {
         border: none;
         padding: 0; }
-      
+
       label {
         float: left;
         width: 100px;
         text-align: right;
         padding-right: 1em; }
-      
+
       input {
         width: 200px; }
-      
+
       input[type=submit] {
         width: auto; }
-      
+
       textarea {
         width: 300px;
-        height: 200px; }
-      
+        height: 170px; }
+
       #submit {
         text-align: center; }
     </style>
