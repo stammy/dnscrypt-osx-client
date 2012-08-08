@@ -99,22 +99,6 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     return FALSE;
 }
 
-- (void) showSpinners
-{
-    [self setCheckBoxesEnabled: FALSE];
-
-    NSBundle *bundle = [NSBundle mainBundle];
-    NSImage *led = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"no-network.png"]];
-    _statusItem.image = led;
-    [led release];
-    
-    [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./gui-push-conf-change.sh prefpane", nil]];
-    
-    [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(periodicallyUpdateStatusWithCurrentConfig) object: nil];
-    [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(waitForUpdate) object: nil];
-    [self performSelector: @selector(waitForUpdate) withObject: self afterDelay:kREFRESH_DELAY];
-}
-
 - (void) updateLedStatus
 {
     NSBundle *bundle = [NSBundle mainBundle];
@@ -138,7 +122,7 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 }
 
 - (BOOL) updateStatusWithCurrentConfig
-{    
+{
     NSString *stateDescription = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./get-current-resolvers.sh | ./get-resolvers-description.sh", nil]];
     NSLog(@"%@", stateDescription);
     if ([stateDescription isEqualToString: @"FamilyShield"]) {
@@ -167,8 +151,14 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
         [self initState];
     }
     [self setCheckBoxesEnabled: TRUE];
-
+    
     return TRUE;
+}
+
+- (void) periodicallyUpdateStatusWithCurrentConfig {
+    [self updateStatusWithCurrentConfig];
+    [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(periodicallyUpdateStatusWithCurrentConfig) object: nil];
+    [self performSelector: @selector(periodicallyUpdateStatusWithCurrentConfig) withObject:nil afterDelay: 5.0];
 }
 
 - (void) waitForUpdate {
@@ -186,10 +176,20 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     [self performSelector: @selector(waitForUpdate) withObject: self afterDelay:kREFRESH_DELAY];
 }
 
-- (void) periodicallyUpdateStatusWithCurrentConfig {
-    [self updateStatusWithCurrentConfig];
+- (void) showSpinners
+{
+    [self setCheckBoxesEnabled: FALSE];
+
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSImage *led = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"no-network.png"]];
+    _statusItem.image = led;
+    [led release];
+    
+    [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./gui-push-conf-change.sh prefpane", nil]];
+    
     [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(periodicallyUpdateStatusWithCurrentConfig) object: nil];
-    [self performSelector: @selector(periodicallyUpdateStatusWithCurrentConfig) withObject:nil afterDelay: 5.0];
+    [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(waitForUpdate) object: nil];
+    [self performSelector: @selector(waitForUpdate) withObject: self afterDelay:kREFRESH_DELAY];
 }
 
 - (void) awakeFromNib
