@@ -299,22 +299,31 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     [[_feedbackWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:feedbackURLText]]];
 
     SInt32 OSXversionMajor, OSXversionMinor;
-    if (Gestalt(gestaltSystemVersionMajor, &OSXversionMajor) != noErr || Gestalt(gestaltSystemVersionMinor, &OSXversionMinor) != noErr || OSXversionMajor < 10 || OSXversionMinor < 8) {
-        [_tabView removeTabViewItem: _aboutTabViewItem];
-        [_tabView removeTabViewItem:_releaseNotesTabViewItem];
+    if (Gestalt(gestaltSystemVersionMajor, &OSXversionMajor) != noErr || Gestalt(gestaltSystemVersionMinor, &OSXversionMinor) != noErr || OSXversionMajor < 10 || OSXversionMinor < 6) {
         return;
     }
     [_releaseNotesWebView setDrawsBackground:false];
     [_releaseNotesWebView setShouldUpdateWhileOffscreen:true];
     [_releaseNotesWebView setUIDelegate:self];
-    NSURL *releaseNotesURL = [NSURL fileURLWithPath: [[NSBundle bundleForClass:[self class]] pathForResource: @"html/releasenotes" ofType: @"html"] isDirectory: NO];
-    [[_releaseNotesWebView mainFrame] loadRequest:[NSURLRequest requestWithURL: releaseNotesURL]];
+    
+    NSURL *releaseNotesURL;
+    NSString *releaseNotesURLPath = [[NSBundle bundleForClass: [self class]] pathForResource: @"releasenotes" ofType: @"html" inDirectory: @"html"];
+    if (! releaseNotesURLPath || ! (releaseNotesURL = [NSURL fileURLWithPath:  releaseNotesURLPath])) {
+        [_tabView removeTabViewItem:_releaseNotesTabViewItem];
+    } else {
+        [[_releaseNotesWebView mainFrame] loadRequest:[NSURLRequest requestWithURL: releaseNotesURL]];
+    }
 
     [_aboutWebView setDrawsBackground:false];
     [_aboutWebView setShouldUpdateWhileOffscreen:true];
     [_aboutWebView setUIDelegate:self];
-    NSURL *aboutURL = [NSURL fileURLWithPath: [[NSBundle bundleForClass:[self class]] pathForResource: @"html/about" ofType: @"html"] isDirectory: NO];
-    [[_aboutWebView mainFrame] loadRequest:[NSURLRequest requestWithURL: aboutURL]];
+    NSURL *aboutURL;
+    NSString *aboutURLPath = [[NSBundle bundleForClass: [self class]] pathForResource: @"about" ofType: @"html" inDirectory: @"html"];
+    if (! aboutURLPath || ! (aboutURL = [NSURL fileURLWithPath: aboutURLPath])) {
+        [_tabView removeTabViewItem: _aboutTabViewItem];
+    } else {
+        [[_aboutWebView mainFrame] loadRequest:[NSURLRequest requestWithURL: aboutURL]];
+    }
 }
 
 - (NSArray *)webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element
