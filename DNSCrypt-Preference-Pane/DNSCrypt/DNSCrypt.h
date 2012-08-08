@@ -32,9 +32,9 @@ typedef enum {
 @interface DNSCrypt : NSPreferencePane {
     AuthorizationRef auth;
 }
-@property (assign) IBOutlet NSTabView *tabView;
-@property (assign) IBOutlet NSTabViewItem *aboutTabViewItem;
-@property (assign) IBOutlet NSTabViewItem *releaseNotesTabViewItem;
+@property (strong) IBOutlet NSTabView *tabView;
+@property (strong) IBOutlet NSTabViewItem *aboutTabViewItem;
+@property (strong) IBOutlet NSTabViewItem *releaseNotesTabViewItem;
 
 @property (strong) IBOutlet NSButton *dnscryptButton;
 @property (strong) IBOutlet NSButton *opendnsButton;

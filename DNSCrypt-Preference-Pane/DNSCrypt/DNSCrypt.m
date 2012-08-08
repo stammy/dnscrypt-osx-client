@@ -9,6 +9,10 @@
 #import "DNSCrypt.h"
 
 @implementation DNSCrypt
+@synthesize tabView = _tabView;
+@synthesize aboutTabViewItem = _aboutTabViewItem;
+@synthesize releaseNotesTabViewItem = _releaseNotesTabViewItem;
+
 @synthesize previewNotesWebView = _previewNotesWebView;
 @synthesize releaseNotesWebView = _releaseNotesWebView;
 @synthesize feedbackWebView = _feedbackWebView;
