@@ -32,22 +32,22 @@ typedef enum {
 @interface DNSCrypt : NSPreferencePane {
     AuthorizationRef auth;
 }
-@property (strong) IBOutlet NSTabView *tabView;
-@property (strong) IBOutlet NSTabViewItem *aboutTabViewItem;
-@property (strong) IBOutlet NSTabViewItem *releaseNotesTabViewItem;
+@property (nonatomic, retain) IBOutlet NSTabView *tabView;
+@property (nonatomic, retain) IBOutlet NSTabViewItem *aboutTabViewItem;
+@property (nonatomic, retain) IBOutlet NSTabViewItem *releaseNotesTabViewItem;
 
-@property (strong) IBOutlet NSButton *dnscryptButton;
-@property (strong) IBOutlet NSButton *opendnsButton;
-@property (strong) IBOutlet NSButton *familyShieldButton;
-@property (strong) IBOutlet NSButton *fallbackButton;
+@property (nonatomic, retain) IBOutlet NSButton *dnscryptButton;
+@property (nonatomic, retain) IBOutlet NSButton *opendnsButton;
+@property (nonatomic, retain) IBOutlet NSButton *familyShieldButton;
+@property (nonatomic, retain) IBOutlet NSButton *fallbackButton;
 
-@property (strong) IBOutlet NSTextField *currentResolverTextField;
-@property (strong) IBOutlet NSImageView *statusImageView;
-@property (strong) IBOutlet NSTextField *statusText;
-@property (strong) IBOutlet WebView *previewNotesWebView;
-@property (strong) IBOutlet WebView *releaseNotesWebView;
-@property (strong) IBOutlet WebView *feedbackWebView;
-@property (strong) IBOutlet WebView *aboutWebView;
+@property (nonatomic, retain) IBOutlet NSTextField *currentResolverTextField;
+@property (nonatomic, retain) IBOutlet NSImageView *statusImageView;
+@property (nonatomic, retain) IBOutlet NSTextField *statusText;
+@property (nonatomic, retain) IBOutlet WebView *previewNotesWebView;
+@property (nonatomic, retain) IBOutlet WebView *releaseNotesWebView;
+@property (nonatomic, retain) IBOutlet WebView *feedbackWebView;
+@property (nonatomic, retain) IBOutlet WebView *aboutWebView;
 
 - (void) mainViewDidLoad;
 
