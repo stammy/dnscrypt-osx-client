@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <title>Release notes</title>
+    <style type='text/css'>
+      body {
+        font-family: arial, helvetica, sans-serif;
+        margin: 0; }
+      
+      h1, h2 {
+        margin: 0; }
+      
+      h1 {
+        border-bottom: 1px solid grey; }
+      
+      article {
+        padding-left: 1em; }
+      
+      time {
+        font-style: italic; }
+    </style>
+  </head>
+  <body>
+    <h1>Release Notes</h1>
+    <article>
+      <h2>Version 0.12 released!</h2>
+      <time>Thu, 06 Aug 2012</time>
+      <ul>
+        <li>
+          The "fallback to insecure" mode now properly copes with captive
+          portals and firewalls.
+        </li>
+        <li>
+          The TCP/443 checkbox is gone. When the dnscrypt box is
+          checked, it tries everything in parallel and keeps whatever
+          works best.
+        </li>
+        <li>
+          IPv6 is fully supported (and automatic. If that works using
+          IPv6, IPv6 is used)
+        </li>
+        <li>
+          Familyshield is supported, with and without dnscrypt.
+        </li>
+        <li>
+          OpenDNS/DNSCrypt/Familyshield/Fallback settings can be set
+          from the menu bar.
+        </li>
+        <li>
+          Internal domain names like routerlogin.net are directly sent
+          to the router or to whatever DNS resolvers the DHCP server provides.
+        </li>
+        <li>
+          Packages are signed for Mountain Lion.
+        </li>
+        <li>
+          The interface passively watches for network changes according to the
+          current network configuration and the current Wifi access
+          point. It doesn't constantly poll for changes any more.
+        </li>
+        <li>
+          The proxy has been updated to version 1.0.1.
+        </li>
+      </ul>
+    </article>
+    <article>
+      <h2>Version 0.10 released!</h2>
+      <time>Thu, 12 Jan 2012</time>
+      <ul>
+        <li>The orange dot has been replaced with a green one.</li>
+        <li>
+          Some content in the preferences pane wasn't always
+          properly loaded on Snow Leopard. This has been fixed.
+        </li>
+      </ul>
+    </article>
+    <article>
+      <h2>Version 0.9 released!</h2>
+      <time>Mon, 10 Jan 2012</time>
+      <ul>
+        <li>A new icon set, due to popular request.</li>
+        <li>The dnscrypt settings are persistent across reboots.</li>
+      </ul>
+    </article>
+    <article>
+      <h2>Version 0.8 released!</h2>
+      <time>Wed, 14 Dec 2011</time>
+      <ul>
+        <li>dnscrypt doesn't require administrative privileges any more.</li>
+      </ul>
+    </article>
+  </body>
+</html>

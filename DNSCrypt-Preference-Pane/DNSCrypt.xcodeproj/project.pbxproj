@@ -16,6 +16,7 @@
 		0946B0E413F48065008277C6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0946B0E313F48065008277C6 /* Security.framework */; };
 		09640E95145CA4AD008B37EC /* opendns_logo_300.png in Resources */ = {isa = PBXBuildFile; fileRef = 09640E94145CA4AD008B37EC /* opendns_logo_300.png */; };
 		09A13ABC145F2D8700B227A4 /* ajax-loader.gif in Resources */ = {isa = PBXBuildFile; fileRef = 09A13ABB145F2D8700B227A4 /* ajax-loader.gif */; };
+		09AD01A015D2483500638DCE /* html in Resources */ = {isa = PBXBuildFile; fileRef = 09AD019F15D2483500638DCE /* html */; };
 		09FB094415C9DE6400B8AAB6 /* usr in Resources */ = {isa = PBXBuildFile; fileRef = 09FB094315C9DE6400B8AAB6 /* usr */; };
 		4B36C4651468B87A0085B07C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B36C4641468B87A0085B07C /* WebKit.framework */; };
 		4B89D983147CA39200872F60 /* dnscrypt_256.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B89D982147CA39200872F60 /* dnscrypt_256.png */; };
@@ -45,6 +46,7 @@
 		0946B0E313F48065008277C6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		09640E94145CA4AD008B37EC /* opendns_logo_300.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = opendns_logo_300.png; sourceTree = "<group>"; };
 		09A13ABB145F2D8700B227A4 /* ajax-loader.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "ajax-loader.gif"; sourceTree = "<group>"; };
+		09AD019F15D2483500638DCE /* html */ = {isa = PBXFileReference; lastKnownFileType = folder; name = html; path = extra/html; sourceTree = "<group>"; };
 		09FB094315C9DE6400B8AAB6 /* usr */ = {isa = PBXFileReference; lastKnownFileType = folder; name = usr; path = extra/usr; sourceTree = "<group>"; };
 		4B36C4641468B87A0085B07C /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		4B89D982147CA39200872F60 /* dnscrypt_256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dnscrypt_256.png; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				0946B0D713F47F53008277C6 /* DNSCrypt.tiff */,
 				4B89D982147CA39200872F60 /* dnscrypt_256.png */,
 				0946B0D913F47F53008277C6 /* DNSCrypt.xib */,
+				09AD019F15D2483500638DCE /* html */,
 				09FB094315C9DE6400B8AAB6 /* usr */,
 				0946B0CE13F47F53008277C6 /* Supporting Files */,
 			);
@@ -226,6 +229,7 @@
 				09A13ABC145F2D8700B227A4 /* ajax-loader.gif in Resources */,
 				4B89D983147CA39200872F60 /* dnscrypt_256.png in Resources */,
 				09FB094415C9DE6400B8AAB6 /* usr in Resources */,
+				09AD01A015D2483500638DCE /* html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

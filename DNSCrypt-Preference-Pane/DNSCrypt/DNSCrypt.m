@@ -306,14 +306,14 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     [_releaseNotesWebView setDrawsBackground:false];
     [_releaseNotesWebView setShouldUpdateWhileOffscreen:true];
     [_releaseNotesWebView setUIDelegate:self];
-    NSString *releaseNotesURLText = @"http://dnscrypt.opendns.com/releasenotes.php";
-    [[_releaseNotesWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:releaseNotesURLText]]];
+    NSURL *releaseNotesURL = [NSURL fileURLWithPath: [[NSBundle bundleForClass:[self class]] pathForResource: @"html/releasenotes" ofType: @"html"] isDirectory: NO];
+    [[_releaseNotesWebView mainFrame] loadRequest:[NSURLRequest requestWithURL: releaseNotesURL]];
 
     [_aboutWebView setDrawsBackground:false];
     [_aboutWebView setShouldUpdateWhileOffscreen:true];
     [_aboutWebView setUIDelegate:self];
-    NSString *aboutURLText = @"http://dnscrypt.opendns.com/about.php";
-    [[_aboutWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:aboutURLText]]];
+    NSURL *aboutURL = [NSURL fileURLWithPath: [[NSBundle bundleForClass:[self class]] pathForResource: @"html/about" ofType: @"html"] isDirectory: NO];
+    [[_aboutWebView mainFrame] loadRequest:[NSURLRequest requestWithURL: aboutURL]];
 }
 
 - (NSArray *)webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element
