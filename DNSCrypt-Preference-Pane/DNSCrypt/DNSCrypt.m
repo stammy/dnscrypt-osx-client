@@ -299,7 +299,7 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     [[_feedbackWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:feedbackURLText]]];
 
     SInt32 OSXversionMajor, OSXversionMinor;
-    if (Gestalt(gestaltSystemVersionMajor, &OSXversionMajor) != noErr || Gestalt(gestaltSystemVersionMinor, &OSXversionMinor) != noErr || OSXversionMajor < 10 || OSXversionMinor < 7) {
+    if (Gestalt(gestaltSystemVersionMajor, &OSXversionMajor) != noErr || Gestalt(gestaltSystemVersionMinor, &OSXversionMinor) != noErr || OSXversionMajor < 10 || OSXversionMinor < 8) {
         [_tabView removeTabViewItem: _aboutTabViewItem];
         [_tabView removeTabViewItem:_releaseNotesTabViewItem];
         return;
