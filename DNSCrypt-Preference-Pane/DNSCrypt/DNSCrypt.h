@@ -33,18 +33,18 @@ typedef enum {
     AuthorizationRef auth;
 }
 
-@property (weak) IBOutlet NSButton *dnscryptButton;
-@property (weak) IBOutlet NSButton *opendnsButton;
-@property (weak) IBOutlet NSButton *familyShieldButton;
-@property (weak) IBOutlet NSButton *fallbackButton;
+@property (strong) IBOutlet NSButton *dnscryptButton;
+@property (strong) IBOutlet NSButton *opendnsButton;
+@property (strong) IBOutlet NSButton *familyShieldButton;
+@property (strong) IBOutlet NSButton *fallbackButton;
 
-@property (weak) IBOutlet NSTextField *currentResolverTextField;
-@property (weak) IBOutlet NSImageView *statusImageView;
-@property (weak) IBOutlet NSTextField *statusText;
-@property (weak) IBOutlet WebView *previewNotesWebView;
-@property (weak) IBOutlet WebView *releaseNotesWebView;
-@property (weak) IBOutlet WebView *feedbackWebView;
-@property (weak) IBOutlet WebView *aboutWebView;
+@property (strong) IBOutlet NSTextField *currentResolverTextField;
+@property (strong) IBOutlet NSImageView *statusImageView;
+@property (strong) IBOutlet NSTextField *statusText;
+@property (strong) IBOutlet WebView *previewNotesWebView;
+@property (strong) IBOutlet WebView *releaseNotesWebView;
+@property (strong) IBOutlet WebView *feedbackWebView;
+@property (strong) IBOutlet WebView *aboutWebView;
 
 - (void) mainViewDidLoad;
 
