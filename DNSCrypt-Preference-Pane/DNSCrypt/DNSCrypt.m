@@ -298,6 +298,12 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     NSString *feedbackURLText = @"http://dnscrypt.opendns.com/feedback.php";
     [[_feedbackWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:feedbackURLText]]];
 
+    SInt32 OSXversionMajor, OSXversionMinor;
+    if (Gestalt(gestaltSystemVersionMajor, &OSXversionMajor) != noErr || Gestalt(gestaltSystemVersionMinor, &OSXversionMinor) != noErr || OSXversionMajor < 10 || OSXversionMinor < 7) {
+        [_tabView removeTabViewItem: _aboutTabViewItem];
+        [_tabView removeTabViewItem:_releaseNotesTabViewItem];
+        return;
+    }
     [_releaseNotesWebView setDrawsBackground:false];
     [_releaseNotesWebView setShouldUpdateWhileOffscreen:true];
     [_releaseNotesWebView setUIDelegate:self];
