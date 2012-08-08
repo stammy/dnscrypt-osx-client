@@ -34,7 +34,7 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 
 - (NSString *) fromCommand: (NSString *) launchPath withArguments: (NSArray *) arguments
 {
-    NSPipe *pipe = [NSPipe pipe];
+    NSPipe *pipe = [[NSPipe alloc] init];
     NSTask *task = [[NSTask alloc] init];
     NSData *data;
     NSString *result;
@@ -45,6 +45,7 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     data = [[pipe fileHandleForReading] readDataToEndOfFile];
     [task waitUntilExit];
     [task release];
+    [pipe release];
     result = [[[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding] autorelease];
     if ([result hasSuffix: @"\n"]) {
         result = [result substringToIndex: result.length - 1];
