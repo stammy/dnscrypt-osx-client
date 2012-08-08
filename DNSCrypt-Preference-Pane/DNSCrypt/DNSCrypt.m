@@ -232,7 +232,7 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     if (sender.state != 0) {
         [self setInsecureOpenDNSOn];
     } else {
-        [self setInsecureOpenDNSOn];
+        [self setInsecureOpenDNSOff];
     }
 }
 
