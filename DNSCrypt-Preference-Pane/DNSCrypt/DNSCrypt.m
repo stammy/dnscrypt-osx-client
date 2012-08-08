@@ -83,6 +83,85 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     }
 }
 
+- (void) updateLedStatus
+{
+    NSBundle *bundle = [NSBundle bundleWithIdentifier: @"com.opendns.osx.DNSCrypt"];
+    switch (currentState) {
+        case kDNS_CONFIGURATION_UNKNOWN:
+            _statusText.stringValue = NSLocalizedString(@"No network", @"Status");
+            _statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_red.png"]] autorelease];
+            break;
+        case kDNS_CONFIGURATION_VANILLA:
+            _statusText.stringValue = NSLocalizedString(@"Unprotected", @"Status");
+            _statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_red.png"]] autorelease];
+            break;
+        case kDNS_CONFIGURATION_OPENDNS:
+            _statusText.stringValue = NSLocalizedString(@"Unencrypted", @"Status");
+            _statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_yellow.png"]] autorelease];
+            break;
+        case kDNS_CONFIGURATION_LOCALHOST:
+            _statusText.stringValue = NSLocalizedString(@"Protected", @"Status");
+            _statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_green.png"]] autorelease];
+            break;
+        default:
+            return;
+    }
+}
+
+- (BOOL) updateStatusWithCurrentConfig
+{
+    NSString *stateDescription = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./get-current-resolvers.sh | ./get-resolvers-description.sh", nil]];
+    NSLog(@"%@", stateDescription);
+    if ([stateDescription isEqualToString: @"FamilyShield"]) {
+        currentState = kDNS_CONFIGURATION_OPENDNS;
+    } else if ([stateDescription isEqualToString: @"DNSCrypt"]) {
+        currentState = kDNS_CONFIGURATION_LOCALHOST;
+    } else if ([stateDescription isEqualToString: @"OpenDNS"]) {
+        currentState = kDNS_CONFIGURATION_OPENDNS;
+    } else if ([stateDescription isEqualToString: @"OpenDNS IPv6"]) {
+        currentState = kDNS_CONFIGURATION_OPENDNS;
+    } else if ([stateDescription isEqualToString: @"None"]) {
+        currentState = kDNS_CONFIGURATION_UNKNOWN;
+    } else if ([stateDescription isEqualToString: @"Updating"]) {
+    } else if (stateDescription.length > 0) {
+        currentState = kDNS_CONFIGURATION_VANILLA;
+    }
+    [self updateLedStatus];
+    
+    NSString *currentResolvers = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./get-current-resolvers.sh | ./get-upstream-resolvers.sh", nil]];
+    _currentResolverTextField.stringValue = currentResolvers;
+    
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./gui-pop-conf-change.sh prefpane", nil]];
+    NSLog(@"%@", res);
+    if ([res isEqualToString: @"yes"]) {
+        [self initState];
+    }
+    [self setCheckBoxesEnabled: TRUE];
+    
+    return TRUE;
+}
+
+- (void) periodicallyUpdateStatusWithCurrentConfig {
+    [self updateStatusWithCurrentConfig];
+    [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(periodicallyUpdateStatusWithCurrentConfig) object: nil];
+    [self performSelector: @selector(periodicallyUpdateStatusWithCurrentConfig) withObject:nil afterDelay: kREFRESH_DELAY];
+}
+
+- (void) showSpinners {
+    NSBundle *bundle = [NSBundle bundleWithIdentifier: kBUNDLE_IDENTIFIER];
+    
+    [self setCheckBoxesEnabled: FALSE];
+    _statusText.stringValue = NSLocalizedString(@"Updating", @"Updating network configuraiton");
+    _statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"ajax-loader.gif"]] autorelease];
+    _currentResolverTextField.stringValue = @"";
+    
+    [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./gui-push-conf-change.sh menubar", nil]];
+    
+    [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(periodicallyUpdateStatusWithCurrentConfig) object: nil];
+    [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(waitForUpdate) object: nil];
+    [self performSelector: @selector(waitForUpdate) withObject: self afterDelay:kREFRESH_DELAY];
+}
+
 - (BOOL) setDNSCryptOn {
     [self showSpinners];
     NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-to-dnscrypt.sh", nil]];
@@ -175,64 +254,6 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     }
 }
 
-- (void) updateLedStatus
-{
-    NSBundle *bundle = [NSBundle bundleWithIdentifier: @"com.opendns.osx.DNSCrypt"];
-    switch (currentState) {
-        case kDNS_CONFIGURATION_UNKNOWN:
-            _statusText.stringValue = NSLocalizedString(@"No network", @"Status");
-            _statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_red.png"]] autorelease];
-            break;
-        case kDNS_CONFIGURATION_VANILLA:
-            _statusText.stringValue = NSLocalizedString(@"Unprotected", @"Status");
-            _statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_red.png"]] autorelease];
-            break;
-        case kDNS_CONFIGURATION_OPENDNS:
-            _statusText.stringValue = NSLocalizedString(@"Unencrypted", @"Status");
-            _statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_yellow.png"]] autorelease];
-            break;
-        case kDNS_CONFIGURATION_LOCALHOST:
-            _statusText.stringValue = NSLocalizedString(@"Protected", @"Status");
-            _statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_green.png"]] autorelease];
-            break;
-        default:
-            return;
-    }
-}
-
-- (BOOL) updateStatusWithCurrentConfig
-{
-    NSString *stateDescription = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./get-current-resolvers.sh | ./get-resolvers-description.sh", nil]];
-    NSLog(@"%@", stateDescription);
-    if ([stateDescription isEqualToString: @"FamilyShield"]) {
-        currentState = kDNS_CONFIGURATION_OPENDNS;
-    } else if ([stateDescription isEqualToString: @"DNSCrypt"]) {
-        currentState = kDNS_CONFIGURATION_LOCALHOST;
-    } else if ([stateDescription isEqualToString: @"OpenDNS"]) {
-        currentState = kDNS_CONFIGURATION_OPENDNS;
-    } else if ([stateDescription isEqualToString: @"OpenDNS IPv6"]) {
-        currentState = kDNS_CONFIGURATION_OPENDNS;
-    } else if ([stateDescription isEqualToString: @"None"]) {
-        currentState = kDNS_CONFIGURATION_UNKNOWN;
-    } else if ([stateDescription isEqualToString: @"Updating"]) {
-    } else if (stateDescription.length > 0) {
-        currentState = kDNS_CONFIGURATION_VANILLA;
-    }
-    [self updateLedStatus];
-    
-    NSString *currentResolvers = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./get-current-resolvers.sh | ./get-upstream-resolvers.sh", nil]];
-    _currentResolverTextField.stringValue = currentResolvers;
-    
-    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./gui-pop-conf-change.sh prefpane", nil]];
-    NSLog(@"%@", res);
-    if ([res isEqualToString: @"yes"]) {
-        [self initState];
-    }
-    [self setCheckBoxesEnabled: TRUE];
-    
-    return TRUE;
-}
-
 - (void) waitForUpdate {
     NSString *res;
     static unsigned int tries;
@@ -246,27 +267,6 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     tries++;
     [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(waitForUpdate) object: nil];
     [self performSelector: @selector(waitForUpdate) withObject: self afterDelay:kREFRESH_DELAY];
-}
-
-- (void) showSpinners {
-    NSBundle *bundle = [NSBundle bundleWithIdentifier: kBUNDLE_IDENTIFIER];
-
-    [self setCheckBoxesEnabled: FALSE];
-    _statusText.stringValue = NSLocalizedString(@"Updating", @"Updating network configuraiton");
-    _statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"ajax-loader.gif"]] autorelease];
-    _currentResolverTextField.stringValue = @"";
-    
-    [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./gui-push-conf-change.sh menubar", nil]];
-    
-    [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(periodicallyUpdateStatusWithCurrentConfig) object: nil];
-    [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(waitForUpdate) object: nil];
-    [self performSelector: @selector(waitForUpdate) withObject: self afterDelay:kREFRESH_DELAY];
-}
-
-- (void) periodicallyUpdateStatusWithCurrentConfig {
-    [self updateStatusWithCurrentConfig];
-    [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(periodicallyUpdateStatusWithCurrentConfig) object: nil];
-    [self performSelector: @selector(periodicallyUpdateStatusWithCurrentConfig) withObject:nil afterDelay: kREFRESH_DELAY];
 }
 
 - (void) mainViewDidLoad
