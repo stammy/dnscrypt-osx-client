@@ -23,7 +23,9 @@ INTERFACE_PROXY_MASK="24"
 INTERFACE_PROBES="127.0.0.55"
 INTERFACE_PROBES_MASK="24"
 
-DOMAINS_EXCEPTIONS='fritz.box intranet lan localdomain private routerlogin.net'
+DOMAINS_EXCEPTIONS='
+fritz.box intranet lan localdomain nowtv.com private routerlogin.net
+'
 
 export PATH="${DNSCRYPT_USR_BASE_DIR}/bin:${DNSCRYPT_USR_BASE_DIR}/scripts:$PATH"
 
