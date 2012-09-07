@@ -8,7 +8,7 @@ exec 2>/dev/null
 /bin/mkdir -p '/Library/Application Support/DNSCrypt/states'
 /bin/mkdir -p '/Library/Application Support/DNSCrypt/tickets'
 /usr/sbin/chown -R 0:0 '/Library/Application Support/DNSCrypt'
-/bin/chmod 710 '/Library/Application Support/DNSCrypt'
+/bin/chmod 755 '/Library/Application Support/DNSCrypt'
 
 eval $(/usr/bin/stat -s '/dev/console')
 if [ $? != 0 ]; then
