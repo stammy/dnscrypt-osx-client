@@ -7,6 +7,7 @@ wanted_uid="$st_uid"
 if [ ! -d "$DNSCRYPT_VAR_BASE_DIR" ]; then
   mkdir -p "$DNSCRYPT_VAR_BASE_DIR" || exit 1
   chown -R 0:0 "$DNSCRYPT_VAR_BASE_DIR"
+  chmod 755 "$DNSCRYPT_VAR_BASE_DIR"
 fi
 mkdir -m 755 -p "$TICKETS_DIR" || exit 1
 chown -R "${wanted_uid}:0" "$TICKETS_DIR"
