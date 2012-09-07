@@ -634,7 +634,7 @@
 				<key>USE_HFS+_COMPRESSION</key>
 				<true/>
 				<key>VERSION</key>
-				<string>1.0.1</string>
+				<string>1.1.0.1</string>
 			</dict>
 			<key>UUID</key>
 			<string>7F7D70AB-F7A2-4027-8304-3063C7B9532F</string>
@@ -1241,7 +1241,7 @@
 				<key>USE_HFS+_COMPRESSION</key>
 				<true/>
 				<key>VERSION</key>
-				<string>0.14</string>
+				<string>0.15</string>
 			</dict>
 			<key>TYPE</key>
 			<integer>0</integer>
@@ -1734,7 +1734,7 @@
 				<key>USE_HFS+_COMPRESSION</key>
 				<true/>
 				<key>VERSION</key>
-				<string>0.14</string>
+				<string>0.15</string>
 			</dict>
 			<key>TYPE</key>
 			<integer>0</integer>
@@ -1756,7 +1756,7 @@
 			ZW50LVN0eWxlLVR5cGUiIGNvbnRlbnQ9InRleHQvY3NzIj4KPHRp
 			dGxlPjwvdGl0bGU+CjxtZXRhIG5hbWU9IkdlbmVyYXRvciIgY29u
 			dGVudD0iQ29jb2EgSFRNTCBXcml0ZXIiPgo8bWV0YSBuYW1lPSJD
-			b2NvYVZlcnNpb24iIGNvbnRlbnQ9IjExNTcuNyI+CjxzdHlsZSB0
+			b2NvYVZlcnNpb24iIGNvbnRlbnQ9IjExODcuMiI+CjxzdHlsZSB0
 			eXBlPSJ0ZXh0L2NzcyI+Cjwvc3R5bGU+CjwvaGVhZD4KPGJvZHk+
 			CjwvYm9keT4KPC9odG1sPgo=
 			</data>
@@ -1994,7 +1994,7 @@
 						<key>IC_REQUIREMENT_CPU_ARCHITECTURE_FAMILY</key>
 						<integer>2</integer>
 						<key>IC_REQUIREMENT_CPU_INTEL_ARCHITECTURE_TYPE</key>
-						<integer>2</integer>
+						<integer>0</integer>
 						<key>IC_REQUIREMENT_CPU_MINIMUM_CPU_CORES_COUNT</key>
 						<integer>1</integer>
 						<key>IC_REQUIREMENT_CPU_MINIMUM_FREQUENCY</key>
@@ -2014,7 +2014,7 @@
 							<key>SECONDARY_VALUE</key>
 							<string></string>
 							<key>VALUE</key>
-							<string>The DNSCrypt GUI for Mac currently requires at least an Intel Core 2 CPU.</string>
+							<string>The DNSCrypt GUI for Mac currently requires at least an Intel Core CPU.</string>
 						</dict>
 					</array>
 					<key>NAME</key>
