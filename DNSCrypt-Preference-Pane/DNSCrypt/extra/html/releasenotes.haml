@@ -2,7 +2,7 @@
 %html{lang: "en"}
   %head
     %meta{charset: "utf-8"}
-    %title Release notes
+    %title Release notes for the user interface
     %style{type: "text/css"}
       :sass
         body
@@ -19,7 +19,18 @@
           font:
             style: italic
   %body
-    %h1 Release Notes
+    %h1 Release Notes for the user interface
+
+    %article
+      %h2 Version 0.15 released!
+      %time Wed, 07 Sep 2012
+      %ul
+        %li dnscrypt-proxy has been updated to 1.1.0-RC1
+        %li
+          Queries for nowtv.com and fritz.com are now bypassing dnscrypt.
+        %li
+          The user interface doesn't update the DNS settings any more when
+          using an interactive shell.
 
     %article
       %h2 Version 0.14 released!

@@ -194,7 +194,7 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     _statusItem.toolTip = @"DNSCrypt";
     _statusItem.menu = _dnscryptMenu;
         
-    NSString *versionStringFormat = NSLocalizedString(@"Client version: %@", @"Current version in the menu");
+    NSString *versionStringFormat = NSLocalizedString(@"Client UI version: %@", @"Current UI version as shown in the menu");
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     _versionMenuItem.title = [NSString stringWithFormat: versionStringFormat, version];
     
