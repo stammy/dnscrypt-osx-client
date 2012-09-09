@@ -12,4 +12,5 @@ fgrep -v '*' | while read x ; do
   networksetup -setdnsservers "$x" "$servers"
 done
 dscacheutil -flushcache 2> /dev/null
+killall -HUP mDNSResponder 2> /dev/null
 exit 0
