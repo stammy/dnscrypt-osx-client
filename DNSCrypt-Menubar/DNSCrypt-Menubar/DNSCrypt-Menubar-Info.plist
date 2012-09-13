@@ -35,7 +35,7 @@
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>SUFeedURL</key>
-	<string>http://shared.opendns.com/upgrade/osx/dnscrypt-client/updater.xml</string>
+	<string>http://opendns.github.com/dnscrypt-osx-client/updates/osx/sparkle-updates.xml</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
 </dict>
