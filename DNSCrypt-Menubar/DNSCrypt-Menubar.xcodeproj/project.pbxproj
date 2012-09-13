@@ -13,14 +13,13 @@
 		0906D83114B4D9AC0093FA7D /* yes-opendns-yes-crypt.png in Resources */ = {isa = PBXBuildFile; fileRef = 0906D82D14B4D9AC0093FA7D /* yes-opendns-yes-crypt.png */; };
 		09651148147D832D007FEE31 /* dnscrypt.icns in Resources */ = {isa = PBXBuildFile; fileRef = 09651147147D832D007FEE31 /* dnscrypt.icns */; };
 		096AEEFA1468A11E009F2AA4 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 096AEEF91468A11E009F2AA4 /* dsa_pub.pem */; };
-		09972870147CCE41004E7017 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0997286F147CCE41004E7017 /* Sparkle.framework */; };
-		09972871147CCEDC004E7017 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0997286F147CCE41004E7017 /* Sparkle.framework */; };
 		09A13AD2145F3B9000B227A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A13AD1145F3B9000B227A4 /* Cocoa.framework */; };
 		09A13ADC145F3B9000B227A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 09A13ADA145F3B9000B227A4 /* InfoPlist.strings */; };
 		09A13ADE145F3B9000B227A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A13ADD145F3B9000B227A4 /* main.m */; };
 		09A13AE2145F3B9000B227A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 09A13AE0145F3B9000B227A4 /* Credits.rtf */; };
 		09A13AE5145F3B9000B227A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A13AE4145F3B9000B227A4 /* AppDelegate.m */; };
 		09A13AE8145F3B9000B227A4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09A13AE6145F3B9000B227A4 /* MainMenu.xib */; };
+		09F4DDA916019D0D002C4E04 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09F4DDA816019D0D002C4E04 /* Sparkle.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,7 +29,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				09972871147CCEDC004E7017 /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,7 +41,6 @@
 		0906D82D14B4D9AC0093FA7D /* yes-opendns-yes-crypt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yes-opendns-yes-crypt.png"; sourceTree = "<group>"; };
 		09651147147D832D007FEE31 /* dnscrypt.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = dnscrypt.icns; path = ../dnscrypt.icns; sourceTree = "<group>"; };
 		096AEEF91468A11E009F2AA4 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
-		0997286F147CCE41004E7017 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		09A13ACD145F3B9000B227A4 /* DNSCrypt-Menubar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DNSCrypt-Menubar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		09A13AD1145F3B9000B227A4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		09A13AD4145F3B9000B227A4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -57,6 +54,7 @@
 		09A13AE3145F3B9000B227A4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		09A13AE4145F3B9000B227A4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		09A13AE7145F3B9000B227A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		09F4DDA816019D0D002C4E04 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +63,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09A13AD2145F3B9000B227A4 /* Cocoa.framework in Frameworks */,
-				09972870147CCE41004E7017 /* Sparkle.framework in Frameworks */,
+				09F4DDA916019D0D002C4E04 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +90,7 @@
 		09A13AD0145F3B9000B227A4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0997286F147CCE41004E7017 /* Sparkle.framework */,
+				09F4DDA816019D0D002C4E04 /* Sparkle.framework */,
 				09A13AD1145F3B9000B227A4 /* Cocoa.framework */,
 				09A13AD3145F3B9000B227A4 /* Other Frameworks */,
 			);
@@ -296,6 +294,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/Sparkle-evkudstnytcsfdeunmxihhpyexor/Build/Products/Release\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DNSCrypt-Menubar/DNSCrypt-Menubar-Prefix.pch";
@@ -311,6 +310,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/Sparkle-evkudstnytcsfdeunmxihhpyexor/Build/Products/Release\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DNSCrypt-Menubar/DNSCrypt-Menubar-Prefix.pch";
