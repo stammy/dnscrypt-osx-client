@@ -19,6 +19,10 @@ mkdir -p -- "$DESCRIPTIONS_DIR" || exit 1
 PID_DIR="${PROBES_BASE_DIR}/pids" || exit 1
 mkdir -p -- "$PID_DIR" || exit 1
 
+DNSCRYPT_PROXY_PLUGINS=""
+[ -r "$DNSCRYPT_PROXY_PLUGINS_FILE" ] &&
+  DNSCRYPT_PROXY_PLUGINS="$(cat "$DNSCRYPT_PROXY_PLUGINS_FILE")"
+
 try_resolver() {
   local priority="$1"
   shift
@@ -105,9 +109,16 @@ for pid in $wait_pids; do
 done
 
 [ x"$best_file" = "x" ] && exit 1
+
+plugins_args=''
+for plugin in $DNSCRYPT_PROXY_PLUGINS; do
+  plugin_args="${plugin_args} --plugin=${plugin}"
+done
+
 best_args=$(cat "${RES_DIR}/${best_file}")
 dnscrypt-proxy $best_args --local-address="${INTERFACE_PROXY}" \
-  --pidfile="$PROXY_PID_FILE" --user=daemon --daemonize
+  --pidfile="$PROXY_PID_FILE" --user=daemon --daemonize $plugin_args
+
 if [ $? != 0 ]; then
   [ -r "$PROXY_PID_FILE" ] && kill $(cat -- "$PROXY_PID_FILE")
   sleep 1

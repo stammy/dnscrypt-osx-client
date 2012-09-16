@@ -4,6 +4,9 @@ RESOLVER_DIR='/etc/resolver'
 
 . ./common.inc
 
+[ -r "$DOMAINS_EXCEPTIONS_FILE" ] &&
+  DOMAINS_EXCEPTIONS="$(cat "$DOMAINS_EXCEPTIONS_FILE") $DOMAINS_EXCEPTIONS"
+
 get_gw() {
   route -n get default | while read line; do
     case "$line" in
