@@ -116,7 +116,7 @@ for plugin in $DNSCRYPT_PROXY_PLUGINS; do
 done
 
 best_args=$(cat "${RES_DIR}/${best_file}")
-dnscrypt-proxy $best_args --local-address="${INTERFACE_PROXY}" \
+eval dnscrypt-proxy $best_args --local-address="$INTERFACE_PROXY" \
   --pidfile="$PROXY_PID_FILE" --user=daemon --daemonize $plugin_args
 
 if [ $? != 0 ]; then
@@ -127,8 +127,9 @@ if [ $? != 0 ]; then
   rm -f "$PROXY_PID_FILE"
   killall -9 dnscrypt-proxy
   sleep 1
-  dnscrypt-proxy $best_args --local-address="${INTERFACE_PROXY}" \
-    --pidfile="$PROXY_PID_FILE" --user=daemon --daemonize || exit 1
+  eval dnscrypt-proxy $best_args --local-address="$INTERFACE_PROXY" \
+    --pidfile="$PROXY_PID_FILE" --user=daemon --daemonize $plugin_args || \
+    exit 1
 fi
 
 i=0
