@@ -165,7 +165,7 @@
 		09A13AC4145F3B9000B227A4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = 09A13AC7145F3B9000B227A4 /* Build configuration list for PBXProject "DNSCrypt-Menubar" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -293,6 +293,7 @@
 		09A13AEC145F3B9000B227A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -309,6 +310,7 @@
 		09A13AED145F3B9000B227A4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
