@@ -342,5 +342,9 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString: kOPENDNS_URL]];
 }
 
+- (IBAction)uninstallPushed:(NSButton *)sender {
+    [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_BIN_BASE_DIR @"' && /usr/bin/open ./Uninstall.app", nil]];
+}
+
 
 @end
