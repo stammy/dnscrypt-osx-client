@@ -2,6 +2,9 @@
 
 . ./common.inc
 
+DNSCRYPT_LIB_BASE_DIR="${DNSCRYPT_USR_BASE_DIR}/lib"
+export DYLD_LIBRARY_PATH="${DNSCRYPT_LIB_BASE_DIR}:${DYLD_LIBRARY_PATH}"
+
 init_interfaces
 
 mkdir -p -- "$DNSCRYPT_VAR_BASE_DIR" || exit 1
