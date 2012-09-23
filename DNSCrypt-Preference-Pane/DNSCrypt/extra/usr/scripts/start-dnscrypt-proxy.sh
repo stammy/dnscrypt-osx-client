@@ -23,8 +23,8 @@ PID_DIR="${PROBES_BASE_DIR}/pids" || exit 1
 mkdir -p -- "$PID_DIR" || exit 1
 
 DNSCRYPT_PROXY_PLUGINS=""
-[ -r "$DNSCRYPT_PROXY_PLUGINS_FILE" ] &&
-  DNSCRYPT_PROXY_PLUGINS="$(cat "$DNSCRYPT_PROXY_PLUGINS_FILE")"
+[ -r "${DNSCRYPT_PROXY_PLUGINS_BASE_FILE}s.enabled" ] &&
+  DNSCRYPT_PROXY_PLUGINS="$(cat "$DNSCRYPT_PROXY_PLUGINS_BASE_FILE"[s-]*.enabled)"
 
 try_resolver() {
   local priority="$1"
