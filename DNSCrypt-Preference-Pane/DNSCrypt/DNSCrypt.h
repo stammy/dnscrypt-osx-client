@@ -49,6 +49,7 @@ typedef enum {
 @property (nonatomic, retain) IBOutlet WebView *releaseNotesWebView;
 @property (nonatomic, retain) IBOutlet WebView *feedbackWebView;
 @property (nonatomic, retain) IBOutlet WebView *aboutWebView;
+@property (nonatomic, retain) IBOutlet NSTextFieldCell *staticResolversTextField;
 
 - (void) mainViewDidLoad;
 
@@ -59,5 +60,6 @@ typedef enum {
 
 - (IBAction)openDNSLinkPushed:(NSButton *)sender;
 - (IBAction)uninstallPushed:(NSButton *)sender;
+- (IBAction)staticResolversTextFieldChanged:(NSTextField *)sender;
 
 @end

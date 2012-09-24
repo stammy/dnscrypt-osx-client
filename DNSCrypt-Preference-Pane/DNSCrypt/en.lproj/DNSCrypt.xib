@@ -842,7 +842,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 												<string key="NSFrame">{{511, 0}, {25, 25}}</string>
 												<reference key="NSSuperview" ref="42710935"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView"/>
+												<reference key="NSNextKeyView" ref="821865429"/>
 												<string key="NSReuseIdentifierKey">_NS:1598</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="933364045">
@@ -1327,6 +1327,22 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						<reference key="destination" ref="253280516"/>
 					</object>
 					<int key="connectionID">422</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">staticResolversTextFieldChanged:</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="1038497103"/>
+					</object>
+					<int key="connectionID">432</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">staticResolversTextField</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="684654118"/>
+					</object>
+					<int key="connectionID">433</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -2047,7 +2063,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">429</int>
+			<int key="maxID">433</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2060,6 +2076,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						<string key="familyShieldButtonPressed:">NSButton</string>
 						<string key="openDNSLinkPushed:">NSButton</string>
 						<string key="opendnsButtonPressed:">NSButton</string>
+						<string key="staticResolversTextFieldChanged:">NSTextField</string>
 						<string key="uninstallPushed:">NSButton</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
@@ -2083,6 +2100,10 @@ aW91cy5leGFtcGxlLm5ldA</string>
 							<string key="name">opendnsButtonPressed:</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
+						<object class="IBActionInfo" key="staticResolversTextFieldChanged:">
+							<string key="name">staticResolversTextFieldChanged:</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
 						<object class="IBActionInfo" key="uninstallPushed:">
 							<string key="name">uninstallPushed:</string>
 							<string key="candidateClassName">NSButton</string>
@@ -2100,6 +2121,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						<string key="previewNotesWebView">WebView</string>
 						<string key="releaseNotesTabViewItem">NSTabViewItem</string>
 						<string key="releaseNotesWebView">WebView</string>
+						<string key="staticResolversTextField">NSTextFieldCell</string>
 						<string key="statusImageView">NSImageView</string>
 						<string key="statusText">NSTextField</string>
 						<string key="tabView">NSTabView</string>
@@ -2148,6 +2170,10 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						<object class="IBToOneOutletInfo" key="releaseNotesWebView">
 							<string key="name">releaseNotesWebView</string>
 							<string key="candidateClassName">WebView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="staticResolversTextField">
+							<string key="name">staticResolversTextField</string>
+							<string key="candidateClassName">NSTextFieldCell</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="statusImageView">
 							<string key="name">statusImageView</string>

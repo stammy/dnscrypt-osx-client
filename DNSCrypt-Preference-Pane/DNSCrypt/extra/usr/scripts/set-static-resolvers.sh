@@ -13,5 +13,5 @@ done
 if [ "$servers" = "" ]; then
   rm -f "$STATIC_RESOLVERS_FILE"
 else
-  echo "$servers" > "$STATIC_RESOLVERS_FILE"
+  echo "$servers" | sed 's/^ *//;s/ *$//' > "$STATIC_RESOLVERS_FILE"
 fi

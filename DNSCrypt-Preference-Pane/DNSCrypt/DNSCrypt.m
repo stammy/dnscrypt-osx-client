@@ -12,12 +12,11 @@
 @synthesize tabView = _tabView;
 @synthesize aboutTabViewItem = _aboutTabViewItem;
 @synthesize releaseNotesTabViewItem = _releaseNotesTabViewItem;
-
 @synthesize previewNotesWebView = _previewNotesWebView;
 @synthesize releaseNotesWebView = _releaseNotesWebView;
 @synthesize feedbackWebView = _feedbackWebView;
 @synthesize aboutWebView = _aboutWebView;
-
+@synthesize staticResolversTextField = _staticResolversTextField;
 @synthesize dnscryptButton = _dnscryptButton;
 @synthesize opendnsButton = _opendnsButton;
 @synthesize fallbackButton = _fallbackButton;
@@ -82,6 +81,8 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     if ([res isEqualToString: @"yes"]) {
         [_fallbackButton setState: 1];
     }
+    res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-static-resolvers.sh", nil]];
+    [_staticResolversTextField setStringValue: res];
 }
 
 - (void) updateLedStatus
@@ -346,5 +347,13 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_BIN_BASE_DIR @"' && /usr/bin/open ./Uninstall.app", nil]];
 }
 
+- (IBAction)staticResolversTextFieldChanged:(NSTextField *)sender {
+    NSString *staticResolvers = sender.stringValue;
+    NSCharacterSet *charset = [[NSCharacterSet characterSetWithCharactersInString: @"0123456789abcdefABCDEF:. "] invertedSet];
+    staticResolvers = [[staticResolvers componentsSeparatedByCharactersInSet: charset] componentsJoinedByString: @" "];
+    sender.stringValue = staticResolvers;
+    setenv("STATIC_RESOLVERS", [staticResolvers UTF8String], 1);
+    [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./set-static-resolvers.sh \"$STATIC_RESOLVERS\"", staticResolvers, nil]];
+}
 
 @end
