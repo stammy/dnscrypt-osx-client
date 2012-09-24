@@ -580,7 +580,7 @@
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="402685960">
-													<int key="NSCellFlags">-2080374784</int>
+													<int key="NSCellFlags">67108864</int>
 													<int key="NSCellFlags2">268435456</int>
 													<string key="NSContents">Lock-in the current network settings and use them even on roaming</string>
 													<reference key="NSSupport" ref="831984564"/>
@@ -607,7 +607,7 @@
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="931675753">
-													<int key="NSCellFlags">-2080374784</int>
+													<int key="NSCellFlags">67108864</int>
 													<int key="NSCellFlags2">268435456</int>
 													<string key="NSContents">Advanced parental controls</string>
 													<reference key="NSSupport" ref="831984564"/>
@@ -634,7 +634,7 @@
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="164894774">
-													<int key="NSCellFlags">-2080374784</int>
+													<int key="NSCellFlags">67108864</int>
 													<int key="NSCellFlags2">268435456</int>
 													<string key="NSContents">Log DNS queries</string>
 													<reference key="NSSupport" ref="831984564"/>
