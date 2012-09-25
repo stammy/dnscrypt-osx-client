@@ -423,4 +423,8 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     }
 }
 
+- (IBAction)viewLogButtonPushed:(NSButton *)sender {
+    [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"open /Applications/Utilities/Console.app " kDNSCRYPT_QUERY_LOG_FILE " || open " kDNSCRYPT_QUERY_LOG_FILE, nil]];
+}
+
 @end

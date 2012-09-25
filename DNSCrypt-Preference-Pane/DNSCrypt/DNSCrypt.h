@@ -18,6 +18,8 @@
 #define kDNSCRYPT_VAR_BASE_DIR @"/Library/Application Support/DNSCrypt"
 #define kDNSCRYPT_CONTROL_DIR kDNSCRYPT_VAR_BASE_DIR @"/control"
 
+#define kDNSCRYPT_QUERY_LOG_FILE "/var/log/dnscrypt-query.log"
+
 #define kOPENDNS_URL @"http://www.opendns.com"
 
 #define kBUNDLE_IDENTIFIER @"com.opendns.osx.DNSCrypt"
@@ -65,5 +67,6 @@ typedef enum {
 - (IBAction)staticResolversTextFieldChanged:(NSTextField *)sender;
 - (IBAction)parentalControlsButtonPressed:(NSButtonCell *)sender;
 - (IBAction)queryLoggingButtonPressed:(NSButtonCell *)sender;
+- (IBAction)viewLogButtonPushed:(NSButton *)sender;
 
 @end

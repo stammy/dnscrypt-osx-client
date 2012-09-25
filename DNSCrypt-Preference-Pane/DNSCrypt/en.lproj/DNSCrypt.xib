@@ -1368,11 +1368,11 @@ aW91cy5leGFtcGxlLm5ldA</string>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">queryLoggingButtonPressed:</string>
+						<string key="label">viewLogButtonPushed:</string>
 						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="164894774"/>
+						<reference key="destination" ref="985341605"/>
 					</object>
-					<int key="connectionID">439</int>
+					<int key="connectionID">441</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -2093,7 +2093,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">439</int>
+			<int key="maxID">441</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2110,6 +2110,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						<string key="queryLoggingButtonPressed:">NSButtonCell</string>
 						<string key="staticResolversTextFieldChanged:">NSTextField</string>
 						<string key="uninstallPushed:">NSButton</string>
+						<string key="viewLogButtonPushed:">NSButton</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="dnscryptButtonPressed:">
@@ -2146,6 +2147,10 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						</object>
 						<object class="IBActionInfo" key="uninstallPushed:">
 							<string key="name">uninstallPushed:</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBActionInfo" key="viewLogButtonPushed:">
+							<string key="name">viewLogButtonPushed:</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
 					</dictionary>
