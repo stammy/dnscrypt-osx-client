@@ -1374,6 +1374,22 @@ aW91cy5leGFtcGxlLm5ldA</string>
 					</object>
 					<int key="connectionID">441</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">lockinButton</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="6419610"/>
+					</object>
+					<int key="connectionID">442</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">lockinButtonPressed:</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="6419610"/>
+					</object>
+					<int key="connectionID">443</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -2093,7 +2109,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">441</int>
+			<int key="maxID">443</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2104,6 +2120,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						<string key="dnscryptButtonPressed:">NSButton</string>
 						<string key="fallbackButtonPressed:">NSButton</string>
 						<string key="familyShieldButtonPressed:">NSButton</string>
+						<string key="lockinButtonPressed:">NSButton</string>
 						<string key="openDNSLinkPushed:">NSButton</string>
 						<string key="opendnsButtonPressed:">NSButton</string>
 						<string key="parentalControlsButtonPressed:">NSButtonCell</string>
@@ -2123,6 +2140,10 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						</object>
 						<object class="IBActionInfo" key="familyShieldButtonPressed:">
 							<string key="name">familyShieldButtonPressed:</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBActionInfo" key="lockinButtonPressed:">
+							<string key="name">lockinButtonPressed:</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
 						<object class="IBActionInfo" key="openDNSLinkPushed:">
@@ -2162,6 +2183,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						<string key="fallbackButton">NSButton</string>
 						<string key="familyShieldButton">NSButton</string>
 						<string key="feedbackWebView">WebView</string>
+						<string key="lockinButton">NSButton</string>
 						<string key="opendnsButton">NSButton</string>
 						<string key="parentalControlsButton">NSButton</string>
 						<string key="previewNotesWebView">WebView</string>
@@ -2201,6 +2223,10 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						<object class="IBToOneOutletInfo" key="feedbackWebView">
 							<string key="name">feedbackWebView</string>
 							<string key="candidateClassName">WebView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lockinButton">
+							<string key="name">lockinButton</string>
+							<string key="candidateClassName">NSButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="opendnsButton">
 							<string key="name">opendnsButton</string>

@@ -19,6 +19,7 @@
 @synthesize staticResolversTextField = _staticResolversTextField;
 @synthesize parentalControlsButton = _parentalControlsButton;
 @synthesize queryLoggingButton = _queryLoggingButton;
+@synthesize lockinButton = _lockinButton;
 @synthesize dnscryptButton = _dnscryptButton;
 @synthesize opendnsButton = _opendnsButton;
 @synthesize fallbackButton = _fallbackButton;
@@ -92,6 +93,10 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-query-logging-status.sh", nil]];
     if ([res isEqualToString: @"yes"]) {
         [_queryLoggingButton setState: 1];
+    }
+    res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-lockin-status.sh", nil]];
+    if ([res isEqualToString: @"yes"]) {
+        [_lockinButton setState: 1];
     }
 }
 
@@ -425,6 +430,28 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 
 - (IBAction)viewLogButtonPushed:(NSButton *)sender {
     [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"open /Applications/Utilities/Console.app " kDNSCRYPT_QUERY_LOG_FILE " || open " kDNSCRYPT_QUERY_LOG_FILE, nil]];
+}
+
+- (BOOL) setLockinOn {
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-lockin-on.sh", nil]];
+    (void) res;
+    return TRUE;
+}
+
+- (BOOL) setLockinOff {
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-lockin-off.sh", nil]];
+    (void) res;
+    return TRUE;
+}
+
+- (IBAction)lockinButtonPressed:(NSButton *)sender {
+    if (sender.state != 0) {
+        [self setLockinOn];
+    } else {
+        [self setLockinOff];
+    }
 }
 
 @end

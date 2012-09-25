@@ -54,6 +54,7 @@ typedef enum {
 @property (nonatomic, retain) IBOutlet NSTextFieldCell *staticResolversTextField;
 @property (nonatomic, retain) IBOutlet NSButton *parentalControlsButton;
 @property (nonatomic, retain) IBOutlet NSButtonCell *queryLoggingButton;
+@property (nonatomic, retain) IBOutlet NSButton *lockinButton;
 
 - (void) mainViewDidLoad;
 
@@ -68,5 +69,6 @@ typedef enum {
 - (IBAction)parentalControlsButtonPressed:(NSButtonCell *)sender;
 - (IBAction)queryLoggingButtonPressed:(NSButtonCell *)sender;
 - (IBAction)viewLogButtonPushed:(NSButton *)sender;
+- (IBAction)lockinButtonPressed:(NSButton *)sender;
 
 @end
