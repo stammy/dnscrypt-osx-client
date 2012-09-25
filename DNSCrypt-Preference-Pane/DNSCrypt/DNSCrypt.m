@@ -269,6 +269,18 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     [self performSelector: @selector(waitForUpdate) withObject: self afterDelay:kREFRESH_DELAY];
 }
 
+- (void) webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame {
+    if (sender != _feedbackWebView) {
+        return;
+    }
+    NSString *res;
+    res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"/usr/local/sbin/dnscrypt-proxy --version | head -n 1", nil]];
+    NSCharacterSet *charset = [NSCharacterSet characterSetWithCharactersInString: @"\r\n<>'"];
+    res = [[res componentsSeparatedByCharactersInSet: charset] componentsJoinedByString: @" "];
+    NSString *script = [NSString stringWithFormat: @"document.querySelector('textarea[name=feedback]').value='\\n\\n\\n--\\nVersion of the OpenDNS user interface for OSX: " kDNSCRYPT_PACKAGE_VERSION "\\n%@'", res];;
+    [sender stringByEvaluatingJavaScriptFromString: script];
+}
+
 - (void) mainViewDidLoad
 {
     currentState = kDNS_CONFIGURATION_UNKNOWN;
@@ -300,6 +312,7 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     [_feedbackWebView setDrawsBackground:false];
     [_feedbackWebView setShouldUpdateWhileOffscreen:true];
     [_feedbackWebView setUIDelegate:self];
+    [_feedbackWebView setFrameLoadDelegate: self];
     NSString *feedbackURLText = @"http://dnscrypt.opendns.com/feedback.php";
     [[_feedbackWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:feedbackURLText]]];
 
