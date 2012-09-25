@@ -9,7 +9,7 @@
 #import <PreferencePanes/PreferencePanes.h>
 #import <WebKit/WebKit.h>
 
-#define kDNSCRYPT_PACKAGE_VERSION @"0.16"
+#define kDNSCRYPT_PACKAGE_VERSION @"0.17"
 
 #define kDNSCRYPT_PREFPANE_APP_PATH @"/Library/PreferencePanes/DNSCrypt.prefPane"
 #define kDNSCRYPT_USR_BASE_DIR kDNSCRYPT_PREFPANE_APP_PATH @"/Contents/Resources/usr"
@@ -50,6 +50,7 @@ typedef enum {
 @property (nonatomic, retain) IBOutlet WebView *feedbackWebView;
 @property (nonatomic, retain) IBOutlet WebView *aboutWebView;
 @property (nonatomic, retain) IBOutlet NSTextFieldCell *staticResolversTextField;
+@property (nonatomic, retain) IBOutlet NSButton *parentalControlsButton;
 
 - (void) mainViewDidLoad;
 
@@ -61,5 +62,6 @@ typedef enum {
 - (IBAction)openDNSLinkPushed:(NSButton *)sender;
 - (IBAction)uninstallPushed:(NSButton *)sender;
 - (IBAction)staticResolversTextFieldChanged:(NSTextField *)sender;
+- (IBAction)parentalControlsButtonPressed:(NSButtonCell *)sender;
 
 @end

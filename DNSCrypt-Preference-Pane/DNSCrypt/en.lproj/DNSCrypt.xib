@@ -65,7 +65,6 @@
 							<string key="NSFrame">{{13, 10}, {563, 359}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="42710935"/>
 							<string key="NSReuseIdentifierKey">_NS:461</string>
 							<array class="NSMutableArray" key="NSTabViewItems">
 								<object class="NSTabViewItem" id="19707695">
@@ -842,7 +841,6 @@ aW91cy5leGFtcGxlLm5ldA</string>
 												<string key="NSFrame">{{511, 0}, {25, 25}}</string>
 												<reference key="NSSuperview" ref="42710935"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView"/>
 												<string key="NSReuseIdentifierKey">_NS:1598</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="933364045">
@@ -1343,6 +1341,22 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						<reference key="destination" ref="684654118"/>
 					</object>
 					<int key="connectionID">433</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">parentalControlsButton</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="763894061"/>
+					</object>
+					<int key="connectionID">434</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">parentalControlsButtonPressed:</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="931675753"/>
+					</object>
+					<int key="connectionID">436</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -2063,7 +2077,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">433</int>
+			<int key="maxID">436</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2076,6 +2090,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						<string key="familyShieldButtonPressed:">NSButton</string>
 						<string key="openDNSLinkPushed:">NSButton</string>
 						<string key="opendnsButtonPressed:">NSButton</string>
+						<string key="parentalControlsButtonPressed:">NSButtonCell</string>
 						<string key="staticResolversTextFieldChanged:">NSTextField</string>
 						<string key="uninstallPushed:">NSButton</string>
 					</dictionary>
@@ -2100,6 +2115,10 @@ aW91cy5leGFtcGxlLm5ldA</string>
 							<string key="name">opendnsButtonPressed:</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
+						<object class="IBActionInfo" key="parentalControlsButtonPressed:">
+							<string key="name">parentalControlsButtonPressed:</string>
+							<string key="candidateClassName">NSButtonCell</string>
+						</object>
 						<object class="IBActionInfo" key="staticResolversTextFieldChanged:">
 							<string key="name">staticResolversTextFieldChanged:</string>
 							<string key="candidateClassName">NSTextField</string>
@@ -2118,6 +2137,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						<string key="familyShieldButton">NSButton</string>
 						<string key="feedbackWebView">WebView</string>
 						<string key="opendnsButton">NSButton</string>
+						<string key="parentalControlsButton">NSButton</string>
 						<string key="previewNotesWebView">WebView</string>
 						<string key="releaseNotesTabViewItem">NSTabViewItem</string>
 						<string key="releaseNotesWebView">WebView</string>
@@ -2157,6 +2177,10 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="opendnsButton">
 							<string key="name">opendnsButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="parentalControlsButton">
+							<string key="name">parentalControlsButton</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="previewNotesWebView">

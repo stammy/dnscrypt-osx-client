@@ -17,6 +17,7 @@
 @synthesize feedbackWebView = _feedbackWebView;
 @synthesize aboutWebView = _aboutWebView;
 @synthesize staticResolversTextField = _staticResolversTextField;
+@synthesize parentalControlsButton = _parentalControlsButton;
 @synthesize dnscryptButton = _dnscryptButton;
 @synthesize opendnsButton = _opendnsButton;
 @synthesize fallbackButton = _fallbackButton;
@@ -83,6 +84,10 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     }
     res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-static-resolvers.sh", nil]];
     [_staticResolversTextField setStringValue: res];
+    res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-parental-controls-status.sh", nil]];
+    if ([res isEqualToString: @"yes"]) {
+        [_parentalControlsButton setState: 1];
+    }
 }
 
 - (void) updateLedStatus
@@ -367,6 +372,28 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     sender.stringValue = staticResolvers;
     setenv("STATIC_RESOLVERS", [staticResolvers UTF8String], 1);
     [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./set-static-resolvers.sh \"$STATIC_RESOLVERS\"", staticResolvers, nil]];
+}
+
+- (BOOL) setParentalControlsOn {
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-parental-controls-on.sh", nil]];
+    (void) res;
+    return TRUE;
+}
+
+- (BOOL) setParentalControlsOff {
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-parental-controls-off.sh", nil]];
+    (void) res;
+    return TRUE;
+}
+
+- (IBAction)parentalControlsButtonPressed:(NSButtonCell *)sender {
+    if (sender.state != 0) {
+        [self setParentalControlsOn];
+    } else {
+        [self setParentalControlsOff];
+    }
 }
 
 @end
