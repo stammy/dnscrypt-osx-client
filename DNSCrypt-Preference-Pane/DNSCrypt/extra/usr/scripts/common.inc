@@ -22,6 +22,7 @@ STATIC_RESOLVERS_FILE="${CONTROL_DIR}/static-resolvers"
 PLUGINS_ENABLED_FILE="${CONTROL_DIR}/plugins.enabled"
 PARENTAL_CONTROLS_FILE="${CONTROL_DIR}/plugin-parental-controls.enabled"
 QUERY_LOGGING_FILE="${CONTROL_DIR}/plugin-query-logging.enabled"
+LOCKIN_FILE="${CONTROL_DIR}/plugin-lockin.enabled"
 
 QUERY_LOG_FILE="/var/log/dnscrypt-query.log"
 
