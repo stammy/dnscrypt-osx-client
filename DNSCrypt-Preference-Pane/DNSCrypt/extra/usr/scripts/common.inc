@@ -18,9 +18,12 @@ HANDLERS_LOCK_FILE="/var/run/dnscrypt-handlers.lock"
 DOMAINS_EXCEPTIONS_FILE="${CONTROL_DIR}/domains-exceptions"
 DNSCRYPT_PROXY_PLUGINS_BASE_FILE="${CONTROL_DIR}/plugin"
 STATIC_RESOLVERS_FILE="${CONTROL_DIR}/static-resolvers"
+
 PLUGINS_ENABLED_FILE="${CONTROL_DIR}/plugins.enabled"
 PARENTAL_CONTROLS_FILE="${CONTROL_DIR}/plugin-parental-controls.enabled"
+QUERY_LOGGING_FILE="${CONTROL_DIR}/plugin-query-logging.enabled"
 
+QUERY_LOG_FILE="/var/log/dnscrypt-query.log"
 
 INTERFACE_UNBOUND="127.0.0.53"
 INTERFACE_UNBOUND_MASK="24"

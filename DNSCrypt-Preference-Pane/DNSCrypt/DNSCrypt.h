@@ -51,6 +51,7 @@ typedef enum {
 @property (nonatomic, retain) IBOutlet WebView *aboutWebView;
 @property (nonatomic, retain) IBOutlet NSTextFieldCell *staticResolversTextField;
 @property (nonatomic, retain) IBOutlet NSButton *parentalControlsButton;
+@property (nonatomic, retain) IBOutlet NSButtonCell *queryLoggingButton;
 
 - (void) mainViewDidLoad;
 
@@ -63,5 +64,6 @@ typedef enum {
 - (IBAction)uninstallPushed:(NSButton *)sender;
 - (IBAction)staticResolversTextFieldChanged:(NSTextField *)sender;
 - (IBAction)parentalControlsButtonPressed:(NSButtonCell *)sender;
+- (IBAction)queryLoggingButtonPressed:(NSButtonCell *)sender;
 
 @end

@@ -1358,6 +1358,22 @@ aW91cy5leGFtcGxlLm5ldA</string>
 					</object>
 					<int key="connectionID">436</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">queryLoggingButton</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="164894774"/>
+					</object>
+					<int key="connectionID">437</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">queryLoggingButtonPressed:</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="164894774"/>
+					</object>
+					<int key="connectionID">439</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -2077,7 +2093,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">436</int>
+			<int key="maxID">439</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2091,6 +2107,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						<string key="openDNSLinkPushed:">NSButton</string>
 						<string key="opendnsButtonPressed:">NSButton</string>
 						<string key="parentalControlsButtonPressed:">NSButtonCell</string>
+						<string key="queryLoggingButtonPressed:">NSButtonCell</string>
 						<string key="staticResolversTextFieldChanged:">NSTextField</string>
 						<string key="uninstallPushed:">NSButton</string>
 					</dictionary>
@@ -2119,6 +2136,10 @@ aW91cy5leGFtcGxlLm5ldA</string>
 							<string key="name">parentalControlsButtonPressed:</string>
 							<string key="candidateClassName">NSButtonCell</string>
 						</object>
+						<object class="IBActionInfo" key="queryLoggingButtonPressed:">
+							<string key="name">queryLoggingButtonPressed:</string>
+							<string key="candidateClassName">NSButtonCell</string>
+						</object>
 						<object class="IBActionInfo" key="staticResolversTextFieldChanged:">
 							<string key="name">staticResolversTextFieldChanged:</string>
 							<string key="candidateClassName">NSTextField</string>
@@ -2139,6 +2160,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						<string key="opendnsButton">NSButton</string>
 						<string key="parentalControlsButton">NSButton</string>
 						<string key="previewNotesWebView">WebView</string>
+						<string key="queryLoggingButton">NSButtonCell</string>
 						<string key="releaseNotesTabViewItem">NSTabViewItem</string>
 						<string key="releaseNotesWebView">WebView</string>
 						<string key="staticResolversTextField">NSTextFieldCell</string>
@@ -2186,6 +2208,10 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						<object class="IBToOneOutletInfo" key="previewNotesWebView">
 							<string key="name">previewNotesWebView</string>
 							<string key="candidateClassName">WebView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="queryLoggingButton">
+							<string key="name">queryLoggingButton</string>
+							<string key="candidateClassName">NSButtonCell</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="releaseNotesTabViewItem">
 							<string key="name">releaseNotesTabViewItem</string>

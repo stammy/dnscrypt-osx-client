@@ -18,6 +18,7 @@
 @synthesize aboutWebView = _aboutWebView;
 @synthesize staticResolversTextField = _staticResolversTextField;
 @synthesize parentalControlsButton = _parentalControlsButton;
+@synthesize queryLoggingButton = _queryLoggingButton;
 @synthesize dnscryptButton = _dnscryptButton;
 @synthesize opendnsButton = _opendnsButton;
 @synthesize fallbackButton = _fallbackButton;
@@ -87,6 +88,10 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-parental-controls-status.sh", nil]];
     if ([res isEqualToString: @"yes"]) {
         [_parentalControlsButton setState: 1];
+    }
+    res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-query-logging-status.sh", nil]];
+    if ([res isEqualToString: @"yes"]) {
+        [_queryLoggingButton setState: 1];
     }
 }
 
@@ -393,6 +398,28 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
         [self setParentalControlsOn];
     } else {
         [self setParentalControlsOff];
+    }
+}
+
+- (BOOL) setQueryLoggingOn {
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-query-logging-on.sh", nil]];
+    (void) res;
+    return TRUE;
+}
+
+- (BOOL) setQueryLoggingOff {
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-query-logging-off.sh", nil]];
+    (void) res;
+    return TRUE;
+}
+
+- (IBAction)queryLoggingButtonPressed:(NSButtonCell *)sender {
+    if (sender.state != 0) {
+        [self setQueryLoggingOn];
+    } else {
+        [self setQueryLoggingOff];
     }
 }
 
