@@ -277,7 +277,7 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"/usr/local/sbin/dnscrypt-proxy --version | head -n 1", nil]];
     NSCharacterSet *charset = [NSCharacterSet characterSetWithCharactersInString: @"\r\n<>'"];
     res = [[res componentsSeparatedByCharactersInSet: charset] componentsJoinedByString: @" "];
-    NSString *script = [NSString stringWithFormat: @"document.querySelector('textarea[name=feedback]').value='\\n\\n\\n--\\nVersion of the OpenDNS user interface for OSX: " kDNSCRYPT_PACKAGE_VERSION "\\n%@'", res];;
+    NSString *script = [NSString stringWithFormat: @"document.querySelector('textarea[name=feedback]').value='\\n\\n\\n--\\nOpenDNS user interface for OSX " kDNSCRYPT_PACKAGE_VERSION "\\n%@'", res];;
     [sender stringByEvaluatingJavaScriptFromString: script];
 }
 
