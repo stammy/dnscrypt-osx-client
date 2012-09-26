@@ -465,11 +465,26 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     }
 }
 
+- (BOOL) updateBlacklistIPs {
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./update-blacklist-ips.sh", nil]];
+    (void) res;
+    return TRUE;
+}
+
 - (IBAction)blacklistIPsUpdated:(NSTextField *)sender {
     NSString *content = sender.stringValue;
     if ([content writeToFile: kDNSCRYPT_BLACKLIST_IPS_TMP_FILE atomically: YES encoding: NSUTF8StringEncoding error: nil] != YES) {
         return;
     }
+    [self updateBlacklistIPs];
+}
+
+- (BOOL) updateBlacklistDomains {
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./update-blacklist-domains.sh", nil]];
+    (void) res;
+    return TRUE;
 }
 
 - (IBAction)blacklistDomainsUpdated:(NSTextField *)sender {
@@ -477,6 +492,7 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     if ([content writeToFile: kDNSCRYPT_BLACKLIST_DOMAINS_TMP_FILE atomically: YES encoding: NSUTF8StringEncoding error: nil] != YES) {
         return;
     }
+    [self updateBlacklistDomains];
 }
 
 @end
