@@ -18,7 +18,9 @@
 #define kDNSCRYPT_VAR_BASE_DIR @"/Library/Application Support/DNSCrypt"
 #define kDNSCRYPT_CONTROL_DIR kDNSCRYPT_VAR_BASE_DIR @"/control"
 
-#define kDNSCRYPT_QUERY_LOG_FILE "/var/log/dnscrypt-query.log"
+#define kDNSCRYPT_QUERY_LOG_FILE @"/var/log/dnscrypt-query.log"
+#define kDNSCRYPT_BLACKLIST_IPS_TMP_FILE kDNSCRYPT_CONTROL_DIR @"/blacklist-ips.tmp"
+#define kDNSCRYPT_BLACKLIST_DOMAINS_TMP_FILE kDNSCRYPT_CONTROL_DIR @"/blacklist-domains.tmp"
 
 #define kOPENDNS_URL @"http://www.opendns.com"
 
@@ -55,6 +57,8 @@ typedef enum {
 @property (nonatomic, retain) IBOutlet NSButton *parentalControlsButton;
 @property (nonatomic, retain) IBOutlet NSButtonCell *queryLoggingButton;
 @property (nonatomic, retain) IBOutlet NSButton *lockinButton;
+@property (nonatomic, retain) IBOutlet NSTextField *blacklistIPsTextField;
+@property (nonatomic, retain) IBOutlet NSTextField *blacklistDomainsTextField;
 
 - (void) mainViewDidLoad;
 
@@ -70,5 +74,7 @@ typedef enum {
 - (IBAction)queryLoggingButtonPressed:(NSButtonCell *)sender;
 - (IBAction)viewLogButtonPushed:(NSButton *)sender;
 - (IBAction)lockinButtonPressed:(NSButton *)sender;
+- (IBAction)blacklistIPsUpdated:(NSTextField *)sender;
+- (IBAction)blacklistDomainsUpdated:(NSTextField *)sender;
 
 @end

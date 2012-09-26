@@ -678,7 +678,7 @@
 											<object class="NSTextField" id="25489948">
 												<reference key="NSNextResponder" ref="42710935"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{9, 32}, {169, 135}}</string>
+												<string key="NSFrame">{{9, 26}, {169, 141}}</string>
 												<reference key="NSSuperview" ref="42710935"/>
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="583617410"/>
@@ -710,7 +710,7 @@ LjQzLjEwCjo6MQ</string>
 											<object class="NSTextField" id="583617410">
 												<reference key="NSNextResponder" ref="42710935"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{187, 32}, {169, 135}}</string>
+												<string key="NSFrame">{{187, 26}, {169, 141}}</string>
 												<reference key="NSSuperview" ref="42710935"/>
 												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="902108600"/>
@@ -738,10 +738,9 @@ aW91cy5leGFtcGxlLm5ldA</string>
 											<object class="NSTextField" id="902108600">
 												<reference key="NSNextResponder" ref="42710935"/>
 												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{365, 32}, {169, 135}}</string>
+												<string key="NSFrame">{{365, 26}, {169, 141}}</string>
 												<reference key="NSSuperview" ref="42710935"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="262532167"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<string key="NSAntiCompressionPriority">{250, 750}</string>
 												<bool key="NSEnabled">YES</bool>
@@ -852,31 +851,6 @@ aW91cy5leGFtcGxlLm5ldA</string>
 													<reference key="NSControlView" ref="988915282"/>
 													<int key="NSButtonFlags">-2038415360</int>
 													<int key="NSButtonFlags2">161</int>
-													<string key="NSAlternateContents"/>
-													<string key="NSKeyEquivalent"/>
-													<int key="NSPeriodicDelay">200</int>
-													<int key="NSPeriodicInterval">25</int>
-												</object>
-												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-											</object>
-											<object class="NSButton" id="262532167">
-												<reference key="NSNextResponder" ref="42710935"/>
-												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{145, -4}, {252, 32}}</string>
-												<reference key="NSSuperview" ref="42710935"/>
-												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="960794720"/>
-												<string key="NSReuseIdentifierKey">_NS:9</string>
-												<bool key="NSEnabled">YES</bool>
-												<object class="NSButtonCell" key="NSCell" id="532204951">
-													<int key="NSCellFlags">67108864</int>
-													<int key="NSCellFlags2">134217728</int>
-													<string key="NSContents">Save and apply advanced settings</string>
-													<reference key="NSSupport" ref="831984564"/>
-													<string key="NSCellIdentifier">_NS:9</string>
-													<reference key="NSControlView" ref="262532167"/>
-													<int key="NSButtonFlags">-2038284288</int>
-													<int key="NSButtonFlags2">129</int>
 													<string key="NSAlternateContents"/>
 													<string key="NSKeyEquivalent"/>
 													<int key="NSPeriodicDelay">200</int>
@@ -1390,6 +1364,46 @@ aW91cy5leGFtcGxlLm5ldA</string>
 					</object>
 					<int key="connectionID">443</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">blacklistIPsTextField</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="25489948"/>
+					</object>
+					<int key="connectionID">444</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">blacklistIPsUpdated:</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="25489948"/>
+					</object>
+					<int key="connectionID">445</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">blacklistDomainsTextField</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="583617410"/>
+					</object>
+					<int key="connectionID">446</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">blacklistDomainsUpdated:</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="583617410"/>
+					</object>
+					<int key="connectionID">447</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">queryLoggingButtonPressed:</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="164894774"/>
+					</object>
+					<int key="connectionID">448</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -1733,17 +1747,16 @@ aW91cy5leGFtcGxlLm5ldA</string>
 							<reference ref="546014897"/>
 							<reference ref="567741681"/>
 							<reference ref="988915282"/>
-							<reference ref="262532167"/>
 							<reference ref="1038497103"/>
 							<reference ref="6419610"/>
 							<reference ref="763894061"/>
 							<reference ref="679502487"/>
-							<reference ref="985341605"/>
 							<reference ref="826224678"/>
 							<reference ref="960794720"/>
 							<reference ref="30650809"/>
 							<reference ref="902108600"/>
 							<reference ref="583617410"/>
+							<reference ref="985341605"/>
 						</array>
 						<reference key="parent" ref="359976024"/>
 					</object>
@@ -1917,19 +1930,6 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						<reference key="parent" ref="988915282"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">418</int>
-						<reference key="object" ref="262532167"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="532204951"/>
-						</array>
-						<reference key="parent" ref="42710935"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">419</int>
-						<reference key="object" ref="532204951"/>
-						<reference key="parent" ref="262532167"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">420</int>
 						<reference key="object" ref="253280516"/>
 						<array class="NSMutableArray" key="children">
@@ -2087,8 +2087,6 @@ aW91cy5leGFtcGxlLm5ldA</string>
 				<string key="415.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="416.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="417.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="418.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="419.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="420.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="421.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="423.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2109,7 +2107,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">443</int>
+			<int key="maxID">448</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2117,6 +2115,8 @@ aW91cy5leGFtcGxlLm5ldA</string>
 					<string key="className">DNSCrypt</string>
 					<string key="superclassName">NSPreferencePane</string>
 					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="blacklistDomainsUpdated:">NSTextField</string>
+						<string key="blacklistIPsUpdated:">NSTextField</string>
 						<string key="dnscryptButtonPressed:">NSButton</string>
 						<string key="fallbackButtonPressed:">NSButton</string>
 						<string key="familyShieldButtonPressed:">NSButton</string>
@@ -2130,6 +2130,14 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						<string key="viewLogButtonPushed:">NSButton</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="blacklistDomainsUpdated:">
+							<string key="name">blacklistDomainsUpdated:</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBActionInfo" key="blacklistIPsUpdated:">
+							<string key="name">blacklistIPsUpdated:</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
 						<object class="IBActionInfo" key="dnscryptButtonPressed:">
 							<string key="name">dnscryptButtonPressed:</string>
 							<string key="candidateClassName">NSButton</string>
@@ -2178,6 +2186,8 @@ aW91cy5leGFtcGxlLm5ldA</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="aboutTabViewItem">NSTabViewItem</string>
 						<string key="aboutWebView">WebView</string>
+						<string key="blacklistDomainsTextField">NSTextField</string>
+						<string key="blacklistIPsTextField">NSTextField</string>
 						<string key="currentResolverTextField">NSTextField</string>
 						<string key="dnscryptButton">NSButton</string>
 						<string key="fallbackButton">NSButton</string>
@@ -2203,6 +2213,14 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						<object class="IBToOneOutletInfo" key="aboutWebView">
 							<string key="name">aboutWebView</string>
 							<string key="candidateClassName">WebView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="blacklistDomainsTextField">
+							<string key="name">blacklistDomainsTextField</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="blacklistIPsTextField">
+							<string key="name">blacklistIPsTextField</string>
+							<string key="candidateClassName">NSTextField</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="currentResolverTextField">
 							<string key="name">currentResolverTextField</string>

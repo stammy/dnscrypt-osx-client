@@ -20,6 +20,8 @@
 @synthesize parentalControlsButton = _parentalControlsButton;
 @synthesize queryLoggingButton = _queryLoggingButton;
 @synthesize lockinButton = _lockinButton;
+@synthesize blacklistIPsTextField = _blacklistIPsTextField;
+@synthesize blacklistDomainsTextField = _blacklistDomainsTextField;
 @synthesize dnscryptButton = _dnscryptButton;
 @synthesize opendnsButton = _opendnsButton;
 @synthesize fallbackButton = _fallbackButton;
@@ -97,6 +99,15 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-lockin-status.sh", nil]];
     if ([res isEqualToString: @"yes"]) {
         [_lockinButton setState: 1];
+    }
+    NSString *fileContent;
+    fileContent = [NSString stringWithContentsOfFile: kDNSCRYPT_BLACKLIST_IPS_TMP_FILE encoding:NSUTF8StringEncoding error: nil];
+    if (fileContent != nil) {
+        [_blacklistIPsTextField setStringValue: fileContent];
+    }
+    fileContent = [NSString stringWithContentsOfFile: kDNSCRYPT_BLACKLIST_DOMAINS_TMP_FILE encoding:NSUTF8StringEncoding error: nil];
+    if (fileContent != nil) {
+        [_blacklistDomainsTextField setStringValue: fileContent];
     }
 }
 
@@ -451,6 +462,20 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
         [self setLockinOn];
     } else {
         [self setLockinOff];
+    }
+}
+
+- (IBAction)blacklistIPsUpdated:(NSTextField *)sender {
+    NSString *content = sender.stringValue;
+    if ([content writeToFile: kDNSCRYPT_BLACKLIST_IPS_TMP_FILE atomically: YES encoding: NSUTF8StringEncoding error: nil] != YES) {
+        return;
+    }
+}
+
+- (IBAction)blacklistDomainsUpdated:(NSTextField *)sender {
+    NSString *content = sender.stringValue;
+    if ([content writeToFile: kDNSCRYPT_BLACKLIST_DOMAINS_TMP_FILE atomically: YES encoding: NSUTF8StringEncoding error: nil] != YES) {
+        return;
     }
 }
 

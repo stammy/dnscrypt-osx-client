@@ -23,8 +23,11 @@ PLUGINS_ENABLED_FILE="${CONTROL_DIR}/plugins.enabled"
 PARENTAL_CONTROLS_FILE="${CONTROL_DIR}/plugin-parental-controls.enabled"
 QUERY_LOGGING_FILE="${CONTROL_DIR}/plugin-query-logging.enabled"
 LOCKIN_FILE="${CONTROL_DIR}/plugin-lockin.enabled"
+BLOCKING_FILE="${CONTROL_DIR}/plugin-blocking.enabled"
 
 QUERY_LOG_FILE="/var/log/dnscrypt-query.log"
+BLACKLIST_IPS_FILE="${CONTROL_DIR}/blacklist-ips"
+BLACKLIST_DOMAINS_FILE="${CONTROL_DIR}/blacklist-domains"
 
 INTERFACE_UNBOUND="127.0.0.53"
 INTERFACE_UNBOUND_MASK="24"
