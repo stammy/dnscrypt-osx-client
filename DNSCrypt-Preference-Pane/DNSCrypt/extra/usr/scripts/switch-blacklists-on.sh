@@ -8,7 +8,7 @@ plugin_args=''
   plugin_args="${plugin_args},--ips='${BLACKLIST_IPS_FILE}'"
 
 [ -s "$BLACKLIST_DOMAINS_FILE" ] && \
-  plugin_args="${plugin_args},--ips='${BLACKLIST_DOMAINS_FILE}'"
+  plugin_args="${plugin_args},--domains='${BLACKLIST_DOMAINS_FILE}'"
 
 [ -z "$plugin_args" ] && exec ./switch-blacklists-off.sh
 
