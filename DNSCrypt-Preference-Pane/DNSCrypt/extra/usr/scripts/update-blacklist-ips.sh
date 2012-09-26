@@ -3,7 +3,7 @@
 . ./common.inc
 
 if [ ! -s "$BLACKLIST_IPS_TMP_FILE" ]; then
-  rm -f "$BLACKLIST_IPS_FILE"
+  rm -f "$BLACKLIST_IPS_FILE" "$BLACKLIST_IPS_TMP_FILE"
   exec ./switch-blacklists-on.sh
 fi
 

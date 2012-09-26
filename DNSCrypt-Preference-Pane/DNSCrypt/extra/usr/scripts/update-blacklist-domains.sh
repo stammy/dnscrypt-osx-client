@@ -3,7 +3,7 @@
 . ./common.inc
 
 if [ ! -s "$BLACKLIST_DOMAINS_TMP_FILE" ]; then
-  rm -f "$BLACKLIST_DOMAINS_FILE"
+  rm -f "$BLACKLIST_DOMAINS_FILE" "$BLACKLIST_DOMAINS_TMP_FILE"
   exec ./switch-blacklists-on.sh
 fi
 
