@@ -22,10 +22,6 @@ mkdir -p -- "$DESCRIPTIONS_DIR" || exit 1
 PID_DIR="${PROBES_BASE_DIR}/pids" || exit 1
 mkdir -p -- "$PID_DIR" || exit 1
 
-DNSCRYPT_PROXY_PLUGINS=""
-[ -r "${DNSCRYPT_PROXY_PLUGINS_BASE_FILE}s.enabled" ] &&
-  DNSCRYPT_PROXY_PLUGINS="$(cat "$DNSCRYPT_PROXY_PLUGINS_BASE_FILE"[s-]*.enabled)"
-
 try_resolver() {
   local priority="$1"
   shift
@@ -52,6 +48,20 @@ try_resolver() {
       *) ;;
     esac
   done
+}
+
+get_plugin_args() {
+  cat "$DNSCRYPT_PROXY_PLUGINS_BASE_FILE"[s-]*.enabled | { \
+    local plugin_args=''
+    local quoted_line
+
+    while read line; do
+      case "$line" in
+        libdcplugin_*) plugin_args="${plugin_args} --plugin=${line}" ;;
+      esac
+    done
+    echo "$plugin_args"
+  }
 }
 
 ./stop-dnscrypt-proxy.sh
@@ -87,7 +97,7 @@ if [ x"$ipv6_supported" = "xyes" ]; then
   wait_pids="$wait_pids $!"
   try_resolver 5002 'OpenDNS IPv6 using DNSCrypt on TCP port 443' \
     "--resolver-address=[2620:0:ccc::2]:443 --tcp-only" &
-  wait_pids="$wait_pids $!"    
+  wait_pids="$wait_pids $!"
   try_resolver 5003 'OpenDNS IPv6 using DNSCrypt on TCP port 53' \
     "--resolver-address=[2620:0:ccc::2]:53 --tcp-only" &
   wait_pids="$wait_pids $!"
@@ -97,13 +107,13 @@ try_resolver 5004 'OpenDNS using DNSCrypt on UDP port 443' \
 wait_pids="$wait_pids $!"
 try_resolver 5005 'OpenDNS using DNSCrypt on UDP port 53' \
   "--resolver-address=208.67.220.220:53" &
-wait_pids="$wait_pids $!"    
+wait_pids="$wait_pids $!"
 try_resolver 5006 'OpenDNS using DNSCrypt on TCP port 443' \
   "--resolver-address=208.67.220.220:443 --tcp-only" &
-wait_pids="$wait_pids $!"    
+wait_pids="$wait_pids $!"
 try_resolver 5007 'OpenDNS using DNSCrypt on TCP port 53' \
   "--resolver-address=208.67.220.220:53 --tcp-only" &
-wait_pids="$wait_pids $!"    
+wait_pids="$wait_pids $!"
 
 for pid in $wait_pids; do
   wait $pid
@@ -114,11 +124,11 @@ done
 [ x"$best_file" = "x" ] && exit 1
 
 plugins_args=''
-for plugin in $DNSCRYPT_PROXY_PLUGINS; do
-  plugin_args="${plugin_args} --plugin=${plugin}"
-done
-
+if [ -r "${DNSCRYPT_PROXY_PLUGINS_BASE_FILE}s.enabled" ]; then
+  plugin_args=$(get_plugin_args)
+fi
 best_args=$(cat "${RES_DIR}/${best_file}")
+
 eval dnscrypt-proxy $best_args --local-address="$INTERFACE_PROXY" \
   --pidfile="$PROXY_PID_FILE" --user=daemon --daemonize $plugin_args
 
