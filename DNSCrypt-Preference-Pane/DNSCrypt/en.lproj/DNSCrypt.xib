@@ -65,6 +65,7 @@
 							<string key="NSFrame">{{13, 10}, {563, 359}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="42710935"/>
 							<string key="NSReuseIdentifierKey">_NS:461</string>
 							<array class="NSMutableArray" key="NSTabViewItems">
 								<object class="NSTabViewItem" id="19707695">
@@ -466,9 +467,16 @@
 												<object class="WebPreferences" key="Preferences" id="260726250">
 													<string key="Identifier"/>
 													<dictionary class="NSMutableDictionary" key="Values">
+														<boolean value="NO" key="WebKitAllowAnimatedImageLoopingPreferenceKey"/>
+														<boolean value="NO" key="WebKitAllowAnimatedImagesPreferenceKey"/>
 														<integer value="12" key="WebKitDefaultFixedFontSize"/>
 														<integer value="12" key="WebKitDefaultFontSize"/>
+														<boolean value="NO" key="WebKitDisplayImagesKey"/>
+														<boolean value="NO" key="WebKitJavaEnabled"/>
+														<boolean value="NO" key="WebKitJavaScriptCanOpenWindowsAutomatically"/>
+														<boolean value="NO" key="WebKitJavaScriptEnabled"/>
 														<integer value="1" key="WebKitMinimumFontSize"/>
+														<boolean value="NO" key="WebKitPluginsEnabled"/>
 													</dictionary>
 												</object>
 												<bool key="UseBackForwardList">YES</bool>
@@ -575,7 +583,7 @@
 												<string key="NSFrame">{{6, 215}, {455, 18}}</string>
 												<reference key="NSSuperview" ref="42710935"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="11113535"/>
+												<reference key="NSNextKeyView" ref="30650809"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="402685960">
@@ -768,7 +776,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 												<string key="NSFrame">{{6, 170}, {175, 34}}</string>
 												<reference key="NSSuperview" ref="42710935"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="228385556"/>
+												<reference key="NSNextKeyView" ref="546014897"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<string key="NSAntiCompressionPriority">{250, 750}</string>
 												<bool key="NSEnabled">YES</bool>
@@ -887,7 +895,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 												<string key="NSFrame">{{8, 206}, {526, 5}}</string>
 												<reference key="NSSuperview" ref="42710935"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="546014897"/>
+												<reference key="NSNextKeyView" ref="11113535"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<string key="NSOffsets">{0, 0}</string>
 												<object class="NSTextFieldCell" key="NSTitleCell">
@@ -938,10 +946,13 @@ aW91cy5leGFtcGxlLm5ldA</string>
 													<dictionary class="NSMutableDictionary" key="Values">
 														<boolean value="NO" key="helpWebViewWebKitAllowAnimatedImageLoopingPreferenceKey"/>
 														<boolean value="NO" key="helpWebViewWebKitAllowAnimatedImagesPreferenceKey"/>
+														<integer value="12" key="helpWebViewWebKitDefaultFixedFontSize"/>
+														<integer value="12" key="helpWebViewWebKitDefaultFontSize"/>
 														<boolean value="NO" key="helpWebViewWebKitDisplayImagesKey"/>
 														<boolean value="NO" key="helpWebViewWebKitJavaEnabled"/>
 														<boolean value="NO" key="helpWebViewWebKitJavaScriptCanOpenWindowsAutomatically"/>
 														<boolean value="NO" key="helpWebViewWebKitJavaScriptEnabled"/>
+														<integer value="1" key="helpWebViewWebKitMinimumFontSize"/>
 														<boolean value="NO" key="helpWebViewWebKitPluginsEnabled"/>
 													</dictionary>
 												</object>
@@ -952,7 +963,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 										<string key="NSFrame">{{10, 33}, {543, 313}}</string>
 										<reference key="NSSuperview" ref="821865429"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="826224678"/>
+										<reference key="NSNextKeyView" ref="228385556"/>
 									</object>
 									<string key="NSLabel">Advanced</string>
 									<reference key="NSColor" ref="281676087"/>
@@ -991,7 +1002,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 												<string key="FrameName"/>
 												<string key="GroupName"/>
 												<reference key="Preferences" ref="260726250"/>
-												<bool key="UseBackForwardList">YES</bool>
+												<bool key="UseBackForwardList">NO</bool>
 												<bool key="AllowsUndo">YES</bool>
 											</object>
 											<object class="NSButton" id="231106999">
@@ -1086,7 +1097,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 												<string key="FrameName"/>
 												<string key="GroupName"/>
 												<reference key="Preferences" ref="260726250"/>
-												<bool key="UseBackForwardList">YES</bool>
+												<bool key="UseBackForwardList">NO</bool>
 												<bool key="AllowsUndo">YES</bool>
 											</object>
 										</array>
@@ -1131,7 +1142,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 												<string key="FrameName"/>
 												<string key="GroupName"/>
 												<reference key="Preferences" ref="260726250"/>
-												<bool key="UseBackForwardList">YES</bool>
+												<bool key="UseBackForwardList">NO</bool>
 												<bool key="AllowsUndo">YES</bool>
 											</object>
 										</array>
