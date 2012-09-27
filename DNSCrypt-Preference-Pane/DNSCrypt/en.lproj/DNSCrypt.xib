@@ -65,7 +65,6 @@
 							<string key="NSFrame">{{13, 10}, {563, 359}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="42710935"/>
 							<string key="NSReuseIdentifierKey">_NS:461</string>
 							<array class="NSMutableArray" key="NSTabViewItems">
 								<object class="NSTabViewItem" id="19707695">
@@ -854,7 +853,6 @@ aW91cy5leGFtcGxlLm5ldA</string>
 												<string key="NSFrame">{{511, 0}, {25, 25}}</string>
 												<reference key="NSSuperview" ref="42710935"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView"/>
 												<string key="NSReuseIdentifierKey">_NS:1598</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="933364045">
@@ -1448,6 +1446,22 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						<reference key="destination" ref="988915282"/>
 					</object>
 					<int key="connectionID">451</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">exceptionsTextField</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="902108600"/>
+					</object>
+					<int key="connectionID">452</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">exceptionsUpdated:</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="902108600"/>
+					</object>
+					<int key="connectionID">453</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -2147,7 +2161,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">451</int>
+			<int key="maxID">453</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2158,6 +2172,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						<string key="blacklistDomainsUpdated:">NSTextField</string>
 						<string key="blacklistIPsUpdated:">NSTextField</string>
 						<string key="dnscryptButtonPressed:">NSButton</string>
+						<string key="exceptionsUpdated:">NSTextField</string>
 						<string key="fallbackButtonPressed:">NSButton</string>
 						<string key="familyShieldButtonPressed:">NSButton</string>
 						<string key="helpButtonPressed:">NSButton</string>
@@ -2182,6 +2197,10 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						<object class="IBActionInfo" key="dnscryptButtonPressed:">
 							<string key="name">dnscryptButtonPressed:</string>
 							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBActionInfo" key="exceptionsUpdated:">
+							<string key="name">exceptionsUpdated:</string>
+							<string key="candidateClassName">NSTextField</string>
 						</object>
 						<object class="IBActionInfo" key="fallbackButtonPressed:">
 							<string key="name">fallbackButtonPressed:</string>
@@ -2235,6 +2254,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						<string key="blacklistIPsTextField">NSTextField</string>
 						<string key="currentResolverTextField">NSTextField</string>
 						<string key="dnscryptButton">NSButton</string>
+						<string key="exceptionsTextField">NSTextField</string>
 						<string key="fallbackButton">NSButton</string>
 						<string key="familyShieldButton">NSButton</string>
 						<string key="feedbackWebView">WebView</string>
@@ -2275,6 +2295,10 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						<object class="IBToOneOutletInfo" key="dnscryptButton">
 							<string key="name">dnscryptButton</string>
 							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="exceptionsTextField">
+							<string key="name">exceptionsTextField</string>
+							<string key="candidateClassName">NSTextField</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="fallbackButton">
 							<string key="name">fallbackButton</string>

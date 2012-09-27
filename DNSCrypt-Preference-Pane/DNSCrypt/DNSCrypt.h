@@ -21,6 +21,7 @@
 #define kDNSCRYPT_QUERY_LOG_FILE @"/var/log/dnscrypt-query.log"
 #define kDNSCRYPT_BLACKLIST_IPS_TMP_FILE kDNSCRYPT_CONTROL_DIR @"/blacklist-ips.tmp"
 #define kDNSCRYPT_BLACKLIST_DOMAINS_TMP_FILE kDNSCRYPT_CONTROL_DIR @"/blacklist-domains.tmp"
+#define kDNSCRYPT_EXCEPTIONS_TMP_FILE kDNSCRYPT_CONTROL_DIR @"/exceptions.tmp"
 
 #define kOPENDNS_URL @"http://www.opendns.com"
 
@@ -59,6 +60,7 @@ typedef enum {
 @property (nonatomic, retain) IBOutlet NSButton *lockinButton;
 @property (nonatomic, retain) IBOutlet NSTextField *blacklistIPsTextField;
 @property (nonatomic, retain) IBOutlet NSTextField *blacklistDomainsTextField;
+@property (nonatomic, retain) IBOutlet NSTextField *exceptionsTextField;
 @property (nonatomic, retain) IBOutlet WebView *helpWebView;
 
 - (void) mainViewDidLoad;
@@ -77,6 +79,7 @@ typedef enum {
 - (IBAction)lockinButtonPressed:(NSButton *)sender;
 - (IBAction)blacklistIPsUpdated:(NSTextField *)sender;
 - (IBAction)blacklistDomainsUpdated:(NSTextField *)sender;
+- (IBAction)exceptionsUpdated:(NSTextField *)sender;
 - (IBAction)helpButtonPressed:(NSButton *)sender;
 
 @end

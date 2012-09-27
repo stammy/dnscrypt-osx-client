@@ -23,6 +23,7 @@
 @synthesize blacklistIPsTextField = _blacklistIPsTextField;
 @synthesize blacklistDomainsTextField = _blacklistDomainsTextField;
 @synthesize helpWebView = _helpWebView;
+@synthesize exceptionsTextField = _exceptionsTextField;
 @synthesize dnscryptButton = _dnscryptButton;
 @synthesize opendnsButton = _opendnsButton;
 @synthesize fallbackButton = _fallbackButton;
@@ -109,6 +110,10 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     fileContent = [NSString stringWithContentsOfFile: kDNSCRYPT_BLACKLIST_DOMAINS_TMP_FILE encoding:NSUTF8StringEncoding error: nil];
     if (fileContent != nil) {
         [_blacklistDomainsTextField setStringValue: fileContent];
+    }
+    fileContent = [NSString stringWithContentsOfFile: kDNSCRYPT_EXCEPTIONS_TMP_FILE encoding:NSUTF8StringEncoding error: nil];
+    if (fileContent != nil) {
+        [_exceptionsTextField setStringValue: fileContent];
     }
 }
 
@@ -505,6 +510,21 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
         return;
     }
     [self updateBlacklistDomains];
+}
+
+- (BOOL) updateExceptions {
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./update-exceptions.sh", nil]];
+    (void) res;
+    return TRUE;
+}
+
+- (IBAction)exceptionsUpdated:(NSTextField *)sender {
+    NSString *content = sender.stringValue;
+    if ([content writeToFile: kDNSCRYPT_EXCEPTIONS_TMP_FILE atomically: YES encoding: NSUTF8StringEncoding error: nil] != YES) {
+        return;
+    }
+    [self updateExceptions];
 }
 
 - (IBAction)helpButtonPressed:(NSButton *)sender {
