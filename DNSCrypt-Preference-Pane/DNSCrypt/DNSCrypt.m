@@ -371,7 +371,7 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     }
     
     [_helpWebView setDrawsBackground:false];
-    [_helpWebView setShouldUpdateWhileOffscreen:false];
+    [_helpWebView setShouldUpdateWhileOffscreen:true];
     [_helpWebView setUIDelegate:self];
     NSURL *helpURL;
     NSString *helpURLPath = [[NSBundle bundleForClass: [self class]] pathForResource: @"help" ofType: @"html" inDirectory: @"html"];
