@@ -59,6 +59,7 @@ typedef enum {
 @property (nonatomic, retain) IBOutlet NSButton *lockinButton;
 @property (nonatomic, retain) IBOutlet NSTextField *blacklistIPsTextField;
 @property (nonatomic, retain) IBOutlet NSTextField *blacklistDomainsTextField;
+@property (nonatomic, retain) IBOutlet WebView *helpWebView;
 
 - (void) mainViewDidLoad;
 
@@ -76,5 +77,6 @@ typedef enum {
 - (IBAction)lockinButtonPressed:(NSButton *)sender;
 - (IBAction)blacklistIPsUpdated:(NSTextField *)sender;
 - (IBAction)blacklistDomainsUpdated:(NSTextField *)sender;
+- (IBAction)helpButtonPressed:(NSButton *)sender;
 
 @end

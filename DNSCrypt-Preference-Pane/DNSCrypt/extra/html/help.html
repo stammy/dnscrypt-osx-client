@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <title>Help (advanced settings)</title>
+    <style type='text/css'>
+      body {
+        font-family: arial, helvetica, sans-serif;
+        margin: 1em;
+        background: white; }
+      
+      h1 {
+        margin: 0; }
+    </style>
+  </head>
+  <body>
+    <h1>Help(advanced settings)</h1>
+    <section>
+      <h2>Static DNS servers</h2>
+      <p>
+        If you are not using DHCP and want a statically configured set
+        of default DNS resolvers, enter their IP addresses in this box.
+      </p>
+      <p>
+        Separate them with spaces.
+      </p>
+    </section>
+    <section>
+      <h2>Advanced parental controls</h2>
+      <p>
+        When using DNSCrypt, this will block the following list of OpenDNS
+        categories: lingerie/bikini, adult themes, nudity,
+        pornography, proxy/anonymizer, sexuality and tasteless.
+      </p>
+      <p>
+        If you have an OpenDNS account and network settings defined
+        for your current location, the network settings will override the
+        advanced parental controls. Having an OpenDNS account allows
+        finer granularity access controls, building reports and more.
+      </p>
+    </section>
+    <section>
+      <h2>Log DNS queries</h2>
+      <p>
+        As a tool designed to protect your privacy, the DNSCrypt proxy does
+        not log anything about your DNS queries. Nothing about them will be
+        saved to disk ever, and log messages are intentionally kept as generic
+        as possible.
+      </p>
+      <p>
+        However, you still may want to look at the DNS queries sent by
+        your system. This can be useful in order to spot suspicious
+        activity and to refine your domain blacklists and whitelists.
+      </p>
+      <p>
+        Checking the "Log DNS queries" box dumps all DNS queries sent
+        by your computer to a file named /var/log/dnscrypt-query.log
+      </p>
+      <p>
+        The "View log" button opens it with the log viewer application
+        so that you can watch it in real time.
+      </p>
+    </section>
+    <section>
+      <h2>Lock-in the current network settings</h2>
+      <p>
+        If you have an OpenDNS account, and OpenDNS network settings
+        defined for your current location, you can make these
+        persistent.
+      </p>
+      <p>
+        Checking this box will make the user interface remember what
+        your current network is.
+      </p>
+      <p>
+        If you are roaming, the settings for this network will still be
+        used, no matter what actual network you are connected to.
+      </p>
+      <p>
+        That way, you can stay protected from botnets, malware,
+        phishing and block unwanted content, even when using public
+        Wi-Fi hotspots.
+      </p>
+      <p>
+        This feature is currently not compatible with the OpenDNS IP
+        updater. If your ISP assigns dynamic IP addresses, use either
+        the OpenDNS IP updater or the DNSCrypt lock-in feature, but not both.
+      </p>
+    </section>
+    <section>
+      <h2>IP addresses blocking</h2>
+      <p>
+        A response to a query containing at least one IP address
+        listed here will be blocked.
+      </p>
+      <p>
+        This make it easy to block spam sources and content providers using a
+        lot of different domain names for a single service.
+      </p>
+      <p>
+        This can also be useful in order to block DNS rebinding
+        attacks, even for non-private network spaces.
+      </p>
+      <p>
+        IP addresses can be IPv4 and IPv6 addresses, and must be
+        separated with spaces.
+      </p>
+    </section>
+    <section>
+      <h2>Names blocking</h2>
+      <p>
+        This is a list of domain names to be blocked.
+      </p>
+      <p>
+        It doesn't affect your OpenDNS network settings. This is a
+        local blacklist, applied in addition to your OpenDNS settings.
+      </p>
+      <p>
+        "example.com" will only match this specific name, not
+        "www.example.com".
+      </p>
+      <p>
+        But wildcards are also supported. "*.example.com" will match
+        any name ending with ".example.com" whereas "ads.*" will match
+        any name beginning with "ads."
+      </p>
+      <p>
+        Wildcards can also perform substring matching. "*xxx*" will
+        match any name containing the string "xxx".
+      </p>
+      <p>
+        Patterns to be blocked should be separated with spaces, and
+        the blocking takes effect immediately after you hit the Return
+        key. Flushing your DNS cache is not required.
+      </p>
+      <p>
+        This feature is only enabled when using DNSCrypt.
+      </p>
+    </section>
+    <section>
+      <h2>Exceptions - bypassing OpenDNS for some specific names</h2>
+      <p>
+        Some domain names should not be resolved by a third-party DNS
+        resolver, that may not know about them.
+      </p>
+      <p>
+        This includes local domain names provided by home routers
+        (like "routerlogin.net"), local domain names provided by
+        operating systems and applications (like ".local" or ".lan"),
+        local domain names served by appliances like st-top boxes, and
+        internal domains used in corporate networks.
+      </p>
+      <p>
+        Domains listed here will bypass DNSCrypt in order to be sent
+        to the default resolvers.
+      </p>
+    </section>
+  </body>
+</html>

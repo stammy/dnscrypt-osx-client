@@ -22,6 +22,7 @@
 @synthesize lockinButton = _lockinButton;
 @synthesize blacklistIPsTextField = _blacklistIPsTextField;
 @synthesize blacklistDomainsTextField = _blacklistDomainsTextField;
+@synthesize helpWebView = _helpWebView;
 @synthesize dnscryptButton = _dnscryptButton;
 @synthesize opendnsButton = _opendnsButton;
 @synthesize fallbackButton = _fallbackButton;
@@ -368,6 +369,17 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     } else {
         [[_aboutWebView mainFrame] loadRequest:[NSURLRequest requestWithURL: aboutURL]];
     }
+    
+    [_helpWebView setDrawsBackground:false];
+    [_helpWebView setShouldUpdateWhileOffscreen:true];
+    [_helpWebView setUIDelegate:self];
+    NSURL *helpURL;
+    NSString *helpURLPath = [[NSBundle bundleForClass: [self class]] pathForResource: @"help" ofType: @"html" inDirectory: @"html"];
+    if (! helpURLPath || ! (helpURL = [NSURL fileURLWithPath: helpURLPath])) {
+        assert(0);
+    } else {
+        [[_helpWebView mainFrame] loadRequest:[NSURLRequest requestWithURL: helpURL]];
+    }
 }
 
 - (NSArray *)webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element
@@ -493,6 +505,17 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
         return;
     }
     [self updateBlacklistDomains];
+}
+
+- (IBAction)helpButtonPressed:(NSButton *)sender {
+    if (_helpWebView.isHidden) {
+        [_helpWebView setHidden: NO];
+        [_helpWebView setAlphaValue: 0.0];
+        [_helpWebView.animator setAlphaValue: 1.0];
+        [_helpWebView setDrawsBackground: TRUE];
+    } else {
+        [_helpWebView setHidden: YES];
+    }
 }
 
 @end
