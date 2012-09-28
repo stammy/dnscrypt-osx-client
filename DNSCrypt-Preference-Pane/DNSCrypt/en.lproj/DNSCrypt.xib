@@ -65,6 +65,7 @@
 							<string key="NSFrame">{{13, 10}, {563, 359}}</string>
 							<reference key="NSSuperview" ref="1037298196"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="42710935"/>
 							<string key="NSReuseIdentifierKey">_NS:461</string>
 							<array class="NSMutableArray" key="NSTabViewItems">
 								<object class="NSTabViewItem" id="19707695">
@@ -761,7 +762,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 													<int key="NSCellFlags2">272629760</int>
 													<string key="NSContents"/>
 													<reference key="NSSupport" ref="395387470"/>
-													<string key="NSPlaceholderString">Domain names to resolve through the default resolver instead of OpenDNS.  localdomain mycompany.example.net</string>
+													<string key="NSPlaceholderString">Domain names to resolve through the default resolvers instead of OpenDNS.  localdomain mycompany.example.net</string>
 													<string key="NSCellIdentifier">_NS:9</string>
 													<reference key="NSControlView" ref="902108600"/>
 													<bool key="NSDrawsBackground">YES</bool>
@@ -853,6 +854,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 												<string key="NSFrame">{{511, 0}, {25, 25}}</string>
 												<reference key="NSSuperview" ref="42710935"/>
 												<reference key="NSWindow"/>
+												<reference key="NSNextKeyView" ref="821865429"/>
 												<string key="NSReuseIdentifierKey">_NS:1598</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="933364045">
