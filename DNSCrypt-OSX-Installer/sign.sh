@@ -1,6 +1,6 @@
 #! /bin/sh
 
-VERSION='0.17-dev'
+VERSION='0.17'
 
 cd build || exit 1
 (
