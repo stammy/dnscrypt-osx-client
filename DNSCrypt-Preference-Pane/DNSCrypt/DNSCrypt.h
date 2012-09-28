@@ -23,7 +23,7 @@
 #define kDNSCRYPT_BLACKLIST_DOMAINS_TMP_FILE kDNSCRYPT_CONTROL_DIR @"/blacklist-domains.tmp"
 #define kDNSCRYPT_EXCEPTIONS_TMP_FILE kDNSCRYPT_CONTROL_DIR @"/exceptions.tmp"
 
-#define kOPENDNS_URL @"http://www.opendns.com"
+#define kOPENDNS_URL @"https://www.opendns.com/welcome/"
 
 #define kBUNDLE_IDENTIFIER @"com.opendns.osx.DNSCrypt"
 
