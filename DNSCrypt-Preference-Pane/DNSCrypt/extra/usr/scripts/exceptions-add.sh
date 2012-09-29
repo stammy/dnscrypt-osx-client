@@ -39,8 +39,7 @@ remove_old_exceptions() {
   }
 }
 
-name_servers=$(get_dhcp_dns || get_gw)
-
+name_servers=$(./get-static-resolvers.sh || get_dhcp_dns || get_gw)
 [ x"$name_servers" = 'x' ] && exit 0
 
 default_domain=$(./get-current-default-domain.sh)
