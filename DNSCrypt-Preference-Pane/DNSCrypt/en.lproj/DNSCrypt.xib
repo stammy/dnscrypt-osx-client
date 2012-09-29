@@ -837,7 +837,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 												<object class="NSTextFieldCell" key="NSCell" id="1022329366">
 													<int key="NSCellFlags">67108864</int>
 													<int key="NSCellFlags2">272629760</int>
-													<string key="NSContents">Bypass OpenDNS in order to resolve these names:</string>
+													<string key="NSContents">Bypass OpenDNS in order to resolve these domains:</string>
 													<reference key="NSSupport" ref="604491631"/>
 													<string key="NSCellIdentifier">_NS:9</string>
 													<reference key="NSControlView" ref="567741681"/>
@@ -854,7 +854,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 												<string key="NSFrame">{{511, 0}, {25, 25}}</string>
 												<reference key="NSSuperview" ref="42710935"/>
 												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="821865429"/>
+												<reference key="NSNextKeyView"/>
 												<string key="NSReuseIdentifierKey">_NS:1598</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="933364045">
