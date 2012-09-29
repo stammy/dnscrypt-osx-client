@@ -1,8 +1,10 @@
 #! /bin/sh
 
-VERSION='0.17'
+VERSION='0.18'
 
 cd build || exit 1
+[ -d DNSCrypt.mpkg ] || exit 1
+
 (
 cd DNSCrypt.mpkg/Contents/Packages || exit 1
 
