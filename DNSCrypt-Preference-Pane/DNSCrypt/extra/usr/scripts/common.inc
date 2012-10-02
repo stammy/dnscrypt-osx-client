@@ -41,7 +41,7 @@ INTERFACE_PROBES_MASK="24"
 
 DOMAINS_EXCEPTIONS='
 fritz.box intranet lan localdomain nowtv.com private routerlogin.net
-'
+freebox.fr'
 
 export PATH="${DNSCRYPT_USR_BASE_DIR}/bin:${DNSCRYPT_USR_BASE_DIR}/scripts:$PATH"
 
