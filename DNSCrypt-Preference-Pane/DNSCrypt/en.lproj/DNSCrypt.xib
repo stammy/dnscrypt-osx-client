@@ -122,7 +122,7 @@
 												<object class="NSButtonCell" key="NSCell" id="555340075">
 													<int key="NSCellFlags">67108864</int>
 													<int key="NSCellFlags2">0</int>
-													<string key="NSContents">Alwayse use OpenDNS</string>
+													<string key="NSContents">Always use OpenDNS</string>
 													<reference key="NSSupport" ref="176030688"/>
 													<string key="NSCellIdentifier">_NS:239</string>
 													<reference key="NSControlView" ref="300098131"/>
