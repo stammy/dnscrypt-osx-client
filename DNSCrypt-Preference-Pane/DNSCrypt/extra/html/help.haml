@@ -121,3 +121,20 @@
       %p
         Domains listed here will bypass DNSCrypt in order to be sent
         to the default resolvers.
+      %p
+        Do
+        %strong not
+        use a tool like hostip(8), drill(1), unbound-host(1), dig(1) or host(1)
+        in order to check that an exception rule works.
+      %p
+        These tools use their own resolution mechanisms that have nothing
+        to do with how others apps on your system are resolving names.
+      %p
+        They don't use the OSX-specific stub resolver, they don't use
+        the system-wide DNS cache, they have bugs and limitations that the OS
+        doesn't have (and the opposite is also true), and they don't know a
+        thing about specific resolvers that have to be used for specific
+        domains.
+      %p
+        Use actual apps, or even a command like ping(8).
+        
