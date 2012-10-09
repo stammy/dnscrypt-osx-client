@@ -17,8 +17,6 @@
 @synthesize feedbackWebView = _feedbackWebView;
 @synthesize aboutWebView = _aboutWebView;
 @synthesize staticResolversTextField = _staticResolversTextField;
-@synthesize parentalControlsButton = _parentalControlsButton;
-@synthesize lockinButton = _lockinButton;
 @synthesize blacklistIPsTextField = _blacklistIPsTextField;
 @synthesize blacklistDomainsTextField = _blacklistDomainsTextField;
 @synthesize helpWebView = _helpWebView;
@@ -91,17 +89,9 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     }
     res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-static-resolvers.sh", nil]];
     [_staticResolversTextField setStringValue: res];
-    res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-parental-controls-status.sh", nil]];
-    if ([res isEqualToString: @"yes"]) {
-        [_parentalControlsButton setState: 1];
-    }
     res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-query-logging-status.sh", nil]];
     if ([res isEqualToString: @"yes"]) {
         [_queryLoggingButton setState: 1];
-    }
-    res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-lockin-status.sh", nil]];
-    if ([res isEqualToString: @"yes"]) {
-        [_lockinButton setState: 1];
     }
     NSString *fileContent;
     fileContent = [NSString stringWithContentsOfFile: kDNSCRYPT_BLACKLIST_IPS_TMP_FILE encoding:NSUTF8StringEncoding error: nil];
@@ -413,28 +403,6 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./set-static-resolvers.sh \"$STATIC_RESOLVERS\"", staticResolvers, nil]];
 }
 
-- (BOOL) setParentalControlsOn {
-    [self showSpinners];
-    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-parental-controls-on.sh", nil]];
-    (void) res;
-    return TRUE;
-}
-
-- (BOOL) setParentalControlsOff {
-    [self showSpinners];
-    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-parental-controls-off.sh", nil]];
-    (void) res;
-    return TRUE;
-}
-
-- (IBAction)parentalControlsButtonPressed:(NSButtonCell *)sender {
-    if (sender.state != 0) {
-        [self setParentalControlsOn];
-    } else {
-        [self setParentalControlsOff];
-    }
-}
-
 - (BOOL) setQueryLoggingOn {
     [self showSpinners];
     NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-query-logging-on.sh", nil]];
@@ -459,28 +427,6 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 
 - (IBAction)viewLogButtonPushed:(NSButton *)sender {
     [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"open /Applications/Utilities/Console.app " kDNSCRYPT_QUERY_LOG_FILE " || open " kDNSCRYPT_QUERY_LOG_FILE, nil]];
-}
-
-- (BOOL) setLockinOn {
-    [self showSpinners];
-    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-lockin-on.sh", nil]];
-    (void) res;
-    return TRUE;
-}
-
-- (BOOL) setLockinOff {
-    [self showSpinners];
-    NSString *res = [self fromCommand: @"/bin/ksh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-lockin-off.sh", nil]];
-    (void) res;
-    return TRUE;
-}
-
-- (IBAction)lockinButtonPressed:(NSButton *)sender {
-    if (sender.state != 0) {
-        [self setLockinOn];
-    } else {
-        [self setLockinOff];
-    }
 }
 
 - (BOOL) updateBlacklistIPs {

@@ -55,8 +55,6 @@ typedef enum {
 @property (nonatomic, retain) IBOutlet WebView *feedbackWebView;
 @property (nonatomic, retain) IBOutlet WebView *aboutWebView;
 @property (nonatomic, retain) IBOutlet NSTextFieldCell *staticResolversTextField;
-@property (nonatomic, retain) IBOutlet NSButton *parentalControlsButton;
-@property (nonatomic, retain) IBOutlet NSButton *lockinButton;
 @property (nonatomic, retain) IBOutlet NSTextField *blacklistIPsTextField;
 @property (nonatomic, retain) IBOutlet NSTextField *blacklistDomainsTextField;
 @property (nonatomic, retain) IBOutlet NSTextField *exceptionsTextField;
@@ -74,10 +72,8 @@ typedef enum {
 - (IBAction)openDNSLinkPushed:(NSButton *)sender;
 - (IBAction)uninstallPushed:(NSButton *)sender;
 - (IBAction)staticResolversTextFieldChanged:(NSTextField *)sender;
-- (IBAction)parentalControlsButtonPressed:(NSButtonCell *)sender;
 - (IBAction)queryLoggingButtonPressed:(NSButtonCell *)sender;
 - (IBAction)viewLogButtonPushed:(NSButton *)sender;
-- (IBAction)lockinButtonPressed:(NSButton *)sender;
 - (IBAction)blacklistIPsUpdated:(NSTextField *)sender;
 - (IBAction)blacklistDomainsUpdated:(NSTextField *)sender;
 - (IBAction)exceptionsUpdated:(NSTextField *)sender;
