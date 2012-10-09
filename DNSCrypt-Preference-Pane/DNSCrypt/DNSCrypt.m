@@ -18,11 +18,12 @@
 @synthesize aboutWebView = _aboutWebView;
 @synthesize staticResolversTextField = _staticResolversTextField;
 @synthesize parentalControlsButton = _parentalControlsButton;
-@synthesize queryLoggingButton = _queryLoggingButton;
 @synthesize lockinButton = _lockinButton;
 @synthesize blacklistIPsTextField = _blacklistIPsTextField;
 @synthesize blacklistDomainsTextField = _blacklistDomainsTextField;
 @synthesize helpWebView = _helpWebView;
+@synthesize viewLogButton = _viewLogButton;
+@synthesize queryLoggingButton = _queryLoggingButton;
 @synthesize exceptionsTextField = _exceptionsTextField;
 @synthesize dnscryptButton = _dnscryptButton;
 @synthesize opendnsButton = _opendnsButton;
@@ -533,8 +534,11 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
         [_helpWebView setAlphaValue: 0.0];
         [_helpWebView.animator setAlphaValue: 1.0];
         [_helpWebView setDrawsBackground: TRUE];
+        [_viewLogButton setHidden: YES];
+        [_queryLoggingButton setHidden: YES];
     } else {
         [_helpWebView setHidden: YES];
+        [_queryLoggingButton setHidden: NO];
     }
 }
 

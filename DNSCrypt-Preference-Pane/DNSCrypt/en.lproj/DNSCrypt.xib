@@ -1289,14 +1289,6 @@ aW91cy5leGFtcGxlLm5ldA</string>
 					<int key="connectionID">433</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">queryLoggingButton</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="164894774"/>
-					</object>
-					<int key="connectionID">437</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">viewLogButtonPushed:</string>
 						<reference key="source" ref="294453543"/>
@@ -1375,6 +1367,22 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						<reference key="destination" ref="902108600"/>
 					</object>
 					<int key="connectionID">453</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">viewLogButton</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="985341605"/>
+					</object>
+					<int key="connectionID">457</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">queryLoggingButton</string>
+						<reference key="source" ref="294453543"/>
+						<reference key="destination" ref="679502487"/>
+					</object>
+					<int key="connectionID">458</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -2042,7 +2050,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">453</int>
+			<int key="maxID">458</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2144,13 +2152,14 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						<string key="opendnsButton">NSButton</string>
 						<string key="parentalControlsButton">NSButton</string>
 						<string key="previewNotesWebView">WebView</string>
-						<string key="queryLoggingButton">NSButtonCell</string>
+						<string key="queryLoggingButton">NSButton</string>
 						<string key="releaseNotesTabViewItem">NSTabViewItem</string>
 						<string key="releaseNotesWebView">WebView</string>
 						<string key="staticResolversTextField">NSTextFieldCell</string>
 						<string key="statusImageView">NSImageView</string>
 						<string key="statusText">NSTextField</string>
 						<string key="tabView">NSTabView</string>
+						<string key="viewLogButton">NSButton</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="aboutTabViewItem">
@@ -2215,7 +2224,7 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="queryLoggingButton">
 							<string key="name">queryLoggingButton</string>
-							<string key="candidateClassName">NSButtonCell</string>
+							<string key="candidateClassName">NSButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="releaseNotesTabViewItem">
 							<string key="name">releaseNotesTabViewItem</string>
@@ -2240,6 +2249,10 @@ aW91cy5leGFtcGxlLm5ldA</string>
 						<object class="IBToOneOutletInfo" key="tabView">
 							<string key="name">tabView</string>
 							<string key="candidateClassName">NSTabView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="viewLogButton">
+							<string key="name">viewLogButton</string>
+							<string key="candidateClassName">NSButton</string>
 						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">

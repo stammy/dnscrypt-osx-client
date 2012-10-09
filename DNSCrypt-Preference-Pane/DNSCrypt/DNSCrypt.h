@@ -56,12 +56,13 @@ typedef enum {
 @property (nonatomic, retain) IBOutlet WebView *aboutWebView;
 @property (nonatomic, retain) IBOutlet NSTextFieldCell *staticResolversTextField;
 @property (nonatomic, retain) IBOutlet NSButton *parentalControlsButton;
-@property (nonatomic, retain) IBOutlet NSButtonCell *queryLoggingButton;
 @property (nonatomic, retain) IBOutlet NSButton *lockinButton;
 @property (nonatomic, retain) IBOutlet NSTextField *blacklistIPsTextField;
 @property (nonatomic, retain) IBOutlet NSTextField *blacklistDomainsTextField;
 @property (nonatomic, retain) IBOutlet NSTextField *exceptionsTextField;
 @property (nonatomic, retain) IBOutlet WebView *helpWebView;
+@property (nonatomic, retain) IBOutlet NSButton *viewLogButton;
+@property (nonatomic, retain) IBOutlet NSButton *queryLoggingButton;
 
 - (void) mainViewDidLoad;
 
