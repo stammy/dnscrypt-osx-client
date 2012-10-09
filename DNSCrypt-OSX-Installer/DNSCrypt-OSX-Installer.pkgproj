@@ -1435,7 +1435,7 @@
 				<key>USE_HFS+_COMPRESSION</key>
 				<true/>
 				<key>VERSION</key>
-				<string>0.18</string>
+				<string>0.19</string>
 			</dict>
 			<key>TYPE</key>
 			<integer>0</integer>
@@ -1928,7 +1928,7 @@
 				<key>USE_HFS+_COMPRESSION</key>
 				<true/>
 				<key>VERSION</key>
-				<string>0.18</string>
+				<string>0.19</string>
 			</dict>
 			<key>TYPE</key>
 			<integer>0</integer>
