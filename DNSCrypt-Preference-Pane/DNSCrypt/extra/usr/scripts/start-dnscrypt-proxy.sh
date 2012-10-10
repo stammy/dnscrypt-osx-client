@@ -127,6 +127,9 @@ plugins_args=''
 if [ -r "${DNSCRYPT_PROXY_PLUGINS_BASE_FILE}s.enabled" ]; then
   plugin_args=$(get_plugin_args)
 fi
+[ "$ipv6_supported" = "no" ] && \
+  plugin_args="${plugin_args} --plugin=libdcplugin_example_ldns_aaaa_blocking.la"
+
 best_args=$(cat "${RES_DIR}/${best_file}")
 
 eval dnscrypt-proxy $best_args --local-address="$INTERFACE_PROXY" \
