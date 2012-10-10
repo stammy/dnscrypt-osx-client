@@ -19,6 +19,9 @@ if [ $? != 0 ]; then
     '/Library/Application Support/DNSCrypt/tickets'
 fi
 
+rm -f '/Library/Application Support/DNSCrypt/control/plugin-parental-controls.enabled'
+rm -f '/Library/Application Support/DNSCrypt/control/plugin-lockin.enabled'
+
 for service in com.opendns.osx.DNSCryptAfterboot \
                com.opendns.osx.DNSCryptConsoleChange \
                com.opendns.osx.DNSCryptControlChange \
