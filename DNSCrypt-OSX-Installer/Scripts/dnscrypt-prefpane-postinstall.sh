@@ -7,14 +7,14 @@ exec 2>/dev/null
 /bin/mkdir -p '/Library/Application Support/DNSCrypt/probes'
 /bin/mkdir -p '/Library/Application Support/DNSCrypt/states'
 /bin/mkdir -p '/Library/Application Support/DNSCrypt/tickets'
-/usr/sbin/chown -R 0:0 '/Library/Application Support/DNSCrypt'
-/usr/sbin/chown 0:0 '/usr/local/bin/hostip'
-/usr/sbin/chown 0:0 '/usr/local/lib/dnscrypt-proxy'
-/usr/sbin/chown -R 0:0 '/usr/local/sbin/dnscrypt-proxy'
 /bin/chmod 755 '/Library/Application Support/DNSCrypt'
 /bin/chmod 755 '/usr/local/bin/hostip'
 /bin/chmod 755 '/usr/local/sbin/dnscrypt-proxy'
 /bin/chmod -R 755 '/usr/local/lib/dnscrypt-proxy'
+/usr/sbin/chown -R 0:0 '/Library/Application Support/DNSCrypt'
+/usr/sbin/chown 0:0 '/usr/local/bin/hostip'
+/usr/sbin/chown 0:0 '/usr/local/lib/dnscrypt-proxy'
+/usr/sbin/chown -R 0:0 '/usr/local/sbin/dnscrypt-proxy'
 
 eval $(/usr/bin/stat -s '/dev/console')
 if [ $? != 0 ]; then
