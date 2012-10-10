@@ -476,6 +476,7 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 
 - (IBAction)helpButtonPressed:(NSButton *)sender {
     if (_helpWebView.isHidden) {
+        [_helpWebView.window makeFirstResponder: nil];
         [_helpWebView setHidden: NO];
         [_helpWebView setAlphaValue: 0.0];
         [_helpWebView.animator setAlphaValue: 1.0];
@@ -483,6 +484,7 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
         [_viewLogButton setHidden: YES];
         [_queryLoggingButton setHidden: YES];
     } else {
+        [_helpWebView.window makeFirstResponder: nil];
         [_helpWebView setHidden: YES];
         [_queryLoggingButton setHidden: NO];
     }
