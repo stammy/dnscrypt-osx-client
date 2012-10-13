@@ -97,24 +97,22 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 
 - (void) updateLedStatus
 {
-    NSBundle *bundle = [NSBundle mainBundle];
     NSImage *led = nil;
     
     switch (currentState) {
         case kDNS_CONFIGURATION_OPENDNS:
-            led = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"yes-opendns-no-crypt.png"]];
+            led = [NSImage imageNamed: @"yes-opendns-no-crypt.png"];
             break;
         case kDNS_CONFIGURATION_LOCALHOST:
-            led = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"yes-opendns-yes-crypt.png"]];
+            led = [NSImage imageNamed: @"yes-opendns-yes-crypt.png"];
             break;
         case kDNS_CONFIGURATION_VANILLA:
-            led = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"no-opendns.png"]];
+            led = [NSImage imageNamed: @"no-opendns.png"];
             break;
         default:
-            led = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"no-network.png"]];
+            led = [NSImage imageNamed: @"no-network.png"];
     }
     _statusItem.image = led;
-    [led release];
 }
 
 - (BOOL) updateStatusWithCurrentConfig
@@ -174,10 +172,8 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 {
     [self setCheckBoxesEnabled: FALSE];
 
-    NSBundle *bundle = [NSBundle mainBundle];
-    NSImage *led = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"no-network.png"]];
+    NSImage *led = [NSImage imageNamed: @"no-network.png"];
     _statusItem.image = led;
-    [led release];
     
     [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./gui-push-conf-change.sh prefpane", nil]];
     
