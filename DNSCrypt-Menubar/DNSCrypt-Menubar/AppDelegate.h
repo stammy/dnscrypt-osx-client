@@ -35,9 +35,10 @@ typedef enum {
     kDNS_CONFIGURATION_UNKNOWN, kDNS_CONFIGURATION_VANILLA, kDNS_CONFIGURATION_LOCALHOST, kDNS_CONFIGURATION_OPENDNS
 } DNSConfigurationState;
 
-@property (assign) IBOutlet NSWindow *window;
+@property (strong) NSStatusItem *statusItem;
+@property (assign) NSWindow *window;
+
 @property (strong) IBOutlet NSMenu *dnscryptMenu;
-@property (strong) IBOutlet NSStatusItem *statusItem;
 @property (strong) IBOutlet NSMenuItem *versionMenuItem;
 @property (strong) IBOutlet NSMenuItem *statusResolversMenuItem;
 @property (strong) IBOutlet NSMenuItem *statusConfigurationMenuItem;
