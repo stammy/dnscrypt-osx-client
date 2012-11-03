@@ -14,12 +14,18 @@
 #define kDNSCRYPT_VAR_BASE_DIR @"/Library/Application Support/DNSCrypt"
 #define kDNSCRYPT_CONTROL_DIR kDNSCRYPT_VAR_BASE_DIR @"/control"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
-
-@property (assign) IBOutlet NSWindow *window;
-@property (strong) IBOutlet NSMenu *dnscryptMenu;
-@property (strong) NSStatusItem *statusItem;
-@property (strong) IBOutlet NSMenuItem *versionMenuItem;
+@interface AppDelegate : NSObject <NSApplicationDelegate> {
+    NSWindow *_window;
+    NSMenu *_dnscryptMenu;
+    NSStatusItem *_statusItem;
+    NSMenuItem *_versionMenuItem;
+    NSMenuItem *_statusResolversMenuItem;
+    NSMenuItem *_statusConfigurationMenuItem;
+    NSMenuItem *_familyShieldMenuItem;
+    NSMenuItem *_dnscryptMenuItem;
+    NSMenuItem *_fallbackMenuItem;
+    NSMenuItem *_opendnsMenuItem;
+}
 
 #define kREFRESH_DELAY 2.0
 #define kCHECKBOXES_AFTER_CHANGE_DELAY 8.0
@@ -29,6 +35,10 @@ typedef enum {
     kDNS_CONFIGURATION_UNKNOWN, kDNS_CONFIGURATION_VANILLA, kDNS_CONFIGURATION_LOCALHOST, kDNS_CONFIGURATION_OPENDNS
 } DNSConfigurationState;
 
+@property (assign) IBOutlet NSWindow *window;
+@property (strong) IBOutlet NSMenu *dnscryptMenu;
+@property (strong) IBOutlet NSStatusItem *statusItem;
+@property (strong) IBOutlet NSMenuItem *versionMenuItem;
 @property (strong) IBOutlet NSMenuItem *statusResolversMenuItem;
 @property (strong) IBOutlet NSMenuItem *statusConfigurationMenuItem;
 @property (strong) IBOutlet NSMenuItem *familyShieldMenuItem;

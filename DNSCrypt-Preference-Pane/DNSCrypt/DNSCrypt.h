@@ -37,6 +37,30 @@ typedef enum {
 
 @interface DNSCrypt : NSPreferencePane {
     AuthorizationRef auth;
+    
+    NSTabView *_tabView;
+    NSTabViewItem *_aboutTabViewItem;
+    NSTabViewItem *_releaseNotesTabViewItem;
+    
+    NSButton *_dnscryptButton;
+    NSButton *_opendnsButton;
+    NSButton *_familyShieldButton;
+    NSButton *_fallbackButton;
+    
+    NSTextField *_currentResolverTextField;
+    NSImageView *_statusImageView;
+    NSTextField *_statusText;
+    WebView *_previewNotesWebView;
+    WebView *_releaseNotesWebView;
+    WebView *_feedbackWebView;
+    WebView *_aboutWebView;
+    NSTextFieldCell *_staticResolversTextField;
+    NSTextField *_blacklistIPsTextField;
+    NSTextField *_blacklistDomainsTextField;
+    NSTextField *_exceptionsTextField;
+    WebView *_helpWebView;
+    NSButton *_viewLogButton;
+    NSButton *_queryLoggingButton;
 }
 @property (nonatomic, retain) IBOutlet NSTabView *tabView;
 @property (nonatomic, retain) IBOutlet NSTabViewItem *aboutTabViewItem;

@@ -478,8 +478,8 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     if (_helpWebView.isHidden) {
         [_helpWebView.window makeFirstResponder: nil];
         [_helpWebView setHidden: NO];
-        [_helpWebView setAlphaValue: 0.0];
-        [_helpWebView.animator setAlphaValue: 1.0];
+        [_helpWebView setAlphaValue: 0.0F];
+        [_helpWebView.animator setAlphaValue: 1.0F];
         [_helpWebView setDrawsBackground: TRUE];
         [_viewLogButton setHidden: YES];
         [_queryLoggingButton setHidden: YES];
