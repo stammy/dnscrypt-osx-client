@@ -828,7 +828,7 @@
 				<key>USE_HFS+_COMPRESSION</key>
 				<true/>
 				<key>VERSION</key>
-				<string>1.2.0</string>
+				<string>1.2.0.1</string>
 			</dict>
 			<key>UUID</key>
 			<string>7F7D70AB-F7A2-4027-8304-3063C7B9532F</string>
@@ -1435,7 +1435,7 @@
 				<key>USE_HFS+_COMPRESSION</key>
 				<true/>
 				<key>VERSION</key>
-				<string>0.19</string>
+				<string>0.19.1</string>
 			</dict>
 			<key>TYPE</key>
 			<integer>0</integer>
@@ -1928,7 +1928,7 @@
 				<key>USE_HFS+_COMPRESSION</key>
 				<true/>
 				<key>VERSION</key>
-				<string>0.19</string>
+				<string>0.19.1</string>
 			</dict>
 			<key>TYPE</key>
 			<integer>0</integer>
@@ -2224,7 +2224,7 @@
 						<key>IC_REQUIREMENT_OS_DISK_TYPE</key>
 						<integer>0</integer>
 						<key>IC_REQUIREMENT_OS_DISTRIBUTION_TYPE</key>
-						<integer>0</integer>
+						<integer>1</integer>
 						<key>IC_REQUIREMENT_OS_MINIMUM_VERSION</key>
 						<integer>100600</integer>
 					</dict>
@@ -2238,7 +2238,7 @@
 							<key>LANGUAGE</key>
 							<string>English</string>
 							<key>VALUE</key>
-							<string>This package requires at least Snow Leopard.</string>
+							<string>This user interface doesn't work with this version of OSX.</string>
 						</dict>
 					</array>
 					<key>NAME</key>
