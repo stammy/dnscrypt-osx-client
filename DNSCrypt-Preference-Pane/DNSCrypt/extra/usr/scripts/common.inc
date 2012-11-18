@@ -41,6 +41,8 @@ DOMAINS_EXCEPTIONS='
 freebox.fr fritz.box intranet lan localdomain nowtv.com private routerlogin.net
 '
 
+DISABLE_IPV6='no'
+
 export PATH="${DNSCRYPT_USR_BASE_DIR}/bin:${DNSCRYPT_USR_BASE_DIR}/scripts:$PATH"
 
 init_interfaces() {

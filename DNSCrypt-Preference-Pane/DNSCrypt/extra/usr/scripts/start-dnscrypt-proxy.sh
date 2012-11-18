@@ -67,8 +67,10 @@ get_plugin_args() {
 ./stop-dnscrypt-proxy.sh
 
 ipv6_supported="no"
-ping6 -c 1 2620:0:ccc::2 > /dev/null 2>&1
-[ $? = 0 ] && ipv6_supported="yes"
+if [ x"$DISABLE_IPV6" = "xno" ]; then
+  ping6 -c 1 2620:0:ccc::2 > /dev/null 2>&1
+  [ $? = 0 ] && ipv6_supported="yes"
+fi
 
 familyshield_wanted="no"
 [ -r "$FAMILYSHIELD_FILE" ] && familyshield_wanted="yes"
