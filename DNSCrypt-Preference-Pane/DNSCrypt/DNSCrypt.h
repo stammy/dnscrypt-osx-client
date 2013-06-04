@@ -9,7 +9,7 @@
 #import <PreferencePanes/PreferencePanes.h>
 #import <WebKit/WebKit.h>
 
-#define kDNSCRYPT_PACKAGE_VERSION @"0.19"
+#define kDNSCRYPT_PACKAGE_VERSION @"0.21"
 
 #define kDNSCRYPT_PREFPANE_APP_PATH @"/Library/PreferencePanes/DNSCrypt.prefPane"
 #define kDNSCRYPT_USR_BASE_DIR kDNSCRYPT_PREFPANE_APP_PATH @"/Contents/Resources/usr"
