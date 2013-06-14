@@ -43,7 +43,7 @@
 		0906D82D14B4D9AC0093FA7D /* yes-opendns-yes-crypt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yes-opendns-yes-crypt.png"; sourceTree = "<group>"; };
 		09651147147D832D007FEE31 /* dnscrypt.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = dnscrypt.icns; path = ../dnscrypt.icns; sourceTree = "<group>"; };
 		096AEEF91468A11E009F2AA4 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
-		09A13ACD145F3B9000B227A4 /* DNSCrypt-Menubar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DNSCrypt-Menubar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		09A13ACD145F3B9000B227A4 /* DNSCrypt Menubar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DNSCrypt Menubar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		09A13AD1145F3B9000B227A4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		09A13AD4145F3B9000B227A4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		09A13AD5145F3B9000B227A4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -84,7 +84,7 @@
 		09A13ACE145F3B9000B227A4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				09A13ACD145F3B9000B227A4 /* DNSCrypt-Menubar.app */,
+				09A13ACD145F3B9000B227A4 /* DNSCrypt Menubar.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -156,7 +156,7 @@
 			);
 			name = "DNSCrypt-Menubar";
 			productName = "DNSCrypt-Menubar";
-			productReference = 09A13ACD145F3B9000B227A4 /* DNSCrypt-Menubar.app */;
+			productReference = 09A13ACD145F3B9000B227A4 /* DNSCrypt Menubar.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -310,7 +310,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DNSCrypt-Menubar/DNSCrypt-Menubar-Prefix.pch";
 				INFOPLIST_FILE = "DNSCrypt-Menubar/DNSCrypt-Menubar-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "DNSCrypt Menubar";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -327,7 +327,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DNSCrypt-Menubar/DNSCrypt-Menubar-Prefix.pch";
 				INFOPLIST_FILE = "DNSCrypt-Menubar/DNSCrypt-Menubar-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "DNSCrypt Menubar";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
