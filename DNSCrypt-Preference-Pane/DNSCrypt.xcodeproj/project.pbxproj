@@ -192,7 +192,7 @@
 		0946B0B713F47F52008277C6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0510;
 			};
 			buildConfigurationList = 0946B0BA13F47F52008277C6 /* Build configuration list for PBXProject "DNSCrypt" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -328,14 +328,17 @@
 		0946B0DF13F47F53008277C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
+				GCC_ENABLE_OBJC_GC = no;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DNSCrypt/DNSCrypt-Prefix.pch";
+				GCC_VERSION = "";
 				INFOPLIST_FILE = "DNSCrypt/DNSCrypt-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/PreferencePanes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -346,14 +349,17 @@
 		0946B0E013F47F53008277C6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
+				GCC_ENABLE_OBJC_GC = no;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DNSCrypt/DNSCrypt-Prefix.pch";
+				GCC_VERSION = "";
 				INFOPLIST_FILE = "DNSCrypt/DNSCrypt-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/PreferencePanes";
 				PRODUCT_NAME = "$(TARGET_NAME)";

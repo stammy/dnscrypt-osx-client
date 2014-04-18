@@ -37,6 +37,9 @@ INTERFACE_PROXY_MASK="24"
 INTERFACE_PROBES="127.0.0.55"
 INTERFACE_PROBES_MASK="24"
 
+PROVIDER_NAME='2.dnscrypt-cert.opendns.com'
+PROVIDER_KEY='B735:1140:206F:225D:3E2B:D822:D7FD:691E:A1C3:3CC8:D666:8D0C:BE04:BFAB:CA43:FB79'
+
 DOMAINS_EXCEPTIONS='
 freebox.fr fritz.box intranet lan localdomain nowtv.com private routerlogin.net l
 '

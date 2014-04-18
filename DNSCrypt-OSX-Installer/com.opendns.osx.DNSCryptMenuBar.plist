@@ -10,7 +10,7 @@
   <true/>
   <key>ProgramArguments</key>
   <array>
-    <string>/Applications/DNSCrypt-Menubar.app/Contents/MacOS/DNSCrypt-Menubar</string>
+    <string>/Applications/DNSCrypt Menubar.app/Contents/MacOS/DNSCrypt Menubar</string>
   </array>
   <key>LimitLoadToSessionType</key>
   <string>Aqua</string>

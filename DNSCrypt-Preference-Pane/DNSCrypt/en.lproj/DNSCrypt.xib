@@ -1,2333 +1,401 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
-	<data>
-		<int key="IBDocument.SystemTarget">1070</int>
-		<string key="IBDocument.SystemVersion">12C60</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2840</string>
-		<string key="IBDocument.AppKitVersion">1187.34</string>
-		<string key="IBDocument.HIToolboxVersion">625.00</string>
-		<dictionary class="NSMutableDictionary" key="IBDocument.PluginVersions">
-			<string key="com.apple.InterfaceBuilder.CocoaPlugin">2840</string>
-			<string key="com.apple.WebKitIBPlugin">1810</string>
-		</dictionary>
-		<array key="IBDocument.IntegratedClassDependencies">
-			<string>NSBox</string>
-			<string>NSButton</string>
-			<string>NSButtonCell</string>
-			<string>NSCustomObject</string>
-			<string>NSImageCell</string>
-			<string>NSImageView</string>
-			<string>NSTabView</string>
-			<string>NSTabViewItem</string>
-			<string>NSTextField</string>
-			<string>NSTextFieldCell</string>
-			<string>NSView</string>
-			<string>NSWindowTemplate</string>
-			<string>WebView</string>
-		</array>
-		<array key="IBDocument.PluginDependencies">
-			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string>com.apple.WebKitIBPlugin</string>
-		</array>
-		<object class="NSMutableDictionary" key="IBDocument.Metadata">
-			<string key="NS.key.0">PluginDependencyRecalculationVersion</string>
-			<integer value="1" key="NS.object.0"/>
-		</object>
-		<array class="NSMutableArray" key="IBDocument.RootObjects" id="409411428">
-			<object class="NSCustomObject" id="294453543">
-				<string key="NSClassName">DNSCrypt</string>
-			</object>
-			<object class="NSCustomObject" id="308860122">
-				<string key="NSClassName">FirstResponder</string>
-			</object>
-			<object class="NSCustomObject" id="278121016">
-				<string key="NSClassName">NSApplication</string>
-			</object>
-			<object class="NSWindowTemplate" id="660800786">
-				<int key="NSWindowStyleMask">7</int>
-				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{176, 715}, {589, 375}}</string>
-				<int key="NSWTFlags">1081606144</int>
-				<string key="NSWindowTitle">&lt;&lt; do not localize &gt;&gt;</string>
-				<string key="NSWindowClass">NSWindow</string>
-				<object class="NSMutableString" key="NSViewClass">
-					<characters key="NS.bytes">View</characters>
-				</object>
-				<nil key="NSUserInterfaceItemIdentifier"/>
-				<string key="NSWindowContentMinSize">{224.66399999999999, 10}</string>
-				<object class="NSView" key="NSWindowView" id="1037298196">
-					<reference key="NSNextResponder"/>
-					<int key="NSvFlags">256</int>
-					<array class="NSMutableArray" key="NSSubviews">
-						<object class="NSTabView" id="821865429">
-							<reference key="NSNextResponder" ref="1037298196"/>
-							<int key="NSvFlags">274</int>
-							<string key="NSFrame">{{13, 10}, {563, 359}}</string>
-							<reference key="NSSuperview" ref="1037298196"/>
-							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="1025762247"/>
-							<string key="NSReuseIdentifierKey">_NS:461</string>
-							<array class="NSMutableArray" key="NSTabViewItems">
-								<object class="NSTabViewItem" id="19707695">
-									<string key="NSIdentifier">1</string>
-									<object class="NSView" key="NSView" id="1025762247">
-										<reference key="NSNextResponder" ref="821865429"/>
-										<int key="NSvFlags">256</int>
-										<array class="NSMutableArray" key="NSSubviews">
-											<object class="NSButton" id="894789954">
-												<reference key="NSNextResponder" ref="1025762247"/>
-												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{15, 238}, {204, 22}}</string>
-												<reference key="NSSuperview" ref="1025762247"/>
-												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="300098131"/>
-												<string key="NSReuseIdentifierKey">_NS:239</string>
-												<bool key="NSEnabled">YES</bool>
-												<object class="NSButtonCell" key="NSCell" id="743617070">
-													<int key="NSCellFlags">67108864</int>
-													<int key="NSCellFlags2">0</int>
-													<string key="NSContents">Enable DNSCrypt</string>
-													<object class="NSFont" key="NSSupport" id="176030688">
-														<string key="NSName">LucidaGrande-Bold</string>
-														<double key="NSSize">14</double>
-														<int key="NSfFlags">16</int>
-													</object>
-													<string key="NSCellIdentifier">_NS:239</string>
-													<reference key="NSControlView" ref="894789954"/>
-													<int key="NSButtonFlags">1211912448</int>
-													<int key="NSButtonFlags2">2</int>
-													<object class="NSCustomResource" key="NSNormalImage" id="338365942">
-														<string key="NSClassName">NSImage</string>
-														<string key="NSResourceName">NSSwitch</string>
-													</object>
-													<object class="NSButtonImageSource" key="NSAlternateImage" id="875688652">
-														<string key="NSImageName">NSSwitch</string>
-													</object>
-													<string key="NSAlternateContents"/>
-													<string key="NSKeyEquivalent"/>
-													<int key="NSPeriodicDelay">200</int>
-													<int key="NSPeriodicInterval">25</int>
-												</object>
-												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-											</object>
-											<object class="NSButton" id="300098131">
-												<reference key="NSNextResponder" ref="1025762247"/>
-												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{15, 212}, {245, 24}}</string>
-												<reference key="NSSuperview" ref="1025762247"/>
-												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="891532389"/>
-												<string key="NSReuseIdentifierKey">_NS:239</string>
-												<bool key="NSEnabled">YES</bool>
-												<object class="NSButtonCell" key="NSCell" id="555340075">
-													<int key="NSCellFlags">67108864</int>
-													<int key="NSCellFlags2">0</int>
-													<string key="NSContents">Always use OpenDNS</string>
-													<reference key="NSSupport" ref="176030688"/>
-													<string key="NSCellIdentifier">_NS:239</string>
-													<reference key="NSControlView" ref="300098131"/>
-													<int key="NSButtonFlags">1211912448</int>
-													<int key="NSButtonFlags2">2</int>
-													<reference key="NSNormalImage" ref="338365942"/>
-													<reference key="NSAlternateImage" ref="875688652"/>
-													<string key="NSAlternateContents"/>
-													<string key="NSKeyEquivalent"/>
-													<int key="NSPeriodicDelay">200</int>
-													<int key="NSPeriodicInterval">25</int>
-												</object>
-												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-											</object>
-											<object class="NSButton" id="410495287">
-												<reference key="NSNextResponder" ref="1025762247"/>
-												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{15, 157}, {244, 22}}</string>
-												<reference key="NSSuperview" ref="1025762247"/>
-												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="384170040"/>
-												<string key="NSReuseIdentifierKey">_NS:239</string>
-												<bool key="NSEnabled">YES</bool>
-												<object class="NSButtonCell" key="NSCell" id="446412441">
-													<int key="NSCellFlags">67108864</int>
-													<int key="NSCellFlags2">0</int>
-													<string key="NSContents">Always use Familyshield</string>
-													<object class="NSFont" key="NSSupport" id="1059912458">
-														<string key="NSName">LucidaGrande</string>
-														<double key="NSSize">14</double>
-														<int key="NSfFlags">16</int>
-													</object>
-													<string key="NSCellIdentifier">_NS:239</string>
-													<reference key="NSControlView" ref="410495287"/>
-													<int key="NSButtonFlags">1211912448</int>
-													<int key="NSButtonFlags2">2</int>
-													<reference key="NSNormalImage" ref="338365942"/>
-													<reference key="NSAlternateImage" ref="875688652"/>
-													<string key="NSAlternateContents"/>
-													<string key="NSKeyEquivalent"/>
-													<int key="NSPeriodicDelay">200</int>
-													<int key="NSPeriodicInterval">25</int>
-												</object>
-												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-											</object>
-											<object class="NSButton" id="384170040">
-												<reference key="NSNextResponder" ref="1025762247"/>
-												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{15, 133}, {204, 22}}</string>
-												<reference key="NSSuperview" ref="1025762247"/>
-												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="240318099"/>
-												<string key="NSReuseIdentifierKey">_NS:239</string>
-												<bool key="NSEnabled">YES</bool>
-												<object class="NSButtonCell" key="NSCell" id="805275804">
-													<int key="NSCellFlags">67108864</int>
-													<int key="NSCellFlags2">0</int>
-													<string key="NSContents">Fallback to insecure DNS</string>
-													<reference key="NSSupport" ref="1059912458"/>
-													<string key="NSCellIdentifier">_NS:239</string>
-													<reference key="NSControlView" ref="384170040"/>
-													<int key="NSButtonFlags">1211912448</int>
-													<int key="NSButtonFlags2">2</int>
-													<reference key="NSNormalImage" ref="338365942"/>
-													<reference key="NSAlternateImage" ref="875688652"/>
-													<string key="NSAlternateContents"/>
-													<string key="NSKeyEquivalent"/>
-													<int key="NSPeriodicDelay">200</int>
-													<int key="NSPeriodicInterval">25</int>
-												</object>
-												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-											</object>
-											<object class="NSTextField" id="240318099">
-												<reference key="NSNextResponder" ref="1025762247"/>
-												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{14, 96}, {173, 19}}</string>
-												<reference key="NSSuperview" ref="1025762247"/>
-												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="496861916"/>
-												<string key="NSReuseIdentifierKey">_NS:3936</string>
-												<bool key="NSEnabled">YES</bool>
-												<object class="NSTextFieldCell" key="NSCell" id="899782338">
-													<int key="NSCellFlags">68157504</int>
-													<int key="NSCellFlags2">272630784</int>
-													<string key="NSContents">Current DNS resolver:</string>
-													<object class="NSFont" key="NSSupport">
-														<string key="NSName">LucidaGrande</string>
-														<double key="NSSize">16</double>
-														<int key="NSfFlags">16</int>
-													</object>
-													<string key="NSCellIdentifier">_NS:3936</string>
-													<reference key="NSControlView" ref="240318099"/>
-													<object class="NSColor" key="NSBackgroundColor" id="281676087">
-														<int key="NSColorSpace">6</int>
-														<string key="NSCatalogName">System</string>
-														<string key="NSColorName">controlColor</string>
-														<object class="NSColor" key="NSColor">
-															<int key="NSColorSpace">3</int>
-															<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
-														</object>
-													</object>
-													<object class="NSColor" key="NSTextColor" id="124270417">
-														<int key="NSColorSpace">6</int>
-														<string key="NSCatalogName">System</string>
-														<string key="NSColorName">controlTextColor</string>
-														<object class="NSColor" key="NSColor" id="958476851">
-															<int key="NSColorSpace">3</int>
-															<bytes key="NSWhite">MAA</bytes>
-														</object>
-													</object>
-												</object>
-												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-											</object>
-											<object class="NSTextField" id="372048088">
-												<reference key="NSNextResponder" ref="1025762247"/>
-												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{54, 284}, {72, 19}}</string>
-												<reference key="NSSuperview" ref="1025762247"/>
-												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="908408940"/>
-												<string key="NSReuseIdentifierKey">_NS:3936</string>
-												<bool key="NSEnabled">YES</bool>
-												<object class="NSTextFieldCell" key="NSCell" id="125529478">
-													<int key="NSCellFlags">68157504</int>
-													<int key="NSCellFlags2">272630784</int>
-													<string key="NSContents">Status:</string>
-													<object class="NSFont" key="NSSupport">
-														<string key="NSName">LucidaGrande</string>
-														<double key="NSSize">18</double>
-														<int key="NSfFlags">16</int>
-													</object>
-													<string key="NSCellIdentifier">_NS:3936</string>
-													<reference key="NSControlView" ref="372048088"/>
-													<reference key="NSBackgroundColor" ref="281676087"/>
-													<reference key="NSTextColor" ref="124270417"/>
-												</object>
-												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-											</object>
-											<object class="NSTextField" id="496861916">
-												<reference key="NSNextResponder" ref="1025762247"/>
-												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{14, -3}, {240, 83}}</string>
-												<reference key="NSSuperview" ref="1025762247"/>
-												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="855319081"/>
-												<string key="NSReuseIdentifierKey">_NS:3596</string>
-												<bool key="NSEnabled">YES</bool>
-												<object class="NSTextFieldCell" key="NSCell" id="271748581">
-													<int key="NSCellFlags">67108864</int>
-													<int key="NSCellFlags2">4194304</int>
-													<string key="NSContents">...</string>
-													<object class="NSFont" key="NSSupport">
-														<string key="NSName">Monaco</string>
-														<double key="NSSize">14</double>
-														<int key="NSfFlags">16</int>
-													</object>
-													<string key="NSPlaceholderString"/>
-													<string key="NSCellIdentifier">_NS:3596</string>
-													<reference key="NSControlView" ref="496861916"/>
-													<bool key="NSDrawsBackground">YES</bool>
-													<reference key="NSBackgroundColor" ref="281676087"/>
-													<object class="NSColor" key="NSTextColor">
-														<int key="NSColorSpace">3</int>
-														<bytes key="NSWhite">MC4yMDQ2MzcwOTY4AA</bytes>
-													</object>
-												</object>
-												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-											</object>
-											<object class="NSTextField" id="908408940">
-												<reference key="NSNextResponder" ref="1025762247"/>
-												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{115, 283}, {125, 19}}</string>
-												<reference key="NSSuperview" ref="1025762247"/>
-												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="894789954"/>
-												<string key="NSReuseIdentifierKey">_NS:3596</string>
-												<bool key="NSEnabled">YES</bool>
-												<object class="NSTextFieldCell" key="NSCell" id="118313349">
-													<int key="NSCellFlags">67108864</int>
-													<int key="NSCellFlags2">4194304</int>
-													<string key="NSContents">...</string>
-													<object class="NSFont" key="NSSupport">
-														<string key="NSName">Monaco</string>
-														<double key="NSSize">16</double>
-														<int key="NSfFlags">16</int>
-													</object>
-													<string key="NSPlaceholderString"/>
-													<string key="NSCellIdentifier">_NS:3596</string>
-													<reference key="NSControlView" ref="908408940"/>
-													<bool key="NSDrawsBackground">YES</bool>
-													<reference key="NSBackgroundColor" ref="281676087"/>
-													<object class="NSColor" key="NSTextColor">
-														<int key="NSColorSpace">3</int>
-														<bytes key="NSWhite">MC4yMDQ2MzcwOTY4AA</bytes>
-													</object>
-												</object>
-												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-											</object>
-											<object class="NSImageView" id="891532389">
-												<reference key="NSNextResponder" ref="1025762247"/>
-												<int key="NSvFlags">256</int>
-												<set class="NSMutableSet" key="NSDragTypes">
-													<string>Apple PDF pasteboard type</string>
-													<string>Apple PICT pasteboard type</string>
-													<string>Apple PNG pasteboard type</string>
-													<string>NSFilenamesPboardType</string>
-													<string>NeXT Encapsulated PostScript v1.2 pasteboard type</string>
-													<string>NeXT TIFF v4.0 pasteboard type</string>
-												</set>
-												<string key="NSFrame">{{302, 222}, {224, 88}}</string>
-												<reference key="NSSuperview" ref="1025762247"/>
-												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="487940586"/>
-												<bool key="NSEnabled">YES</bool>
-												<object class="NSImageCell" key="NSCell" id="107747299">
-													<int key="NSCellFlags">134217728</int>
-													<int key="NSCellFlags2">33554432</int>
-													<object class="NSCustomResource" key="NSContents">
-														<string key="NSClassName">NSImage</string>
-														<string key="NSResourceName">opendns_logo_300</string>
-													</object>
-													<int key="NSAlign">0</int>
-													<int key="NSScale">0</int>
-													<int key="NSStyle">0</int>
-													<bool key="NSAnimates">NO</bool>
-												</object>
-												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-												<bool key="NSEditable">YES</bool>
-											</object>
-											<object class="NSImageView" id="423755939">
-												<reference key="NSNextResponder" ref="1025762247"/>
-												<int key="NSvFlags">256</int>
-												<set class="NSMutableSet" key="NSDragTypes">
-													<string>Apple PDF pasteboard type</string>
-													<string>Apple PICT pasteboard type</string>
-													<string>Apple PNG pasteboard type</string>
-													<string>NSFilenamesPboardType</string>
-													<string>NeXT Encapsulated PostScript v1.2 pasteboard type</string>
-													<string>NeXT TIFF v4.0 pasteboard type</string>
-												</set>
-												<string key="NSFrame">{{17, 277}, {32.395949255088134, 32.395949255088134}}</string>
-												<reference key="NSSuperview" ref="1025762247"/>
-												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="372048088"/>
-												<bool key="NSEnabled">YES</bool>
-												<object class="NSImageCell" key="NSCell" id="336811923">
-													<int key="NSCellFlags">134217728</int>
-													<int key="NSCellFlags2">33554432</int>
-													<object class="NSCustomResource" key="NSContents">
-														<string key="NSClassName">NSImage</string>
-														<string key="NSResourceName">ajax-loader</string>
-													</object>
-													<int key="NSAlign">2</int>
-													<int key="NSScale">0</int>
-													<int key="NSStyle">0</int>
-													<bool key="NSAnimates">YES</bool>
-												</object>
-												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-												<bool key="NSEditable">YES</bool>
-											</object>
-											<object class="NSBox" id="855319081">
-												<reference key="NSNextResponder" ref="1025762247"/>
-												<int key="NSvFlags">12</int>
-												<string key="NSFrame">{{269.5, 2}, {4, 300}}</string>
-												<reference key="NSSuperview" ref="1025762247"/>
-												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="429164099"/>
-												<string key="NSReuseIdentifierKey">_NS:1557</string>
-												<string key="NSOffsets">{0, 0}</string>
-												<object class="NSTextFieldCell" key="NSTitleCell">
-													<int key="NSCellFlags">67108864</int>
-													<int key="NSCellFlags2">0</int>
-													<string key="NSContents">Box</string>
-													<object class="NSFont" key="NSSupport" id="831984564">
-														<string key="NSName">LucidaGrande</string>
-														<double key="NSSize">13</double>
-														<int key="NSfFlags">1044</int>
-													</object>
-													<object class="NSColor" key="NSBackgroundColor" id="494115617">
-														<int key="NSColorSpace">6</int>
-														<string key="NSCatalogName">System</string>
-														<string key="NSColorName">textBackgroundColor</string>
-														<object class="NSColor" key="NSColor">
-															<int key="NSColorSpace">3</int>
-															<bytes key="NSWhite">MQA</bytes>
-														</object>
-													</object>
-													<object class="NSColor" key="NSTextColor">
-														<int key="NSColorSpace">3</int>
-														<bytes key="NSWhite">MCAwLjgwMDAwMDAxMTkAA</bytes>
-													</object>
-												</object>
-												<int key="NSBorderType">3</int>
-												<int key="NSBoxType">2</int>
-												<int key="NSTitlePosition">0</int>
-												<bool key="NSTransparent">NO</bool>
-											</object>
-											<object class="NSButton" id="193986403">
-												<reference key="NSNextResponder" ref="1025762247"/>
-												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{323, 190}, {183, 32}}</string>
-												<reference key="NSSuperview" ref="1025762247"/>
-												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="821865429"/>
-												<string key="NSReuseIdentifierKey">_NS:2419</string>
-												<bool key="NSEnabled">YES</bool>
-												<object class="NSButtonCell" key="NSCell" id="675161177">
-													<int key="NSCellFlags">67108864</int>
-													<int key="NSCellFlags2">134217728</int>
-													<string key="NSContents">http://www.opendns.com/</string>
-													<object class="NSFont" key="NSSupport" id="858841166">
-														<string key="NSName">LucidaGrande</string>
-														<double key="NSSize">12</double>
-														<int key="NSfFlags">16</int>
-													</object>
-													<string key="NSCellIdentifier">_NS:2419</string>
-													<reference key="NSControlView" ref="193986403"/>
-													<int key="NSButtonFlags">-2038022144</int>
-													<int key="NSButtonFlags2">129</int>
-													<reference key="NSAlternateImage" ref="858841166"/>
-													<string key="NSAlternateContents">Browse the OpenDNS web site</string>
-													<string key="NSKeyEquivalent"/>
-													<int key="NSPeriodicDelay">400</int>
-													<int key="NSPeriodicInterval">75</int>
-												</object>
-												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-											</object>
-											<object class="WebView" id="429164099">
-												<reference key="NSNextResponder" ref="1025762247"/>
-												<int key="NSvFlags">256</int>
-												<set class="NSMutableSet" key="NSDragTypes">
-													<string>Apple HTML pasteboard type</string>
-													<string>Apple PDF pasteboard type</string>
-													<string>Apple PICT pasteboard type</string>
-													<string>Apple URL pasteboard type</string>
-													<string>Apple Web Archive pasteboard type</string>
-													<string>NSColor pasteboard type</string>
-													<string>NSFilenamesPboardType</string>
-													<string>NSStringPboardType</string>
-													<string>NeXT RTFD pasteboard type</string>
-													<string>NeXT Rich Text Format v1.0 pasteboard type</string>
-													<string>NeXT TIFF v4.0 pasteboard type</string>
-													<string>WebURLsWithTitlesPboardType</string>
-													<string>public.png</string>
-													<string>public.url</string>
-													<string>public.url-name</string>
-												</set>
-												<string key="NSFrame">{{302, 2}, {224, 192}}</string>
-												<reference key="NSSuperview" ref="1025762247"/>
-												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView"/>
-												<string key="NSReuseIdentifierKey">_NS:51</string>
-												<string key="FrameName"/>
-												<string key="GroupName"/>
-												<object class="WebPreferences" key="Preferences" id="260726250">
-													<string key="Identifier"/>
-													<dictionary class="NSMutableDictionary" key="Values">
-														<boolean value="NO" key="WebKitAllowAnimatedImageLoopingPreferenceKey"/>
-														<boolean value="NO" key="WebKitAllowAnimatedImagesPreferenceKey"/>
-														<integer value="12" key="WebKitDefaultFixedFontSize"/>
-														<integer value="12" key="WebKitDefaultFontSize"/>
-														<boolean value="NO" key="WebKitDisplayImagesKey"/>
-														<boolean value="NO" key="WebKitJavaEnabled"/>
-														<boolean value="NO" key="WebKitJavaScriptCanOpenWindowsAutomatically"/>
-														<boolean value="YES" key="WebKitJavaScriptEnabled"/>
-														<integer value="1" key="WebKitMinimumFontSize"/>
-														<boolean value="NO" key="WebKitPluginsEnabled"/>
-													</dictionary>
-												</object>
-												<bool key="UseBackForwardList">YES</bool>
-												<bool key="AllowsUndo">YES</bool>
-											</object>
-											<object class="NSBox" id="487940586">
-												<reference key="NSNextResponder" ref="1025762247"/>
-												<int key="NSvFlags">12</int>
-												<string key="NSFrame">{{17, 193}, {240, 5}}</string>
-												<reference key="NSSuperview" ref="1025762247"/>
-												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="410495287"/>
-												<string key="NSReuseIdentifierKey">_NS:2411</string>
-												<string key="NSOffsets">{0, 0}</string>
-												<object class="NSTextFieldCell" key="NSTitleCell">
-													<int key="NSCellFlags">67108864</int>
-													<int key="NSCellFlags2">0</int>
-													<string key="NSContents">Box</string>
-													<reference key="NSSupport" ref="831984564"/>
-													<reference key="NSBackgroundColor" ref="494115617"/>
-													<object class="NSColor" key="NSTextColor">
-														<int key="NSColorSpace">3</int>
-														<bytes key="NSWhite">MCAwLjgwMDAwMDAxMTkAA</bytes>
-													</object>
-												</object>
-												<int key="NSBorderType">3</int>
-												<int key="NSBoxType">2</int>
-												<int key="NSTitlePosition">0</int>
-												<bool key="NSTransparent">NO</bool>
-											</object>
-										</array>
-										<string key="NSFrame">{{10, 33}, {543, 313}}</string>
-										<reference key="NSSuperview" ref="821865429"/>
-										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="423755939"/>
-										<string key="NSReuseIdentifierKey">_NS:463</string>
-									</object>
-									<string key="NSLabel">General</string>
-									<reference key="NSColor" ref="281676087"/>
-									<reference key="NSTabView" ref="821865429"/>
-								</object>
-								<object class="NSTabViewItem" id="359976024">
-									<string key="NSIdentifier">2</string>
-									<object class="NSView" key="NSView" id="42710935">
-										<nil key="NSNextResponder"/>
-										<int key="NSvFlags">256</int>
-										<array class="NSMutableArray" key="NSSubviews">
-											<object class="NSTextField" id="826224678">
-												<reference key="NSNextResponder" ref="42710935"/>
-												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{5, 236}, {406, 17}}</string>
-												<reference key="NSSuperview" ref="42710935"/>
-												<reference key="NSNextKeyView" ref="1038497103"/>
-												<string key="NSReuseIdentifierKey">_NS:1535</string>
-												<bool key="NSEnabled">YES</bool>
-												<object class="NSTextFieldCell" key="NSCell" id="950367456">
-													<int key="NSCellFlags">68157504</int>
-													<int key="NSCellFlags2">272630784</int>
-													<string key="NSContents">When not using DNSCrypt, use the following static DNS servers:</string>
-													<reference key="NSSupport" ref="831984564"/>
-													<string key="NSCellIdentifier">_NS:1535</string>
-													<reference key="NSControlView" ref="826224678"/>
-													<reference key="NSBackgroundColor" ref="281676087"/>
-													<reference key="NSTextColor" ref="124270417"/>
-												</object>
-												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-											</object>
-											<object class="NSTextField" id="1038497103">
-												<reference key="NSNextResponder" ref="42710935"/>
-												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{8, 206}, {526, 22}}</string>
-												<reference key="NSSuperview" ref="42710935"/>
-												<reference key="NSNextKeyView" ref="11113535"/>
-												<string key="NSReuseIdentifierKey">_NS:9</string>
-												<bool key="NSEnabled">YES</bool>
-												<object class="NSTextFieldCell" key="NSCell" id="684654118">
-													<int key="NSCellFlags">-1804599231</int>
-													<int key="NSCellFlags2">272630848</int>
-													<string key="NSContents"/>
-													<object class="NSFont" key="NSSupport">
-														<string key="NSName">Courier</string>
-														<double key="NSSize">13</double>
-														<int key="NSfFlags">16</int>
-													</object>
-													<string key="NSPlaceholderString">Space-separated list of IP addresses or leave blank for DHCP</string>
-													<string key="NSCellIdentifier">_NS:9</string>
-													<reference key="NSControlView" ref="1038497103"/>
-													<bool key="NSDrawsBackground">YES</bool>
-													<reference key="NSBackgroundColor" ref="494115617"/>
-													<object class="NSColor" key="NSTextColor" id="678009371">
-														<int key="NSColorSpace">6</int>
-														<string key="NSCatalogName">System</string>
-														<string key="NSColorName">textColor</string>
-														<reference key="NSColor" ref="958476851"/>
-													</object>
-													<array key="NSAllowedInputLocales">
-														<string>NSAllRomanInputSourcesLocaleIdentifier</string>
-													</array>
-												</object>
-												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-											</object>
-											<object class="NSButton" id="679502487">
-												<reference key="NSNextResponder" ref="42710935"/>
-												<int key="NSvFlags">268</int>
-												<array class="NSMutableArray" key="NSSubviews"/>
-												<string key="NSFrame">{{7, 281}, {126, 18}}</string>
-												<reference key="NSSuperview" ref="42710935"/>
-												<reference key="NSNextKeyView" ref="985341605"/>
-												<string key="NSReuseIdentifierKey">_NS:9</string>
-												<bool key="NSEnabled">YES</bool>
-												<object class="NSButtonCell" key="NSCell" id="164894774">
-													<int key="NSCellFlags">67108864</int>
-													<int key="NSCellFlags2">268435456</int>
-													<string key="NSContents">Log DNS queries</string>
-													<reference key="NSSupport" ref="831984564"/>
-													<string key="NSCellIdentifier">_NS:9</string>
-													<reference key="NSControlView" ref="679502487"/>
-													<int key="NSButtonFlags">1211912448</int>
-													<int key="NSButtonFlags2">2</int>
-													<reference key="NSNormalImage" ref="338365942"/>
-													<reference key="NSAlternateImage" ref="875688652"/>
-													<string key="NSAlternateContents"/>
-													<string key="NSKeyEquivalent"/>
-													<int key="NSPeriodicDelay">200</int>
-													<int key="NSPeriodicInterval">25</int>
-												</object>
-												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-											</object>
-											<object class="NSButton" id="985341605">
-												<reference key="NSNextResponder" ref="42710935"/>
-												<int key="NSvFlags">268</int>
-												<array class="NSMutableArray" key="NSSubviews"/>
-												<string key="NSFrame">{{161, 273}, {94, 32}}</string>
-												<reference key="NSSuperview" ref="42710935"/>
-												<reference key="NSNextKeyView" ref="960794720"/>
-												<string key="NSReuseIdentifierKey">_NS:9</string>
-												<bool key="NSEnabled">YES</bool>
-												<object class="NSButtonCell" key="NSCell" id="252019693">
-													<int key="NSCellFlags">67108864</int>
-													<int key="NSCellFlags2">134217728</int>
-													<string key="NSContents">View log</string>
-													<reference key="NSSupport" ref="831984564"/>
-													<string key="NSCellIdentifier">_NS:9</string>
-													<reference key="NSControlView" ref="985341605"/>
-													<int key="NSButtonFlags">-2038284288</int>
-													<int key="NSButtonFlags2">129</int>
-													<string key="NSAlternateContents"/>
-													<string key="NSKeyEquivalent"/>
-													<int key="NSPeriodicDelay">200</int>
-													<int key="NSPeriodicInterval">25</int>
-												</object>
-												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-											</object>
-											<object class="NSTextField" id="25489948">
-												<reference key="NSNextResponder" ref="42710935"/>
-												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{10, 7}, {169, 141}}</string>
-												<reference key="NSSuperview" ref="42710935"/>
-												<reference key="NSNextKeyView" ref="583617410"/>
-												<string key="NSReuseIdentifierKey">_NS:9</string>
-												<string key="NSAntiCompressionPriority">{250, 750}</string>
-												<bool key="NSEnabled">YES</bool>
-												<object class="NSTextFieldCell" key="NSCell" id="367439240">
-													<int key="NSCellFlags">-1805647871</int>
-													<int key="NSCellFlags2">272629760</int>
-													<string key="NSContents"/>
-													<object class="NSFont" key="NSSupport" id="395387470">
-														<string key="NSName">Courier</string>
-														<double key="NSSize">11</double>
-														<int key="NSfFlags">16</int>
-													</object>
-													<string type="base64-UTF8" key="NSPlaceholderString">SVAgYWRkcmVzc2VzIChJUHY0L0lQdjYpIHRvIGJsb2NrLuKAqOKAqDIwOC42Ny4wLjI1NeKAqDE5Mi4w
-LjQzLjEwCjo6MQ</string>
-													<string key="NSCellIdentifier">_NS:9</string>
-													<reference key="NSControlView" ref="25489948"/>
-													<bool key="NSDrawsBackground">YES</bool>
-													<reference key="NSBackgroundColor" ref="494115617"/>
-													<reference key="NSTextColor" ref="678009371"/>
-													<array key="NSAllowedInputLocales">
-														<string>NSAllRomanInputSourcesLocaleIdentifier</string>
-													</array>
-												</object>
-												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-											</object>
-											<object class="NSTextField" id="583617410">
-												<reference key="NSNextResponder" ref="42710935"/>
-												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{188, 7}, {169, 141}}</string>
-												<reference key="NSSuperview" ref="42710935"/>
-												<reference key="NSNextKeyView" ref="902108600"/>
-												<string key="NSReuseIdentifierKey">_NS:9</string>
-												<string key="NSAntiCompressionPriority">{250, 750}</string>
-												<bool key="NSEnabled">YES</bool>
-												<object class="NSTextFieldCell" key="NSCell" id="991118452">
-													<int key="NSCellFlags">-1805647871</int>
-													<int key="NSCellFlags2">272629760</int>
-													<string key="NSContents"/>
-													<reference key="NSSupport" ref="395387470"/>
-													<string type="base64-UTF8" key="NSPlaceholderString">RG9tYWluIG5hbWVzIHRvIGJsb2NrLgrigKgqc2V4KgphZHMuKgoqLmV4YW1wbGUuY29t4oCoc3VzcGlj
-aW91cy5leGFtcGxlLm5ldA</string>
-													<string key="NSCellIdentifier">_NS:9</string>
-													<reference key="NSControlView" ref="583617410"/>
-													<bool key="NSDrawsBackground">YES</bool>
-													<reference key="NSBackgroundColor" ref="494115617"/>
-													<reference key="NSTextColor" ref="678009371"/>
-													<array key="NSAllowedInputLocales">
-														<string>NSAllRomanInputSourcesLocaleIdentifier</string>
-													</array>
-												</object>
-												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-											</object>
-											<object class="NSTextField" id="902108600">
-												<reference key="NSNextResponder" ref="42710935"/>
-												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{366, 7}, {169, 141}}</string>
-												<reference key="NSSuperview" ref="42710935"/>
-												<reference key="NSNextKeyView" ref="821865429"/>
-												<string key="NSReuseIdentifierKey">_NS:9</string>
-												<string key="NSAntiCompressionPriority">{250, 750}</string>
-												<bool key="NSEnabled">YES</bool>
-												<object class="NSTextFieldCell" key="NSCell" id="1015910756">
-													<int key="NSCellFlags">-1805647871</int>
-													<int key="NSCellFlags2">272629760</int>
-													<string key="NSContents"/>
-													<reference key="NSSupport" ref="395387470"/>
-													<string key="NSPlaceholderString">Domain names to resolve through the default resolvers instead of OpenDNS.  localdomain mycompany.example.net</string>
-													<string key="NSCellIdentifier">_NS:9</string>
-													<reference key="NSControlView" ref="902108600"/>
-													<bool key="NSDrawsBackground">YES</bool>
-													<reference key="NSBackgroundColor" ref="494115617"/>
-													<reference key="NSTextColor" ref="678009371"/>
-													<array key="NSAllowedInputLocales">
-														<string>NSAllRomanInputSourcesLocaleIdentifier</string>
-													</array>
-												</object>
-												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-											</object>
-											<object class="NSTextField" id="11113535">
-												<reference key="NSNextResponder" ref="42710935"/>
-												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{7, 156}, {175, 34}}</string>
-												<reference key="NSSuperview" ref="42710935"/>
-												<reference key="NSNextKeyView" ref="546014897"/>
-												<string key="NSReuseIdentifierKey">_NS:9</string>
-												<string key="NSAntiCompressionPriority">{250, 750}</string>
-												<bool key="NSEnabled">YES</bool>
-												<object class="NSTextFieldCell" key="NSCell" id="252174266">
-													<int key="NSCellFlags">67108864</int>
-													<int key="NSCellFlags2">272629760</int>
-													<string key="NSContents">Block replies containing any of these IP addresses:</string>
-													<object class="NSFont" key="NSSupport" id="604491631">
-														<string key="NSName">LucidaGrande</string>
-														<double key="NSSize">13</double>
-														<int key="NSfFlags">16</int>
-													</object>
-													<string key="NSCellIdentifier">_NS:9</string>
-													<reference key="NSControlView" ref="11113535"/>
-													<reference key="NSBackgroundColor" ref="281676087"/>
-													<reference key="NSTextColor" ref="124270417"/>
-												</object>
-												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-												<bool key="NSControlAutosetMaxLayoutWidth">YES</bool>
-											</object>
-											<object class="NSTextField" id="546014897">
-												<reference key="NSNextResponder" ref="42710935"/>
-												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{186, 156}, {175, 34}}</string>
-												<reference key="NSSuperview" ref="42710935"/>
-												<reference key="NSNextKeyView" ref="567741681"/>
-												<string key="NSReuseIdentifierKey">_NS:9</string>
-												<string key="NSAntiCompressionPriority">{250, 750}</string>
-												<bool key="NSEnabled">YES</bool>
-												<object class="NSTextFieldCell" key="NSCell" id="1021766263">
-													<int key="NSCellFlags">67108864</int>
-													<int key="NSCellFlags2">272629760</int>
-													<string key="NSContents">Block queries for the following domain names:</string>
-													<reference key="NSSupport" ref="604491631"/>
-													<string key="NSCellIdentifier">_NS:9</string>
-													<reference key="NSControlView" ref="546014897"/>
-													<reference key="NSBackgroundColor" ref="281676087"/>
-													<reference key="NSTextColor" ref="124270417"/>
-												</object>
-												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-												<bool key="NSControlAutosetMaxLayoutWidth">YES</bool>
-											</object>
-											<object class="NSTextField" id="567741681">
-												<reference key="NSNextResponder" ref="42710935"/>
-												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{363, 156}, {175, 34}}</string>
-												<reference key="NSSuperview" ref="42710935"/>
-												<reference key="NSNextKeyView" ref="25489948"/>
-												<string key="NSReuseIdentifierKey">_NS:9</string>
-												<string key="NSAntiCompressionPriority">{250, 750}</string>
-												<bool key="NSEnabled">YES</bool>
-												<object class="NSTextFieldCell" key="NSCell" id="1022329366">
-													<int key="NSCellFlags">67108864</int>
-													<int key="NSCellFlags2">272629760</int>
-													<string key="NSContents">Bypass OpenDNS in order to resolve these domains:</string>
-													<reference key="NSSupport" ref="604491631"/>
-													<string key="NSCellIdentifier">_NS:9</string>
-													<reference key="NSControlView" ref="567741681"/>
-													<reference key="NSBackgroundColor" ref="281676087"/>
-													<reference key="NSTextColor" ref="124270417"/>
-												</object>
-												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-												<bool key="NSControlAutosetMaxLayoutWidth">YES</bool>
-											</object>
-											<object class="NSButton" id="988915282">
-												<reference key="NSNextResponder" ref="42710935"/>
-												<int key="NSvFlags">268</int>
-												<array class="NSMutableArray" key="NSSubviews"/>
-												<string key="NSFrame">{{503, 277}, {25, 25}}</string>
-												<reference key="NSSuperview" ref="42710935"/>
-												<reference key="NSNextKeyView" ref="228385556"/>
-												<string key="NSReuseIdentifierKey">_NS:1598</string>
-												<bool key="NSEnabled">YES</bool>
-												<object class="NSButtonCell" key="NSCell" id="933364045">
-													<int key="NSCellFlags">67108864</int>
-													<int key="NSCellFlags2">134217728</int>
-													<string key="NSContents"/>
-													<reference key="NSSupport" ref="831984564"/>
-													<string key="NSCellIdentifier">_NS:1598</string>
-													<reference key="NSControlView" ref="988915282"/>
-													<int key="NSButtonFlags">-2038415360</int>
-													<int key="NSButtonFlags2">161</int>
-													<string key="NSAlternateContents"/>
-													<string key="NSKeyEquivalent"/>
-													<int key="NSPeriodicDelay">200</int>
-													<int key="NSPeriodicInterval">25</int>
-												</object>
-												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-											</object>
-											<object class="NSTextField" id="960794720">
-												<reference key="NSNextResponder" ref="42710935"/>
-												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{467, 284}, {33, 17}}</string>
-												<reference key="NSSuperview" ref="42710935"/>
-												<reference key="NSNextKeyView" ref="988915282"/>
-												<string key="NSReuseIdentifierKey">_NS:1535</string>
-												<bool key="NSEnabled">YES</bool>
-												<object class="NSTextFieldCell" key="NSCell" id="537631591">
-													<int key="NSCellFlags">68157504</int>
-													<int key="NSCellFlags2">272630784</int>
-													<string key="NSContents">Help</string>
-													<reference key="NSSupport" ref="604491631"/>
-													<string key="NSCellIdentifier">_NS:1535</string>
-													<reference key="NSControlView" ref="960794720"/>
-													<reference key="NSBackgroundColor" ref="281676087"/>
-													<reference key="NSTextColor" ref="124270417"/>
-												</object>
-												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-											</object>
-											<object class="NSBox" id="30650809">
-												<reference key="NSNextResponder" ref="42710935"/>
-												<int key="NSvFlags">12</int>
-												<array class="NSMutableArray" key="NSSubviews"/>
-												<string key="NSFrame">{{9, 265}, {526, 5}}</string>
-												<reference key="NSSuperview" ref="42710935"/>
-												<reference key="NSNextKeyView" ref="826224678"/>
-												<string key="NSReuseIdentifierKey">_NS:9</string>
-												<string key="NSOffsets">{0, 0}</string>
-												<object class="NSTextFieldCell" key="NSTitleCell">
-													<int key="NSCellFlags">67108864</int>
-													<int key="NSCellFlags2">0</int>
-													<string key="NSContents">Box</string>
-													<reference key="NSSupport" ref="831984564"/>
-													<reference key="NSBackgroundColor" ref="494115617"/>
-													<object class="NSColor" key="NSTextColor">
-														<int key="NSColorSpace">3</int>
-														<bytes key="NSWhite">MCAwLjgwMDAwMDAxMTkAA</bytes>
-													</object>
-												</object>
-												<int key="NSBorderType">3</int>
-												<int key="NSBoxType">2</int>
-												<int key="NSTitlePosition">0</int>
-												<bool key="NSTransparent">NO</bool>
-											</object>
-											<object class="WebView" id="228385556">
-												<reference key="NSNextResponder" ref="42710935"/>
-												<int key="NSvFlags">-2147483392</int>
-												<set class="NSMutableSet" key="NSDragTypes">
-													<string>Apple HTML pasteboard type</string>
-													<string>Apple PDF pasteboard type</string>
-													<string>Apple PICT pasteboard type</string>
-													<string>Apple URL pasteboard type</string>
-													<string>Apple Web Archive pasteboard type</string>
-													<string>NSColor pasteboard type</string>
-													<string>NSFilenamesPboardType</string>
-													<string>NSStringPboardType</string>
-													<string>NeXT RTFD pasteboard type</string>
-													<string>NeXT Rich Text Format v1.0 pasteboard type</string>
-													<string>NeXT TIFF v4.0 pasteboard type</string>
-													<string>WebURLsWithTitlesPboardType</string>
-													<string>public.png</string>
-													<string>public.url</string>
-													<string>public.url-name</string>
-												</set>
-												<string key="NSFrame">{{3, -3}, {536, 278}}</string>
-												<reference key="NSSuperview" ref="42710935"/>
-												<reference key="NSNextKeyView"/>
-												<string key="NSReuseIdentifierKey">_NS:9</string>
-												<string key="FrameName"/>
-												<string key="GroupName"/>
-												<object class="WebPreferences" key="Preferences">
-													<string key="Identifier">helpWebView</string>
-													<dictionary class="NSMutableDictionary" key="Values">
-														<boolean value="NO" key="helpWebViewWebKitAllowAnimatedImageLoopingPreferenceKey"/>
-														<boolean value="NO" key="helpWebViewWebKitAllowAnimatedImagesPreferenceKey"/>
-														<integer value="12" key="helpWebViewWebKitDefaultFixedFontSize"/>
-														<integer value="12" key="helpWebViewWebKitDefaultFontSize"/>
-														<boolean value="NO" key="helpWebViewWebKitDisplayImagesKey"/>
-														<boolean value="NO" key="helpWebViewWebKitJavaEnabled"/>
-														<boolean value="NO" key="helpWebViewWebKitJavaScriptCanOpenWindowsAutomatically"/>
-														<boolean value="NO" key="helpWebViewWebKitJavaScriptEnabled"/>
-														<integer value="2" key="helpWebViewWebKitMinimumFontSize"/>
-														<boolean value="NO" key="helpWebViewWebKitPluginsEnabled"/>
-													</dictionary>
-												</object>
-												<bool key="UseBackForwardList">NO</bool>
-												<bool key="AllowsUndo">YES</bool>
-											</object>
-										</array>
-										<string key="NSFrame">{{10, 33}, {543, 313}}</string>
-										<reference key="NSNextKeyView" ref="679502487"/>
-									</object>
-									<string key="NSLabel">Advanced</string>
-									<reference key="NSColor" ref="281676087"/>
-									<reference key="NSTabView" ref="821865429"/>
-								</object>
-								<object class="NSTabViewItem" id="820989392">
-									<string key="NSIdentifier">3</string>
-									<object class="NSView" key="NSView" id="521420514">
-										<nil key="NSNextResponder"/>
-										<int key="NSvFlags">256</int>
-										<array class="NSMutableArray" key="NSSubviews">
-											<object class="WebView" id="1000382251">
-												<reference key="NSNextResponder" ref="521420514"/>
-												<int key="NSvFlags">256</int>
-												<set class="NSMutableSet" key="NSDragTypes">
-													<string>Apple HTML pasteboard type</string>
-													<string>Apple PDF pasteboard type</string>
-													<string>Apple PICT pasteboard type</string>
-													<string>Apple URL pasteboard type</string>
-													<string>Apple Web Archive pasteboard type</string>
-													<string>NSColor pasteboard type</string>
-													<string>NSFilenamesPboardType</string>
-													<string>NSStringPboardType</string>
-													<string>NeXT RTFD pasteboard type</string>
-													<string>NeXT Rich Text Format v1.0 pasteboard type</string>
-													<string>NeXT TIFF v4.0 pasteboard type</string>
-													<string>WebURLsWithTitlesPboardType</string>
-													<string>public.png</string>
-													<string>public.url</string>
-													<string>public.url-name</string>
-												</set>
-												<string key="NSFrame">{{17, 31}, {509, 279}}</string>
-												<reference key="NSSuperview" ref="521420514"/>
-												<reference key="NSNextKeyView"/>
-												<string key="NSReuseIdentifierKey">_NS:51</string>
-												<string key="FrameName"/>
-												<string key="GroupName"/>
-												<reference key="Preferences" ref="260726250"/>
-												<bool key="UseBackForwardList">NO</bool>
-												<bool key="AllowsUndo">YES</bool>
-											</object>
-											<object class="NSButton" id="231106999">
-												<reference key="NSNextResponder" ref="521420514"/>
-												<int key="NSvFlags">268</int>
-												<string key="NSFrame">{{437, -5}, {95, 32}}</string>
-												<reference key="NSSuperview" ref="521420514"/>
-												<reference key="NSNextKeyView" ref="821865429"/>
-												<string key="NSReuseIdentifierKey">_NS:9</string>
-												<bool key="NSEnabled">YES</bool>
-												<object class="NSButtonCell" key="NSCell" id="132642450">
-													<int key="NSCellFlags">67108864</int>
-													<int key="NSCellFlags2">134217728</int>
-													<string key="NSContents">Uninstall</string>
-													<reference key="NSSupport" ref="831984564"/>
-													<string key="NSCellIdentifier">_NS:9</string>
-													<reference key="NSControlView" ref="231106999"/>
-													<int key="NSButtonFlags">-2034876416</int>
-													<int key="NSButtonFlags2">129</int>
-													<reference key="NSAlternateImage" ref="604491631"/>
-													<string key="NSAlternateContents"/>
-													<string key="NSKeyEquivalent"/>
-													<int key="NSPeriodicDelay">200</int>
-													<int key="NSPeriodicInterval">25</int>
-												</object>
-												<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-											</object>
-										</array>
-										<string key="NSFrame">{{10, 33}, {543, 313}}</string>
-										<reference key="NSNextKeyView" ref="1000382251"/>
-										<string key="NSReuseIdentifierKey">_NS:620</string>
-									</object>
-									<string key="NSLabel">About</string>
-									<reference key="NSColor" ref="281676087"/>
-									<reference key="NSTabView" ref="821865429"/>
-								</object>
-								<object class="NSTabViewItem" id="615953595">
-									<string key="NSIdentifier">4</string>
-									<object class="NSView" key="NSView" id="49138022">
-										<nil key="NSNextResponder"/>
-										<int key="NSvFlags">256</int>
-										<array class="NSMutableArray" key="NSSubviews">
-											<object class="WebView" id="503260080">
-												<reference key="NSNextResponder" ref="49138022"/>
-												<int key="NSvFlags">256</int>
-												<set class="NSMutableSet" key="NSDragTypes">
-													<string>Apple HTML pasteboard type</string>
-													<string>Apple PDF pasteboard type</string>
-													<string>Apple PICT pasteboard type</string>
-													<string>Apple URL pasteboard type</string>
-													<string>Apple Web Archive pasteboard type</string>
-													<string>NSColor pasteboard type</string>
-													<string>NSFilenamesPboardType</string>
-													<string>NSStringPboardType</string>
-													<string>NeXT RTFD pasteboard type</string>
-													<string>NeXT Rich Text Format v1.0 pasteboard type</string>
-													<string>NeXT TIFF v4.0 pasteboard type</string>
-													<string>WebURLsWithTitlesPboardType</string>
-													<string>public.png</string>
-													<string>public.url</string>
-													<string>public.url-name</string>
-												</set>
-												<string key="NSFrame">{{17, 17}, {509, 293}}</string>
-												<reference key="NSSuperview" ref="49138022"/>
-												<reference key="NSNextKeyView"/>
-												<string key="NSReuseIdentifierKey">_NS:51</string>
-												<string key="FrameName"/>
-												<string key="GroupName"/>
-												<reference key="Preferences" ref="260726250"/>
-												<bool key="UseBackForwardList">NO</bool>
-												<bool key="AllowsUndo">YES</bool>
-											</object>
-										</array>
-										<string key="NSFrame">{{10, 33}, {543, 313}}</string>
-										<reference key="NSNextKeyView" ref="503260080"/>
-										<string key="NSReuseIdentifierKey">_NS:620</string>
-									</object>
-									<string key="NSLabel">Release Notes</string>
-									<reference key="NSColor" ref="281676087"/>
-									<reference key="NSTabView" ref="821865429"/>
-								</object>
-								<object class="NSTabViewItem" id="40200058">
-									<string key="NSIdentifier">5</string>
-									<object class="NSView" key="NSView" id="111364239">
-										<nil key="NSNextResponder"/>
-										<int key="NSvFlags">256</int>
-										<array class="NSMutableArray" key="NSSubviews">
-											<object class="WebView" id="605742401">
-												<reference key="NSNextResponder" ref="111364239"/>
-												<int key="NSvFlags">256</int>
-												<set class="NSMutableSet" key="NSDragTypes">
-													<string>Apple HTML pasteboard type</string>
-													<string>Apple PDF pasteboard type</string>
-													<string>Apple PICT pasteboard type</string>
-													<string>Apple URL pasteboard type</string>
-													<string>Apple Web Archive pasteboard type</string>
-													<string>NSColor pasteboard type</string>
-													<string>NSFilenamesPboardType</string>
-													<string>NSStringPboardType</string>
-													<string>NeXT RTFD pasteboard type</string>
-													<string>NeXT Rich Text Format v1.0 pasteboard type</string>
-													<string>NeXT TIFF v4.0 pasteboard type</string>
-													<string>WebURLsWithTitlesPboardType</string>
-													<string>public.png</string>
-													<string>public.url</string>
-													<string>public.url-name</string>
-												</set>
-												<string key="NSFrame">{{17, 17}, {509, 293}}</string>
-												<reference key="NSSuperview" ref="111364239"/>
-												<reference key="NSNextKeyView"/>
-												<string key="NSReuseIdentifierKey">_NS:51</string>
-												<string key="FrameName"/>
-												<string key="GroupName"/>
-												<reference key="Preferences" ref="260726250"/>
-												<bool key="UseBackForwardList">NO</bool>
-												<bool key="AllowsUndo">YES</bool>
-											</object>
-										</array>
-										<string key="NSFrame">{{10, 33}, {543, 313}}</string>
-										<reference key="NSNextKeyView" ref="605742401"/>
-										<string key="NSReuseIdentifierKey">_NS:610</string>
-									</object>
-									<string key="NSLabel">Preview Feedback</string>
-									<reference key="NSColor" ref="281676087"/>
-									<reference key="NSTabView" ref="821865429"/>
-								</object>
-							</array>
-							<reference key="NSSelectedTabViewItem" ref="19707695"/>
-							<reference key="NSFont" ref="604491631"/>
-							<int key="NSTvFlags">0</int>
-							<bool key="NSAllowTruncatedLabels">YES</bool>
-							<bool key="NSDrawsBackground">YES</bool>
-							<array class="NSMutableArray" key="NSSubviews">
-								<reference ref="1025762247"/>
-							</array>
-						</object>
-					</array>
-					<string key="NSFrameSize">{589, 375}</string>
-					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
-					<reference key="NSNextKeyView" ref="821865429"/>
-				</object>
-				<string key="NSScreenRect">{{0, 0}, {1366, 746}}</string>
-				<string key="NSMinSize">{224.66399999999999, 32}</string>
-				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
-				<bool key="NSWindowIsRestorable">YES</bool>
-			</object>
-			<object class="NSCustomObject" id="690477101">
-				<string key="NSClassName">NSObject</string>
-			</object>
-		</array>
-		<object class="IBObjectContainer" key="IBDocument.Objects">
-			<array class="NSMutableArray" key="connectionRecords">
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">_window</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="660800786"/>
-					</object>
-					<int key="connectionID">26</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">statusText</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="908408940"/>
-					</object>
-					<int key="connectionID">304</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">currentResolverTextField</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="496861916"/>
-					</object>
-					<int key="connectionID">296</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">statusImageView</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="423755939"/>
-					</object>
-					<int key="connectionID">303</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">openDNSLinkPushed:</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="193986403"/>
-					</object>
-					<int key="connectionID">326</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">previewNotesWebView</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="429164099"/>
-					</object>
-					<int key="connectionID">346</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">feedbackWebView</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="605742401"/>
-					</object>
-					<int key="connectionID">353</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">releaseNotesWebView</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="503260080"/>
-					</object>
-					<int key="connectionID">355</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">aboutWebView</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="1000382251"/>
-					</object>
-					<int key="connectionID">359</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">dnscryptButton</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="894789954"/>
-					</object>
-					<int key="connectionID">363</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">opendnsButton</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="300098131"/>
-					</object>
-					<int key="connectionID">364</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">fallbackButton</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="384170040"/>
-					</object>
-					<int key="connectionID">365</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">familyShieldButton</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="410495287"/>
-					</object>
-					<int key="connectionID">366</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">dnscryptButtonPressed:</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="894789954"/>
-					</object>
-					<int key="connectionID">368</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">opendnsButtonPressed:</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="300098131"/>
-					</object>
-					<int key="connectionID">369</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">familyShieldButtonPressed:</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="410495287"/>
-					</object>
-					<int key="connectionID">371</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">fallbackButtonPressed:</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="384170040"/>
-					</object>
-					<int key="connectionID">372</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">aboutTabViewItem</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="820989392"/>
-					</object>
-					<int key="connectionID">376</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">releaseNotesTabViewItem</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="615953595"/>
-					</object>
-					<int key="connectionID">383</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">tabView</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="821865429"/>
-					</object>
-					<int key="connectionID">384</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">uninstallPushed:</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="231106999"/>
-					</object>
-					<int key="connectionID">387</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">staticResolversTextFieldChanged:</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="1038497103"/>
-					</object>
-					<int key="connectionID">432</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">staticResolversTextField</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="684654118"/>
-					</object>
-					<int key="connectionID">433</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">viewLogButtonPushed:</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="985341605"/>
-					</object>
-					<int key="connectionID">441</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">blacklistIPsTextField</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="25489948"/>
-					</object>
-					<int key="connectionID">444</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">blacklistIPsUpdated:</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="25489948"/>
-					</object>
-					<int key="connectionID">445</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">blacklistDomainsTextField</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="583617410"/>
-					</object>
-					<int key="connectionID">446</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">blacklistDomainsUpdated:</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="583617410"/>
-					</object>
-					<int key="connectionID">447</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">queryLoggingButtonPressed:</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="164894774"/>
-					</object>
-					<int key="connectionID">448</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">helpWebView</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="228385556"/>
-					</object>
-					<int key="connectionID">450</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">helpButtonPressed:</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="988915282"/>
-					</object>
-					<int key="connectionID">451</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">exceptionsTextField</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="902108600"/>
-					</object>
-					<int key="connectionID">452</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">exceptionsUpdated:</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="902108600"/>
-					</object>
-					<int key="connectionID">453</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">viewLogButton</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="985341605"/>
-					</object>
-					<int key="connectionID">457</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">queryLoggingButton</string>
-						<reference key="source" ref="294453543"/>
-						<reference key="destination" ref="679502487"/>
-					</object>
-					<int key="connectionID">458</int>
-				</object>
-			</array>
-			<object class="IBMutableOrderedSet" key="objectRecords">
-				<array key="orderedObjects">
-					<object class="IBObjectRecord">
-						<int key="objectID">0</int>
-						<array key="object" id="0"/>
-						<reference key="children" ref="409411428"/>
-						<nil key="parent"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">-2</int>
-						<reference key="object" ref="294453543"/>
-						<reference key="parent" ref="0"/>
-						<string key="objectName">File's Owner</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">-1</int>
-						<reference key="object" ref="308860122"/>
-						<reference key="parent" ref="0"/>
-						<string key="objectName">First Responder</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">12</int>
-						<reference key="object" ref="660800786"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="1037298196"/>
-						</array>
-						<reference key="parent" ref="0"/>
-						<string key="objectName">PrefPane</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">6</int>
-						<reference key="object" ref="1037298196"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="821865429"/>
-						</array>
-						<reference key="parent" ref="660800786"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">-3</int>
-						<reference key="object" ref="278121016"/>
-						<reference key="parent" ref="0"/>
-						<string key="objectName">Application</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">99</int>
-						<reference key="object" ref="821865429"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="19707695"/>
-							<reference ref="615953595"/>
-							<reference ref="40200058"/>
-							<reference ref="820989392"/>
-							<reference ref="359976024"/>
-						</array>
-						<reference key="parent" ref="1037298196"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">263</int>
-						<reference key="object" ref="690477101"/>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">100</int>
-						<reference key="object" ref="19707695"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="1025762247"/>
-						</array>
-						<reference key="parent" ref="821865429"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">103</int>
-						<reference key="object" ref="1025762247"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="891532389"/>
-							<reference ref="423755939"/>
-							<reference ref="372048088"/>
-							<reference ref="855319081"/>
-							<reference ref="908408940"/>
-							<reference ref="193986403"/>
-							<reference ref="429164099"/>
-							<reference ref="894789954"/>
-							<reference ref="384170040"/>
-							<reference ref="487940586"/>
-							<reference ref="240318099"/>
-							<reference ref="300098131"/>
-							<reference ref="410495287"/>
-							<reference ref="496861916"/>
-						</array>
-						<reference key="parent" ref="19707695"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">281</int>
-						<reference key="object" ref="384170040"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="805275804"/>
-						</array>
-						<reference key="parent" ref="1025762247"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">282</int>
-						<reference key="object" ref="805275804"/>
-						<reference key="parent" ref="384170040"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">305</int>
-						<reference key="object" ref="410495287"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="446412441"/>
-						</array>
-						<reference key="parent" ref="1025762247"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">306</int>
-						<reference key="object" ref="446412441"/>
-						<reference key="parent" ref="410495287"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">274</int>
-						<reference key="object" ref="908408940"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="118313349"/>
-						</array>
-						<reference key="parent" ref="1025762247"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">275</int>
-						<reference key="object" ref="118313349"/>
-						<reference key="parent" ref="908408940"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">179</int>
-						<reference key="object" ref="894789954"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="743617070"/>
-						</array>
-						<reference key="parent" ref="1025762247"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">180</int>
-						<reference key="object" ref="743617070"/>
-						<reference key="parent" ref="894789954"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">162</int>
-						<reference key="object" ref="240318099"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="899782338"/>
-						</array>
-						<reference key="parent" ref="1025762247"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">163</int>
-						<reference key="object" ref="899782338"/>
-						<reference key="parent" ref="240318099"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">174</int>
-						<reference key="object" ref="496861916"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="271748581"/>
-						</array>
-						<reference key="parent" ref="1025762247"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">175</int>
-						<reference key="object" ref="271748581"/>
-						<reference key="parent" ref="496861916"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">139</int>
-						<reference key="object" ref="300098131"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="555340075"/>
-						</array>
-						<reference key="parent" ref="1025762247"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">140</int>
-						<reference key="object" ref="555340075"/>
-						<reference key="parent" ref="300098131"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">276</int>
-						<reference key="object" ref="855319081"/>
-						<reference key="parent" ref="1025762247"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">216</int>
-						<reference key="object" ref="372048088"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="125529478"/>
-						</array>
-						<reference key="parent" ref="1025762247"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">217</int>
-						<reference key="object" ref="125529478"/>
-						<reference key="parent" ref="372048088"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">270</int>
-						<reference key="object" ref="423755939"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="336811923"/>
-						</array>
-						<reference key="parent" ref="1025762247"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">271</int>
-						<reference key="object" ref="336811923"/>
-						<reference key="parent" ref="423755939"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">268</int>
-						<reference key="object" ref="891532389"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="107747299"/>
-						</array>
-						<reference key="parent" ref="1025762247"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">269</int>
-						<reference key="object" ref="107747299"/>
-						<reference key="parent" ref="891532389"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">323</int>
-						<reference key="object" ref="193986403"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="675161177"/>
-						</array>
-						<reference key="parent" ref="1025762247"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">324</int>
-						<reference key="object" ref="675161177"/>
-						<reference key="parent" ref="193986403"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">343</int>
-						<reference key="object" ref="429164099"/>
-						<reference key="parent" ref="1025762247"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">345</int>
-						<reference key="object" ref="487940586"/>
-						<reference key="parent" ref="1025762247"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">348</int>
-						<reference key="object" ref="40200058"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="111364239"/>
-						</array>
-						<reference key="parent" ref="821865429"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">351</int>
-						<reference key="object" ref="111364239"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="605742401"/>
-						</array>
-						<reference key="parent" ref="40200058"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">349</int>
-						<reference key="object" ref="615953595"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="49138022"/>
-						</array>
-						<reference key="parent" ref="821865429"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">350</int>
-						<reference key="object" ref="49138022"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="503260080"/>
-						</array>
-						<reference key="parent" ref="615953595"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">352</int>
-						<reference key="object" ref="605742401"/>
-						<reference key="parent" ref="111364239"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">354</int>
-						<reference key="object" ref="503260080"/>
-						<reference key="parent" ref="49138022"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">356</int>
-						<reference key="object" ref="820989392"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="521420514"/>
-						</array>
-						<reference key="parent" ref="821865429"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">357</int>
-						<reference key="object" ref="521420514"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="1000382251"/>
-							<reference ref="231106999"/>
-						</array>
-						<reference key="parent" ref="820989392"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">358</int>
-						<reference key="object" ref="1000382251"/>
-						<reference key="parent" ref="521420514"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">385</int>
-						<reference key="object" ref="231106999"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="132642450"/>
-						</array>
-						<reference key="parent" ref="521420514"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">386</int>
-						<reference key="object" ref="132642450"/>
-						<reference key="parent" ref="231106999"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">388</int>
-						<reference key="object" ref="359976024"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="42710935"/>
-						</array>
-						<reference key="parent" ref="821865429"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">389</int>
-						<reference key="object" ref="42710935"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="25489948"/>
-							<reference ref="583617410"/>
-							<reference ref="902108600"/>
-							<reference ref="1038497103"/>
-							<reference ref="826224678"/>
-							<reference ref="679502487"/>
-							<reference ref="985341605"/>
-							<reference ref="988915282"/>
-							<reference ref="960794720"/>
-							<reference ref="30650809"/>
-							<reference ref="11113535"/>
-							<reference ref="546014897"/>
-							<reference ref="567741681"/>
-							<reference ref="228385556"/>
-						</array>
-						<reference key="parent" ref="359976024"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">390</int>
-						<reference key="object" ref="826224678"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="950367456"/>
-						</array>
-						<reference key="parent" ref="42710935"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">391</int>
-						<reference key="object" ref="950367456"/>
-						<reference key="parent" ref="826224678"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">392</int>
-						<reference key="object" ref="1038497103"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="684654118"/>
-						</array>
-						<reference key="parent" ref="42710935"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">393</int>
-						<reference key="object" ref="684654118"/>
-						<reference key="parent" ref="1038497103"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">398</int>
-						<reference key="object" ref="679502487"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="164894774"/>
-						</array>
-						<reference key="parent" ref="42710935"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">399</int>
-						<reference key="object" ref="164894774"/>
-						<reference key="parent" ref="679502487"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">400</int>
-						<reference key="object" ref="985341605"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="252019693"/>
-						</array>
-						<reference key="parent" ref="42710935"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">401</int>
-						<reference key="object" ref="252019693"/>
-						<reference key="parent" ref="985341605"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">402</int>
-						<reference key="object" ref="25489948"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="367439240"/>
-						</array>
-						<reference key="parent" ref="42710935"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">403</int>
-						<reference key="object" ref="367439240"/>
-						<reference key="parent" ref="25489948"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">404</int>
-						<reference key="object" ref="583617410"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="991118452"/>
-						</array>
-						<reference key="parent" ref="42710935"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">405</int>
-						<reference key="object" ref="991118452"/>
-						<reference key="parent" ref="583617410"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">406</int>
-						<reference key="object" ref="902108600"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="1015910756"/>
-						</array>
-						<reference key="parent" ref="42710935"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">407</int>
-						<reference key="object" ref="1015910756"/>
-						<reference key="parent" ref="902108600"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">408</int>
-						<reference key="object" ref="11113535"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="252174266"/>
-						</array>
-						<reference key="parent" ref="42710935"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">409</int>
-						<reference key="object" ref="252174266"/>
-						<reference key="parent" ref="11113535"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">410</int>
-						<reference key="object" ref="546014897"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="1021766263"/>
-						</array>
-						<reference key="parent" ref="42710935"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">411</int>
-						<reference key="object" ref="1021766263"/>
-						<reference key="parent" ref="546014897"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">412</int>
-						<reference key="object" ref="567741681"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="1022329366"/>
-						</array>
-						<reference key="parent" ref="42710935"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">413</int>
-						<reference key="object" ref="1022329366"/>
-						<reference key="parent" ref="567741681"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">416</int>
-						<reference key="object" ref="988915282"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="933364045"/>
-						</array>
-						<reference key="parent" ref="42710935"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">417</int>
-						<reference key="object" ref="933364045"/>
-						<reference key="parent" ref="988915282"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">423</int>
-						<reference key="object" ref="960794720"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="537631591"/>
-						</array>
-						<reference key="parent" ref="42710935"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">424</int>
-						<reference key="object" ref="537631591"/>
-						<reference key="parent" ref="960794720"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">425</int>
-						<reference key="object" ref="30650809"/>
-						<reference key="parent" ref="42710935"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">449</int>
-						<reference key="object" ref="228385556"/>
-						<reference key="parent" ref="42710935"/>
-					</object>
-				</array>
-			</object>
-			<dictionary class="NSMutableDictionary" key="flattenedProperties">
-				<string key="-1.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="-3.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="100.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="103.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="12.IBWindowTemplateEditedContentRect">{{132, 373}, {668, 368}}</string>
-				<dictionary class="NSMutableDictionary" key="139.IBAttributePlaceholdersKey">
-					<object class="IBAccessibilityAttribute" key="AccessibilityDescription">
-						<string key="name">AccessibilityDescription</string>
-						<reference key="object" ref="300098131"/>
-						<string key="accessibilityValue">Always enable OpenDNS</string>
-					</object>
-					<object class="IBToolTipAttribute" key="ToolTip">
-						<string key="name">ToolTip</string>
-						<reference key="object" ref="300098131"/>
-						<string key="toolTip">Use OpenDNS even when DNSCrypt is not in use</string>
-					</object>
-				</dictionary>
-				<string key="139.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="140.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="162.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="163.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="174.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="175.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<dictionary class="NSMutableDictionary" key="179.IBAttributePlaceholdersKey">
-					<object class="IBAccessibilityAttribute" key="AccessibilityDescription">
-						<string key="name">AccessibilityDescription</string>
-						<reference key="object" ref="894789954"/>
-						<string key="accessibilityValue">Enable DNSCrypt</string>
-					</object>
-					<object class="IBToolTipAttribute" key="ToolTip">
-						<string key="name">ToolTip</string>
-						<reference key="object" ref="894789954"/>
-						<string key="toolTip">Use OpenDNS resolvers with the DNSCrypt protocol</string>
-					</object>
-				</dictionary>
-				<string key="179.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="180.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="216.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="217.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="263.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSMutableDictionary" key="268.IBAttributePlaceholdersKey">
-					<string key="NS.key.0">AccessibilityDescription</string>
-					<object class="IBAccessibilityAttribute" key="NS.object.0">
-						<string key="name">AccessibilityDescription</string>
-						<reference key="object" ref="891532389"/>
-						<string key="accessibilityValue">OpenDNS logo</string>
-					</object>
-				</object>
-				<string key="268.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="269.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="270.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="271.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="274.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="275.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="276.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<dictionary class="NSMutableDictionary" key="281.IBAttributePlaceholdersKey">
-					<object class="IBAccessibilityAttribute" key="AccessibilityDescription">
-						<string key="name">AccessibilityDescription</string>
-						<reference key="object" ref="384170040"/>
-						<string key="accessibilityValue">Fallback to insecure DNS</string>
-					</object>
-					<object class="IBToolTipAttribute" key="ToolTip">
-						<string key="name">ToolTip</string>
-						<reference key="object" ref="384170040"/>
-						<string key="toolTip">Only check this box if you often have to connect to public WiFi hotspots and you don't want to manually disable DNSCrypt in order to pass a captive portal.</string>
-					</object>
-				</dictionary>
-				<string key="281.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="282.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<dictionary class="NSMutableDictionary" key="305.IBAttributePlaceholdersKey">
-					<object class="IBAccessibilityAttribute" key="AccessibilityDescription">
-						<string key="name">AccessibilityDescription</string>
-						<reference key="object" ref="410495287"/>
-						<string key="accessibilityValue">Always use Familyshield</string>
-					</object>
-					<object class="IBToolTipAttribute" key="ToolTip">
-						<string key="name">ToolTip</string>
-						<reference key="object" ref="410495287"/>
-						<string key="toolTip">Use FamilyShield even when DNSCrypt is not in use.</string>
-					</object>
-				</dictionary>
-				<string key="305.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="306.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="323.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="324.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="343.IBPluginDependency">com.apple.WebKitIBPlugin</string>
-				<string key="345.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="348.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="349.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="350.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="351.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="352.IBPluginDependency">com.apple.WebKitIBPlugin</string>
-				<string key="354.IBPluginDependency">com.apple.WebKitIBPlugin</string>
-				<string key="356.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="357.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="358.IBPluginDependency">com.apple.WebKitIBPlugin</string>
-				<string key="385.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="386.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="388.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="389.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="390.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="391.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="392.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<dictionary class="NSMutableDictionary" key="393.IBAttributePlaceholdersKey">
-					<object class="IBAccessibilityAttribute" key="AccessibilityDescription">
-						<string key="name">AccessibilityDescription</string>
-						<reference key="object" ref="684654118"/>
-						<string key="accessibilityValue">Static DNS servers</string>
-					</object>
-					<object class="IBToolTipAttribute" key="ToolTip">
-						<string key="name">ToolTip</string>
-						<reference key="object" ref="684654118"/>
-						<string key="toolTip">Leave empty to use DHCP-provided servers</string>
-					</object>
-				</dictionary>
-				<string key="393.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSMutableDictionary" key="398.IBAttributePlaceholdersKey">
-					<string key="NS.key.0">AccessibilityDescription</string>
-					<object class="IBAccessibilityAttribute" key="NS.object.0">
-						<string key="name">AccessibilityDescription</string>
-						<reference key="object" ref="679502487"/>
-						<string key="accessibilityValue">Log DNS queries</string>
-					</object>
-				</object>
-				<string key="398.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="399.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSMutableDictionary" key="400.IBAttributePlaceholdersKey">
-					<string key="NS.key.0">AccessibilityDescription</string>
-					<object class="IBAccessibilityAttribute" key="NS.object.0">
-						<string key="name">AccessibilityDescription</string>
-						<reference key="object" ref="985341605"/>
-						<string key="accessibilityValue">View the DNS query log</string>
-					</object>
-				</object>
-				<string key="400.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="401.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="402.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="403.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="404.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="405.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="406.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="407.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="408.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="409.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="410.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="411.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="412.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="413.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="416.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="417.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="423.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="424.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="425.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSMutableDictionary" key="449.IBAttributePlaceholdersKey">
-					<string key="NS.key.0">AccessibilityDescription</string>
-					<object class="IBAccessibilityAttribute" key="NS.object.0">
-						<string key="name">AccessibilityDescription</string>
-						<reference key="object" ref="228385556"/>
-						<string key="accessibilityValue">Static DNS resolvers</string>
-					</object>
-				</object>
-				<string key="449.IBPluginDependency">com.apple.WebKitIBPlugin</string>
-				<real value="0.0" key="449.IBViewIntegration.shadowBlurRadius"/>
-				<reference key="449.IBViewIntegration.shadowColor" ref="958476851"/>
-				<real value="0.0" key="449.IBViewIntegration.shadowOffsetHeight"/>
-				<real value="0.0" key="449.IBViewIntegration.shadowOffsetWidth"/>
-				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<object class="NSMutableDictionary" key="99.IBAttributePlaceholdersKey">
-					<string key="NS.key.0">InitialTabViewItem</string>
-					<object class="IBInitialTabViewItemAttribute" key="NS.object.0">
-						<string key="name">InitialTabViewItem</string>
-						<reference key="object" ref="821865429"/>
-						<reference key="initialTabViewItem" ref="19707695"/>
-					</object>
-				</object>
-				<string key="99.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			</dictionary>
-			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
-			<nil key="activeLocalization"/>
-			<dictionary class="NSMutableDictionary" key="localizations"/>
-			<nil key="sourceID"/>
-			<int key="maxID">458</int>
-		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">DNSCrypt</string>
-					<string key="superclassName">NSPreferencePane</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="blacklistDomainsUpdated:">NSTextField</string>
-						<string key="blacklistIPsUpdated:">NSTextField</string>
-						<string key="dnscryptButtonPressed:">NSButton</string>
-						<string key="exceptionsUpdated:">NSTextField</string>
-						<string key="fallbackButtonPressed:">NSButton</string>
-						<string key="familyShieldButtonPressed:">NSButton</string>
-						<string key="helpButtonPressed:">NSButton</string>
-						<string key="openDNSLinkPushed:">NSButton</string>
-						<string key="opendnsButtonPressed:">NSButton</string>
-						<string key="queryLoggingButtonPressed:">NSButtonCell</string>
-						<string key="staticResolversTextFieldChanged:">NSTextField</string>
-						<string key="uninstallPushed:">NSButton</string>
-						<string key="viewLogButtonPushed:">NSButton</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="blacklistDomainsUpdated:">
-							<string key="name">blacklistDomainsUpdated:</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBActionInfo" key="blacklistIPsUpdated:">
-							<string key="name">blacklistIPsUpdated:</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBActionInfo" key="dnscryptButtonPressed:">
-							<string key="name">dnscryptButtonPressed:</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBActionInfo" key="exceptionsUpdated:">
-							<string key="name">exceptionsUpdated:</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBActionInfo" key="fallbackButtonPressed:">
-							<string key="name">fallbackButtonPressed:</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBActionInfo" key="familyShieldButtonPressed:">
-							<string key="name">familyShieldButtonPressed:</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBActionInfo" key="helpButtonPressed:">
-							<string key="name">helpButtonPressed:</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBActionInfo" key="openDNSLinkPushed:">
-							<string key="name">openDNSLinkPushed:</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBActionInfo" key="opendnsButtonPressed:">
-							<string key="name">opendnsButtonPressed:</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBActionInfo" key="queryLoggingButtonPressed:">
-							<string key="name">queryLoggingButtonPressed:</string>
-							<string key="candidateClassName">NSButtonCell</string>
-						</object>
-						<object class="IBActionInfo" key="staticResolversTextFieldChanged:">
-							<string key="name">staticResolversTextFieldChanged:</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBActionInfo" key="uninstallPushed:">
-							<string key="name">uninstallPushed:</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBActionInfo" key="viewLogButtonPushed:">
-							<string key="name">viewLogButtonPushed:</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="aboutTabViewItem">NSTabViewItem</string>
-						<string key="aboutWebView">WebView</string>
-						<string key="blacklistDomainsTextField">NSTextField</string>
-						<string key="blacklistIPsTextField">NSTextField</string>
-						<string key="currentResolverTextField">NSTextField</string>
-						<string key="dnscryptButton">NSButton</string>
-						<string key="exceptionsTextField">NSTextField</string>
-						<string key="fallbackButton">NSButton</string>
-						<string key="familyShieldButton">NSButton</string>
-						<string key="feedbackWebView">WebView</string>
-						<string key="helpWebView">WebView</string>
-						<string key="opendnsButton">NSButton</string>
-						<string key="previewNotesWebView">WebView</string>
-						<string key="queryLoggingButton">NSButton</string>
-						<string key="releaseNotesTabViewItem">NSTabViewItem</string>
-						<string key="releaseNotesWebView">WebView</string>
-						<string key="staticResolversTextField">NSTextFieldCell</string>
-						<string key="statusImageView">NSImageView</string>
-						<string key="statusText">NSTextField</string>
-						<string key="tabView">NSTabView</string>
-						<string key="viewLogButton">NSButton</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="aboutTabViewItem">
-							<string key="name">aboutTabViewItem</string>
-							<string key="candidateClassName">NSTabViewItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="aboutWebView">
-							<string key="name">aboutWebView</string>
-							<string key="candidateClassName">WebView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="blacklistDomainsTextField">
-							<string key="name">blacklistDomainsTextField</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="blacklistIPsTextField">
-							<string key="name">blacklistIPsTextField</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="currentResolverTextField">
-							<string key="name">currentResolverTextField</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="dnscryptButton">
-							<string key="name">dnscryptButton</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="exceptionsTextField">
-							<string key="name">exceptionsTextField</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="fallbackButton">
-							<string key="name">fallbackButton</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="familyShieldButton">
-							<string key="name">familyShieldButton</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="feedbackWebView">
-							<string key="name">feedbackWebView</string>
-							<string key="candidateClassName">WebView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="helpWebView">
-							<string key="name">helpWebView</string>
-							<string key="candidateClassName">WebView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="opendnsButton">
-							<string key="name">opendnsButton</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="previewNotesWebView">
-							<string key="name">previewNotesWebView</string>
-							<string key="candidateClassName">WebView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="queryLoggingButton">
-							<string key="name">queryLoggingButton</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="releaseNotesTabViewItem">
-							<string key="name">releaseNotesTabViewItem</string>
-							<string key="candidateClassName">NSTabViewItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="releaseNotesWebView">
-							<string key="name">releaseNotesWebView</string>
-							<string key="candidateClassName">WebView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="staticResolversTextField">
-							<string key="name">staticResolversTextField</string>
-							<string key="candidateClassName">NSTextFieldCell</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="statusImageView">
-							<string key="name">statusImageView</string>
-							<string key="candidateClassName">NSImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="statusText">
-							<string key="name">statusText</string>
-							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="tabView">
-							<string key="name">tabView</string>
-							<string key="candidateClassName">NSTabView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="viewLogButton">
-							<string key="name">viewLogButton</string>
-							<string key="candidateClassName">NSButton</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/DNSCrypt.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSPreferencePane</string>
-					<string key="superclassName">NSObject</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="_firstKeyView">NSView</string>
-						<string key="_initialKeyView">NSView</string>
-						<string key="_lastKeyView">NSView</string>
-						<string key="_window">NSWindow</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="_firstKeyView">
-							<string key="name">_firstKeyView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_initialKeyView">
-							<string key="name">_initialKeyView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_lastKeyView">
-							<string key="name">_lastKeyView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_window">
-							<string key="name">_window</string>
-							<string key="candidateClassName">NSWindow</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NSPreferencePane.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
-		<int key="IBDocument.localizationMode">0</int>
-		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
-		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencies">
-			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
-			<integer value="1070" key="NS.object.0"/>
-		</object>
-		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
-		<int key="IBDocument.defaultPropertyAccessControl">3</int>
-		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NSSwitch">{15, 15}</string>
-			<string key="ajax-loader">{35, 35}</string>
-			<string key="opendns_logo_300">{300, 119}</string>
-		</dictionary>
-	</data>
-</archive>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4511" systemVersion="13D43" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment version="1070" defaultVersion="1060" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4511"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="3336"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="DNSCrypt">
+            <connections>
+                <outlet property="_window" destination="12" id="26"/>
+                <outlet property="aboutTabViewItem" destination="356" id="376"/>
+                <outlet property="aboutWebView" destination="358" id="359"/>
+                <outlet property="blacklistDomainsTextField" destination="404" id="446"/>
+                <outlet property="blacklistIPsTextField" destination="402" id="444"/>
+                <outlet property="currentResolverTextField" destination="174" id="296"/>
+                <outlet property="dnscryptButton" destination="179" id="363"/>
+                <outlet property="exceptionsTextField" destination="406" id="452"/>
+                <outlet property="fallbackButton" destination="281" id="365"/>
+                <outlet property="familyShieldButton" destination="305" id="366"/>
+                <outlet property="helpWebView" destination="449" id="450"/>
+                <outlet property="opendnsButton" destination="139" id="364"/>
+                <outlet property="previewNotesWebView" destination="343" id="346"/>
+                <outlet property="queryLoggingButton" destination="398" id="458"/>
+                <outlet property="releaseNotesTabViewItem" destination="349" id="383"/>
+                <outlet property="releaseNotesWebView" destination="354" id="355"/>
+                <outlet property="staticResolversTextField" destination="393" id="433"/>
+                <outlet property="statusImageView" destination="270" id="303"/>
+                <outlet property="statusText" destination="274" id="304"/>
+                <outlet property="tabView" destination="99" id="384"/>
+                <outlet property="viewLogButton" destination="400" id="457"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <window title="&lt;&lt; do not localize >>" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" deferred="NO" oneShot="NO" releasedWhenClosed="NO" wantsToBeColor="NO" visibleAtLaunch="NO" animationBehavior="default" id="12" userLabel="PrefPane">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="176" y="715" width="589" height="375"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1366" height="746"/>
+            <value key="minSize" type="size" width="224.66399999999999" height="10"/>
+            <view key="contentView" id="6">
+                <rect key="frame" x="0.0" y="0.0" width="589" height="375"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <tabView initialItem="100" id="99">
+                        <rect key="frame" x="13" y="10" width="563" height="359"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <tabViewItems>
+                            <tabViewItem label="General" identifier="1" id="100">
+                                <view key="view" id="103">
+                                    <rect key="frame" x="10" y="33" width="543" height="313"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button toolTip="Use OpenDNS resolvers with the DNSCrypt protocol" id="179">
+                                            <rect key="frame" x="15" y="238" width="204" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" title="Enable DNSCrypt" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="180">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="systemBold" size="14"/>
+                                            </buttonCell>
+                                            <accessibility description="Enable DNSCrypt"/>
+                                            <connections>
+                                                <action selector="dnscryptButtonPressed:" target="-2" id="368"/>
+                                            </connections>
+                                        </button>
+                                        <button toolTip="Use OpenDNS even when DNSCrypt is not in use" id="139">
+                                            <rect key="frame" x="15" y="212" width="245" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" title="Always use OpenDNS" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="140">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="systemBold" size="14"/>
+                                            </buttonCell>
+                                            <accessibility description="Always enable OpenDNS"/>
+                                            <connections>
+                                                <action selector="opendnsButtonPressed:" target="-2" id="369"/>
+                                            </connections>
+                                        </button>
+                                        <button toolTip="Use FamilyShield even when DNSCrypt is not in use." id="305">
+                                            <rect key="frame" x="15" y="157" width="244" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" title="Always use Familyshield" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="306">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system" size="14"/>
+                                            </buttonCell>
+                                            <accessibility description="Always use Familyshield"/>
+                                            <connections>
+                                                <action selector="familyShieldButtonPressed:" target="-2" id="371"/>
+                                            </connections>
+                                        </button>
+                                        <button id="281">
+                                            <rect key="frame" x="15" y="133" width="204" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <string key="toolTip">Only check this box if you often have to connect to public WiFi hotspots and you don't want to manually disable DNSCrypt in order to pass a captive portal.</string>
+                                            <buttonCell key="cell" type="check" title="Fallback to insecure DNS" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="282">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system" size="14"/>
+                                            </buttonCell>
+                                            <accessibility description="Fallback to insecure DNS"/>
+                                            <connections>
+                                                <action selector="fallbackButtonPressed:" target="-2" id="372"/>
+                                            </connections>
+                                        </button>
+                                        <textField verticalHuggingPriority="750" id="162">
+                                            <rect key="frame" x="14" y="96" width="173" height="19"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Current DNS resolver:" id="163">
+                                                <font key="font" metaFont="system" size="16"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" id="216">
+                                            <rect key="frame" x="54" y="284" width="72" height="19"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Status:" id="217">
+                                                <font key="font" metaFont="system" size="18"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" id="174">
+                                            <rect key="frame" x="14" y="-3" width="240" height="83"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="..." placeholderString="" id="175">
+                                                <font key="font" size="14" name="Monaco"/>
+                                                <color key="textColor" white="0.2046370968" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" id="274">
+                                            <rect key="frame" x="115" y="283" width="125" height="19"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="..." placeholderString="" id="275">
+                                                <font key="font" size="16" name="Monaco"/>
+                                                <color key="textColor" white="0.2046370968" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <imageView id="268">
+                                            <rect key="frame" x="302" y="222" width="224" height="88"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="opendns_logo_300" id="269"/>
+                                            <accessibility description="OpenDNS logo"/>
+                                        </imageView>
+                                        <imageView id="270">
+                                            <rect key="frame" x="17" y="277" width="32" height="32"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageAlignment="topLeft" imageScaling="proportionallyDown" image="ajax-loader" id="271"/>
+                                        </imageView>
+                                        <box autoresizesSubviews="NO" horizontalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="276">
+                                            <rect key="frame" x="270" y="2" width="4" height="300"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <font key="titleFont" metaFont="system"/>
+                                        </box>
+                                        <button verticalHuggingPriority="750" id="323">
+                                            <rect key="frame" x="323" y="190" width="183" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="http://www.opendns.com/" alternateTitle="Browse the OpenDNS web site" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="324">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="cellTitle"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="openDNSLinkPushed:" target="-2" id="326"/>
+                                            </connections>
+                                        </button>
+                                        <webView id="343">
+                                            <rect key="frame" x="302" y="2" width="224" height="192"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12" plugInsEnabled="NO" javaEnabled="NO" javaScriptCanOpenWindowsAutomatically="NO" loadsImagesAutomatically="NO" allowsAnimatedImages="NO" allowsAnimatedImageLooping="NO"/>
+                                        </webView>
+                                        <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="345">
+                                            <rect key="frame" x="17" y="193" width="240" height="5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <font key="titleFont" metaFont="system"/>
+                                        </box>
+                                    </subviews>
+                                </view>
+                            </tabViewItem>
+                            <tabViewItem label="Advanced" identifier="2" id="388">
+                                <view key="view" id="389">
+                                    <rect key="frame" x="10" y="33" width="543" height="313"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField verticalHuggingPriority="750" id="390">
+                                            <rect key="frame" x="5" y="236" width="406" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="When not using DNSCrypt, use the following static DNS servers:" id="391">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" id="392">
+                                            <rect key="frame" x="8" y="206" width="526" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" toolTip="Leave empty to use DHCP-provided servers" placeholderString="Space-separated list of IP addresses or leave blank for DHCP" drawsBackground="YES" usesSingleLineMode="YES" id="393">
+                                                <font key="font" size="13" name="Courier"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                <allowedInputSourceLocales>
+                                                    <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                </allowedInputSourceLocales>
+                                                <accessibility description="Static DNS servers"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <action selector="staticResolversTextFieldChanged:" target="-2" id="432"/>
+                                            </connections>
+                                        </textField>
+                                        <button id="398">
+                                            <rect key="frame" x="7" y="281" width="126" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" title="Log DNS queries" bezelStyle="regularSquare" imagePosition="left" inset="2" id="399">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                                <connections>
+                                                    <action selector="queryLoggingButtonPressed:" target="-2" id="448"/>
+                                                </connections>
+                                            </buttonCell>
+                                            <accessibility description="Log DNS queries"/>
+                                        </button>
+                                        <button verticalHuggingPriority="750" id="400">
+                                            <rect key="frame" x="161" y="273" width="94" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="View log" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="401">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <accessibility description="View the DNS query log"/>
+                                            <connections>
+                                                <action selector="viewLogButtonPushed:" target="-2" id="441"/>
+                                            </connections>
+                                        </button>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="402">
+                                            <rect key="frame" x="10" y="7" width="169" height="141"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="403">
+                                                <font key="font" size="11" name="Courier"/>
+                                                <string key="placeholderString">IP addresses (IPv4/IPv6) to block.  208.67.0.255 192.0.43.10
+::1</string>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                <allowedInputSourceLocales>
+                                                    <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                </allowedInputSourceLocales>
+                                            </textFieldCell>
+                                            <connections>
+                                                <action selector="blacklistIPsUpdated:" target="-2" id="445"/>
+                                            </connections>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="404">
+                                            <rect key="frame" x="188" y="7" width="169" height="141"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="405">
+                                                <font key="font" size="11" name="Courier"/>
+                                                <string key="placeholderString">Domain names to block.
+ *sex*
+ads.*
+*.example.com suspicious.example.net</string>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                <allowedInputSourceLocales>
+                                                    <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                </allowedInputSourceLocales>
+                                            </textFieldCell>
+                                            <connections>
+                                                <action selector="blacklistDomainsUpdated:" target="-2" id="447"/>
+                                            </connections>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="406">
+                                            <rect key="frame" x="366" y="7" width="169" height="141"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Domain names to resolve through the default resolvers instead of OpenDNS.  localdomain mycompany.example.net" drawsBackground="YES" id="407">
+                                                <font key="font" size="11" name="Courier"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                <allowedInputSourceLocales>
+                                                    <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                </allowedInputSourceLocales>
+                                            </textFieldCell>
+                                            <connections>
+                                                <action selector="exceptionsUpdated:" target="-2" id="453"/>
+                                            </connections>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="408">
+                                            <rect key="frame" x="7" y="156" width="175" height="34"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Block replies containing any of these IP addresses:" id="409">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="410">
+                                            <rect key="frame" x="186" y="156" width="175" height="34"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Block queries for the following domain names:" id="411">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="412">
+                                            <rect key="frame" x="363" y="156" width="175" height="34"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Bypass OpenDNS in order to resolve these domains:" id="413">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button horizontalHuggingPriority="750" verticalHuggingPriority="750" id="416">
+                                            <rect key="frame" x="503" y="277" width="25" height="25"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="417">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="helpButtonPressed:" target="-2" id="451"/>
+                                            </connections>
+                                        </button>
+                                        <textField verticalHuggingPriority="750" id="423">
+                                            <rect key="frame" x="467" y="284" width="33" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Help" id="424">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <box autoresizesSubviews="NO" verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="425">
+                                            <rect key="frame" x="9" y="265" width="526" height="5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <font key="titleFont" metaFont="system"/>
+                                        </box>
+                                        <webView hidden="YES" maintainsBackForwardList="NO" id="449">
+                                            <rect key="frame" x="3" y="-3" width="536" height="278"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <webPreferences key="preferences" identifier="helpWebView" defaultFontSize="12" defaultFixedFontSize="12" minimumFontSize="2" plugInsEnabled="NO" javaEnabled="NO" javaScriptEnabled="NO" javaScriptCanOpenWindowsAutomatically="NO" loadsImagesAutomatically="NO" allowsAnimatedImages="NO" allowsAnimatedImageLooping="NO"/>
+                                            <accessibility description="Static DNS resolvers"/>
+                                        </webView>
+                                    </subviews>
+                                </view>
+                            </tabViewItem>
+                            <tabViewItem label="About" identifier="3" id="356">
+                                <view key="view" id="357">
+                                    <rect key="frame" x="10" y="33" width="543" height="313"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <webView maintainsBackForwardList="NO" id="358">
+                                            <rect key="frame" x="17" y="31" width="509" height="279"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12" plugInsEnabled="NO" javaEnabled="NO" javaScriptCanOpenWindowsAutomatically="NO" loadsImagesAutomatically="NO" allowsAnimatedImages="NO" allowsAnimatedImageLooping="NO"/>
+                                        </webView>
+                                        <button verticalHuggingPriority="750" id="385">
+                                            <rect key="frame" x="437" y="-5" width="95" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="Uninstall" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="386">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="uninstallPushed:" target="-2" id="387"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </view>
+                            </tabViewItem>
+                            <tabViewItem label="Release Notes" identifier="4" id="349">
+                                <view key="view" id="350">
+                                    <rect key="frame" x="10" y="33" width="543" height="313"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <webView maintainsBackForwardList="NO" id="354">
+                                            <rect key="frame" x="17" y="17" width="509" height="293"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12" plugInsEnabled="NO" javaEnabled="NO" javaScriptCanOpenWindowsAutomatically="NO" loadsImagesAutomatically="NO" allowsAnimatedImages="NO" allowsAnimatedImageLooping="NO"/>
+                                        </webView>
+                                    </subviews>
+                                </view>
+                            </tabViewItem>
+                        </tabViewItems>
+                    </tabView>
+                </subviews>
+            </view>
+        </window>
+        <customObject id="263"/>
+    </objects>
+    <resources>
+        <image name="ajax-loader" width="35" height="35"/>
+        <image name="opendns_logo_300" width="300" height="119"/>
+    </resources>
+</document>
