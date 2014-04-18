@@ -334,8 +334,10 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
+				GCC_ENABLE_OBJC_GC = no;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DNSCrypt/DNSCrypt-Prefix.pch";
+				GCC_VERSION = "";
 				INFOPLIST_FILE = "DNSCrypt/DNSCrypt-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/PreferencePanes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -352,8 +354,10 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
+				GCC_ENABLE_OBJC_GC = no;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DNSCrypt/DNSCrypt-Prefix.pch";
+				GCC_VERSION = "";
 				INFOPLIST_FILE = "DNSCrypt/DNSCrypt-Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/PreferencePanes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
