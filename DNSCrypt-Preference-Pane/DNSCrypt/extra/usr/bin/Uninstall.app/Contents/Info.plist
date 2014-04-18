@@ -18,6 +18,8 @@
 	<string>Uninstall</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>aplt</string>
 	<key>LSMinimumSystemVersionByArchitecture</key>
@@ -38,7 +40,7 @@
 		<key>positionOfDivider</key>
 		<real>333</real>
 		<key>savedFrame</key>
-		<string>68 149 602 597 0 0 1366 746 </string>
+		<string>60 149 1053 597 0 0 1366 746 </string>
 		<key>selectedTabView</key>
 		<string>result</string>
 	</dict>
