@@ -14,7 +14,6 @@
 @synthesize releaseNotesTabViewItem = _releaseNotesTabViewItem;
 @synthesize previewNotesWebView = _previewNotesWebView;
 @synthesize releaseNotesWebView = _releaseNotesWebView;
-@synthesize feedbackWebView = _feedbackWebView;
 @synthesize aboutWebView = _aboutWebView;
 @synthesize staticResolversTextField = _staticResolversTextField;
 @synthesize blacklistIPsTextField = _blacklistIPsTextField;
@@ -53,9 +52,7 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     [task launch];
     data = [[pipe fileHandleForReading] readDataToEndOfFile];
     [task waitUntilExit];
-    [task release];
-    [pipe release];
-    result = [[[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding] autorelease];
+    result = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
     if ([result hasSuffix: @"\n"]) {
         result = [result substringToIndex: result.length - 1];
     }
@@ -114,19 +111,19 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     switch (currentState) {
         case kDNS_CONFIGURATION_UNKNOWN:
             _statusText.stringValue = NSLocalizedString(@"No network", @"Status");
-            _statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_red.png"]] autorelease];
+            _statusImageView.image = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_red.png"]];
             break;
         case kDNS_CONFIGURATION_VANILLA:
             _statusText.stringValue = NSLocalizedString(@"Unprotected", @"Status");
-            _statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_red.png"]] autorelease];
+            _statusImageView.image = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_red.png"]];
             break;
         case kDNS_CONFIGURATION_OPENDNS:
             _statusText.stringValue = NSLocalizedString(@"Unencrypted", @"Status");
-            _statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_yellow.png"]] autorelease];
+            _statusImageView.image = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_yellow.png"]];
             break;
         case kDNS_CONFIGURATION_LOCALHOST:
             _statusText.stringValue = NSLocalizedString(@"Protected", @"Status");
-            _statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_green.png"]] autorelease];
+            _statusImageView.image = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_green.png"]];
             break;
         default:
             return;
@@ -175,7 +172,7 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     
     [self setCheckBoxesEnabled: FALSE];
     _statusText.stringValue = NSLocalizedString(@"Updating", @"Updating network configuraiton");
-    _statusImageView.image = [[[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"ajax-loader.gif"]] autorelease];
+    _statusImageView.image = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"ajax-loader.gif"]];
     _currentResolverTextField.stringValue = @"";
     
     [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./gui-push-conf-change.sh menubar", nil]];
@@ -292,18 +289,6 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     [self performSelector: @selector(waitForUpdate) withObject: self afterDelay:kREFRESH_DELAY];
 }
 
-- (void) webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame {
-    if (sender != _feedbackWebView) {
-        return;
-    }
-    NSString *res;
-    res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"/usr/local/sbin/dnscrypt-proxy --version | head -n 1", nil]];
-    NSCharacterSet *charset = [NSCharacterSet characterSetWithCharactersInString: @"\r\n<>'"];
-    res = [[res componentsSeparatedByCharactersInSet: charset] componentsJoinedByString: @" "];
-    NSString *script = [NSString stringWithFormat: @"document.querySelector('textarea[name=feedback]').value='\\n\\n\\n--\\nOpenDNS user interface for OSX " kDNSCRYPT_PACKAGE_VERSION "\\n%@'", res];
-    [sender stringByEvaluatingJavaScriptFromString: script];
-}
-
 - (void) mainViewDidLoad
 {
     currentState = kDNS_CONFIGURATION_UNKNOWN;
@@ -314,7 +299,6 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 
     NSString *version = kDNSCRYPT_PACKAGE_VERSION;
     NSString *softwareBlurbFormat = NSLocalizedString(@"This software (v: %@) encrypts and authenticates DNS packets between your computer and OpenDNS. This prevents man-in-the-middle attacks and snooping of DNS traffic by ISPs or others.", @"Description of what the package does - %@ is replaced by the version number");
-    NSString *provideFeedback = NSLocalizedString(@"Please help by providing feedback!", @"Ask for feedback");
     NSString *describePorts = NSLocalizedString(@"DNSCrypt can use UDP and TCP ports 53 and 443.", @"Describe what ports DNSCrypt uses");
     NSString *describeFallback = NSLocalizedString(@"If you prefer reliability over security, enable fallback to insecure DNS.", @"Describe what the 'fallback to insecure mode' checkbox does");
 
@@ -322,22 +306,12 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 
     [htmlString appendFormat: softwareBlurbFormat, version];
     [htmlString appendString: @"<br/><br/>"];
-    [htmlString appendString: @"<strong>"];
-    [htmlString appendString: provideFeedback];
-    [htmlString appendString: @"</strong>"];
     [htmlString appendString: @"<ul style=\"list-style-position: inside; list-style-type: square; padding-left: 0px; margin-top: 0; margin-bottom: 0; \">"];
     [htmlString appendFormat: @"<li>%@</li>", describePorts];
     [htmlString appendFormat: @"<li>%@</li>", describeFallback];
     [htmlString appendString: @"</ul>"];
     [htmlString appendString: @"</body></html>"];
     [[_previewNotesWebView mainFrame] loadHTMLString:htmlString baseURL:[NSURL URLWithString:@"file:///"]];
-
-    [_feedbackWebView setDrawsBackground:false];
-    [_feedbackWebView setShouldUpdateWhileOffscreen:true];
-    [_feedbackWebView setUIDelegate:self];
-    [_feedbackWebView setFrameLoadDelegate: self];
-    NSString *feedbackURLText = @"http://dnscrypt.opendns.com/feedback.php";
-    [[_feedbackWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:feedbackURLText]]];
 
     SInt32 OSXversionMajor, OSXversionMinor;
     if (Gestalt(gestaltSystemVersionMajor, &OSXversionMajor) != noErr || Gestalt(gestaltSystemVersionMinor, &OSXversionMinor) != noErr || OSXversionMajor < 10 || OSXversionMinor < 6) {

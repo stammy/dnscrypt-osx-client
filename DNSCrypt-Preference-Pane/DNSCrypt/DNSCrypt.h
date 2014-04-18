@@ -52,7 +52,6 @@ typedef enum {
     NSTextField *_statusText;
     WebView *_previewNotesWebView;
     WebView *_releaseNotesWebView;
-    WebView *_feedbackWebView;
     WebView *_aboutWebView;
     NSTextFieldCell *_staticResolversTextField;
     NSTextField *_blacklistIPsTextField;
@@ -62,29 +61,28 @@ typedef enum {
     NSButton *_viewLogButton;
     NSButton *_queryLoggingButton;
 }
-@property (nonatomic, retain) IBOutlet NSTabView *tabView;
-@property (nonatomic, retain) IBOutlet NSTabViewItem *aboutTabViewItem;
-@property (nonatomic, retain) IBOutlet NSTabViewItem *releaseNotesTabViewItem;
+@property (nonatomic, strong) IBOutlet NSTabView *tabView;
+@property (nonatomic, strong) IBOutlet NSTabViewItem *aboutTabViewItem;
+@property (nonatomic, strong) IBOutlet NSTabViewItem *releaseNotesTabViewItem;
 
-@property (nonatomic, retain) IBOutlet NSButton *dnscryptButton;
-@property (nonatomic, retain) IBOutlet NSButton *opendnsButton;
-@property (nonatomic, retain) IBOutlet NSButton *familyShieldButton;
-@property (nonatomic, retain) IBOutlet NSButton *fallbackButton;
+@property (nonatomic, strong) IBOutlet NSButton *dnscryptButton;
+@property (nonatomic, strong) IBOutlet NSButton *opendnsButton;
+@property (nonatomic, strong) IBOutlet NSButton *familyShieldButton;
+@property (nonatomic, strong) IBOutlet NSButton *fallbackButton;
 
-@property (nonatomic, retain) IBOutlet NSTextField *currentResolverTextField;
-@property (nonatomic, retain) IBOutlet NSImageView *statusImageView;
-@property (nonatomic, retain) IBOutlet NSTextField *statusText;
-@property (nonatomic, retain) IBOutlet WebView *previewNotesWebView;
-@property (nonatomic, retain) IBOutlet WebView *releaseNotesWebView;
-@property (nonatomic, retain) IBOutlet WebView *feedbackWebView;
-@property (nonatomic, retain) IBOutlet WebView *aboutWebView;
-@property (nonatomic, retain) IBOutlet NSTextFieldCell *staticResolversTextField;
-@property (nonatomic, retain) IBOutlet NSTextField *blacklistIPsTextField;
-@property (nonatomic, retain) IBOutlet NSTextField *blacklistDomainsTextField;
-@property (nonatomic, retain) IBOutlet NSTextField *exceptionsTextField;
-@property (nonatomic, retain) IBOutlet WebView *helpWebView;
-@property (nonatomic, retain) IBOutlet NSButton *viewLogButton;
-@property (nonatomic, retain) IBOutlet NSButton *queryLoggingButton;
+@property (nonatomic, strong) IBOutlet NSTextField *currentResolverTextField;
+@property (nonatomic, strong) IBOutlet NSImageView *statusImageView;
+@property (nonatomic, strong) IBOutlet NSTextField *statusText;
+@property (nonatomic, strong) IBOutlet WebView *previewNotesWebView;
+@property (nonatomic, strong) IBOutlet WebView *releaseNotesWebView;
+@property (nonatomic, strong) IBOutlet WebView *aboutWebView;
+@property (nonatomic, strong) IBOutlet NSTextFieldCell *staticResolversTextField;
+@property (nonatomic, strong) IBOutlet NSTextField *blacklistIPsTextField;
+@property (nonatomic, strong) IBOutlet NSTextField *blacklistDomainsTextField;
+@property (nonatomic, strong) IBOutlet NSTextField *exceptionsTextField;
+@property (nonatomic, strong) IBOutlet WebView *helpWebView;
+@property (nonatomic, strong) IBOutlet NSButton *viewLogButton;
+@property (nonatomic, strong) IBOutlet NSButton *queryLoggingButton;
 
 - (void) mainViewDidLoad;
 
