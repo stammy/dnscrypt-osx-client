@@ -32,6 +32,7 @@ try_resolver() {
 
   rm -f "${RES_DIR}/${priority}"
   exec alarmer 3 dnscrypt-proxy --pid="$pid_file" \
+    --provider-name="$PROVIDER_NAME" --provider-key="$PROVIDER_KEY" \
     --local-address="${INTERFACE_PROBES}:${priority}" $args 2>&1 | \
   while read line; do
     case "$line" in
@@ -135,6 +136,7 @@ fi
 best_args=$(cat "${RES_DIR}/${best_file}")
 
 eval dnscrypt-proxy $best_args --local-address="$INTERFACE_PROXY" \
+  --provider-name="$PROVIDER_NAME" --provider-key="$PROVIDER_KEY" \
   --pidfile="$PROXY_PID_FILE" --user=daemon --daemonize $plugin_args
 
 if [ $? != 0 ]; then
@@ -146,6 +148,7 @@ if [ $? != 0 ]; then
   killall -9 dnscrypt-proxy
   sleep 1
   eval dnscrypt-proxy $best_args --local-address="$INTERFACE_PROXY" \
+    --provider-name="$PROVIDER_NAME" --provider-key="$PROVIDER_KEY" \  
     --pidfile="$PROXY_PID_FILE" --user=daemon --daemonize $plugin_args || \
     exit 1
 fi

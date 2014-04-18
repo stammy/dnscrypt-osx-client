@@ -517,38 +517,6 @@
 															<key>GID</key>
 															<integer>0</integer>
 															<key>PATH</key>
-															<string>/usr/local/lib/dnscrypt-proxy/libdcplugin_example_ldns_forward_after_nxdomain.la</string>
-															<key>PATH_TYPE</key>
-															<integer>0</integer>
-															<key>PERMISSIONS</key>
-															<integer>493</integer>
-															<key>TYPE</key>
-															<integer>3</integer>
-															<key>UID</key>
-															<integer>0</integer>
-														</dict>
-														<dict>
-															<key>CHILDREN</key>
-															<array/>
-															<key>GID</key>
-															<integer>0</integer>
-															<key>PATH</key>
-															<string>/usr/local/lib/dnscrypt-proxy/libdcplugin_example_ldns_forward_after_nxdomain.so</string>
-															<key>PATH_TYPE</key>
-															<integer>0</integer>
-															<key>PERMISSIONS</key>
-															<integer>493</integer>
-															<key>TYPE</key>
-															<integer>3</integer>
-															<key>UID</key>
-															<integer>0</integer>
-														</dict>
-														<dict>
-															<key>CHILDREN</key>
-															<array/>
-															<key>GID</key>
-															<integer>0</integer>
-															<key>PATH</key>
 															<string>/usr/local/lib/dnscrypt-proxy/libdcplugin_example_ldns_opendns_deviceid.la</string>
 															<key>PATH_TYPE</key>
 															<integer>0</integer>
@@ -671,6 +639,39 @@
 										<dict>
 											<key>CHILDREN</key>
 											<array>
+												<dict>
+													<key>CHILDREN</key>
+													<array>
+														<dict>
+															<key>CHILDREN</key>
+															<array/>
+															<key>GID</key>
+															<integer>0</integer>
+															<key>PATH</key>
+															<string>/usr/local/share/dnscrypt-proxy/dnscrypt-resolvers.csv</string>
+															<key>PATH_TYPE</key>
+															<integer>0</integer>
+															<key>PERMISSIONS</key>
+															<integer>420</integer>
+															<key>TYPE</key>
+															<integer>3</integer>
+															<key>UID</key>
+															<integer>0</integer>
+														</dict>
+													</array>
+													<key>GID</key>
+													<integer>0</integer>
+													<key>PATH</key>
+													<string>dnscrypt-proxy</string>
+													<key>PATH_TYPE</key>
+													<integer>0</integer>
+													<key>PERMISSIONS</key>
+													<integer>493</integer>
+													<key>TYPE</key>
+													<integer>2</integer>
+													<key>UID</key>
+													<integer>0</integer>
+												</dict>
 												<dict>
 													<key>CHILDREN</key>
 													<array>
@@ -828,7 +829,7 @@
 				<key>USE_HFS+_COMPRESSION</key>
 				<true/>
 				<key>VERSION</key>
-				<string>1.3.1</string>
+				<string>1.4.0</string>
 			</dict>
 			<key>UUID</key>
 			<string>7F7D70AB-F7A2-4027-8304-3063C7B9532F</string>
@@ -1460,7 +1461,7 @@
 									<key>GID</key>
 									<integer>80</integer>
 									<key>PATH</key>
-									<string>/Users/j/Library/Developer/Xcode/DerivedData/DNSCrypt-Menubar-fcseadxtcidaaddjtyicaarzthfd/Build/Products/Release/DNSCrypt-Menubar.app</string>
+									<string>/Users/j/Library/Developer/Xcode/DerivedData/DNSCrypt-Menubar-fcseadxtcidaaddjtyicaarzthfd/Build/Products/Release/DNSCrypt Menubar.app</string>
 									<key>PATH_TYPE</key>
 									<integer>0</integer>
 									<key>PERMISSIONS</key>
