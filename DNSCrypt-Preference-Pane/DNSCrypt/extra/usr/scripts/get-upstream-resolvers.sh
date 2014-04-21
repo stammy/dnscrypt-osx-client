@@ -2,12 +2,12 @@
 
 . ./common.inc
 
-opendns='no'
+dnscrypt_proxy_used='no'
 upstream_resolvers=''
 while read resolver; do
   case "$resolver" in
     127.0.0.5*)
-      opendns='yes'
+      dnscrypt_proxy_used='yes'
     ;;
   esac
   if [ x"$upstream_resolvers" = 'x' ]; then
@@ -17,7 +17,7 @@ while read resolver; do
   fi
 done
 
-if [ "$opendns" = 'yes' \
+if [ "$dnscrypt_proxy_used" = 'yes' \
      -a -r "${STATES_DIR}/dnscrypt-proxy-description" ]; then
   cat "${STATES_DIR}/dnscrypt-proxy-description" && exit 0  
 fi

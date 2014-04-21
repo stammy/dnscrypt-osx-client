@@ -9,8 +9,8 @@ try_resolution() {
 
 try_http_query() {
   exec alarmer 5 curl -L --max-redirs 5 -4 -m 5 \
-    http://guide.opendns.com/main 2>/dev/null | \
-  fgrep -ic OpenDNS > /dev/null 2>&1
+    http://www.apple.com 2>/dev/null | \
+  fgrep -c Apple > /dev/null 2>&1
 }
 
 try_everything() {

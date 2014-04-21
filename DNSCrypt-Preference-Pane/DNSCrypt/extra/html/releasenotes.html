@@ -2,7 +2,7 @@
 <html lang='en'>
   <head>
     <meta charset='utf-8'>
-    <title>Release notes for the user interface</title>
+    <title>Release notes for DNSCrypt-OSXClient by AlterStep</title>
     <style type='text/css'>
       <style>
         body {
@@ -24,164 +24,23 @@
     </style>
   </head>
   <body>
-    <h1>Release Notes for the user interface</h1>
+    <h1>Release Notes for DNSCrypt-OSXclient by AlterStep</h1>
     <article>
-      <h2>Version 0.21 by AlterStep</h2>
-      <time>Thu, 17 Apr 2014</time>
-      <ul>
-        <li>Mavericks support</li>
-        <li>dnscrypt-proxy 1.4.0</li>
-      </ul>
-    </article>
-    <article>
-      <h2>Version 0.19</h2>
-      <time>Wed, 10 Oct 2012</time>
-      <ul>
-        <li>dnscrypt-proxy has been updated to version 1.2.0.</li>
-        <li>Detection of IPv6 connectivity is now faster and more reliable.</li>
-        <li>
-          AAAA queries are filtered out on networks with no IPv6
-          connectivity in order to significantly reduce latency.
-        </li>
-      </ul>
-    </article>
-    <article>
-      <h2>Version 0.18</h2>
-      <time>Wed,  3 Oct 2012</time>
-      <ul>
-        <li>
-          freebox.fr has been added to the default list of domains
-          for which DNSCrypt should be bypassed.
-        </li>
-        <li>
-          If a static resolvers set has been specified, this will now be
-          used for exceptions instead of DHCP-provided servers.
-        </li>
-        <li>
-          Minor cosmetic fixes and documentation improvements have been
-          made.
-        </li>
-      </ul>
-    </article>
-    <article>
-      <h2>Version 0.17</h2>
-      <time>Fri, 28 Sep 2012</time>
-      <ul>
-        <li>dnscrypt-proxy has been updated to 1.1.0-final.</li>
-        <li>The uninstaller is now bundled with the preference pane.</li>
-        <li>
-          Static default DNS resolvers can now be used instead of
-          having them provided by a DHCP server.
-        </li>
-        <li>
-          Logging: outgoing queries can now be logged and displayed in
-          real time.
-        </li>
-        <li>
-          IP-based blocking: DNS responses containing IP addresses
-          present in a user-defined set of addresses can be blocked.
-        </li>
-        <li>
-          Pattern-based name blocking: block domain names matching
-          suffixes, prefixes and substrings.
-        </li>
-        <li>
-          A list of exceptions that should bypass DNSCrypt and be
-          resolved by a local server can be now specified.
-        </li>
-      </ul>
-    </article>
-    <article>
-      <h2>Version 0.16 released!</h2>
-      <time>Wed, 19 Sep 2012</time>
-      <ul>
-        <li>dnscrypt-proxy has been updated to 1.1.0-RC2.</li>
-        <li>Support for plugins has been added.</li>
-        <li>
-          The system DNS cache is now flushed after a network configuration
-          change.
-        </li>
-        <li>
-          The startup scripts can now handle plugins, static DNS
-          configurations and user-defined exceptions lists. These new
-          settings are not accessible through the user interface yet, but can
-          be configured using control files.
-        </li>
-      </ul>
-    </article>
-    <article>
-      <h2>Version 0.15 released!</h2>
-      <time>Fri, 07 Sep 2012</time>
-      <ul>
-        <li>dnscrypt-proxy has been updated to 1.1.0-RC1</li>
-        <li>
-          Queries for nowtv.com and fritz.com are now bypassing dnscrypt.
-        </li>
-        <li>
-          The user interface doesn't update the DNS settings any more when
-          using an interactive shell.
-        </li>
-      </ul>
-    </article>
-    <article>
-      <h2>Version 0.14 released!</h2>
-      <time>Wed, 08 Aug 2012</time>
-      <ul>
-        <li>The preference pane can now run on OSX 10.6.</li>
-      </ul>
-    </article>
-    <article>
-      <h2>Version 0.13 released!</h2>
-      <time>Wed, 08 Aug 2012</time>
-      <ul>
-        <li>The DNS cache is now flushed after a configuration change.</li>
-        <li>
-          The release notes are now bundled with the preference pane.
-          This reduces the startup time and ensures that these notes are
-          consistent with the currently running version.
-        </li>
-      </ul>
-    </article>
-    <article>
-      <h2>Version 0.12 released!</h2>
-      <time>Mon, 06 Aug 2012</time>
-      <ul>
-        <li>
-          The "fallback to insecure" mode now properly copes with captive
-          portals and firewalls.
-        </li>
-        <li>
-          The TCP/443 checkbox is gone. When the dnscrypt box is
-          checked, it tries everything in parallel and keeps whatever
-          works best.
-        </li>
-        <li>
-          IPv6 is fully supported (and automatic. If that works using
-          IPv6, IPv6 is used)
-        </li>
-        <li>
-          Familyshield is supported, with and without dnscrypt.
-        </li>
-        <li>
-          OpenDNS/DNSCrypt/Familyshield/Fallback settings can be set
-          from the menu bar.
-        </li>
-        <li>
-          Internal domain names like routerlogin.net are directly sent
-          to the router or to whatever DNS resolvers the DHCP server provides.
-        </li>
-        <li>
-          Packages are signed for Mountain Lion.
-        </li>
-        <li>
-          The interface passively watches for network changes according to the
-          current network configuration and the current Wifi access
-          point. It doesn't constantly poll for changes any more.
-        </li>
-        <li>
-          The proxy has been updated to version 1.0.1.
-        </li>
-      </ul>
+      <h2>Version 1.0 by AlterStep</h2>
+      <time>Thu, 21 Apr 2014</time>
+      <p>
+        This is my first release, based on the source code of the beta
+        version written by OpenDNS.
+      </p>
+      <p>
+        It has only been tested on OSX 10.9.
+      </p>
+      <p>
+        It includes dnscrypt-proxy 1.4.0, libsodium 0.4.5, libldns 1.6.17.
+      </p>
+      <p>
+        Contact me on Github: https://github.com/alterstep/dnscrypt-osx-client
+      </p>
     </article>
   </body>
 </html>

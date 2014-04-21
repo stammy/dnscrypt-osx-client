@@ -28,10 +28,10 @@ fi
 rm -f '/Library/Application Support/DNSCrypt/control/plugin-parental-controls.enabled'
 rm -f '/Library/Application Support/DNSCrypt/control/plugin-lockin.enabled'
 
-for service in com.opendns.osx.DNSCryptAfterboot \
-               com.opendns.osx.DNSCryptConsoleChange \
-               com.opendns.osx.DNSCryptControlChange \
-               com.opendns.osx.DNSCryptNetworkChange; do
+for service in com.github.dnscrypt-osxclient.DNSCryptAfterboot \
+               com.github.dnscrypt-osxclient.DNSCryptConsoleChange \
+               com.github.dnscrypt-osxclient.DNSCryptControlChange \
+               com.github.dnscrypt-osxclient.DNSCryptNetworkChange; do
   /bin/launchctl load "/Library/LaunchDaemons/${service}.plist"
   /bin/launchctl start "$service"
 done

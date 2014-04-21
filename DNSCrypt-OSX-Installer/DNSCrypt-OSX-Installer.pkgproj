@@ -815,7 +815,7 @@
 				<key>CONCLUSION_ACTION</key>
 				<integer>0</integer>
 				<key>IDENTIFIER</key>
-				<string>com.opendns.osx.dnscryptClient.dnscrypt-proxy</string>
+				<string>com.github.dnscrypt-osxclient.dnscryptClient.dnscrypt-proxy</string>
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
@@ -984,7 +984,7 @@
 											<key>GID</key>
 											<integer>0</integer>
 											<key>PATH</key>
-											<string>/Users/j/OpenDNS/DNSCrypt/OSX/dnscrypt-osx-client/DNSCrypt-OSX-Installer/com.opendns.osx.DNSCryptAfterboot.plist</string>
+											<string>/Users/j/OpenDNS/DNSCrypt/OSX/dnscrypt-osx-client/DNSCrypt-OSX-Installer/com.github.dnscrypt-osxclient.DNSCryptAfterboot.plist</string>
 											<key>PATH_TYPE</key>
 											<integer>0</integer>
 											<key>PERMISSIONS</key>
@@ -1000,7 +1000,7 @@
 											<key>GID</key>
 											<integer>0</integer>
 											<key>PATH</key>
-											<string>/Users/j/OpenDNS/DNSCrypt/OSX/dnscrypt-osx-client/DNSCrypt-OSX-Installer/com.opendns.osx.DNSCryptConsoleChange.plist</string>
+											<string>/Users/j/OpenDNS/DNSCrypt/OSX/dnscrypt-osx-client/DNSCrypt-OSX-Installer/com.github.dnscrypt-osxclient.DNSCryptConsoleChange.plist</string>
 											<key>PATH_TYPE</key>
 											<integer>0</integer>
 											<key>PERMISSIONS</key>
@@ -1016,7 +1016,7 @@
 											<key>GID</key>
 											<integer>0</integer>
 											<key>PATH</key>
-											<string>/Users/j/OpenDNS/DNSCrypt/OSX/dnscrypt-osx-client/DNSCrypt-OSX-Installer/com.opendns.osx.DNSCryptControlChange.plist</string>
+											<string>/Users/j/OpenDNS/DNSCrypt/OSX/dnscrypt-osx-client/DNSCrypt-OSX-Installer/com.github.dnscrypt-osxclient.DNSCryptControlChange.plist</string>
 											<key>PATH_TYPE</key>
 											<integer>0</integer>
 											<key>PERMISSIONS</key>
@@ -1032,7 +1032,7 @@
 											<key>GID</key>
 											<integer>0</integer>
 											<key>PATH</key>
-											<string>/Users/j/OpenDNS/DNSCrypt/OSX/dnscrypt-osx-client/DNSCrypt-OSX-Installer/com.opendns.osx.DNSCryptNetworkChange.plist</string>
+											<string>/Users/j/OpenDNS/DNSCrypt/OSX/dnscrypt-osx-client/DNSCrypt-OSX-Installer/com.github.dnscrypt-osxclient.DNSCryptNetworkChange.plist</string>
 											<key>PATH_TYPE</key>
 											<integer>0</integer>
 											<key>PERMISSIONS</key>
@@ -1426,7 +1426,7 @@
 				<key>CONCLUSION_ACTION</key>
 				<integer>2</integer>
 				<key>IDENTIFIER</key>
-				<string>com.opendns.osx.dnscryptClient.DNSCrypt</string>
+				<string>com.github.dnscrypt-osxclient.dnscryptClient.DNSCrypt</string>
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
@@ -1436,7 +1436,7 @@
 				<key>USE_HFS+_COMPRESSION</key>
 				<true/>
 				<key>VERSION</key>
-				<string>0.21</string>
+				<string>1.0</string>
 			</dict>
 			<key>TYPE</key>
 			<integer>0</integer>
@@ -1593,7 +1593,7 @@
 											<key>GID</key>
 											<integer>0</integer>
 											<key>PATH</key>
-											<string>com.opendns.osx.DNSCryptMenuBar.plist</string>
+											<string>com.github.dnscrypt-osxclient.DNSCryptMenuBar.plist</string>
 											<key>PATH_TYPE</key>
 											<integer>1</integer>
 											<key>PERMISSIONS</key>
@@ -1919,7 +1919,7 @@
 				<key>CONCLUSION_ACTION</key>
 				<integer>2</integer>
 				<key>IDENTIFIER</key>
-				<string>com.opendns.osx.dnscryptClient.DNSCrypt-Menubar</string>
+				<string>com.github.dnscrypt-osxclient.dnscryptClient.DNSCrypt-Menubar</string>
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
@@ -1929,7 +1929,7 @@
 				<key>USE_HFS+_COMPRESSION</key>
 				<true/>
 				<key>VERSION</key>
-				<string>0.21</string>
+				<string>1.0</string>
 			</dict>
 			<key>TYPE</key>
 			<integer>0</integer>
@@ -1970,7 +1970,7 @@
 					<integer>1</integer>
 				</dict>
 				<key>CUSTOM</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>SCALING</key>
 				<integer>1</integer>
 			</dict>
@@ -2126,38 +2126,14 @@
 				<key>KEYWORDS</key>
 				<dict/>
 				<key>LOCALIZATIONS</key>
-				<array>
-					<dict>
-						<key>LANGUAGE</key>
-						<string>English</string>
-						<key>VALUE</key>
-						<dict>
-							<key>PATH</key>
-							<string>Text/license.txt</string>
-							<key>PATH_TYPE</key>
-							<integer>1</integer>
-						</dict>
-					</dict>
-				</array>
+				<array/>
 				<key>MODE</key>
 				<integer>0</integer>
 			</dict>
 			<key>README</key>
 			<dict>
 				<key>LOCALIZATIONS</key>
-				<array>
-					<dict>
-						<key>LANGUAGE</key>
-						<string>English</string>
-						<key>VALUE</key>
-						<dict>
-							<key>PATH</key>
-							<string>Text/readme.txt</string>
-							<key>PATH_TYPE</key>
-							<integer>1</integer>
-						</dict>
-					</dict>
-				</array>
+				<array/>
 			</dict>
 			<key>SUMMARY</key>
 			<dict>
@@ -2172,7 +2148,7 @@
 						<key>LANGUAGE</key>
 						<string>English</string>
 						<key>VALUE</key>
-						<string>DNSCrypt</string>
+						<string>DNSCrypt OSX Client</string>
 					</dict>
 				</array>
 			</dict>
@@ -2227,7 +2203,7 @@
 						<key>IC_REQUIREMENT_OS_DISTRIBUTION_TYPE</key>
 						<integer>1</integer>
 						<key>IC_REQUIREMENT_OS_MINIMUM_VERSION</key>
-						<integer>100600</integer>
+						<integer>100800</integer>
 					</dict>
 					<key>IC_REQUIREMENT_CHECK_TYPE</key>
 					<integer>1</integer>

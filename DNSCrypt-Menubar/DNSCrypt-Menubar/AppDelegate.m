@@ -1,21 +1,9 @@
-//
-//  AppDelegate.m
-//  DNSCrypt-Menubar
-//
-//  Created by OpenDNS, Inc. on 10/31/11.
-//  Copyright (c) 2011 OpenDNS, Inc. All rights reserved.
-//
 
 #import "AppDelegate.h"
-#import "Sparkle/Sparkle.h"
 
 @implementation AppDelegate
 @synthesize statusResolversMenuItem = _statusResolversMenuItem;
-@synthesize statusConfigurationMenuItem = _statusConfigurationMenuItem;
-@synthesize familyShieldMenuItem = _familyShieldMenuItem;
 @synthesize dnscryptMenuItem = _dnscryptMenuItem;
-@synthesize fallbackMenuItem = _fallbackMenuItem;
-@synthesize opendnsMenuItem = _opendnsMenuItem;
 @synthesize window = _window;
 @synthesize dnscryptMenu = _dnscryptMenu;
 @synthesize statusItem = _statusItem;
@@ -26,9 +14,6 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 - (void) setCheckBoxesEnabled: (BOOL) enabled
 {
     [_dnscryptMenuItem setEnabled: enabled];
-    [_opendnsMenuItem setEnabled: enabled];
-    [_familyShieldMenuItem setEnabled: enabled];
-    [_fallbackMenuItem setEnabled: enabled];
 }
 
 - (NSString *) fromCommand: (NSString *) launchPath withArguments: (NSArray *) arguments
@@ -56,25 +41,10 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     NSString *res;
 
     _dnscryptMenuItem.state = 0;
-    _familyShieldMenuItem.state = 0;
-    _opendnsMenuItem.state = 0;
-    _fallbackMenuItem.state = 0;
 
     res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-dnscrypt-status.sh", nil]];
     if ([res isEqualToString: @"yes"]) {
         [_dnscryptMenuItem setState: 1];
-    }
-    res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-familyshield-status.sh", nil]];
-    if ([res isEqualToString: @"yes"]) {
-        [_familyShieldMenuItem setState: 1];
-    }
-    res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-insecure-opendns-status.sh", nil]];
-    if ([res isEqualToString: @"yes"]) {
-        [_opendnsMenuItem setState: 1];
-    }
-    res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-fallback-status.sh", nil]];
-    if ([res isEqualToString: @"yes"]) {
-        [_fallbackMenuItem setState: 1];
     }
 }
 
@@ -100,17 +70,14 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     NSImage *led = nil;
     
     switch (currentState) {
-        case kDNS_CONFIGURATION_OPENDNS:
-            led = [NSImage imageNamed: @"yes-opendns-no-crypt.png"];
-            break;
         case kDNS_CONFIGURATION_LOCALHOST:
-            led = [NSImage imageNamed: @"yes-opendns-yes-crypt.png"];
+            led = [NSImage imageNamed: @"icon-dnscrypt-active"];
             break;
         case kDNS_CONFIGURATION_VANILLA:
-            led = [NSImage imageNamed: @"no-opendns.png"];
+            led = [NSImage imageNamed: @"icon-dnscrypt-inactive"];
             break;
         default:
-            led = [NSImage imageNamed: @"no-network.png"];
+            led = [NSImage imageNamed: @"icon-no-network"];
     }
     _statusItem.image = led;
 }
@@ -118,24 +85,18 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 - (BOOL) updateStatusWithCurrentConfig
 {
     NSString *stateDescription = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./get-current-resolvers.sh | ./get-resolvers-description.sh", nil]];
-    if ([stateDescription isEqualToString: @"FamilyShield"]) {
-        currentState = kDNS_CONFIGURATION_OPENDNS;
-    } else if ([stateDescription isEqualToString: @"DNSCrypt"]) {
+    if ([stateDescription isEqualToString: @"DNSCrypt"]) {
         currentState = kDNS_CONFIGURATION_LOCALHOST;
-    } else if ([stateDescription isEqualToString: @"OpenDNS"]) {
-        currentState = kDNS_CONFIGURATION_OPENDNS;
-    } else if ([stateDescription isEqualToString: @"OpenDNS IPv6"]) {
-        currentState = kDNS_CONFIGURATION_OPENDNS;
     } else if ([stateDescription isEqualToString: @"None"]) {
         currentState = kDNS_CONFIGURATION_UNKNOWN;
     } else if ([stateDescription isEqualToString: @"Updating"]) {
+        currentState = kDNS_CONFIGURATION_UNKNOWN;
     } else if (stateDescription.length > 0) {
         currentState = kDNS_CONFIGURATION_VANILLA;
     }
     [self updateLedStatus];
     
     NSString *currentResolvers = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./get-current-resolvers.sh | ./get-upstream-resolvers.sh", nil]];
-    _statusConfigurationMenuItem.title = stateDescription;
     _statusResolversMenuItem.title = currentResolvers;
     
     NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./gui-pop-conf-change.sh menubar", nil]];
@@ -172,7 +133,7 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 {
     [self setCheckBoxesEnabled: FALSE];
 
-    NSImage *led = [NSImage imageNamed: @"no-network.png"];
+    NSImage *led = [NSImage imageNamed: @"icon-no-network"];
     _statusItem.image = led;
     
     [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./gui-push-conf-change.sh prefpane", nil]];
@@ -202,7 +163,6 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    [[SUUpdater sharedUpdater] setSendsSystemProfile: TRUE];
 }
 
 - (IBAction)preferencesMenuItemPushed:(NSMenuItem *)sender
@@ -231,47 +191,6 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     return TRUE;
 }
 
-- (BOOL) setFamilyShieldOn {
-    [self showSpinners];
-    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-familyshield-on.sh", nil]];
-    (void) res;
-    return TRUE;
-}
-
-- (BOOL) setFamilyShieldOff {
-    [self showSpinners];
-    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-familyshield-off.sh", nil]];
-    (void) res;
-    return TRUE;
-}
-
-- (BOOL) setInsecureOpenDNSOn {
-    [self showSpinners];
-    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-insecure-opendns-on.sh", nil]];
-    (void) res;
-    return TRUE;
-}
-
-- (BOOL) setInsecureOpenDNSOff {
-    [self showSpinners];
-    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-insecure-opendns-off.sh", nil]];
-    (void) res;
-    return TRUE;
-}
-
-- (BOOL) setFallbackOn {
-    [self showSpinners];
-    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-fallback-on.sh", nil]];
-    (void) res;
-    return TRUE;
-}
-
-- (BOOL) setFallbackOff {
-    [self showSpinners];
-    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-fallback-off.sh", nil]];
-    (void) res;
-    return TRUE;
-}
 
 - (IBAction)dnscryptMenuItemPushed:(NSMenuItem *)sender
 {
@@ -281,39 +200,6 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     } else {
         sender.state = 0;
         [self setDNSCryptOff];
-    }
-}
-
-- (IBAction)familyShieldMenuItemPushed:(NSMenuItem *)sender
-{
-    if (sender.state == 0) {
-        sender.state = 1;
-        [self setFamilyShieldOn];
-    } else {
-        sender.state = 0;
-        [self setFamilyShieldOff];
-    }
-}
-
-- (IBAction)opendnsMenuItemPushed:(NSMenuItem *)sender
-{
-    if (sender.state == 0) {
-        sender.state = 1;
-        [self setInsecureOpenDNSOn];
-    } else {
-        sender.state = 0;
-        [self setInsecureOpenDNSOff];
-    }
-}
-
-- (IBAction)fallbackMenuItemPushed:(NSMenuItem *)sender
-{
-    if (sender.state == 0) {
-        sender.state = 1;
-        [self setFallbackOn];
-    } else {
-        sender.state = 0;
-        [self setFallbackOff];
     }
 }
 

@@ -14,9 +14,6 @@ if [ -r "$STATIC_RESOLVERS_FILE" ]; then
   [ -z "$servers" ] && servers='empty'
 fi
 
-[ -e "$INSECURE_OPENDNS_FILE" ] && servers='208.67.220.220'
-[ -e "$FAMILYSHIELD_FILE" ] && servers='208.67.220.123'
-
 exec networksetup -listallnetworkservices 2>/dev/null | \
 fgrep -v '*' | while read x ; do
   networksetup -setdnsservers "$x" $servers

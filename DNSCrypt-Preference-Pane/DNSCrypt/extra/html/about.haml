@@ -2,7 +2,7 @@
 %html{lang: "en"}
   %head
     %meta{charset: "utf-8"}
-    %title About DNSCrypt
+    %title About DNSCrypt-OSXClient
     %style{type: "text/css"}
       :sass
         body
@@ -12,32 +12,27 @@
         h1
           margin: 0
   %body
-    %h1 About DNSCrypt
+    %h1 About DNSCrypt-OSXClient
     %p
       This software encrypts and authenticates DNS packets between your computer
-      and OpenDNS. This prevents man-in-the-middle attacks and snooping of DNS
-      traffic by ISPs or others.
+      and a DNS resolver using DNSCrypt.
     %p
       Tips:
       %ul
-        %li If you have a firewall, open TCP and UDP ports 53 and 443.
         %li
-          The "Fallback to insecure" feature automatically disables
-          DNSCrypt when DNS queries are not able to reach OpenDNS. This usually
-          happens on public WiFi networks that require going through a captive
+          If you have a firewall, open TCP and UDP ports 53, 54, 443
+          and 1053. These are the most common ports used for DNSCrypt.
+        %li
+          The "Automatically disable if blocked" feature automatically disables
+          DNSCrypt when DNS queries are not able to reach the DNSCrypt
+          resolver. This can
+          happen on public WiFi networks that require going through a captive
           portal before you can access external networks.
           This function is only provided for conveniency.
           When enabled, the protocol can be easily downgraded by
-          third-parties. In other words, when the "Fallback to
-          insecure" feature is enabled, this software doesn't
+          third-parties. In other words, when the "Automatically
+          disable if blocked" feature is enabled, this software doesn't
           provide any security at all against active attackers, but it can
           still be useful against passive attackers and in order to bypass
           DNS censorship. Don't enable it unless you are frequently
           roaming and you don't want to manually disable/enable DNSCrypt.
-        %li
-          The FamilyShield service blocks pornographic content,
-          including OpenDNS "Pornography", "Tasteless" and "Sexuality"
-          categories, in addition to proxies and anonymizers (which can render
-          filtering useless). It also blocks phishing and some malware.
-    %p
-      Please help by providing feedback!

@@ -1,10 +1,3 @@
-//
-//  DNSCrypt.m
-//  DNSCrypt
-//
-//  Created by OpenDNS, Inc. on 8/11/11.
-//  Copyright (c) 2011 OpenDNS, Inc. All rights reserved.
-//
 
 #import "DNSCrypt.h"
 
@@ -12,7 +5,6 @@
 @synthesize tabView = _tabView;
 @synthesize aboutTabViewItem = _aboutTabViewItem;
 @synthesize releaseNotesTabViewItem = _releaseNotesTabViewItem;
-@synthesize previewNotesWebView = _previewNotesWebView;
 @synthesize releaseNotesWebView = _releaseNotesWebView;
 @synthesize aboutWebView = _aboutWebView;
 @synthesize staticResolversTextField = _staticResolversTextField;
@@ -23,20 +15,18 @@
 @synthesize queryLoggingButton = _queryLoggingButton;
 @synthesize exceptionsTextField = _exceptionsTextField;
 @synthesize dnscryptButton = _dnscryptButton;
-@synthesize opendnsButton = _opendnsButton;
 @synthesize fallbackButton = _fallbackButton;
-@synthesize familyShieldButton = _familyShieldButton;
 @synthesize statusImageView = _statusImageView;
 @synthesize statusText = _statusText;
 @synthesize currentResolverTextField = _currentResolverTextField;
+@synthesize resolverNamesButton = _resolverNamesButton;
 
 DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
+NSArray *resolversList;
 
 - (void) setCheckBoxesEnabled: (BOOL) enabled
 {
     [_dnscryptButton setEnabled: enabled];
-    [_opendnsButton setEnabled: enabled];
-    [_familyShieldButton setEnabled: enabled];
     [_fallbackButton setEnabled: enabled];
 }
 
@@ -64,21 +54,11 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     NSString *res;
 
     _dnscryptButton.state = 0;
-    _familyShieldButton.state = 0;
-    _opendnsButton.state = 0;
     _fallbackButton.state = 0;
     
     res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-dnscrypt-status.sh", nil]];
     if ([res isEqualToString: @"yes"]) {
         [_dnscryptButton setState: 1];
-    }
-    res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-familyshield-status.sh", nil]];
-    if ([res isEqualToString: @"yes"]) {
-        [_familyShieldButton setState: 1];
-    }
-    res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-insecure-opendns-status.sh", nil]];
-    if ([res isEqualToString: @"yes"]) {
-        [_opendnsButton setState: 1];
     }
     res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-fallback-status.sh", nil]];
     if ([res isEqualToString: @"yes"]) {
@@ -103,26 +83,43 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     if (fileContent != nil) {
         [_exceptionsTextField setStringValue: fileContent];
     }
+    
+    [_resolverNamesButton removeAllItems];
+    
+    resolversList = [NSArray arrayWithContentsOfCSVFile: kRESOLVERS_LIST_FILE options:CHCSVParserOptionsSanitizesFields | CHCSVParserOptionsStripsLeadingAndTrailingWhitespace];
+    NSUInteger rows_count = [resolversList count];
+    NSUInteger i;
+    [_resolverNamesButton addItemWithTitle: NSLocalizedString(@"Please select a resolver", @"A resolver hasn't been selected yet")];
+    res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-dnscrypt-resolver-name.sh", nil]];
+    for (i = 1U; i < rows_count; i++) {
+        NSArray *row = [resolversList objectAtIndex: i];
+        NSString *name;
+        if (row.count < 4) {
+            continue;
+        }
+        name = [row objectAtIndex: 1];
+        [_resolverNamesButton addItemWithTitle: name];
+        if ([[row objectAtIndex: 0] isEqualToString: res]) {
+            [_resolverNamesButton selectItemAtIndex: i];
+            [self updateResolverInfo: row];
+        }
+    }
 }
 
 - (void) updateLedStatus
 {
-    NSBundle *bundle = [NSBundle bundleWithIdentifier: @"com.opendns.osx.DNSCrypt"];
+    NSBundle *bundle = [NSBundle bundleWithIdentifier: @"com.github.dnscrypt-osxclient.DNSCrypt"];
     switch (currentState) {
         case kDNS_CONFIGURATION_UNKNOWN:
-            _statusText.stringValue = NSLocalizedString(@"No network", @"Status");
+            _statusText.stringValue = NSLocalizedString(@"Standby", @"Status");
             _statusImageView.image = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_red.png"]];
             break;
         case kDNS_CONFIGURATION_VANILLA:
-            _statusText.stringValue = NSLocalizedString(@"Unprotected", @"Status");
+            _statusText.stringValue = NSLocalizedString(@"Not using DNSCrypt", @"Status");
             _statusImageView.image = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_red.png"]];
             break;
-        case kDNS_CONFIGURATION_OPENDNS:
-            _statusText.stringValue = NSLocalizedString(@"Unencrypted", @"Status");
-            _statusImageView.image = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_yellow.png"]];
-            break;
         case kDNS_CONFIGURATION_LOCALHOST:
-            _statusText.stringValue = NSLocalizedString(@"Protected", @"Status");
+            _statusText.stringValue = NSLocalizedString(@"Using DNSCrypt", @"Status");
             _statusImageView.image = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"shield_green.png"]];
             break;
         default:
@@ -133,17 +130,12 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 - (BOOL) updateStatusWithCurrentConfig
 {
     NSString *stateDescription = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./get-current-resolvers.sh | ./get-resolvers-description.sh", nil]];
-    if ([stateDescription isEqualToString: @"FamilyShield"]) {
-        currentState = kDNS_CONFIGURATION_OPENDNS;
-    } else if ([stateDescription isEqualToString: @"DNSCrypt"]) {
+    if ([stateDescription isEqualToString: @"DNSCrypt"]) {
         currentState = kDNS_CONFIGURATION_LOCALHOST;
-    } else if ([stateDescription isEqualToString: @"OpenDNS"]) {
-        currentState = kDNS_CONFIGURATION_OPENDNS;
-    } else if ([stateDescription isEqualToString: @"OpenDNS IPv6"]) {
-        currentState = kDNS_CONFIGURATION_OPENDNS;
     } else if ([stateDescription isEqualToString: @"None"]) {
         currentState = kDNS_CONFIGURATION_UNKNOWN;
     } else if ([stateDescription isEqualToString: @"Updating"]) {
+        currentState = kDNS_CONFIGURATION_UNKNOWN;
     } else if (stateDescription.length > 0) {
         currentState = kDNS_CONFIGURATION_VANILLA;
     }
@@ -196,34 +188,6 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     return TRUE;
 }
 
-- (BOOL) setFamilyShieldOn {
-    [self showSpinners];
-    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-familyshield-on.sh", nil]];
-    (void) res;
-    return TRUE;
-}
-
-- (BOOL) setFamilyShieldOff {
-    [self showSpinners];
-    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-familyshield-off.sh", nil]];
-    (void) res;
-    return TRUE;
-}
-
-- (BOOL) setInsecureOpenDNSOn {
-    [self showSpinners];
-    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-insecure-opendns-on.sh", nil]];
-    (void) res;
-    return TRUE;
-}
-
-- (BOOL) setInsecureOpenDNSOff {
-    [self showSpinners];
-    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-insecure-opendns-off.sh", nil]];
-    (void) res;
-    return TRUE;
-}
-
 - (BOOL) setFallbackOn {
     [self showSpinners];
     NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-fallback-on.sh", nil]];
@@ -244,24 +208,6 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
         [self setDNSCryptOn];
     } else {
         [self setDNSCryptOff];
-    }
-}
-
-- (IBAction)opendnsButtonPressed:(NSButton *)sender
-{
-    if (sender.state != 0) {
-        [self setInsecureOpenDNSOn];
-    } else {
-        [self setInsecureOpenDNSOff];
-    }
-}
-
-- (IBAction)familyShieldButtonPressed:(NSButton *)sender
-{
-    if (sender.state != 0) {
-        [self setFamilyShieldOn];
-    } else {
-        [self setFamilyShieldOff];
     }
 }
 
@@ -289,29 +235,37 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     [self performSelector: @selector(waitForUpdate) withObject: self afterDelay:kREFRESH_DELAY];
 }
 
+- (void) updateResolverInfo: (NSArray *) row {
+    NSString *location = [row objectAtIndex: 3];
+    _locationText.stringValue = location;
+    NSString *url = [row objectAtIndex: 5];
+    if (![url isEqualToString: @""]) {
+        _providerLink.title = url;
+        _providerLink.hidden = false;
+    } else {
+        _providerLink.hidden = true;
+    }
+    NSString *description = [row objectAtIndex: 2];
+    _descriptionText.stringValue = description;
+}
+
+- (IBAction)resolversNamesPopupButtonPressed:(NSPopUpButton *)sender {
+    NSUInteger i = [sender indexOfSelectedItem];
+    if (i <= 0U || i >= resolversList.count) {
+        return;
+    }
+    NSArray *row = [resolversList objectAtIndex: i];
+    [self updateResolverInfo: row];
+    setenv("RESOLVER_NAME", [[row objectAtIndex: 0] UTF8String], 1);
+    [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./set-dnscrypt-resolver-name.sh \"$RESOLVER_NAME\"", nil]];
+}
+
 - (void) mainViewDidLoad
 {
     currentState = kDNS_CONFIGURATION_UNKNOWN;
-    [_previewNotesWebView setDrawsBackground:false];
     
     [self initState];
     [self periodicallyUpdateStatusWithCurrentConfig];
-
-    NSString *version = kDNSCRYPT_PACKAGE_VERSION;
-    NSString *softwareBlurbFormat = NSLocalizedString(@"This software (v: %@) encrypts and authenticates DNS packets between your computer and OpenDNS. This prevents man-in-the-middle attacks and snooping of DNS traffic by ISPs or others.", @"Description of what the package does - %@ is replaced by the version number");
-    NSString *describePorts = NSLocalizedString(@"DNSCrypt can use UDP and TCP ports 53 and 443.", @"Describe what ports DNSCrypt uses");
-    NSString *describeFallback = NSLocalizedString(@"If you prefer reliability over security, enable fallback to insecure DNS.", @"Describe what the 'fallback to insecure mode' checkbox does");
-
-    NSMutableString *htmlString = [NSMutableString stringWithString: @"<html><body style=\"font-family:Helvetica, sans-serif; font-size: 11px; color: #333; margin: 0px; padding: 2px 0px;\">"];
-
-    [htmlString appendFormat: softwareBlurbFormat, version];
-    [htmlString appendString: @"<br/><br/>"];
-    [htmlString appendString: @"<ul style=\"list-style-position: inside; list-style-type: square; padding-left: 0px; margin-top: 0; margin-bottom: 0; \">"];
-    [htmlString appendFormat: @"<li>%@</li>", describePorts];
-    [htmlString appendFormat: @"<li>%@</li>", describeFallback];
-    [htmlString appendString: @"</ul>"];
-    [htmlString appendString: @"</body></html>"];
-    [[_previewNotesWebView mainFrame] loadHTMLString:htmlString baseURL:[NSURL URLWithString:@"file:///"]];
 
     SInt32 OSXversionMajor, OSXversionMinor;
     if (Gestalt(gestaltSystemVersionMajor, &OSXversionMajor) != noErr || Gestalt(gestaltSystemVersionMinor, &OSXversionMinor) != noErr || OSXversionMajor < 10 || OSXversionMinor < 6) {
@@ -358,10 +312,10 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     return nil;
 }
 
-- (IBAction)openDNSLinkPushed:(NSButton *)sender
+- (IBAction)providerLinkPushed:(NSButton *)sender
 {
     (void) sender;
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString: kOPENDNS_URL]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString: sender.title]];
 }
 
 - (IBAction)uninstallPushed:(NSButton *)sender {
@@ -374,7 +328,7 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     staticResolvers = [[staticResolvers componentsSeparatedByCharactersInSet: charset] componentsJoinedByString: @" "];
     sender.stringValue = staticResolvers;
     setenv("STATIC_RESOLVERS", [staticResolvers UTF8String], 1);
-    [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./set-static-resolvers.sh \"$STATIC_RESOLVERS\"", staticResolvers, nil]];
+    [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./set-static-resolvers.sh \"$STATIC_RESOLVERS\"", nil]];
 }
 
 - (BOOL) setQueryLoggingOn {
