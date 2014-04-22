@@ -17,7 +17,6 @@
 		09A13AD2145F3B9000B227A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A13AD1145F3B9000B227A4 /* Cocoa.framework */; };
 		09A13ADC145F3B9000B227A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 09A13ADA145F3B9000B227A4 /* InfoPlist.strings */; };
 		09A13ADE145F3B9000B227A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A13ADD145F3B9000B227A4 /* main.m */; };
-		09A13AE2145F3B9000B227A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 09A13AE0145F3B9000B227A4 /* Credits.rtf */; };
 		09A13AE5145F3B9000B227A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A13AE4145F3B9000B227A4 /* AppDelegate.m */; };
 		09A13AE8145F3B9000B227A4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09A13AE6145F3B9000B227A4 /* MainMenu.xib */; };
 /* End PBXBuildFile section */
@@ -51,7 +50,6 @@
 		09A13ADB145F3B9000B227A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		09A13ADD145F3B9000B227A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		09A13ADF145F3B9000B227A4 /* DNSCrypt-Menubar-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DNSCrypt-Menubar-Prefix.pch"; sourceTree = "<group>"; };
-		09A13AE1145F3B9000B227A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		09A13AE3145F3B9000B227A4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		09A13AE4145F3B9000B227A4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		09A13AE7145F3B9000B227A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -124,7 +122,6 @@
 				09A13ADA145F3B9000B227A4 /* InfoPlist.strings */,
 				09A13ADD145F3B9000B227A4 /* main.m */,
 				09A13ADF145F3B9000B227A4 /* DNSCrypt-Menubar-Prefix.pch */,
-				09A13AE0145F3B9000B227A4 /* Credits.rtf */,
 				098E72581905DF4C00C8CC6E /* icon-dnscrypt-active.png */,
 				098E725A1905DF4C00C8CC6E /* icon-dnscrypt-inactive.png */,
 				098E725C1905DF4C00C8CC6E /* icon-no-network.png */,
@@ -188,7 +185,6 @@
 			files = (
 				098E72681905E1A700C8CC6E /* icon-dnscrypt-inactive@2x.png in Resources */,
 				09A13ADC145F3B9000B227A4 /* InfoPlist.strings in Resources */,
-				09A13AE2145F3B9000B227A4 /* Credits.rtf in Resources */,
 				098E725E1905DF4C00C8CC6E /* icon-dnscrypt-active.png in Resources */,
 				09A13AE8145F3B9000B227A4 /* MainMenu.xib in Resources */,
 				098E72691905E1A700C8CC6E /* icon-no-network@2x.png in Resources */,
@@ -220,14 +216,6 @@
 				09A13ADB145F3B9000B227A4 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		09A13AE0145F3B9000B227A4 /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				09A13AE1145F3B9000B227A4 /* en */,
-			);
-			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
 		09A13AE6145F3B9000B227A4 /* MainMenu.xib */ = {
