@@ -77,11 +77,11 @@ fi
 
 wait_pids=""
 
-try_resolver 5004 "${RESOLVER_NAME} using DNSCrypt on UDP" \
+try_resolver 5004 "${RESOLVER_NAME} using DNSCrypt over UDP" \
   "--resolver-name=$RESOLVER_NAME" &
 wait_pids="$wait_pids $!"
 
-try_resolver 5005 "${RESOLVER_NAME} using DNSCrypt on TCP" \
+try_resolver 5005 "${RESOLVER_NAME} using DNSCrypt over TCP" \
   "--resolver-name=$RESOLVER_NAME --tcp-only" &
 wait_pids="$wait_pids $!"
 
