@@ -1,4 +1,3 @@
-
 DNSCRYPT_USR_BASE_DIR='/Library/PreferencePanes/DNSCrypt.prefPane/Contents/Resources/usr'
 DNSCRYPT_VAR_BASE_DIR='/Library/Application Support/DNSCrypt'
 
@@ -47,7 +46,7 @@ DISABLE_IPV6='no'
 export PATH="${DNSCRYPT_USR_BASE_DIR}/bin:${DNSCRYPT_USR_BASE_DIR}/scripts:$PATH"
 
 init_interfaces() {
-  sudo ifconfig lo0 alias ${INTERFACE_UNBOUND}/${INTERFACE_UNBOUND_MASK}
-  sudo ifconfig lo0 alias ${INTERFACE_PROXY}/${INTERFACE_PROXY_MASK}
-  sudo ifconfig lo0 alias ${INTERFACE_PROBES}/${INTERFACE_PROBES_MASK}
+  /sbin/ifconfig lo0 alias ${INTERFACE_UNBOUND}/${INTERFACE_UNBOUND_MASK}
+  /sbin/ifconfig lo0 alias ${INTERFACE_PROXY}/${INTERFACE_PROXY_MASK}
+  /sbin/ifconfig lo0 alias ${INTERFACE_PROBES}/${INTERFACE_PROBES_MASK}
 }
