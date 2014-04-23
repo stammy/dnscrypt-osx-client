@@ -6,3 +6,12 @@ experience controlling the DNSCrypt Proxy on OSX.
 
 [Download dnscrypt-osxclient-1.0.0.dmg](https://github.com/alterstep/dnscrypt-osxclient/releases/download/1.0.0/dnscrypt-osxclient-1.0.0.dmg)
 for OSX 10.9 (Mavericks).
+
+Compatible with:
+* CloudNS
+* d0wn
+* DNSCrypt.eu
+* okTurtles
+* OpenDNS
+* OpenNIC
+* Soltysiak
