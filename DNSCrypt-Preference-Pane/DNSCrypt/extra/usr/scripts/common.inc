@@ -1,5 +1,6 @@
 DNSCRYPT_USR_BASE_DIR='/Library/PreferencePanes/DNSCrypt.prefPane/Contents/Resources/usr'
 DNSCRYPT_VAR_BASE_DIR='/Library/Application Support/DNSCrypt'
+DNSCRYPT_LOG_BASE_DIR='/var/log'
 
 cd -- "${DNSCRYPT_USR_BASE_DIR}/scripts" || exit 1
 
@@ -20,7 +21,7 @@ PLUGINS_ENABLED_FILE="${CONTROL_DIR}/plugins.enabled"
 QUERY_LOGGING_FILE="${CONTROL_DIR}/plugin-query-logging.enabled"
 BLOCKING_FILE="${CONTROL_DIR}/plugin-blocking.enabled"
 
-QUERY_LOG_FILE="/var/log/dnscrypt-query.log"
+QUERY_LOG_FILE="${DNSCRYPT_LOG_BASE_DIR}/dnscrypt-query.log"
 BLACKLIST_IPS_FILE="${CONTROL_DIR}/blacklist-ips"
 BLACKLIST_IPS_TMP_FILE="${BLACKLIST_IPS_FILE}.tmp"
 BLACKLIST_DOMAINS_FILE="${CONTROL_DIR}/blacklist-domains"
