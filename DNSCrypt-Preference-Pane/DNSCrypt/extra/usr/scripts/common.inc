@@ -60,9 +60,7 @@ init_interfaces() {
 
 logger_debug() {
   [ -f "$DEBUG_ENABLED_FILE" ] || return
-  local msg="$1"
-  local now="$(date)"
-  lockfile -1 -r 1 "$DEBUG_LOG_FILE_LOCK"
-  echo "$now - $msg" >> "$DEBUG_LOG_FILE"
-  rm -f "$DEBUG_LOG_FILE_LOCK"
+  lockfile -1 -r 1 "$DEBUG_LOG_FILE_LOCK" > /dev/null 2>&1
+  echo "$(date) - $1" >> "$DEBUG_LOG_FILE"
+  rm -f "$DEBUG_LOG_FILE_LOCK" 2> /dev/null
 }
