@@ -23,7 +23,13 @@ while [ -e "$DNSCRYPT_FILE" ]; do
     pause=$((pause + $PAUSE_INCREMENT))
   fi
   sleep $pause
-  ./check-hijacking.sh || continue
+  logger_debug "Checking if the router hijacks HTTP queries"
+  if ./check-hijacking.sh; then
+    logger_debug "The router doesn't hijack HTTP queries"
+  else
+    logger_debug "The router hijacks HTTP queries - DNSCrypt is likely to be blocked"
+    continue
+  fi
   ./start-dnscrypt-proxy.sh || continue
   ./check-local-dns.sh || continue
   ./set-dns.sh "$INTERFACE_PROXY"

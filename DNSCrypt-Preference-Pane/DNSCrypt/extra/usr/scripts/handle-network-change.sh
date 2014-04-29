@@ -13,7 +13,7 @@ fi
 logger_debug "Network configuration changed"
 
 
-lockfile -1 -r 30 -l 60 "$HANDLERS_LOCK_FILE" || exit 1
+lockfile -1 -r 30 "$HANDLERS_LOCK_FILE" || exit 1
 ./set-dns-to-dhcp.sh
 if [ ! -e "$DNSCRYPT_FILE" ]; then
   rm -f "$HANDLERS_LOCK_FILE"

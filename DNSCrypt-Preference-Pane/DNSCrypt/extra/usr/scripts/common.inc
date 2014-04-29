@@ -62,7 +62,7 @@ logger_debug() {
   [ -f "$DEBUG_ENABLED_FILE" ] || return
   local msg="$1"
   local now="$(date)"
-  lockfile "$DEBUG_LOG_FILE_LOCK" -1 -r 1 -l 5
+  lockfile -1 -r 1 "$DEBUG_LOG_FILE_LOCK"
   echo "$now - $msg" >> "$DEBUG_LOG_FILE"
   rm -f "$DEBUG_LOG_FILE_LOCK"
 }
