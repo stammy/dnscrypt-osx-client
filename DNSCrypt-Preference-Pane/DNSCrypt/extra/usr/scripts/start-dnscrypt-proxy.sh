@@ -136,6 +136,7 @@ if [ $? != 0 ]; then
   logger_debug "dnscrypt-proxy $best_args worked after a retry"
 fi
 
+sleep 1
 logger_debug "Checking if the current configuration hijacks all DNS queries"
 i=0
 while [ $i -lt 30 ]; do
