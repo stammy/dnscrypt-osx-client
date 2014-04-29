@@ -10,6 +10,9 @@ if [ x"$1" != 'x--boot' ]; then
   ./check-network-change.sh || exit 0
 fi
 
+logger_debug "Network configuration changed"
+
+
 lockfile -1 -r 30 -l 60 "$HANDLERS_LOCK_FILE" || exit 1
 ./set-dns-to-dhcp.sh
 if [ ! -e "$DNSCRYPT_FILE" ]; then

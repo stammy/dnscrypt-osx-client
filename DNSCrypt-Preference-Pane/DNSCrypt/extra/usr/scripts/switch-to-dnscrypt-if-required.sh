@@ -7,6 +7,8 @@ PAUSE_INCREMENT=0.1
 
 [ ! -e "$DNSCRYPT_FILE" ] && exit 0
 
+logger_debug "DNSCrypt has been requested"
+
 ./set-dns-to-dhcp.sh
 
 pause=0

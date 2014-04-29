@@ -3,6 +3,9 @@
 . ./common.inc
 
 eval $(stat -s '/dev/console') || exit 1
+
+logger_debug "OSX console ownership changed"
+
 wanted_uid="$st_uid"
 if [ ! -d "$DNSCRYPT_VAR_BASE_DIR" ]; then
   mkdir -p "$DNSCRYPT_VAR_BASE_DIR" || exit 1

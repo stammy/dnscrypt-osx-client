@@ -19,6 +19,8 @@ update() {
 
 touch "${STATES_DIR}/updating"
 
+logger_debug "DNSCrypt-OSXClient configuration changed"
+
 updated='no'
 while :; do
   find "$TICKETS_DIR" -type f -name 'ticket-*' > "$PROCESSED_TICKETS_FILE"

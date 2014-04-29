@@ -32,6 +32,7 @@ try_resolver() {
   local args="$*"
   local pid_file="${PID_DIR}/${priority}.pid"
 
+  logger_debug "Running a test dnscrypt proxy for [$description]"
   rm -f "${RES_DIR}/${priority}"
   exec alarmer 3 dnscrypt-proxy --pid="$pid_file" \
     --resolver-name="$RESOLVER_NAME" \
@@ -39,11 +40,13 @@ try_resolver() {
   while read line; do
     case "$line" in
       *Proxying\ from\ *)
+        logger_debug "Proxy for [$description] is up"
         answers=$(exec dig +time=1 +short +tries=2 -p $priority \
           @"$INTERFACE_PROBES" www.apple.com. 2> /dev/null | \
           egrep -ic '^[0-9.:]+$')
         [ -r "$pid_file" ] && kill $(cat -- "$pid_file")
         if [ $answers -gt 0 ]; then
+          logger_debug "Proxy for [$description] can be used"
           echo "$args" > "${RES_DIR}/${priority}"
           echo "$description" > "${DESCRIPTIONS_DIR}/${priority}"
         fi
@@ -63,6 +66,7 @@ get_plugin_args() {
         libdcplugin_*) plugin_args="${plugin_args} --plugin=${line}" ;;
       esac
     done
+    logger_debug "Plugins to be used: [$plugin_args]"
     echo "$plugin_args"
   }
 }
@@ -71,8 +75,14 @@ get_plugin_args() {
 
 ipv6_supported="no"
 if [ x"$DISABLE_IPV6" = "xno" ]; then
+  logger_debug "Testing IPv6 connectivity"
   ping6 -c 1 2620:0:ccc::2 > /dev/null 2>&1
-  [ $? = 0 ] && ipv6_supported="yes"
+  if [ $? = 0 ]; then
+    ipv6_supported="yes"
+    logger_debug "IPv6 connectivity detected"
+  else
+    logger_debug "IPv6 connectivity is not available"  
+  fi
 fi
 
 wait_pids=""
@@ -91,7 +101,10 @@ for pid in $wait_pids; do
   [ x"$best_file" != "x" ] && break
 done
 
-[ x"$best_file" = "x" ] && exit 1
+if [ x"$best_file" = "x" ]; then
+  logger_debug "No usable proxy configuration has been found"
+  exit 1
+fi
 
 plugins_args=''
 if [ -r "${DNSCRYPT_PROXY_PLUGINS_BASE_FILE}s.enabled" ]; then
@@ -102,12 +115,14 @@ fi
 
 best_args=$(cat "${RES_DIR}/${best_file}")
 
+logger_debug "Starting dnscrypt-proxy $best_args"
 eval dnscrypt-proxy $best_args --local-address="$INTERFACE_PROXY" \
   --resolver-name="$RESOLVER_NAME" \
   --pidfile="$PROXY_PID_FILE" --user=daemon --daemonize $plugin_args
 
 if [ $? != 0 ]; then
   [ -r "$PROXY_PID_FILE" ] && kill $(cat -- "$PROXY_PID_FILE")
+  logger_debug "dnscrypt-proxy $best_args command failed, retrying"
   sleep 1
   killall dnscrypt-proxy
   sleep 1
@@ -118,8 +133,10 @@ if [ $? != 0 ]; then
     --resolver-name="$RESOLVER_NAME" \
     --pidfile="$PROXY_PID_FILE" --user=daemon --daemonize $plugin_args || \
     exit 1
+  logger_debug "dnscrypt-proxy $best_args worked after a retry"
 fi
 
+logger_debug "Checking if the current configuration hijacks all DNS queries"
 i=0
 while [ $i -lt 30 ]; do
   ./check-local-dns.sh && break
@@ -128,8 +145,12 @@ while [ $i -lt 30 ]; do
 done
 
 if [ $i -ge 30 ]; then
+  logger_debug "Current configuration hijacks all DNS queries, disabling DNSCrypt"
   ./switch-to-dhcp.sh
   exit 1
 fi
+
+logger_debug "Current configuration doesn't seem to hijack all DNS queries"
+
 mv "${DESCRIPTIONS_DIR}/${best_file}" \
    "${STATES_DIR}/dnscrypt-proxy-description" 2>/dev/null || exit 0

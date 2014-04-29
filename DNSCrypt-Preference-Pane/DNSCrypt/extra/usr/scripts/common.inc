@@ -19,7 +19,6 @@ DNSCRYPT_PROXY_PLUGINS_BASE_FILE="${CONTROL_DIR}/plugin"
 STATIC_RESOLVERS_FILE="${CONTROL_DIR}/static-resolvers"
 
 DEBUG_ENABLED_FILE="${CONTROL_DIR}/debug.enabled"
-DEBUG_ENABLED_FILE_LOCK="${DEBUG_ENABLED_FILE}.lock"
 
 PLUGINS_ENABLED_FILE="${CONTROL_DIR}/plugins.enabled"
 QUERY_LOGGING_FILE="${CONTROL_DIR}/plugin-query-logging.enabled"
@@ -27,6 +26,7 @@ BLOCKING_FILE="${CONTROL_DIR}/plugin-blocking.enabled"
 
 QUERY_LOG_FILE="${DNSCRYPT_LOG_BASE_DIR}/dnscrypt-query.log"
 DEBUG_LOG_FILE="${DNSCRYPT_LOG_BASE_DIR}/dnscrypt-osxclient-debug.log"
+DEBUG_LOG_FILE_LOCK="${DEBUG_LOG_FILE}.lock"
 
 BLACKLIST_IPS_FILE="${CONTROL_DIR}/blacklist-ips"
 BLACKLIST_IPS_TMP_FILE="${BLACKLIST_IPS_FILE}.tmp"
@@ -62,7 +62,7 @@ logger_debug() {
   [ -f "$DEBUG_ENABLED_FILE" ] || return
   local msg="$1"
   local now="$(date)"
-  lockfile "$DEBUG_ENABLED_FILE_LOCK" -r 1 -l 10
-  echo "$now - $msg" >> "$DEBUG_ENABLED_FILE"
-  rm -f "$DEBUG_ENABLED_FILE_LOCK"
+  lockfile "$DEBUG_LOG_FILE_LOCK" -1 -r 1 -l 5
+  echo "$now - $msg" >> "$DEBUG_LOG_FILE"
+  rm -f "$DEBUG_LOG_FILE_LOCK"
 }
