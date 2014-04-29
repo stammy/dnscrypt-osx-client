@@ -22,7 +22,27 @@
     %h1 Release Notes for DNSCrypt-OSXclient by AlterStep
 
     %article
-      %h2 Version 1.0 by AlterStep
+      %h2 Version 1.0.1 by AlterStep
+      %time Mon, 28 Apr 2014
+      %p
+        Include the release version of dnscrypt-proxy 1.4, with a new
+        OpenNIC resolver.
+      %p
+        Wait after dnscrypt-proxy has been turned on before sending a
+        query. This actually makes state changes faster.
+      %p
+        Debug log, turned off by default and deleted after every
+        reboot. In order to enable it, create an empty file named
+        %code debug.enabled
+        in
+        %code /Library/Application Support/DNSCrypt/control
+        and the debug log file itself is
+        %code /var/log/dnscrypt-osxclient-debug.log
+      %p
+        Thanks a lot for your feedback on the first version!
+
+    %article
+      %h2 Version 1.0.0 by AlterStep
       %time Thu, 21 Apr 2014
       %p
         This is my first release, based on the source code of the beta
