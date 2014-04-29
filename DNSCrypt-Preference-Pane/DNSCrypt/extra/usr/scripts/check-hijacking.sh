@@ -3,8 +3,8 @@
 . ./common.inc
 
 try_resolution() {
-  exec alarmer 5 dig +tries=2 +time=3 +short resolver1.opendns.com \
-    | egrep '^208[.]67[.]' > /dev/null 2>&1
+  exec alarmer 5 dig +tries=2 +time=3 +short google-public-dns-a.google.com \
+    | egrep '^8[.]8[.]8[.]8' > /dev/null 2>&1
 }
 
 try_http_query() {
