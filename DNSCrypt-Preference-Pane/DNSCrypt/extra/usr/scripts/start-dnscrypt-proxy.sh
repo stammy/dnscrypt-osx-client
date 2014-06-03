@@ -71,6 +71,7 @@ get_plugin_args() {
   }
 }
 
+logger_debug "dnscrypt-proxy should be (re)started, stopping previous instance if needed"
 ./stop-dnscrypt-proxy.sh
 
 ipv6_supported="no"

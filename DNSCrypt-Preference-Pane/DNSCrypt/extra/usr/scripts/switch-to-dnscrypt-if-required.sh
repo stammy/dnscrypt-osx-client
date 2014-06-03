@@ -13,9 +13,11 @@ logger_debug "DNSCrypt has been requested"
 
 pause=0
 while [ -e "$DNSCRYPT_FILE" ]; do
+  logger_debug "Switching to dnscrypt if required (pause=$pause)"
   current_resolvers=$(./get-current-resolvers.sh)
   if [ "$current_resolvers" = "$INTERFACE_PROXY" ]; then
     if [ ! -e "$PROXY_PID_FILE" ]; then
+      logger_debug "The proxy should be running but it isn't. Launching it."
       ./start-dnscrypt-proxy.sh || ./switch-to-dhcp.sh
     fi
   fi
@@ -30,15 +32,16 @@ while [ -e "$DNSCRYPT_FILE" ]; do
     logger_debug "The router hijacks HTTP queries - DNSCrypt is likely to be blocked"
     continue
   fi
-  ./start-dnscrypt-proxy.sh || continue
   ./check-local-dns.sh || continue
   ./set-dns.sh "$INTERFACE_PROXY"
   if [ $? != 0 ]; then
+    logger_debug "Setting the DNS to [$INTERFACE_PROXY] didn't work"
     ./set-dns-to-dhcp.sh
     continue
   fi
   ./check-hijacking.sh
   if [ $? != 0 ]; then
+    logger_debug "Current configuration seems to be hijacking HTTP queries. Reverting to default resolvers."
     ./set-dns-to-dhcp.sh
     continue
   fi
