@@ -17,8 +17,8 @@ while [ -e "$DNSCRYPT_FILE" ]; do
   current_resolvers=$(./get-current-resolvers.sh)
   if [ "$current_resolvers" = "$INTERFACE_PROXY" ]; then
     if [ ! -e "$PROXY_PID_FILE" ]; then
-      logger_debug "The proxy should be running but it isn't. Launching it."
-      ./start-dnscrypt-proxy.sh || ./switch-to-dhcp.sh
+      logger_debug "The proxy should be running but it isn't."
+      ./switch-to-dhcp.sh
     fi
   fi
   if [ $pause -lt $PAUSE_MAX ]; then
@@ -32,6 +32,7 @@ while [ -e "$DNSCRYPT_FILE" ]; do
     logger_debug "The router hijacks HTTP queries - DNSCrypt is likely to be blocked"
     continue
   fi
+  ./start-dnscrypt-proxy.sh
   ./check-local-dns.sh || continue
   ./set-dns.sh "$INTERFACE_PROXY"
   if [ $? != 0 ]; then
