@@ -19,7 +19,7 @@ fi
 
 exec networksetup -listallnetworkservices 2>/dev/null | \
 fgrep -v '*' | while read x ; do
-  networksetup -setdnsservers "$x" $servers
+  networksetup -setdnsservers "$x" $servers > /dev/null
 done
 
 logger_debug "Flushing the local DNS cache"
