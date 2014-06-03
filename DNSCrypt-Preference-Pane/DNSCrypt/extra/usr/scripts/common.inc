@@ -59,7 +59,6 @@ init_interfaces() {
 }
 
 logger_debug() {
-  [ -f "$DEBUG_ENABLED_FILE" ] || return
   lockfile -1 -r 1 "$DEBUG_LOG_FILE_LOCK" > /dev/null 2>&1
   echo "$(date) - $1" >> "$DEBUG_LOG_FILE"
   rm -f "$DEBUG_LOG_FILE_LOCK" 2> /dev/null
