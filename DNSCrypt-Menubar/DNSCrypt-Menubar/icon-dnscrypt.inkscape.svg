@@ -16,9 +16,10 @@
    version="1.1"
    inkscape:version="0.48.2 r9819"
    sodipodi:docname="icon-dnscrypt-active.svg"
-   inkscape:export-filename="/Users/avh4/workspace/dnscrypt-osxclient/DNSCrypt-Menubar/DNSCrypt-Menubar/icon-dnscrypt-inactive@2x.png"
-   inkscape:export-xdpi="90"
-   inkscape:export-ydpi="90">
+   inkscape:export-filename="/Users/avh4/workspace/dnscrypt-osxclient/DNSCrypt-Menubar/DNSCrypt-Menubar/icon-no-network.png"
+   inkscape:export-xdpi="45"
+   inkscape:export-ydpi="45"
+   enable-background="new">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -30,9 +31,9 @@
      inkscape:pageshadow="2"
      inkscape:zoom="10.351258"
      inkscape:cx="18"
-     inkscape:cy="16.336233"
+     inkscape:cy="16.37179"
      inkscape:document-units="px"
-     inkscape:current-layer="layer7"
+     inkscape:current-layer="g4162"
      showgrid="false"
      inkscape:window-width="1014"
      inkscape:window-height="790"
@@ -44,7 +45,7 @@
      inkscape:snap-object-midpoints="true">
     <sodipodi:guide
        orientation="1,0"
-       position="8.1632593,27.049853"
+       position="-3.8642648,37.386762"
        id="guide4115" />
   </sodipodi:namedview>
   <metadata
@@ -96,10 +97,32 @@
        transform="matrix(1.09375,0,0,1.09375,-1.6908483,-1.7176)" />
   </g>
   <g
+     style="display:inline"
+     inkscape:label="No Network"
+     id="g4162"
+     inkscape:groupmode="layer"
+     sodipodi:insensitive="true">
+    <path
+       inkscape:connector-curvature="0"
+       id="path4164"
+       d="M 6,0 C 2.676,0 0,2.676 0,6 l 0,24 c 0,3.324 2.676,6 6,6 l 24,0 c 3.324,0 6,-2.676 6,-6 L 36,6 C 36,2.676 33.324,0 30,0 L 6,0 z m 12.03125,4.125 c 7.845178,0 14.21875,6.342322 14.21875,14.1875 0,7.845178 -6.373572,14.21875 -14.21875,14.21875 -7.845178,0 -14.1875,-6.373572 -14.1875,-14.21875 0,-7.845178 6.342322,-14.1875 14.1875,-14.1875 z"
+       style="fill:#1a1a1a;fill-opacity:1;stroke:none;display:inline" />
+    <path
+       transform="matrix(1.09375,0,0,1.09375,-1.6908483,-1.7176)"
+       d="m 23.750001,18.321428 a 5.7142859,5.7142859 0 1 1 -11.428572,0 5.7142859,5.7142859 0 1 1 11.428572,0 z"
+       sodipodi:ry="5.7142859"
+       sodipodi:rx="5.7142859"
+       sodipodi:cy="18.321428"
+       sodipodi:cx="18.035715"
+       id="path4166"
+       style="fill:#bdbdbd;fill-opacity:1;fill-rule:evenodd;stroke:none;display:inline"
+       sodipodi:type="arc" />
+  </g>
+  <g
      inkscape:groupmode="layer"
      id="layer6"
      inkscape:label="target frame"
-     style="display:inline">
+     style="display:none">
     <rect
        style="fill:none;stroke:#1a1a1a;stroke-width:4;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        id="rect4105"
@@ -113,9 +136,10 @@
   <g
      inkscape:groupmode="layer"
      id="layer7"
-     inkscape:label="failed icon">
+     inkscape:label="failed icon"
+     style="display:none">
     <g
-       style="font-size:30.84497070000000107px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff0000;fill-opacity:1;stroke:none;font-family:Georgia;-inkscape-font-specification:Georgia Bold"
+       style="font-size:30.8449707px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff0000;fill-opacity:1;stroke:none;font-family:Georgia;-inkscape-font-specification:Georgia Bold"
        id="text4108"
        transform="translate(0.03592974,0)">
       <path
@@ -127,7 +151,7 @@
     </g>
     <g
        id="g4124"
-       style="font-size:30.84497070000000107px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff0000;fill-opacity:1;stroke:none;font-family:Georgia;-inkscape-font-specification:Georgia Bold"
+       style="font-size:30.8449707px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff0000;fill-opacity:1;stroke:none;font-family:Georgia;-inkscape-font-specification:Georgia Bold"
        transform="matrix(0.90003614,0,0,0.90003614,1.8328187,2.6302433)">
       <path
          sodipodi:nodetypes="ccscscccc"
@@ -179,6 +203,27 @@
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="csscc"
        inkscape:label="#path3884" />
+  </g>
+  <g
+     style="display:none"
+     inkscape:label="active1 - Lock copy"
+     id="g4144"
+     inkscape:groupmode="layer"
+     sodipodi:insensitive="true">
+    <rect
+       y="16.316315"
+       x="8.1947231"
+       height="14.007539"
+       width="19.610554"
+       id="rect4146"
+       style="fill:#1a1a1a;fill-opacity:1;stroke:none" />
+    <path
+       inkscape:label="#path3884"
+       sodipodi:nodetypes="csscc"
+       inkscape:connector-curvature="0"
+       id="path4148"
+       d="m 12.163524,19.595938 0,-6.515817 c 0,-3.223396 2.61308,-5.8364748 5.836475,-5.8364748 3.223397,0 5.836942,2.6130788 5.836942,5.8364748 l 0,6.086275"
+       style="fill:none;stroke:#1a1a1a;stroke-width:3.13499999;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
   </g>
   <g
      inkscape:groupmode="layer"
