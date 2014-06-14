@@ -16,9 +16,9 @@
    version="1.1"
    inkscape:version="0.48.2 r9819"
    sodipodi:docname="icon-dnscrypt-active.svg"
-   inkscape:export-filename="/Users/avh4/workspace/dnscrypt-osxclient/DNSCrypt-Menubar/DNSCrypt-Menubar/icon-dnscrypt-active.png"
-   inkscape:export-xdpi="45"
-   inkscape:export-ydpi="45">
+   inkscape:export-filename="/Users/avh4/workspace/dnscrypt-osxclient/DNSCrypt-Menubar/DNSCrypt-Menubar/icon-dnscrypt-inactive@2x.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -28,17 +28,25 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="11.2"
-     inkscape:cx="21.209319"
-     inkscape:cy="24.756358"
+     inkscape:zoom="10.351258"
+     inkscape:cx="18"
+     inkscape:cy="16.336233"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer7"
      showgrid="false"
      inkscape:window-width="1014"
      inkscape:window-height="790"
      inkscape:window-x="0"
      inkscape:window-y="0"
-     inkscape:window-maximized="0" />
+     inkscape:window-maximized="0"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:snap-object-midpoints="true">
+    <sodipodi:guide
+       orientation="1,0"
+       position="8.1632593,27.049853"
+       id="guide4115" />
+  </sodipodi:namedview>
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -56,7 +64,8 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-1016.3622)"
-     style="display:none">
+     style="display:none"
+     sodipodi:insensitive="true">
     <image
        y="1016.3622"
        x="0"
@@ -68,7 +77,7 @@
   <g
      inkscape:groupmode="layer"
      id="layer2"
-     inkscape:label="SVG"
+     inkscape:label="target"
      style="display:none">
     <path
        style="fill:#1a1a1a;fill-opacity:1;stroke:none;display:inline"
@@ -87,8 +96,50 @@
        transform="matrix(1.09375,0,0,1.09375,-1.6908483,-1.7176)" />
   </g>
   <g
-     style="display:inline"
-     inkscape:label="SVG cut for lock"
+     inkscape:groupmode="layer"
+     id="layer6"
+     inkscape:label="target frame"
+     style="display:inline">
+    <rect
+       style="fill:none;stroke:#1a1a1a;stroke-width:4;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect4105"
+       width="32"
+       height="32"
+       x="2"
+       y="2"
+       rx="3.9506171"
+       ry="3.9506171" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer7"
+     inkscape:label="failed icon">
+    <g
+       style="font-size:30.84497070000000107px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff0000;fill-opacity:1;stroke:none;font-family:Georgia;-inkscape-font-specification:Georgia Bold"
+       id="text4108"
+       transform="translate(0.03592974,0)">
+      <path
+         d="m 18.843,21.718332 -1.76,0 c -0.27253,-1.907467 -2.121054,-7.471109 -2.049557,-10.033756 0.06071,-2.175835 0.826587,-4.8119882 2.921838,-4.80135 2.15386,0.010936 3.012254,2.384064 2.936899,4.80135 -0.07535,2.417286 -1.739851,8.209756 -2.04918,10.033756 z"
+         style="fill:#ff0000;fill-opacity:1"
+         id="path4113"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccsszc" />
+    </g>
+    <g
+       id="g4124"
+       style="font-size:30.84497070000000107px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ff0000;fill-opacity:1;stroke:none;font-family:Georgia;-inkscape-font-specification:Georgia Bold"
+       transform="matrix(0.90003614,0,0,0.90003614,1.8328187,2.6302433)">
+      <path
+         sodipodi:nodetypes="ccscscccc"
+         inkscape:connector-curvature="0"
+         id="path4126"
+         style="fill:#ff0000;fill-opacity:1"
+         d="m 20.86206,26.327004 c -9e-6,0.763093 -0.291188,1.420757 -0.873539,1.972994 -0.572326,0.542196 -1.245051,0.813294 -2.018177,0.813295 -0.783178,-10e-7 -1.465944,-0.271099 -2.048299,-0.813295 -0.572322,-0.552237 -0.858481,-1.209901 -0.858478,-1.972994 -3e-6,-0.763089 0.286156,-1.420753 0.858478,-1.972994 0.582355,-0.562273 1.265121,-0.843412 2.048299,-0.843417 0.773126,5e-6 1.445851,0.281144 2.018177,0.843417 0.582351,0.552241 0.87353,1.209905 0.873539,1.972994" />
+    </g>
+  </g>
+  <g
+     style="display:none"
+     inkscape:label="active2 - target cut for lock"
      id="g3056"
      inkscape:groupmode="layer"
      sodipodi:insensitive="true">
@@ -111,8 +162,8 @@
   <g
      inkscape:groupmode="layer"
      id="layer3"
-     inkscape:label="Lock"
-     style="display:inline"
+     inkscape:label="active1 - Lock"
+     style="display:none"
      sodipodi:insensitive="true">
     <rect
        style="fill:#1a1a1a;fill-opacity:1;stroke:none"
@@ -128,5 +179,47 @@
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="csscc"
        inkscape:label="#path3884" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="Reference no network"
+     style="display:none"
+     sodipodi:insensitive="true">
+    <image
+       style="display:inline"
+       y="0"
+       x="0"
+       id="image4031"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABHNCSVQICAgIfAhkiAAAANtJREFU
+OI2d1DFKBDEYxfFfZo2QERSbRVjZo3gKK1sPIHoEGyvBWgStPIAH8DCiN9h+bLIyO86MiQ8CX76Q
+//fyioSU2n3c4RxrdfrCC24XMcZ7XOOoEgKHOENscJGbb1giFK5lvgOXIaW2y5vTbLVGK3xCHxQq
+IVt10MwcdhX9SdDOtJG6GNR/5tDFaARzjsYuTOb419OKNQeaCrsKNMxkmFmVoy1krP6lvQJASX/H
+0Wpu4oR+fosGm1w/q/tG1njK9Sak1D7g6h9u+npcxBjfcYATHFcCPvCKm291ZyCHBno2ewAAAABJ
+RU5ErkJggg==
+"
+       height="36"
+       width="36" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="Reference failed"
+     sodipodi:insensitive="true"
+     style="display:none">
+    <image
+       y="0"
+       x="0"
+       id="image4099"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABHNCSVQICAgIfAhkiAAAARZJREFU
+OI2V1DFKA0EYBeBvEzewURQRg6DEJp138BRWth5AvICFCIKgWFkpeAZbwUoQrGysFEVR7FIFrCQW
+DsmyTHazP/zwZub9jzeP2U2yrN3CEbbQVa++cIWDZpqmJ9jDQk0RmMcm0ga2w+Y1Okim7E6YgZ0k
+y9rDsFgLVuvUKj6hkduMiRziO/Rx5Hw0k3eURIjP6AXcx1KEMyw6itVjDt+VEauEHibg2kL3OXxT
+RqzKqInXgNcnaAxhpsLRLy4xqOBVOoLlINgvc1SVURfveMJcGbFKqOU/p1boiZXPqIuPwvkLNvAj
+frXR36JhHOSF8SsuisU+n16YgUGSZe0z7JbZnqJOm2ma3mIWK1isKfCGc+z/AeH3MRrXRYDWAAAA
+AElFTkSuQmCC
+"
+       height="36"
+       width="36" />
   </g>
 </svg>
