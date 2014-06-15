@@ -10,16 +10,16 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="36"
-   height="36"
+   width="34"
+   height="34"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.2 r9819"
    sodipodi:docname="icon-dnscrypt.inkscape.svg"
-   inkscape:export-filename="/Users/avh4/workspace/dnscrypt-osxclient/DNSCrypt-Menubar/DNSCrypt-Menubar/icon-dnscrypt-inactive@2x.png"
-   inkscape:export-xdpi="90"
-   inkscape:export-ydpi="90"
-   enable-background="new">
+   inkscape:export-filename="/Users/avh4/workspace/dnscrypt-osxclient/DNSCrypt-Menubar/DNSCrypt-Menubar/icon-dnscrypt-active.png"
+   inkscape:export-xdpi="45"
+   inkscape:export-ydpi="45"
+   style="enable-background:new">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -30,10 +30,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="10.351258"
-     inkscape:cx="9.6918311"
+     inkscape:cx="17.323754"
      inkscape:cy="16.37179"
      inkscape:document-units="px"
-     inkscape:current-layer="g3056"
+     inkscape:current-layer="g4162"
      showgrid="false"
      inkscape:window-width="1191"
      inkscape:window-height="822"
@@ -65,7 +65,8 @@
      id="layer4"
      inkscape:label="Reference no network"
      style="display:none"
-     sodipodi:insensitive="true">
+     sodipodi:insensitive="true"
+     transform="translate(0,-2)">
     <image
        style="display:inline"
        y="0"
@@ -80,7 +81,8 @@
      id="layer5"
      inkscape:label="Reference failed"
      sodipodi:insensitive="true"
-     style="display:none">
+     style="display:none"
+     transform="translate(0,-2)">
     <image
        y="0"
        x="0"
@@ -93,7 +95,7 @@
      inkscape:label="Reference active"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-1016.3622)"
+     transform="translate(0,-1018.3622)"
      style="display:none"
      sodipodi:insensitive="true">
     <image
@@ -109,10 +111,11 @@
      id="layer2"
      inkscape:label="Scratch - Target"
      style="display:none"
+     transform="translate(0,-2)"
      sodipodi:insensitive="true">
     <path
        style="fill:#1a1a1a;fill-opacity:1;stroke:none;display:inline"
-       d="M 6,0 C 2.676,0 0,2.676 0,6 l 0,24 c 0,3.324 2.676,6 6,6 l 24,0 c 3.324,0 6,-2.676 6,-6 L 36,6 C 36,2.676 33.324,0 30,0 L 6,0 z m 12.03125,4.125 c 7.845178,0 14.21875,6.342322 14.21875,14.1875 0,7.845178 -6.373572,14.21875 -14.21875,14.21875 -7.845178,0 -14.1875,-6.373572 -14.1875,-14.21875 0,-7.845178 6.342322,-14.1875 14.1875,-14.1875 z"
+       d="M 5.6666667,2 C 2.5273333,2 0,4.5273333 0,7.6666667 L 0,30.333333 C 0,33.472667 2.5273333,36 5.6666667,36 L 28.333333,36 C 31.472667,36 34,33.472667 34,30.333333 L 34,7.6666667 C 34,4.5273333 31.472667,2 28.333333,2 L 5.6666667,2 z M 17.029514,5.8958333 c 7.409335,0 13.428819,5.9899707 13.428819,13.3993057 0,7.409335 -6.019484,13.428819 -13.428819,13.428819 -7.4093349,0 -13.3993057,-6.019484 -13.3993057,-13.428819 0,-7.409335 5.9899708,-13.3993057 13.3993057,-13.3993057 z"
        id="rect3854"
        inkscape:connector-curvature="0" />
     <path
@@ -124,19 +127,20 @@
        sodipodi:rx="5.7142859"
        sodipodi:ry="5.7142859"
        d="m 23.750001,18.321428 a 5.7142859,5.7142859 0 1 1 -11.428572,0 5.7142859,5.7142859 0 1 1 11.428572,0 z"
-       transform="matrix(1.09375,0,0,1.09375,-1.6908483,-1.7176)" />
+       transform="matrix(1.0329861,0,0,1.0329861,-1.5969123,0.37782222)" />
   </g>
   <g
      style="display:none"
      inkscape:label="Scratch - Large Lock"
      id="g4144"
      inkscape:groupmode="layer"
+     transform="translate(0,-2)"
      sodipodi:insensitive="true">
     <rect
-       y="16.316315"
-       x="8.1947231"
-       height="14.007539"
-       width="19.610554"
+       y="17.409853"
+       x="7.7394609"
+       height="13.229342"
+       width="18.521078"
        id="rect4146"
        style="fill:#1a1a1a;fill-opacity:1;stroke:none" />
     <path
@@ -144,25 +148,26 @@
        sodipodi:nodetypes="csscc"
        inkscape:connector-curvature="0"
        id="path4148"
-       d="m 12.163524,19.595938 0,-6.515817 c 0,-3.223396 2.61308,-5.8364748 5.836475,-5.8364748 3.223397,0 5.836942,2.6130788 5.836942,5.8364748 l 0,6.086275"
-       style="fill:none;stroke:#1a1a1a;stroke-width:3.13499999;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+       d="m 11.487773,20.507275 0,-6.153827 c 0,-3.044319 2.467909,-5.5122266 5.512226,-5.5122266 3.044319,0 5.512668,2.4679076 5.512668,5.5122266 l 0,5.748148"
+       style="fill:none;stroke:#1a1a1a;stroke-width:2.96083331;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
   </g>
   <g
      style="display:none"
      inkscape:label="No Network"
      id="g4162"
      inkscape:groupmode="layer"
+     transform="translate(0,-2)"
      sodipodi:insensitive="true">
     <path
        inkscape:connector-curvature="0"
        id="path4164"
-       d="M 6,0 C 2.676,0 0,2.676 0,6 l 0,24 c 0,3.324 2.676,6 6,6 l 24,0 c 3.324,0 6,-2.676 6,-6 L 36,6 C 36,2.676 33.324,0 30,0 L 6,0 z m 12.03125,4.125 c 7.845178,0 14.21875,6.342322 14.21875,14.1875 0,7.845178 -6.373572,14.21875 -14.21875,14.21875 -7.845178,0 -14.1875,-6.373572 -14.1875,-14.21875 0,-7.845178 6.342322,-14.1875 14.1875,-14.1875 z"
+       d="M 5.6666667,2 C 2.5273333,2 0,4.5273333 0,7.6666667 L 0,30.333333 C 0,33.472667 2.5273333,36 5.6666667,36 L 28.333333,36 C 31.472667,36 34,33.472667 34,30.333333 L 34,7.6666667 C 34,4.5273333 31.472667,2 28.333333,2 L 5.6666667,2 z M 17.029514,5.8958333 c 7.409335,0 13.428819,5.9899707 13.428819,13.3993057 0,7.409335 -6.019484,13.428819 -13.428819,13.428819 -7.4093349,0 -13.3993057,-6.019484 -13.3993057,-13.428819 0,-7.409335 5.9899708,-13.3993057 13.3993057,-13.3993057 z"
        style="fill:#808080;fill-opacity:1;stroke:none;display:inline"
        inkscape:export-filename="/Users/avh4/workspace/dnscrypt-osxclient/DNSCrypt-Menubar/DNSCrypt-Menubar/icon-no-network@2x.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <path
-       transform="matrix(1.09375,0,0,1.09375,-1.6908483,-1.7176)"
+       transform="matrix(1.0329861,0,0,1.0329861,-1.5969123,0.37782222)"
        d="m 23.750001,18.321428 a 5.7142859,5.7142859 0 1 1 -11.428572,0 5.7142859,5.7142859 0 1 1 11.428572,0 z"
        sodipodi:ry="5.7142859"
        sodipodi:rx="5.7142859"
@@ -180,11 +185,12 @@
      id="layer7"
      inkscape:label="Inactive"
      style="display:none"
+     transform="translate(0,-2)"
      sodipodi:insensitive="true">
     <g
        style="font-size:30.8449707px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#d40000;fill-opacity:1;stroke:none;font-family:Georgia;-inkscape-font-specification:Georgia Bold"
        id="text4108"
-       transform="translate(0.03592974,0)"
+       transform="matrix(0.94444444,0,0,0.94444444,0.03393364,2)"
        inkscape:export-filename="/Users/avh4/workspace/dnscrypt-osxclient/DNSCrypt-Menubar/DNSCrypt-Menubar/g4124.png"
        inkscape:export-xdpi="45"
        inkscape:export-ydpi="45">
@@ -198,7 +204,7 @@
     <g
        id="g4124"
        style="font-size:30.8449707px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#d40000;fill-opacity:1;stroke:none;font-family:Georgia;-inkscape-font-specification:Georgia Bold"
-       transform="matrix(0.90003614,0,0,0.90003614,1.8328187,2.6302433)"
+       transform="matrix(0.85003413,0,0,0.85003413,1.7309954,4.4841187)"
        inkscape:export-xdpi="45"
        inkscape:export-ydpi="45">
       <path
@@ -209,14 +215,14 @@
          d="m 20.86206,26.327004 c -9e-6,0.763093 -0.291188,1.420757 -0.873539,1.972994 -0.572326,0.542196 -1.245051,0.813294 -2.018177,0.813295 -0.783178,-10e-7 -1.465944,-0.271099 -2.048299,-0.813295 -0.572322,-0.552237 -0.858481,-1.209901 -0.858478,-1.972994 -3e-6,-0.763089 0.286156,-1.420753 0.858478,-1.972994 0.582355,-0.562273 1.265121,-0.843412 2.048299,-0.843417 0.773126,5e-6 1.445851,0.281144 2.018177,0.843417 0.582351,0.552241 0.87353,1.209905 0.873539,1.972994" />
     </g>
     <rect
-       style="fill:none;stroke:#808080;stroke-width:4;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline"
+       style="fill:none;stroke:#808080;stroke-width:3.77777767;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline"
        id="rect4105"
-       width="32"
-       height="32"
-       x="2"
-       y="2"
-       rx="3.9506171"
-       ry="3.9506171"
+       width="30.222221"
+       height="30.222221"
+       x="1.8888888"
+       y="3.8888888"
+       rx="3.7311382"
+       ry="3.7311382"
        inkscape:export-filename="/Users/avh4/workspace/dnscrypt-osxclient/DNSCrypt-Menubar/DNSCrypt-Menubar/icon-dnscrypt-inactive.png"
        inkscape:export-xdpi="45"
        inkscape:export-ydpi="45" />
@@ -226,14 +232,15 @@
      inkscape:label="Active"
      id="g3056"
      inkscape:groupmode="layer"
+     transform="translate(0,-2)"
      sodipodi:insensitive="true">
     <path
        style="fill:#1a1a1a;fill-opacity:1;stroke:none;display:inline"
-       d="M 6,0 C 2.676,0 0,2.676 0,6 l 0,24 c 0,3.324 2.676,6 6,6 l 14,0 0,-3.625 c -0.647495,0.0905 -1.296565,0.15625 -1.96875,0.15625 -7.845178,0 -14.1875,-6.373572 -14.1875,-14.21875 0,-7.845178 6.342322,-14.1875 14.1875,-14.1875 7.249089,0 13.256194,5.4252529 14.125,12.4375 1.883668,0.919709 3.309127,2.651826 3.84375,4.71875 L 36,6 C 36,2.676 33.324,0 30,0 L 6,0 z"
+       d="M 5.6666667,2 C 2.5273333,2 0,4.5273333 0,7.6666667 L 0,30.333333 C 0,33.472667 2.5273333,36 5.6666667,36 l 13.2222223,0 0,-3.423611 c -0.611523,0.08547 -1.224534,0.147569 -1.859375,0.147569 -7.4093349,0 -13.3993057,-6.019484 -13.3993057,-13.428819 0,-7.409335 5.9899708,-13.3993057 13.3993057,-13.3993057 6.846362,0 12.519739,5.1238497 13.340278,11.7465277 1.779019,0.868614 3.125286,2.504502 3.630208,4.456597 L 34,7.6666667 C 34,4.5273333 31.472667,2 28.333333,2 L 5.6666667,2 z"
        id="path3058"
        inkscape:connector-curvature="0" />
     <path
-       transform="matrix(1.09375,0,0,1.09375,-1.6908483,-1.7176)"
+       transform="matrix(1.0329861,0,0,1.0329861,-1.5969123,0.37782222)"
        d="m 23.750001,18.321428 a 5.7142859,5.7142859 0 1 1 -11.428572,0 5.7142859,5.7142859 0 1 1 11.428572,0 z"
        sodipodi:ry="5.7142859"
        sodipodi:rx="5.7142859"
@@ -245,13 +252,13 @@
     <rect
        style="fill:#1a1a1a;fill-opacity:1;stroke:none;display:inline"
        id="rect3863"
-       width="14"
-       height="10"
-       x="22"
-       y="26" />
+       width="13.222222"
+       height="9.4444447"
+       x="20.777779"
+       y="26.555555" />
     <path
-       style="fill:none;stroke:#1a1a1a;stroke-width:1.66666663;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline"
-       d="m 24.833333,27.65165 0,-4.65165 c 0,-2.301186 1.865481,-4.166667 4.166667,-4.166667 2.301187,0 4.167,1.865481 4.167,4.166667 l 0,4.345"
+       style="fill:none;stroke:#1a1a1a;stroke-width:1.57407403;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline"
+       d="m 23.453703,28.115447 0,-4.393225 c 0,-2.173342 1.761844,-3.935185 3.935186,-3.935185 2.173343,0 3.9355,1.761843 3.9355,3.935185 l 0,4.103611"
        id="locktop"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="csscc"
