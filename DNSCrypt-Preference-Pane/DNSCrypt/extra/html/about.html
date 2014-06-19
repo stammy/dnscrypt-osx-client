@@ -42,6 +42,18 @@
           DNS censorship. Don't enable it unless you are frequently
           roaming and you don't want to manually disable/enable DNSCrypt.
         </li>
+        <li>
+          Using Little Snitch? There are 4 rules you need to establish,
+          which Little Snitch should prompt for when trying to
+          activate this application:
+          <ol>
+            <li>Allow any outgoing connection for system processes (dnscrypt-proxy)</li>
+            <li>Allow any incoming connection for system process (dnscrypt-proxy)</li>
+            <li>Allow any outgoing connection for system processes (dig)</li>
+            <li>Allow outgoing TCP connections on port 80( http) of www.apple.com for system process (curl)</li>
+          </ol>
+          (Thanks to @cavemandaveman)
+        </li>
       </ul>
     </p>
   </body>
