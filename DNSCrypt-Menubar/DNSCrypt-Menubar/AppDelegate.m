@@ -79,6 +79,7 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
         default:
             led = [NSImage imageNamed: @"icon-no-network"];
     }
+    [led setTemplate:YES];
     _statusItem.image = led;
 }
 
