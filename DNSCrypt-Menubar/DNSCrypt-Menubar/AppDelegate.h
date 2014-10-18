@@ -8,7 +8,7 @@
 #define kDNSCRYPT_CONTROL_DIR kDNSCRYPT_VAR_BASE_DIR @"/control"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
-    NSWindow *_window;
+    NSWindow *__weak _window;
     NSMenu *_dnscryptMenu;
     NSStatusItem *_statusItem;
     NSMenuItem *_versionMenuItem;
@@ -25,7 +25,7 @@ typedef enum {
 } DNSConfigurationState;
 
 @property (strong) NSStatusItem *statusItem;
-@property (assign) NSWindow *window;
+@property (weak) NSWindow *window;
 
 @property (strong) IBOutlet NSMenu *dnscryptMenu;
 @property (strong) IBOutlet NSMenuItem *versionMenuItem;

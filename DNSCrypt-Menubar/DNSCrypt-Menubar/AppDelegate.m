@@ -28,8 +28,7 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     [task launch];
     data = [[pipe fileHandleForReading] readDataToEndOfFile];
     [task waitUntilExit];
-    [task release];
-    result = [[[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding] autorelease];
+    result = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
     if ([result hasSuffix: @"\n"]) {
         result = [result substringToIndex: result.length - 1];
     }
@@ -79,6 +78,7 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
         default:
             led = [NSImage imageNamed: @"icon-no-network"];
     }
+    [led setTemplate:YES];
     _statusItem.image = led;
 }
 
@@ -146,7 +146,6 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 - (void) awakeFromNib
 {
     _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-    [_statusItem retain];
     _statusItem.highlightMode = TRUE;
     _statusItem.toolTip = @"DNSCrypt";
     _statusItem.menu = _dnscryptMenu;
