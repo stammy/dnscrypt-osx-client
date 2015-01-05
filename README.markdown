@@ -9,9 +9,12 @@ for OSX 10.8 (Snow Leopard), OSX 10.9 (Mavericks) and OSX 10.10 (Yosemite).
 
 Compatible with:
 * CloudNS
+* Cypherpunk.lu
 * d0wn
 * DNSCrypt.eu
+* DNSCrypt.org
 * okTurtles
 * OpenDNS
 * OpenNIC
+* Proxy.sh
 * Soltysiak
