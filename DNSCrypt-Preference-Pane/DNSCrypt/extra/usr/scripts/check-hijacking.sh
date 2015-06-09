@@ -8,7 +8,7 @@ try_resolution() {
 }
 
 try_http_query() {
-  exec alarmer 5 curl -L --max-redirs 5 -4 -m 5 \
+  exec alarmer 5 curl -L --max-redirs 5 -4 -m 5 --connect-timeout 5 -s \
     http://www.apple.com 2>/dev/null | \
   fgrep -c Apple > /dev/null 2>&1
 }

@@ -7,4 +7,6 @@ rm -f "$DEBUG_LOG_FILE"
 
 ./clear-fw.sh
 
+(sleep 600; exec ./update-resolvers-list.sh) &
+
 exec ./handle-control-change.sh --boot
