@@ -8,7 +8,7 @@ if [ ! -s "$BLACKLIST_DOMAINS_TMP_FILE" ]; then
 fi
 
 tr -s '[:blank:]' '\n' < "$BLACKLIST_DOMAINS_TMP_FILE" | \
-  egrep -vi '^(apple[.]com|resolver1[.]opendns[.]com)$' > \
+  egrep -vi '^(apple[.]com)$' > \
   "${BLACKLIST_DOMAINS_TMP_FILE}~" &&
 mv "${BLACKLIST_DOMAINS_TMP_FILE}~" "$BLACKLIST_DOMAINS_FILE"
 
