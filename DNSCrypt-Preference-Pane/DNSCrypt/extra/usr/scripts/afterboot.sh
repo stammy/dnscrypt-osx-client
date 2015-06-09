@@ -4,9 +4,8 @@
 
 rm -f "$QUERY_LOG_FILE"
 rm -f "$DEBUG_LOG_FILE"
+rm -f "$RESOLVERS_LIST_STATE"
 
 ./clear-fw.sh
-
-(sleep 600; exec ./update-resolvers-list.sh) &
 
 exec ./handle-control-change.sh --boot
