@@ -118,7 +118,7 @@ best_args=$(cat "${RES_DIR}/${best_file}")
 
 logger_debug "Starting dnscrypt-proxy $best_args"
 eval dnscrypt-proxy $best_args --local-address="$INTERFACE_PROXY" \
-  --resolver-name="$RESOLVER_NAME" \
+  --resolver-name="$RESOLVER_NAME" --ephemeral-keys \
   --pidfile="$PROXY_PID_FILE" --user=daemon --daemonize $plugin_args
 
 if [ $? != 0 ]; then
