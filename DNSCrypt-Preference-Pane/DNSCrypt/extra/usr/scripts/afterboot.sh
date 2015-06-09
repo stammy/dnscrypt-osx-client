@@ -4,7 +4,7 @@
 
 rm -f "$QUERY_LOG_FILE"
 rm -f "$DEBUG_LOG_FILE"
-rm -f "$RESOLVERS_LIST_STATE"
+find -X -x "$RESOLVERS_LIST_STATE" -type f -mtime +1 -exec rm -f {} \; 2>/dev/null
 
 ./clear-fw.sh
 
