@@ -157,6 +157,6 @@ logger_debug "Current configuration doesn't seem to hijack all DNS queries"
 mv "${DESCRIPTIONS_DIR}/${best_file}" \
    "${STATES_DIR}/dnscrypt-proxy-description" 2>/dev/null || exit 0
 
-[ -e "RESOLVERS_LIST_STATE" ] && exit 0
+[ -e "$RESOLVERS_LIST_STATE" ] && exit 0
 touch "$RESOLVERS_LIST_STATE"
 exec ./update-resolvers-list.sh
