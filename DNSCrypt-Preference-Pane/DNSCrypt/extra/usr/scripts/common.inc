@@ -48,7 +48,7 @@ INTERFACE_PROBES="127.0.0.55"
 INTERFACE_PROBES_MASK="24"
 
 DOMAINS_EXCEPTIONS='
-freebox.fr fritz.box intranet lan localdomain nowtv.com private routerlogin.net l
+belkin corp domain example home host invalid lan local localdomain test freebox.fr fritz.box nowtv.com routerlogin.net l
 '
 
 DISABLE_IPV6='no'
