@@ -1,12 +1,10 @@
 OSX client for managing the DNSCrypt Proxy
 ==========================================
 
-The purpose of this application is to allow the user to have a better
-experience controlling the DNSCrypt Proxy on OSX.
+The purpose of this application is to allow the user to have a better experience controlling the DNSCrypt Proxy on OSX.
 
-[Download dnscrypt-osxclient-1.0.7.dmg](https://github.com/alterstep/dnscrypt-osxclient/releases/download/1.0.7/dnscrypt-osxclient-1.0.7.dmg)
-for OSX 10.8 (Mountain Lion), OSX 10.9 (Mavericks), OSX 10.10 (Yosemite) and
-OSX 10.11 (El Capitan).
+[Download dnscrypt-osxclient-1.0.8.dmg](https://github.com/alterstep/dnscrypt-osxclient/releases/download/1.0.8/dnscrypt-osxclient-1.0.8.dmg)
+for OSX 10.8 (Mountain Lion), OSX 10.9 (Mavericks), OSX 10.10 (Yosemite) and OSX 10.11 (El Capitan).
 
 Compatible with:
 * Adamas
@@ -22,3 +20,7 @@ Compatible with:
 * d0wn
 * iPredator
 * okTurtles
+
+Packages are signed with [Minisign](https://jedisct1.github.io/minisign/) and can be verified with:
+
+    minisign -V -P RWRvw8aArS/yEI3In0/zQSb9+qfWonLxjjEYG17cXt6zct6GLKtEvUfk -m dnscrypt-osxclient-*.dmg
