@@ -10,6 +10,7 @@
 @synthesize versionMenuItem = _versionMenuItem;
 
 DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
+BOOL appUpdated = FALSE;
 
 - (void) setCheckBoxesEnabled: (BOOL) enabled
 {
@@ -87,6 +88,10 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
     NSString *stateDescription = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./get-current-resolvers.sh | ./get-resolvers-description.sh", nil]];
     if ([stateDescription isEqualToString: @"DNSCrypt"]) {
         currentState = kDNS_CONFIGURATION_LOCALHOST;
+        if (appUpdated == FALSE) {
+            appUpdated = TRUE;
+            [self appUpdate];
+        }
     } else if ([stateDescription isEqualToString: @"None"]) {
         currentState = kDNS_CONFIGURATION_UNKNOWN;
     } else if ([stateDescription isEqualToString: @"Updating"]) {
@@ -186,6 +191,12 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 - (BOOL) setDNSCryptOff {
     [self showSpinners];
     NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-to-dhcp.sh", nil]];
+    (void) res;
+    return TRUE;
+}
+
+- (BOOL) appUpdate {
+    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./update-dnscrypt-app.sh", nil]];
     (void) res;
     return TRUE;
 }

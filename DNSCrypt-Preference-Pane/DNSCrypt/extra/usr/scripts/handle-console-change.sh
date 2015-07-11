@@ -15,6 +15,9 @@ fi
 mkdir -m 755 -p "$TICKETS_DIR" || exit 1
 chown -R "${wanted_uid}:0" "$TICKETS_DIR"
 
+mkdir -m 755 -p "$APP_UPDATES_DIR" || exit 1
+chown -R "${wanted_uid}:0" "$APP_UPDATES_DIR"
+
 eval $(stat -s "$CONTROL_DIR") || exit 1
 if [ $? != 0 ]; then
   mkdir -m 755 -p "$CONTROL_DIR" || exit 1
