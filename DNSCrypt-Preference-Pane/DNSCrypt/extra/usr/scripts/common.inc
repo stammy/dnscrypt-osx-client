@@ -38,7 +38,7 @@ BLACKLIST_DOMAINS_TMP_FILE="${BLACKLIST_DOMAINS_FILE}.tmp"
 EXCEPTIONS_FILE="${CONTROL_DIR}/exceptions"
 EXCEPTIONS_TMP_FILE="${EXCEPTIONS_FILE}.tmp"
 
-APP_UPDATES_BASE_URL="http://updates.dnscrypt.org/dnscrypt-osxclient"
+APP_UPDATES_BASE_URL="http://updates.dnscrypt.org/updates/dnscrypt-osx-client"
 APP_UPDATES_DIR="${DNSCRYPT_VAR_BASE_DIR}/updates"
 APP_UPDATES_PUBLIC_KEY="RWRvw8aArS/yEI3In0/zQSb9+qfWonLxjjEYG17cXt6zct6GLKtEvUfk"
 APP_UPDATES_STATE="${APP_UPDATES_DIR}/app-updated"
