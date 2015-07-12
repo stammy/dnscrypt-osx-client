@@ -12,7 +12,6 @@ productsign --sign 'Developer ID Installer' DNSCrypt.pkg DNSCrypt-OSX.pkg
 mv DNSCrypt.pkg DNSCrypt-unsigned.pkg
 mv DNSCrypt-OSX.pkg DNSCrypt.pkg
 
-zip -9 -r "dnscrypt-osxclient-${VERSION}.zip" DNSCrypt.pkg
 rm -fr dnscrypt-pkg
 rm -f "dnscrypt-osxclient-${VERSION}.dmg"
 mkdir dnscrypt-pkg
@@ -22,3 +21,7 @@ hdiutil create "dnscrypt-osxclient-${VERSION}.dmg" -srcfolder dnscrypt-pkg
 mv dnscrypt-pkg/DNSCrypt.pkg .
 rm -fr dnscrypt-pkg
 rm -fr DNSCrypt-unsigned.pkg
+
+minisign -S -m "dnscrypt-osxclient-${VERSION}.dmg" \
+  -p ../../minisign.pub -s ../../minisign.key \
+  -t "dnscrypt-osxclient-${VERSION}.dmg"
