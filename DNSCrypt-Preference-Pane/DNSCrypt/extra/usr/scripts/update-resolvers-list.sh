@@ -2,6 +2,9 @@
 
 . ./common.inc
 
+DNSCRYPT_LIB_BASE_DIR="${DNSCRYPT_USR_BASE_DIR}/lib"
+export DYLD_LIBRARY_PATH="${DNSCRYPT_LIB_BASE_DIR}:${DYLD_LIBRARY_PATH}"
+
 logger_debug "Checking if updates to the resolvers list are available"
 
 curl -L --max-redirs 5 -4 -m 30 --connect-timeout 30 -s \
