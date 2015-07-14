@@ -3,15 +3,13 @@
   <head>
     <meta charset='utf-8'>
     <title>About DNSCrypt-OSXClient</title>
-    <style type='text/css'>
-      <style>
-        body {
-          font-family: arial, helvetica, sans-serif;
-          margin: 0; }
-        
-        h1 {
-          margin: 0; }
-      </style>
+    <style>
+      body {
+        font-family: arial, helvetica, sans-serif;
+        margin: 0; }
+      
+      h1 {
+        margin: 0; }
     </style>
   </head>
   <body>
@@ -43,16 +41,17 @@
           roaming and you don't want to manually disable/enable DNSCrypt.
         </li>
         <li>
-          Using Little Snitch? There are 4 rules you need to establish,
+          Using Little Snitch? There are a few rules you need to establish,
           which Little Snitch should prompt for when trying to
           activate this application:
           <ol>
             <li>Allow any outgoing connection for system processes (dnscrypt-proxy)</li>
             <li>Allow any incoming connection for system process (dnscrypt-proxy)</li>
             <li>Allow any outgoing connection for system processes (dig)</li>
-            <li>Allow outgoing TCP connections on port 80( http) of www.apple.com for system process (curl)</li>
+            <li>Allow outgoing TCP connections to port 80 (http) of www.apple.com for system process (curl)</li>
+            <li>For automatic updates, allow outgoing TCP connections to port 80 (http) of updates.dnscrypt.org and to port 443 (https) of github.com for system process (curl)</li>
           </ol>
-          (Thanks to @cavemandaveman)
+          (Thanks to @cavemandaveman and @TraderStf)
         </li>
       </ul>
     </p>

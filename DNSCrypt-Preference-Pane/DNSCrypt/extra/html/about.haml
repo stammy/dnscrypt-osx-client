@@ -3,14 +3,13 @@
   %head
     %meta{charset: "utf-8"}
     %title About DNSCrypt-OSXClient
-    %style{type: "text/css"}
-      :sass
-        body
-          font:
-            family: arial, helvetica, sans-serif
-          margin: 0
-        h1
-          margin: 0
+    :sass
+      body
+        font:
+          family: arial, helvetica, sans-serif
+        margin: 0
+      h1
+        margin: 0
   %body
     %h1 About DNSCrypt-OSXClient
     %p
@@ -37,12 +36,13 @@
           DNS censorship. Don't enable it unless you are frequently
           roaming and you don't want to manually disable/enable DNSCrypt.
         %li
-          Using Little Snitch? There are 4 rules you need to establish,
+          Using Little Snitch? There are a few rules you need to establish,
           which Little Snitch should prompt for when trying to
           activate this application:
           %ol
             %li Allow any outgoing connection for system processes (dnscrypt-proxy)
             %li Allow any incoming connection for system process (dnscrypt-proxy)
             %li Allow any outgoing connection for system processes (dig)
-            %li Allow outgoing TCP connections on port 80( http) of www.apple.com for system process (curl)
-          (Thanks to @cavemandaveman)
+            %li Allow outgoing TCP connections to port 80 (http) of www.apple.com for system process (curl)
+            %li For automatic updates, allow outgoing TCP connections to port 80 (http) of updates.dnscrypt.org and to port 443 (https) of github.com for system process (curl)
+          (Thanks to @cavemandaveman and @TraderStf)
