@@ -1,4 +1,4 @@
-10.8 2 https://github.com/alterstep/dnscrypt-osxclient/releases/download/1.0.9/dnscrypt-osxclient-1.0.9.dmg
-10.9 2 https://github.com/alterstep/dnscrypt-osxclient/releases/download/1.0.9/dnscrypt-osxclient-1.0.9.dmg
-10.10 2 https://github.com/alterstep/dnscrypt-osxclient/releases/download/1.0.9/dnscrypt-osxclient-1.0.9.dmg
-10.11 2 https://github.com/alterstep/dnscrypt-osxclient/releases/download/1.0.9/dnscrypt-osxclient-1.0.9.dmg
+10.8 3 https://github.com/alterstep/dnscrypt-osxclient/releases/download/1.0.10/dnscrypt-osxclient-1.0.10.dmg
+10.9 3 https://github.com/alterstep/dnscrypt-osxclient/releases/download/1.0.10/dnscrypt-osxclient-1.0.10.dmg
+10.10 3 https://github.com/alterstep/dnscrypt-osxclient/releases/download/1.0.10/dnscrypt-osxclient-1.0.10.dmg
+10.11 3 https://github.com/alterstep/dnscrypt-osxclient/releases/download/1.0.10/dnscrypt-osxclient-1.0.10.dmg
