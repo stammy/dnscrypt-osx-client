@@ -1,6 +1,6 @@
 #! /bin/sh
 
-VERSION='1.0.9'
+VERSION='1.0.10'
 
 cd build || exit 1
 [ -e DNSCrypt.pkg ] || exit 1

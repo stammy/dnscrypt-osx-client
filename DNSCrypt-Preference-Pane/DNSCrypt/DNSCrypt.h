@@ -3,7 +3,7 @@
 #import <WebKit/WebKit.h>
 #import "CHCSVParser/CHCSVParser.h"
 
-#define kDNSCRYPT_PACKAGE_VERSION @"1.0.8"
+#define kDNSCRYPT_PACKAGE_VERSION @"1.0.10"
 
 #define kDNSCRYPT_PREFPANE_APP_PATH @"/Library/PreferencePanes/DNSCrypt.prefPane"
 #define kDNSCRYPT_USR_BASE_DIR kDNSCRYPT_PREFPANE_APP_PATH @"/Contents/Resources/usr"
