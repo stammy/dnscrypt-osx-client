@@ -26,6 +26,7 @@ DEBUG_ENABLED_FILE="${CONTROL_DIR}/debug.enabled"
 PLUGINS_ENABLED_FILE="${CONTROL_DIR}/plugins.enabled"
 QUERY_LOGGING_FILE="${CONTROL_DIR}/plugin-query-logging.enabled"
 BLOCKING_FILE="${CONTROL_DIR}/plugin-blocking.enabled"
+AAAA_BLOCKING_FILE="${CONTROL_DIR}/plugin-aaaa-blocking.enabled"
 
 QUERY_LOG_FILE="${DNSCRYPT_LOG_BASE_DIR}/dnscrypt-query.log"
 DEBUG_LOG_FILE="${DNSCRYPT_LOG_BASE_DIR}/dnscrypt-osxclient-debug.log"
@@ -58,8 +59,6 @@ INTERFACE_PROBES_MASK="24"
 DOMAINS_EXCEPTIONS='
 belkin corp domain example home host invalid lan local localdomain test freebox.fr fritz.box nowtv.com routerlogin.net l
 '
-
-DISABLE_IPV6='no'
 
 export PATH="${DNSCRYPT_USR_BASE_DIR}/bin:${DNSCRYPT_USR_BASE_DIR}/scripts:$PATH"
 

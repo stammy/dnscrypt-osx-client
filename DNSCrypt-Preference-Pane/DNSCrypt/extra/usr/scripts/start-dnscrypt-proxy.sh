@@ -74,18 +74,6 @@ get_plugin_args() {
 logger_debug "dnscrypt-proxy should be (re)started, stopping previous instance if needed"
 ./stop-dnscrypt-proxy.sh
 
-ipv6_supported="no"
-if [ x"$DISABLE_IPV6" = "xno" ]; then
-  logger_debug "Testing IPv6 connectivity"
-  ping6 -c 1 2620:0:ccc::2 > /dev/null 2>&1
-  if [ $? = 0 ]; then
-    ipv6_supported="yes"
-    logger_debug "IPv6 connectivity detected"
-  else
-    logger_debug "IPv6 connectivity is not available"  
-  fi
-fi
-
 wait_pids=""
 
 try_resolver 5004 "${RESOLVER_NAME} using DNSCrypt over UDP" \
@@ -111,8 +99,6 @@ plugins_args=''
 if [ -r "${DNSCRYPT_PROXY_PLUGINS_BASE_FILE}s.enabled" ]; then
   plugin_args=$(get_plugin_args)
 fi
-[ "$ipv6_supported" = "no" ] && \
-  plugin_args="${plugin_args} --plugin=libdcplugin_example_ldns_aaaa_blocking.la"
 
 best_args=$(cat "${RES_DIR}/${best_file}")
 
