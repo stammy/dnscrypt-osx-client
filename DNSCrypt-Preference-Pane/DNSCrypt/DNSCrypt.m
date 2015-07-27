@@ -16,6 +16,7 @@
 @synthesize exceptionsTextField = _exceptionsTextField;
 @synthesize dnscryptButton = _dnscryptButton;
 @synthesize fallbackButton = _fallbackButton;
+@synthesize disableIPv6Button = _disableIPv6Button;
 @synthesize statusImageView = _statusImageView;
 @synthesize statusText = _statusText;
 @synthesize currentResolverTextField = _currentResolverTextField;
@@ -55,6 +56,7 @@ NSArray *resolversList;
 
     _dnscryptButton.state = 0;
     _fallbackButton.state = 0;
+    _disableIPv6Button.state = 0;
     
     res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-dnscrypt-status.sh", nil]];
     if ([res isEqualToString: @"yes"]) {
@@ -63,6 +65,10 @@ NSArray *resolversList;
     res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-fallback-status.sh", nil]];
     if ([res isEqualToString: @"yes"]) {
         [_fallbackButton setState: 1];
+    }
+    res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-aaaa-blocking-status.sh", nil]];
+    if ([res isEqualToString: @"yes"]) {
+        [_disableIPv6Button setState: 1];
     }
     res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-static-resolvers.sh", nil]];
     [_staticResolversTextField setStringValue: res];
@@ -202,6 +208,20 @@ NSArray *resolversList;
     return TRUE;
 }
 
+- (BOOL) setDisableIPv6On {
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-aaaa-blocking-on.sh", nil]];
+    (void) res;
+    return TRUE;
+}
+
+- (BOOL) setDisableIPv6Off {
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-aaaa-blocking-off.sh", nil]];
+    (void) res;
+    return TRUE;
+}
+
 - (IBAction)dnscryptButtonPressed:(NSButton *)sender
 {
     if (sender.state != 0) {
@@ -217,6 +237,15 @@ NSArray *resolversList;
         [self setFallbackOn];
     } else {
         [self setFallbackOff];
+    }
+}
+
+- (IBAction)disableIPv6ButtonPressed:(NSButton *)sender
+{
+    if (sender.state != 0) {
+        [self setDisableIPv6On];
+    } else {
+        [self setDisableIPv6Off];
     }
 }
 

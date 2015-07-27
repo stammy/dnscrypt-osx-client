@@ -38,6 +38,7 @@ typedef enum {
     
     NSButton *_dnscryptButton;
     NSButton *_fallbackButton;
+    NSButton *_disableIPv6Button;
     
     NSTextField *_currentResolverTextField;
     NSImageView *_statusImageView;
@@ -59,6 +60,7 @@ typedef enum {
 
 @property (nonatomic, strong) IBOutlet NSButton *dnscryptButton;
 @property (nonatomic, strong) IBOutlet NSButton *fallbackButton;
+@property (nonatomic, strong) IBOutlet NSButton *disableIPv6Button;
 
 @property (nonatomic, strong) IBOutlet NSTextField *currentResolverTextField;
 @property (nonatomic, strong) IBOutlet NSImageView *statusImageView;
@@ -84,6 +86,7 @@ typedef enum {
 
 - (IBAction)dnscryptButtonPressed:(NSButton *)sender;
 - (IBAction)fallbackButtonPressed:(NSButton *)sender;
+- (IBAction)disableIPv6ButtonPressed:(NSButton *)sender;
 
 - (IBAction)providerLinkPushed:(NSButton *)sender;
 - (IBAction)uninstallPushed:(NSButton *)sender;
