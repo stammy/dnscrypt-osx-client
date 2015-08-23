@@ -11,7 +11,6 @@
 		0946B0C813F47F53008277C6 /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0946B0C713F47F53008277C6 /* PreferencePanes.framework */; };
 		0946B0D213F47F53008277C6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0946B0D013F47F53008277C6 /* InfoPlist.strings */; };
 		0946B0D613F47F53008277C6 /* DNSCrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 0946B0D513F47F53008277C6 /* DNSCrypt.m */; };
-		0946B0D813F47F53008277C6 /* DNSCrypt.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 0946B0D713F47F53008277C6 /* DNSCrypt.tiff */; };
 		0946B0DB13F47F53008277C6 /* DNSCrypt.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0946B0D913F47F53008277C6 /* DNSCrypt.xib */; };
 		0946B0E413F48065008277C6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0946B0E313F48065008277C6 /* Security.framework */; };
 		09A13ABC145F2D8700B227A4 /* ajax-loader.gif in Resources */ = {isa = PBXBuildFile; fileRef = 09A13ABB145F2D8700B227A4 /* ajax-loader.gif */; };
@@ -41,7 +40,6 @@
 		0946B0D313F47F53008277C6 /* DNSCrypt-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DNSCrypt-Prefix.pch"; sourceTree = "<group>"; };
 		0946B0D413F47F53008277C6 /* DNSCrypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNSCrypt.h; sourceTree = "<group>"; };
 		0946B0D513F47F53008277C6 /* DNSCrypt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DNSCrypt.m; sourceTree = "<group>"; };
-		0946B0D713F47F53008277C6 /* DNSCrypt.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = DNSCrypt.tiff; sourceTree = "<group>"; };
 		0946B0DA13F47F53008277C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DNSCrypt.xib; sourceTree = "<group>"; };
 		0946B0E113F48056008277C6 /* SecurityFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SecurityFoundation.framework; path = System/Library/Frameworks/SecurityFoundation.framework; sourceTree = SDKROOT; };
 		0946B0E313F48065008277C6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -121,7 +119,6 @@
 				0946B0D413F47F53008277C6 /* DNSCrypt.h */,
 				0946B0D513F47F53008277C6 /* DNSCrypt.m */,
 				0946B0D913F47F53008277C6 /* DNSCrypt.xib */,
-				0946B0D713F47F53008277C6 /* DNSCrypt.tiff */,
 				4B89D982147CA39200872F60 /* dnscrypt_256.png */,
 				09B1686F1906062E003FDBCC /* CHCSVParser */,
 				09AD019F15D2483500638DCE /* html */,
@@ -229,7 +226,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0946B0D213F47F53008277C6 /* InfoPlist.strings in Resources */,
-				0946B0D813F47F53008277C6 /* DNSCrypt.tiff in Resources */,
 				0946B0DB13F47F53008277C6 /* DNSCrypt.xib in Resources */,
 				4BABEA28144F5A7B006AEF34 /* led_green.png in Resources */,
 				4BABEA29144F5A7B006AEF34 /* led_yellow.png in Resources */,
