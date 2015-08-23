@@ -29,12 +29,14 @@ while [ -e "$DNSCRYPT_FILE" ]; do
     pause_counter=$((pause_counter + 1))
   done
   [ ! -e "$DNSCRYPT_FILE" ] && break
-  logger_debug "Checking if the router hijacks HTTP queries"
-  if ./check-hijacking.sh; then
-    logger_debug "The router doesn't hijack HTTP queries"
-  else
-    logger_debug "The router hijacks HTTP queries - DNSCrypt is likely to be blocked"
-    continue
+  if [ -e "$FALLBACK_FILE" ]; then
+    logger_debug "Checking if the router hijacks HTTP queries"
+    if ./check-hijacking.sh; then
+      logger_debug "The router doesn't hijack HTTP queries"
+    else
+      logger_debug "The router hijacks HTTP queries - DNSCrypt is likely to be blocked"
+      continue
+    fi
   fi
   ./start-dnscrypt-proxy.sh
   ./check-local-dns.sh || continue
