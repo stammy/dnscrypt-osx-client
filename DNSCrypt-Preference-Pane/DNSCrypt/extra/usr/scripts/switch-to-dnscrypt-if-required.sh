@@ -2,8 +2,9 @@
 
 . ./common.inc
 
-PAUSE_MAX=10
-PAUSE_INCREMENT=0.1
+PAUSE_MAX=50
+PAUSE_UNIT=0.1
+PAUSE_INCREMENT=1
 
 [ ! -e "$DNSCRYPT_FILE" ] && exit 0
 
@@ -21,10 +22,13 @@ while [ -e "$DNSCRYPT_FILE" ]; do
       ./switch-to-dhcp.sh
     fi
   fi
-  if [ $pause -lt $PAUSE_MAX ]; then
-    pause=$((pause + $PAUSE_INCREMENT))
-  fi
-  sleep $pause
+  [ $pause -lt $PAUSE_MAX ] &&  pause=$((pause + 1))
+  pause_counter=0
+  while [ -e "$DNSCRYPT_FILE" -a $pause_counter -lt $pause ]; do
+    sleep $PAUSE_UNIT
+    pause_counter=$((pause_counter + 1))
+  done
+  [ ! -e "$DNSCRYPT_FILE" ] && break
   logger_debug "Checking if the router hijacks HTTP queries"
   if ./check-hijacking.sh; then
     logger_debug "The router doesn't hijack HTTP queries"
