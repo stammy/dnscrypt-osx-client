@@ -94,11 +94,11 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField verticalHuggingPriority="750" id="Wkj-kT-maK">
-                                            <rect key="frame" x="278" y="208" width="173" height="19"/>
+                                            <rect key="frame" x="278" y="208" width="49" height="19"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <animations/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Location:" id="GO7-P1-scE">
-                                                <font key="font" metaFont="system" size="14"/>
+                                                <font key="font" metaFont="system" size="10"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -114,11 +114,11 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField verticalHuggingPriority="750" id="e9H-pq-zb6">
-                                            <rect key="frame" x="345" y="200" width="200" height="27"/>
+                                            <rect key="frame" x="324" y="200" width="221" height="27"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <animations/>
-                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" placeholderString="" id="q83-P7-DNW">
-                                                <font key="font" size="14" name="Monaco"/>
+                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" placeholderString="-" id="q83-P7-DNW">
+                                                <font key="font" size="10" name="Monaco"/>
                                                 <color key="textColor" white="0.2046370968" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
