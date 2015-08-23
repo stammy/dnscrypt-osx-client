@@ -85,9 +85,13 @@ try_resolver 5005 "${RESOLVER_NAME} using DNSCrypt over TCP" \
 wait_pids="$wait_pids $!"
 
 for pid in $wait_pids; do
-  wait $pid
+  wait
   best_file=$(ls "$RES_DIR" | head -n 1)
   [ x"$best_file" != "x" ] && break
+  if [ ! -e "$DNSCRYPT_FILE" ]; then
+    logger_debug "Aborted by user"
+    exit 1
+  fi
 done
 
 if [ x"$best_file" = "x" ]; then

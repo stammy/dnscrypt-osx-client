@@ -38,7 +38,7 @@ while [ -e "$DNSCRYPT_FILE" ]; do
       continue
     fi
   fi
-  ./start-dnscrypt-proxy.sh
+  ./start-dnscrypt-proxy.sh || continue
   ./check-local-dns.sh || continue
   ./set-dns.sh "$INTERFACE_PROXY"
   if [ $? != 0 ]; then
