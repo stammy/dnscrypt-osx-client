@@ -30,6 +30,7 @@ NSArray *resolversList;
     [_dnscryptButton setEnabled: enabled];
     [_fallbackButton setEnabled: enabled];
     [_disableIPv6Button setEnabled: enabled];
+    [_resolverNamesButton setEnabled: enabled];
 }
 
 - (NSString *) fromCommand: (NSString *) launchPath withArguments: (NSArray *) arguments
