@@ -45,7 +45,7 @@ APP_UPDATES_PUBLIC_KEY="RWRvw8aArS/yEI3In0/zQSb9+qfWonLxjjEYG17cXt6zct6GLKtEvUfk
 APP_UPDATES_STATE="${APP_UPDATES_DIR}/app-updated"
 
 RESOLVERS_UPDATES_BASE_URL="http://updates.dnscrypt.org/dnscrypt-proxy"
-RESOLVERS_LIST_BASE_DIR="/usr/local/share/dnscrypt-proxy"
+RESOLVERS_LIST_BASE_DIR="${DNSCRYPT_USR_BASE_DIR}/share/dnscrypt-proxy"
 RESOLVERS_LIST_PUBLIC_KEY="RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3"
 RESOLVERS_LIST_STATE="${STATES_DIR}/resolvers-updated"
 
@@ -60,7 +60,7 @@ DOMAINS_EXCEPTIONS='
 belkin corp domain example home host invalid lan local localdomain test freebox.fr fritz.box nowtv.com routerlogin.net l
 '
 
-export PATH="${DNSCRYPT_USR_BASE_DIR}/bin:${DNSCRYPT_USR_BASE_DIR}/scripts:$PATH"
+export PATH="${DNSCRYPT_USR_BASE_DIR}/sbin:${DNSCRYPT_USR_BASE_DIR}/bin:${DNSCRYPT_USR_BASE_DIR}/scripts:$PATH"
 
 init_interfaces() {
   /sbin/ifconfig lo0 alias ${INTERFACE_UNBOUND}/${INTERFACE_UNBOUND_MASK}

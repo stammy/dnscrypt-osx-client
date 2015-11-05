@@ -60,21 +60,21 @@ NSArray *resolversList;
     _fallbackButton.state = 0;
     _disableIPv6Button.state = 0;
     
-    res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-dnscrypt-status.sh", nil]];
+    res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && exec ./get-dnscrypt-status.sh", nil]];
     if ([res isEqualToString: @"yes"]) {
         [_dnscryptButton setState: 1];
     }
-    res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-fallback-status.sh", nil]];
+    res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && exec ./get-fallback-status.sh", nil]];
     if ([res isEqualToString: @"yes"]) {
         [_fallbackButton setState: 1];
     }
-    res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-aaaa-blocking-status.sh", nil]];
+    res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && exec ./get-aaaa-blocking-status.sh", nil]];
     if ([res isEqualToString: @"yes"]) {
         [_disableIPv6Button setState: 1];
     }
-    res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-static-resolvers.sh", nil]];
+    res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && exec ./get-static-resolvers.sh", nil]];
     [_staticResolversTextField setStringValue: res];
-    res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-query-logging-status.sh", nil]];
+    res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && exec ./get-query-logging-status.sh", nil]];
     if ([res isEqualToString: @"yes"]) {
         [_queryLoggingButton setState: 1];
     }
@@ -98,7 +98,7 @@ NSArray *resolversList;
     NSUInteger rows_count = [resolversList count];
     NSUInteger i;
     [_resolverNamesButton addItemWithTitle: NSLocalizedString(@"Please select a resolver", @"A resolver hasn't been selected yet")];
-    res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-dnscrypt-resolver-name.sh", nil]];
+    res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && exec ./get-dnscrypt-resolver-name.sh", nil]];
     for (i = 1U; i < rows_count; i++) {
         NSArray *row = [resolversList objectAtIndex: i];
         NSString *name;
@@ -137,7 +137,7 @@ NSArray *resolversList;
 
 - (BOOL) updateStatusWithCurrentConfig
 {
-    NSString *stateDescription = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./get-current-resolvers.sh | ./get-resolvers-description.sh", nil]];
+    NSString *stateDescription = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && ./get-current-resolvers.sh | ./get-resolvers-description.sh", nil]];
     if ([stateDescription isEqualToString: @"DNSCrypt"]) {
         currentState = kDNS_CONFIGURATION_LOCALHOST;
     } else if ([stateDescription isEqualToString: @"None"]) {
@@ -149,10 +149,10 @@ NSArray *resolversList;
     }
     [self updateLedStatus];
     
-    NSString *currentResolvers = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./get-current-resolvers.sh | ./get-upstream-resolvers.sh", nil]];
+    NSString *currentResolvers = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && ./get-current-resolvers.sh | ./get-upstream-resolvers.sh", nil]];
     _currentResolverTextField.stringValue = currentResolvers;
     
-    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./gui-pop-conf-change.sh prefpane", nil]];
+    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && exec ./gui-pop-conf-change.sh prefpane", nil]];
     if ([res isEqualToString: @"yes"]) {
         [self initState];
     }
@@ -175,7 +175,7 @@ NSArray *resolversList;
     _statusImageView.image = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"ajax-loader.gif"]];
     _currentResolverTextField.stringValue = @"";
     
-    [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./gui-push-conf-change.sh menubar", nil]];
+    [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && exec ./gui-push-conf-change.sh menubar", nil]];
     
     [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(periodicallyUpdateStatusWithCurrentConfig) object: nil];
     [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(waitForUpdate) object: nil];
@@ -184,42 +184,42 @@ NSArray *resolversList;
 
 - (BOOL) setDNSCryptOn {
     [self showSpinners];
-    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-to-dnscrypt.sh", nil]];
+    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-to-dnscrypt.sh", nil]];
     (void) res;
     return TRUE;
 }
 
 - (BOOL) setDNSCryptOff {
     [self showSpinners];
-    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-to-dhcp.sh", nil]];
+    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-to-dhcp.sh", nil]];
     (void) res;
     return TRUE;
 }
 
 - (BOOL) setFallbackOn {
     [self showSpinners];
-    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-fallback-on.sh", nil]];
+    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-fallback-on.sh", nil]];
     (void) res;
     return TRUE;
 }
 
 - (BOOL) setFallbackOff {
     [self showSpinners];
-    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-fallback-off.sh", nil]];
+    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-fallback-off.sh", nil]];
     (void) res;
     return TRUE;
 }
 
 - (BOOL) setDisableIPv6On {
     [self showSpinners];
-    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-aaaa-blocking-on.sh", nil]];
+    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-aaaa-blocking-on.sh", nil]];
     (void) res;
     return TRUE;
 }
 
 - (BOOL) setDisableIPv6Off {
     [self showSpinners];
-    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-aaaa-blocking-off.sh", nil]];
+    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-aaaa-blocking-off.sh", nil]];
     (void) res;
     return TRUE;
 }
@@ -255,7 +255,7 @@ NSArray *resolversList;
     NSString *res;
     static unsigned int tries;
     
-    res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-tickets-count.sh", nil]];
+    res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && exec ./get-tickets-count.sh", nil]];
     if (res.length <= 0 || [res isEqualToString: @"0"] || tries > kMAX_TRIES_AFTER_CHANGE) {
         tries = 0U;
         [self periodicallyUpdateStatusWithCurrentConfig];
@@ -288,7 +288,7 @@ NSArray *resolversList;
     NSArray *row = [resolversList objectAtIndex: i];
     [self updateResolverInfo: row];
     setenv("RESOLVER_NAME", [[row objectAtIndex: 0] UTF8String], 1);
-    [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./set-dnscrypt-resolver-name.sh \"$RESOLVER_NAME\"", nil]];
+    [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && exec ./set-dnscrypt-resolver-name.sh \"$RESOLVER_NAME\"", nil]];
 }
 
 - (void) mainViewDidLoad
@@ -350,7 +350,7 @@ NSArray *resolversList;
 }
 
 - (IBAction)uninstallPushed:(NSButton *)sender {
-    [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_BIN_BASE_DIR @"' && /usr/bin/open ./Uninstall.app", nil]];
+    [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_BIN_BASE_DIR @"' && /usr/bin/open ./Uninstall.app", nil]];
 }
 
 - (IBAction)staticResolversTextFieldChanged:(NSTextField *)sender {
@@ -359,19 +359,19 @@ NSArray *resolversList;
     staticResolvers = [[staticResolvers componentsSeparatedByCharactersInSet: charset] componentsJoinedByString: @" "];
     sender.stringValue = staticResolvers;
     setenv("STATIC_RESOLVERS", [staticResolvers UTF8String], 1);
-    [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./set-static-resolvers.sh \"$STATIC_RESOLVERS\"", nil]];
+    [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && exec ./set-static-resolvers.sh \"$STATIC_RESOLVERS\"", nil]];
 }
 
 - (BOOL) setQueryLoggingOn {
     [self showSpinners];
-    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-query-logging-on.sh", nil]];
+    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-query-logging-on.sh", nil]];
     (void) res;
     return TRUE;
 }
 
 - (BOOL) setQueryLoggingOff {
     [self showSpinners];
-    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-query-logging-off.sh", nil]];
+    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-query-logging-off.sh", nil]];
     (void) res;
     return TRUE;
 }
@@ -385,12 +385,12 @@ NSArray *resolversList;
 }
 
 - (IBAction)viewLogButtonPushed:(NSButton *)sender {
-    [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"open /Applications/Utilities/Console.app " kDNSCRYPT_QUERY_LOG_FILE " || open " kDNSCRYPT_QUERY_LOG_FILE, nil]];
+    [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"open /Applications/Utilities/Console.app " kDNSCRYPT_QUERY_LOG_FILE " || open " kDNSCRYPT_QUERY_LOG_FILE, nil]];
 }
 
 - (BOOL) updateBlacklistIPs {
     [self showSpinners];
-    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./update-blacklist-ips.sh", nil]];
+    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./update-blacklist-ips.sh", nil]];
     (void) res;
     return TRUE;
 }
@@ -405,7 +405,7 @@ NSArray *resolversList;
 
 - (BOOL) updateBlacklistDomains {
     [self showSpinners];
-    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./update-blacklist-domains.sh", nil]];
+    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./update-blacklist-domains.sh", nil]];
     (void) res;
     return TRUE;
 }
@@ -420,7 +420,7 @@ NSArray *resolversList;
 
 - (BOOL) updateExceptions {
     [self showSpinners];
-    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./update-exceptions.sh", nil]];
+    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./update-exceptions.sh", nil]];
     (void) res;
     return TRUE;
 }

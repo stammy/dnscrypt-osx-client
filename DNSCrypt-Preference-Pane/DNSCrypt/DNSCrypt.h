@@ -7,8 +7,9 @@
 
 #define kDNSCRYPT_PREFPANE_APP_PATH @"/Library/PreferencePanes/DNSCrypt.prefPane"
 #define kDNSCRYPT_USR_BASE_DIR kDNSCRYPT_PREFPANE_APP_PATH @"/Contents/Resources/usr"
-#define kDNSCRIPT_BIN_BASE_DIR kDNSCRYPT_USR_BASE_DIR @"/bin"
-#define kDNSCRIPT_SCRIPTS_BASE_DIR kDNSCRYPT_USR_BASE_DIR @"/scripts"
+#define kDNSCRYPT_BIN_BASE_DIR kDNSCRYPT_USR_BASE_DIR @"/bin"
+#define kDNSCRYPT_SHARE_BASE_DIR kDNSCRYPT_USR_BASE_DIR @"/share"
+#define kDNSCRYPT_SCRIPTS_BASE_DIR kDNSCRYPT_USR_BASE_DIR @"/scripts"
 #define kDNSCRYPT_VAR_BASE_DIR @"/Library/Application Support/DNSCrypt"
 #define kDNSCRYPT_CONTROL_DIR kDNSCRYPT_VAR_BASE_DIR @"/control"
 
@@ -19,7 +20,7 @@
 
 #define kBUNDLE_IDENTIFIER @"com.github.dnscrypt-osxclient.DNSCrypt"
 
-#define kRESOLVERS_LIST_FILE @"/usr/local/share/dnscrypt-proxy/dnscrypt-resolvers.csv"
+#define kRESOLVERS_LIST_FILE kDNSCRYPT_SHARE_BASE_DIR @"/dnscrypt-proxy/dnscrypt-resolvers.csv"
 
 #define kREFRESH_DELAY 2.0
 #define kCHECKBOXES_AFTER_CHANGE_DELAY 8.0

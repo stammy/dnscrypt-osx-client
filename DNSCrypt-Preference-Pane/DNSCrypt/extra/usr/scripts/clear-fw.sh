@@ -8,8 +8,8 @@ exec 2>&1
 SOCKETFILTERFW='/usr/libexec/ApplicationFirewall/socketfilterfw'
 [ -x "$SOCKETFILTERFW" ] || exit 0
 
-"$SOCKETFILTERFW" --add        /usr/local/sbin/dnscrypt-proxy
-"$SOCKETFILTERFW" --unblockapp /usr/local/sbin/dnscrypt-proxy
+"$SOCKETFILTERFW" --add        "${DNSCRYPT_USR_BASE_DIR}/sbin/dnscrypt-proxy"
+"$SOCKETFILTERFW" --unblockapp "${DNSCRYPT_USR_BASE_DIR}/sbin/dnscrypt-proxy"
 
-"$SOCKETFILTERFW" --add        /usr/local/bin/hostip
-"$SOCKETFILTERFW" --unblockapp /usr/local/bin/hostip
+"$SOCKETFILTERFW" --add        "${DNSCRYPT_USR_BASE_DIR}/bin/hostip"
+"$SOCKETFILTERFW" --unblockapp "${DNSCRYPT_USR_BASE_DIR}/bin/hostip"
