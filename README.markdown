@@ -9,16 +9,16 @@ for OSX 10.8 (Mountain Lion), OSX 10.9 (Mavericks), OSX 10.10 (Yosemite) and OSX
 Compatible with:
 * Adamas
 * Cisco (OpenDNS)
-* CloudNS
-* Cypherpunk.lu
-* DNSCrypt.eu
-* DNSCrypt.org
+* [CloudNS](https://cloudns.com.au/)
+* [Cypherpunk.lu](https://wiki.c3l.lu/doku.php?id=projects:cypherpunks)
+* [DNSCrypt.eu](https://dnscrypt.eu/)
+* [DNSCrypt.org](https://dnscrypt.org/)
 * OVPN
-* OpenNIC
-* Proxy.sh
+* [OpenNIC](https://www.opennicproject.org/)
+* [Proxy.sh](https://proxy.sh/)
 * Soltysiak
 * d0wn
-* iPredator
+* [iPredator](https://ipredator.se/)
 * okTurtles
 
 Packages are signed with [Minisign](https://jedisct1.github.io/minisign/) and can be verified with:
