@@ -20,7 +20,7 @@ Compatible with:
 * d0wn
 * [iPredator](https://ipredator.se/)
 * okTurtles
-* [de-ns1.de](http://79.133.37.92/dnscrypt/)
+* [de-ns1.de](http://dnscrypt.me/)
 
 Packages are signed with [Minisign](https://jedisct1.github.io/minisign/) and can be verified with:
 
