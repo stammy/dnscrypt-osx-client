@@ -12,6 +12,7 @@ Compatible with:
 * [CloudNS](https://cloudns.com.au/)
 * [Cypherpunk.lu](https://wiki.c3l.lu/doku.php?id=projects:cypherpunks)
 * [DNSCrypt.eu](https://dnscrypt.eu/)
+* [DNSCrypt.is](https://dnscrypt.is/)
 * [DNSCrypt.org](https://dnscrypt.org/)
 * OVPN
 * [OpenNIC](https://www.opennicproject.org/)
