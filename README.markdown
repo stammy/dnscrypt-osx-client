@@ -21,7 +21,6 @@ Compatible with:
 * d0wn
 * [iPredator](https://ipredator.se/)
 * okTurtles
-* [dnscrypt.me](http://dnscrypt.me/)
 
 Packages are signed with [Minisign](https://jedisct1.github.io/minisign/) and can be verified with:
 
