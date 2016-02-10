@@ -13,12 +13,14 @@ mkdir -p extra/usr/lib
 cp /opt/ldns/lib/libldns.1.dylib \
    extra/usr/lib/
 ( cd extra/usr/lib &&
+  rm -f libldns.dylib &&
   ln -fs libldns.1.dylib libldns.dylib )
 
-cp /usr/local/lib/libsodium.17.dylib \
+cp /usr/local/lib/libsodium.18.dylib \
    extra/usr/lib/
 ( cd extra/usr/lib &&
-  ln -fs libsodium.17.dylib libsodium.dylib )
+  rm -f libsodium.dylib &&
+  ln -fs libsodium.18.dylib libsodium.dylib )
 
 mkdir -p extra/usr/lib/dnscrypt-proxy
 
