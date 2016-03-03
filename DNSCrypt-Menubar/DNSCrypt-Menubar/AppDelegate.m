@@ -71,13 +71,13 @@ BOOL appUpdated = FALSE;
     
     switch (currentState) {
         case kDNS_CONFIGURATION_LOCALHOST:
-            led = [NSImage imageNamed: @"icon-dnscrypt-active"];
+            led = [NSImage imageNamed: @"Active"];
             break;
         case kDNS_CONFIGURATION_VANILLA:
-            led = [NSImage imageNamed: @"icon-dnscrypt-inactive"];
+            led = [NSImage imageNamed: @"Inactive"];
             break;
         default:
-            led = [NSImage imageNamed: @"icon-no-network"];
+            led = [NSImage imageNamed: @"No-Network"];
     }
     [led setTemplate:YES];
     _statusItem.image = led;
@@ -138,7 +138,7 @@ BOOL appUpdated = FALSE;
 {
     [self setCheckBoxesEnabled: FALSE];
 
-    NSImage *led = [NSImage imageNamed: @"icon-no-network"];
+    NSImage *led = [NSImage imageNamed: @"No-Network"];
     _statusItem.image = led;
     
     [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./gui-push-conf-change.sh prefpane", nil]];
