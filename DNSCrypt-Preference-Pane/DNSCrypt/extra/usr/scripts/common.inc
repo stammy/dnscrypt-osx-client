@@ -57,7 +57,7 @@ INTERFACE_PROBES="127.0.0.55"
 INTERFACE_PROBES_MASK="24"
 
 DOMAINS_EXCEPTIONS='
-belkin corp domain example home host invalid lan local localdomain test freebox.fr fritz.box nowtv.com routerlogin.net l
+belkin corp domain example home host invalid lan local localdomain test freebox.fr fritz.box nowtv.com routerlogin.net l onion
 '
 
 export PATH="${DNSCRYPT_USR_BASE_DIR}/sbin:${DNSCRYPT_USR_BASE_DIR}/bin:${DNSCRYPT_USR_BASE_DIR}/scripts:$PATH"
