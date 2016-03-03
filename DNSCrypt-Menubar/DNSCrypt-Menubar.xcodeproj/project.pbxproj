@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		09651148147D832D007FEE31 /* dnscrypt.icns in Resources */ = {isa = PBXBuildFile; fileRef = 09651147147D832D007FEE31 /* dnscrypt.icns */; };
+		091360731C88418E00F308D3 /* dnscrypt.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 091360721C88418E00F308D3 /* dnscrypt.iconset */; };
 		098E725E1905DF4C00C8CC6E /* icon-dnscrypt-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 098E72581905DF4C00C8CC6E /* icon-dnscrypt-active.png */; };
 		098E72601905DF4C00C8CC6E /* icon-dnscrypt-inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 098E725A1905DF4C00C8CC6E /* icon-dnscrypt-inactive.png */; };
 		098E72621905DF4C00C8CC6E /* icon-no-network.png in Resources */ = {isa = PBXBuildFile; fileRef = 098E725C1905DF4C00C8CC6E /* icon-no-network.png */; };
@@ -34,7 +34,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		09651147147D832D007FEE31 /* dnscrypt.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = dnscrypt.icns; path = ../dnscrypt.icns; sourceTree = "<group>"; };
+		091360721C88418E00F308D3 /* dnscrypt.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = dnscrypt.iconset; sourceTree = "<group>"; };
 		098E72581905DF4C00C8CC6E /* icon-dnscrypt-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-dnscrypt-active.png"; sourceTree = "<group>"; };
 		098E725A1905DF4C00C8CC6E /* icon-dnscrypt-inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-dnscrypt-inactive.png"; sourceTree = "<group>"; };
 		098E725C1905DF4C00C8CC6E /* icon-no-network.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-no-network.png"; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 		09A13AD8145F3B9000B227A4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				09651147147D832D007FEE31 /* dnscrypt.icns */,
+				091360721C88418E00F308D3 /* dnscrypt.iconset */,
 				09A13AD9145F3B9000B227A4 /* DNSCrypt-Menubar-Info.plist */,
 				09A13ADA145F3B9000B227A4 /* InfoPlist.strings */,
 				09A13ADD145F3B9000B227A4 /* main.m */,
@@ -190,8 +190,8 @@
 				098E72691905E1A700C8CC6E /* icon-no-network@2x.png in Resources */,
 				098E72601905DF4C00C8CC6E /* icon-dnscrypt-inactive.png in Resources */,
 				098E72621905DF4C00C8CC6E /* icon-no-network.png in Resources */,
+				091360731C88418E00F308D3 /* dnscrypt.iconset in Resources */,
 				098E72671905E1A700C8CC6E /* icon-dnscrypt-active@2x.png in Resources */,
-				09651148147D832D007FEE31 /* dnscrypt.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
