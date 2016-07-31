@@ -16,6 +16,12 @@ cp /opt/ldns/lib/libldns.1.dylib \
   rm -f libldns.dylib &&
   ln -fs libldns.1.dylib libldns.dylib )
 
+if [ -f /usr/local/lib/libsodium.18.dylib ]; then
+  echo '*** /usr/local/lib/libsodium.{dylib,la} found'
+  echo '*** Compile dnscrypt-proxy without them to get a static build'
+  sleep 10
+fi
+
 cp /usr/local/lib/libsodium.18.dylib \
    extra/usr/lib/
 ( cd extra/usr/lib &&
