@@ -41,9 +41,15 @@ try_resolver() {
     case "$line" in
       *Proxying\ from\ *)
         logger_debug "Proxy for [$description] is up"
+
+# This doesn't send anything to Apple, and any reliable domain name can be used --
+# The following line sends a common query to the chosen DNSCrypt resolver to
+# check that it responds and can be used instead of leaving the mac without
+# a working DNS configuration.
         answers=$(exec dig +time=1 +short +tries=2 -p $priority \
           @"$INTERFACE_PROBES" www.apple.com. 2> /dev/null | \
           egrep -ic '^[0-9.:]+$')
+
         [ -r "$pid_file" ] && kill $(cat -- "$pid_file")
         if [ $answers -gt 0 ]; then
           logger_debug "Proxy for [$description] can be used"
