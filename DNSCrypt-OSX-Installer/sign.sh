@@ -2,6 +2,9 @@
 
 VERSION='1.0.12'
 
+echo '*** Do not forget to increase CURRENT_VERSION in common.inc'
+sleep 10
+
 cd build || exit 1
 [ -e DNSCrypt.pkg ] || exit 1
 
