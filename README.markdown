@@ -11,3 +11,6 @@ Compatible with all the DNS servers with DNSCrypt enabled.
 Packages are signed with [Minisign](https://jedisct1.github.io/minisign/) and can be verified with:
 
     minisign -V -P RWRvw8aArS/yEI3In0/zQSb9+qfWonLxjjEYG17cXt6zct6GLKtEvUfk -m dnscrypt-osxclient-*.dmg
+
+![Foto 1](https://raw.githubusercontent.com/alterstep/dnscrypt-osxclient/master/1.png)
+![Foto 2](https://raw.githubusercontent.com/alterstep/dnscrypt-osxclient/master/2.png)
