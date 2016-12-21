@@ -12,5 +12,11 @@ Packages are signed with [Minisign](https://jedisct1.github.io/minisign/) and ca
 
     minisign -V -P RWRvw8aArS/yEI3In0/zQSb9+qfWonLxjjEYG17cXt6zct6GLKtEvUfk -m dnscrypt-osxclient-*.dmg
 
+You can also install this application using Homebrew Cask:  
+
+```
+brew cask install dnscrypt
+```
+
 ![Foto 1](https://raw.githubusercontent.com/alterstep/dnscrypt-osxclient/master/1.png)
 ![Foto 2](https://raw.githubusercontent.com/alterstep/dnscrypt-osxclient/master/2.png)
