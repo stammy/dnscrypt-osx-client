@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="15B17c" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16D17a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment version="1070" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="8191"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="11542"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="DNSCrypt">
@@ -13,7 +14,6 @@
                 <outlet property="aboutWebView" destination="358" id="359"/>
                 <outlet property="blacklistDomainsTextField" destination="404" id="446"/>
                 <outlet property="blacklistIPsTextField" destination="402" id="444"/>
-                <outlet property="currentResolverTextField" destination="174" id="296"/>
                 <outlet property="descriptionText" destination="2aF-7O-SkX" id="nM9-H2-22g"/>
                 <outlet property="disableIPv6Button" destination="ESJ-Kf-yNj" id="xFL-L3-vLp"/>
                 <outlet property="dnscryptButton" destination="179" id="363"/>
@@ -48,7 +48,6 @@
                     <tabView initialItem="100" id="99">
                         <rect key="frame" x="13" y="10" width="563" height="359"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="General" identifier="1" id="100">
@@ -59,7 +58,6 @@
                                         <button toolTip="Use OpenDNS resolvers with the DNSCrypt protocol" id="179">
                                             <rect key="frame" x="15" y="234" width="204" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
                                             <buttonCell key="cell" type="check" title="Enable DNSCrypt" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="180">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="systemBold" size="14"/>
@@ -73,7 +71,6 @@
                                             <rect key="frame" x="15" y="164" width="239" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <string key="toolTip">Only check this box if you often have to connect to public WiFi hotspots and you don't want to manually disable DNSCrypt in order to pass a captive portal.</string>
-                                            <animations/>
                                             <buttonCell key="cell" type="check" title="Automatically disable if blocked" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="282">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system" size="14"/>
@@ -86,7 +83,6 @@
                                         <textField verticalHuggingPriority="750" id="162">
                                             <rect key="frame" x="14" y="96" width="173" height="19"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Current DNS settings:" id="163">
                                                 <font key="font" metaFont="system" size="16"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -96,27 +92,15 @@
                                         <textField verticalHuggingPriority="750" id="Wkj-kT-maK">
                                             <rect key="frame" x="278" y="208" width="70" height="19"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Location:" id="GO7-P1-scE">
                                                 <font key="font" metaFont="titleBar"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField verticalHuggingPriority="750" id="174">
-                                            <rect key="frame" x="14" y="-3" width="240" height="83"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
-                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="..." placeholderString="" id="175">
-                                                <font key="font" size="14" name="Monaco"/>
-                                                <color key="textColor" white="0.2046370968" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
                                         <textField verticalHuggingPriority="750" id="rnd-WE-K61">
                                             <rect key="frame" x="278" y="46" width="261" height="122"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" placeholderString="" id="2aF-7O-SkX">
                                                 <font key="font" size="14" name="Monaco"/>
                                                 <color key="textColor" white="0.2046370968" alpha="1" colorSpace="calibratedWhite"/>
@@ -126,7 +110,6 @@
                                         <textField verticalHuggingPriority="750" id="274">
                                             <rect key="frame" x="55" y="283" width="219" height="19"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="..." placeholderString="" id="275">
                                                 <font key="font" size="16" name="Monaco"/>
                                                 <color key="textColor" white="0.2046370968" alpha="1" colorSpace="calibratedWhite"/>
@@ -136,21 +119,15 @@
                                         <imageView id="270">
                                             <rect key="frame" x="17" y="277" width="32" height="32"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <animations/>
                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageAlignment="topLeft" imageScaling="proportionallyDown" image="ajax-loader" id="271"/>
                                         </imageView>
-                                        <box horizontalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="276">
+                                        <box horizontalHuggingPriority="750" boxType="separator" id="276">
                                             <rect key="frame" x="270" y="2" width="4" height="300"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <font key="titleFont" metaFont="system"/>
                                         </box>
                                         <button verticalHuggingPriority="750" id="323">
                                             <rect key="frame" x="274" y="10" width="269" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
                                             <buttonCell key="cell" type="push" title="http://www.dnscrypt.org" alternateTitle="Browse the OpenDNS web site" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="324">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="cellTitle"/>
@@ -159,18 +136,13 @@
                                                 <action selector="providerLinkPushed:" target="-2" id="HYc-qW-k00"/>
                                             </connections>
                                         </button>
-                                        <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="345">
+                                        <box verticalHuggingPriority="750" boxType="separator" id="345">
                                             <rect key="frame" x="17" y="193" width="240" height="5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <font key="titleFont" metaFont="system"/>
                                         </box>
                                         <textField verticalHuggingPriority="750" id="UQr-Gd-nzd">
                                             <rect key="frame" x="324" y="268" width="183" height="19"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="DNSCrypt name server:" id="ctO-Mw-4JZ">
                                                 <font key="font" metaFont="system" size="16"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -180,7 +152,6 @@
                                         <popUpButton toolTip="Select the resolver to use" verticalHuggingPriority="750" id="yY6-5S-StG">
                                             <rect key="frame" x="286" y="232" width="260" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
                                             <popUpButtonCell key="cell" type="push" title="None selected" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="zMy-SG-d4L" id="LPZ-wM-tAR">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="menu"/>
@@ -200,7 +171,6 @@
                                         <button toolTip="Do not try to resolve IPv6 records" id="ESJ-Kf-yNj">
                                             <rect key="frame" x="15" y="133" width="252" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
                                             <buttonCell key="cell" type="check" title="Disable IPv6 to reduce IPv4 latency" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="cCj-X4-U6n">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system" size="14"/>
@@ -213,15 +183,21 @@
                                         <textField verticalHuggingPriority="750" id="e9H-pq-zb6">
                                             <rect key="frame" x="278" y="182" width="267" height="27"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" placeholderString="-" id="q83-P7-DNW">
                                                 <font key="font" size="12" name="Monaco"/>
                                                 <color key="textColor" white="0.2046370968" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <button verticalHuggingPriority="750" misplaced="YES" id="9Hy-oV-v7u">
+                                            <rect key="frame" x="77" y="31" width="81" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bOq-DG-Q4a">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                        </button>
                                     </subviews>
-                                    <animations/>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Advanced" identifier="2" id="388">
@@ -232,7 +208,6 @@
                                         <textField verticalHuggingPriority="750" id="390">
                                             <rect key="frame" x="5" y="236" width="406" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="When not using DNSCrypt, use the following static DNS servers:" id="391">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -242,7 +217,6 @@
                                         <textField verticalHuggingPriority="750" id="392">
                                             <rect key="frame" x="8" y="206" width="526" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" toolTip="Leave empty to use DHCP-provided servers" placeholderString="Space-separated list of IP addresses or leave blank for DHCP" drawsBackground="YES" usesSingleLineMode="YES" id="393">
                                                 <font key="font" size="13" name="Courier"/>
                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -259,7 +233,6 @@
                                         <button id="398">
                                             <rect key="frame" x="7" y="281" width="126" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
                                             <buttonCell key="cell" type="check" title="Log DNS queries" bezelStyle="regularSquare" imagePosition="left" inset="2" id="399">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -272,7 +245,6 @@
                                         <button verticalHuggingPriority="750" id="400">
                                             <rect key="frame" x="161" y="273" width="94" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
                                             <buttonCell key="cell" type="push" title="View log" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="401">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -285,7 +257,6 @@
                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="402">
                                             <rect key="frame" x="10" y="7" width="169" height="141"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
                                             <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="403">
                                                 <font key="font" size="11" name="Courier"/>
                                                 <string key="placeholderString">IP addresses (IPv4/IPv6) to block.  208.67.0.255 192.0.43.10
@@ -303,7 +274,6 @@
                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="404">
                                             <rect key="frame" x="188" y="7" width="169" height="141"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
                                             <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="405">
                                                 <font key="font" size="11" name="Courier"/>
                                                 <string key="placeholderString">Domain names to block.
@@ -323,7 +293,6 @@ ads.*
                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="406">
                                             <rect key="frame" x="366" y="7" width="169" height="141"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
                                             <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Domain names to resolve through the default resolvers instead of DNSCrypt.  localdomain mycompany.example.net" drawsBackground="YES" id="407">
                                                 <font key="font" size="11" name="Courier"/>
                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -339,7 +308,6 @@ ads.*
                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="408">
                                             <rect key="frame" x="7" y="156" width="175" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Block replies containing any of these IP addresses:" id="409">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -349,7 +317,6 @@ ads.*
                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="410">
                                             <rect key="frame" x="186" y="156" width="175" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Block queries for the following domain names:" id="411">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -359,7 +326,6 @@ ads.*
                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="412">
                                             <rect key="frame" x="363" y="156" width="175" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Bypass DNSCrypt to resolve these domains:" id="413">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -369,7 +335,6 @@ ads.*
                                         <button horizontalHuggingPriority="750" verticalHuggingPriority="750" id="416">
                                             <rect key="frame" x="503" y="277" width="25" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
                                             <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="417">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -381,30 +346,23 @@ ads.*
                                         <textField verticalHuggingPriority="750" id="423">
                                             <rect key="frame" x="467" y="284" width="33" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Help" id="424">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="425">
+                                        <box verticalHuggingPriority="750" boxType="separator" id="425">
                                             <rect key="frame" x="9" y="265" width="526" height="5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <font key="titleFont" metaFont="system"/>
                                         </box>
                                         <webView hidden="YES" maintainsBackForwardList="NO" id="449">
                                             <rect key="frame" x="3" y="-3" width="536" height="278"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <animations/>
                                             <webPreferences key="preferences" identifier="helpWebView" defaultFontSize="12" defaultFixedFontSize="12" minimumFontSize="2" plugInsEnabled="NO" javaEnabled="NO" javaScriptEnabled="NO" javaScriptCanOpenWindowsAutomatically="NO" loadsImagesAutomatically="NO" allowsAnimatedImages="NO" allowsAnimatedImageLooping="NO"/>
                                             <accessibility description="Static DNS resolvers"/>
                                         </webView>
                                     </subviews>
-                                    <animations/>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="About" identifier="3" id="356">
@@ -415,7 +373,6 @@ ads.*
                                         <webView maintainsBackForwardList="NO" id="358">
                                             <rect key="frame" x="17" y="31" width="509" height="279"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <animations/>
                                             <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12" plugInsEnabled="NO" javaEnabled="NO" javaScriptCanOpenWindowsAutomatically="NO" loadsImagesAutomatically="NO" allowsAnimatedImages="NO" allowsAnimatedImageLooping="NO">
                                                 <nil key="identifier"/>
                                             </webPreferences>
@@ -423,7 +380,6 @@ ads.*
                                         <button verticalHuggingPriority="750" id="385">
                                             <rect key="frame" x="437" y="-5" width="95" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <animations/>
                                             <buttonCell key="cell" type="push" title="Uninstall" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="386">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -433,7 +389,6 @@ ads.*
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <animations/>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Release Notes" identifier="4" id="349">
@@ -444,19 +399,16 @@ ads.*
                                         <webView maintainsBackForwardList="NO" id="354">
                                             <rect key="frame" x="17" y="17" width="509" height="293"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <animations/>
                                             <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12" plugInsEnabled="NO" javaEnabled="NO" javaScriptCanOpenWindowsAutomatically="NO" loadsImagesAutomatically="NO" allowsAnimatedImages="NO" allowsAnimatedImageLooping="NO">
                                                 <nil key="identifier"/>
                                             </webPreferences>
                                         </webView>
                                     </subviews>
-                                    <animations/>
                                 </view>
                             </tabViewItem>
                         </tabViewItems>
                     </tabView>
                 </subviews>
-                <animations/>
             </view>
         </window>
         <customObject id="263"/>
