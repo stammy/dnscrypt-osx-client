@@ -28,3 +28,5 @@ fi
 
 [ x"$current_uid" != x"$wanted_uid" ] && \
   chown -R "${wanted_uid}:0" "$CONTROL_DIR"
+
+exec sleep 1

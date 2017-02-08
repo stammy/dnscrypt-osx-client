@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16D17a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16E144f" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment version="1070" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
@@ -14,11 +14,11 @@
                 <outlet property="aboutWebView" destination="358" id="359"/>
                 <outlet property="blacklistDomainsTextField" destination="404" id="446"/>
                 <outlet property="blacklistIPsTextField" destination="402" id="444"/>
+                <outlet property="currentResolverTextField" destination="Laq-Rf-7ph" id="IoP-Tf-apC"/>
                 <outlet property="descriptionText" destination="2aF-7O-SkX" id="nM9-H2-22g"/>
                 <outlet property="disableIPv6Button" destination="ESJ-Kf-yNj" id="xFL-L3-vLp"/>
                 <outlet property="dnscryptButton" destination="179" id="363"/>
                 <outlet property="exceptionsTextField" destination="406" id="452"/>
-                <outlet property="fallbackButton" destination="281" id="365"/>
                 <outlet property="helpWebView" destination="449" id="450"/>
                 <outlet property="locationText" destination="e9H-pq-zb6" id="Elc-qh-Z8b"/>
                 <outlet property="providerLink" destination="323" id="Riq-Cc-CLa"/>
@@ -55,7 +55,7 @@
                                     <rect key="frame" x="10" y="33" width="543" height="313"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <button toolTip="Use OpenDNS resolvers with the DNSCrypt protocol" id="179">
+                                        <button toolTip="Use the DNSCrypt protocol" id="179">
                                             <rect key="frame" x="15" y="234" width="204" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Enable DNSCrypt" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="180">
@@ -67,28 +67,6 @@
                                                 <action selector="dnscryptButtonPressed:" target="-2" id="368"/>
                                             </connections>
                                         </button>
-                                        <button id="281">
-                                            <rect key="frame" x="15" y="164" width="239" height="18"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <string key="toolTip">Only check this box if you often have to connect to public WiFi hotspots and you don't want to manually disable DNSCrypt in order to pass a captive portal.</string>
-                                            <buttonCell key="cell" type="check" title="Automatically disable if blocked" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="282">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system" size="14"/>
-                                            </buttonCell>
-                                            <accessibility description="Fallback to insecure DNS"/>
-                                            <connections>
-                                                <action selector="fallbackButtonPressed:" target="-2" id="372"/>
-                                            </connections>
-                                        </button>
-                                        <textField verticalHuggingPriority="750" id="162">
-                                            <rect key="frame" x="14" y="96" width="173" height="19"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Current DNS settings:" id="163">
-                                                <font key="font" metaFont="system" size="16"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
                                         <textField verticalHuggingPriority="750" id="Wkj-kT-maK">
                                             <rect key="frame" x="278" y="208" width="70" height="19"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -168,8 +146,17 @@
                                                 <action selector="resolversNamesPopupButtonPressed:" target="-2" id="fEP-TP-PCO"/>
                                             </connections>
                                         </popUpButton>
-                                        <button toolTip="Do not try to resolve IPv6 records" id="ESJ-Kf-yNj">
-                                            <rect key="frame" x="15" y="133" width="252" height="18"/>
+                                        <textField verticalHuggingPriority="750" id="e9H-pq-zb6">
+                                            <rect key="frame" x="278" y="182" width="267" height="27"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" placeholderString="-" id="q83-P7-DNW">
+                                                <font key="font" size="12" name="Monaco"/>
+                                                <color key="textColor" white="0.2046370968" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button toolTip="Do not try to resolve IPv6 records" misplaced="YES" id="ESJ-Kf-yNj">
+                                            <rect key="frame" x="15" y="155" width="252" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Disable IPv6 to reduce IPv4 latency" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="cCj-X4-U6n">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -180,23 +167,25 @@
                                                 <action selector="disableIPv6ButtonPressed:" target="-2" id="s7R-gl-0Fy"/>
                                             </connections>
                                         </button>
-                                        <textField verticalHuggingPriority="750" id="e9H-pq-zb6">
-                                            <rect key="frame" x="278" y="182" width="267" height="27"/>
+                                        <textField verticalHuggingPriority="750" misplaced="YES" id="162">
+                                            <rect key="frame" x="15" y="93" width="173" height="19"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" placeholderString="-" id="q83-P7-DNW">
-                                                <font key="font" size="12" name="Monaco"/>
-                                                <color key="textColor" white="0.2046370968" alpha="1" colorSpace="calibratedWhite"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Current DNS settings:" id="163">
+                                                <font key="font" metaFont="system" size="16"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <button verticalHuggingPriority="750" misplaced="YES" id="9Hy-oV-v7u">
-                                            <rect key="frame" x="77" y="31" width="81" height="32"/>
+                                        <textField identifier="currentResolver" verticalHuggingPriority="750" misplaced="YES" id="Laq-Rf-7ph">
+                                            <rect key="frame" x="7" y="17" width="261" height="68"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bOq-DG-Q4a">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                        </button>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" placeholderString="" id="EEK-vb-MH8">
+                                                <font key="font" size="14" name="Monaco"/>
+                                                <color key="textColor" white="0.2046370968" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <accessibility description="Current resolver IP addresses"/>
+                                        </textField>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -410,6 +399,7 @@ ads.*
                     </tabView>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="138.5" y="161.5"/>
         </window>
         <customObject id="263"/>
     </objects>

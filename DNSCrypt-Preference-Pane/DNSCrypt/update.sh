@@ -7,7 +7,7 @@ cp /Library/PreferencePanes/DNSCrypt.prefPane/Contents/Resources/usr/bin/hostip 
 mkdir -p extra/usr/sbin
 cp /Library/PreferencePanes/DNSCrypt.prefPane/Contents/Resources/usr/sbin/dnscrypt-proxy \
    extra/usr/sbin/
-   
+
 mkdir -p extra/usr/lib
 
 cp /opt/ldns/lib/libldns.1.dylib \
@@ -19,6 +19,7 @@ cp /opt/ldns/lib/libldns.1.dylib \
 if [ -f /usr/local/lib/libsodium.18.dylib ]; then
   echo '*** /usr/local/lib/libsodium.{dylib,la} found'
   echo '*** Compile dnscrypt-proxy without them to get a static build'
+  echo '*** Then reinstall them'
   sleep 10
 fi
 
@@ -37,6 +38,6 @@ mkdir -p extra/usr/share/dnscrypt-proxy
 
 cp /Library/PreferencePanes/DNSCrypt.prefPane/Contents/Resources/usr/share/dnscrypt-proxy/dnscrypt-resolvers.csv \
   extra/usr/share/dnscrypt-proxy/
-  
+
 cp /Library/PreferencePanes/DNSCrypt.prefPane/Contents/Resources/usr/share/dnscrypt-proxy/minisign.pub \
   extra/usr/share/dnscrypt-proxy/

@@ -14,4 +14,4 @@ plugin_args=''
 
 echo "libdcplugin_example_ldns_blocking.la${plugin_args}" > \
   "$BLOCKING_FILE"
-touch "$PLUGINS_ENABLED_FILE"  
+touch "$PLUGINS_ENABLED_FILE"

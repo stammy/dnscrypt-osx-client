@@ -10,8 +10,6 @@ PAUSE_INCREMENT=1
 
 logger_debug "DNSCrypt has been requested"
 
-./set-dns-to-dhcp.sh
-
 pause=0
 while [ -e "$DNSCRYPT_FILE" ]; do
   logger_debug "Switching to dnscrypt if required (pause=$pause)"
@@ -22,33 +20,17 @@ while [ -e "$DNSCRYPT_FILE" ]; do
       ./switch-to-dhcp.sh
     fi
   fi
-  [ $pause -lt $PAUSE_MAX ] &&  pause=$((pause + 1))
   pause_counter=0
   while [ -e "$DNSCRYPT_FILE" -a $pause_counter -lt $pause ]; do
     sleep $PAUSE_UNIT
     pause_counter=$((pause_counter + 1))
   done
+  [ $pause -lt $PAUSE_MAX ] && pause=$((pause + 1))
   [ ! -e "$DNSCRYPT_FILE" ] && break
-  if [ -e "$FALLBACK_FILE" ]; then
-    logger_debug "Checking if the router hijacks HTTP queries"
-    if ./check-hijacking.sh; then
-      logger_debug "The router doesn't hijack HTTP queries"
-    else
-      logger_debug "The router hijacks HTTP queries - DNSCrypt is likely to be blocked"
-      continue
-    fi
-  fi
   ./start-dnscrypt-proxy.sh || continue
-  ./check-local-dns.sh || continue
   ./set-dns.sh "$INTERFACE_PROXY"
   if [ $? != 0 ]; then
     logger_debug "Setting the DNS to [$INTERFACE_PROXY] didn't work"
-    ./set-dns-to-dhcp.sh
-    continue
-  fi
-  ./check-hijacking.sh
-  if [ $? != 0 ]; then
-    logger_debug "Current configuration seems to be hijacking HTTP queries. Reverting to default resolvers."
     ./set-dns-to-dhcp.sh
     continue
   fi
@@ -57,6 +39,7 @@ done
 
 if [ ! -e "$DNSCRYPT_FILE" ]; then
   touch "$CONTROL_DIR"
+  exit 0
 fi
 
 exec ./exceptions-add.sh

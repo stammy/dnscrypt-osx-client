@@ -3,7 +3,7 @@
 . ./common.inc
 
 ifs=$(ifconfig -a | \
-  awk '/^[^ 	:]*:/ { sub(/:.*$/,empty); iface=$0 } /status: active/ { print iface }')
+  awk '/^[^     :]*:/ { sub(/:.*$/,empty); iface=$0 } /status: active/ { print iface }')
 ifs=$(echo $ifs)
 
 typeset -A found

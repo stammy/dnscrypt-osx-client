@@ -16,7 +16,6 @@ STATES_DIR="${DNSCRYPT_VAR_BASE_DIR}/states"
 
 DNSCRYPT_RESOLVER_NAME_FILE="${CONTROL_DIR}/dnscrypt-resolver-name"
 DNSCRYPT_FILE="${CONTROL_DIR}/dnscrypt"
-FALLBACK_FILE="${CONTROL_DIR}/fallback"
 HANDLERS_LOCK_FILE="${DNSCRYPT_VAR_RUN_BASE_DIR}/dnscrypt-handlers.lock"
 DNSCRYPT_PROXY_PLUGINS_BASE_FILE="${CONTROL_DIR}/plugin"
 STATIC_RESOLVERS_FILE="${CONTROL_DIR}/static-resolvers"
@@ -24,6 +23,7 @@ STATIC_RESOLVERS_FILE="${CONTROL_DIR}/static-resolvers"
 DEBUG_ENABLED_FILE="${CONTROL_DIR}/debug.enabled"
 
 PLUGINS_ENABLED_FILE="${CONTROL_DIR}/plugins.enabled"
+CACHE_FILE="${CONTROL_DIR}/plugin-cache.enabled"
 QUERY_LOGGING_FILE="${CONTROL_DIR}/plugin-query-logging.enabled"
 BLOCKING_FILE="${CONTROL_DIR}/plugin-blocking.enabled"
 AAAA_BLOCKING_FILE="${CONTROL_DIR}/plugin-aaaa-blocking.enabled"
@@ -49,12 +49,8 @@ RESOLVERS_LIST_BASE_DIR="${DNSCRYPT_USR_BASE_DIR}/share/dnscrypt-proxy"
 RESOLVERS_LIST_PUBLIC_KEY="RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3"
 RESOLVERS_LIST_STATE="${STATES_DIR}/resolvers-updated"
 
-INTERFACE_UNBOUND="127.0.0.53"
-INTERFACE_UNBOUND_MASK="24"
 INTERFACE_PROXY="127.0.0.54"
 INTERFACE_PROXY_MASK="24"
-INTERFACE_PROBES="127.0.0.55"
-INTERFACE_PROBES_MASK="24"
 
 DOMAINS_EXCEPTIONS='
 belkin corp domain example home host invalid lan local localdomain test freebox.fr fritz.box nowtv.com routerlogin.net l onion
@@ -63,9 +59,7 @@ belkin corp domain example home host invalid lan local localdomain test freebox.
 export PATH="${DNSCRYPT_USR_BASE_DIR}/sbin:${DNSCRYPT_USR_BASE_DIR}/bin:${DNSCRYPT_USR_BASE_DIR}/scripts:$PATH"
 
 init_interfaces() {
-  /sbin/ifconfig lo0 alias ${INTERFACE_UNBOUND}/${INTERFACE_UNBOUND_MASK}
   /sbin/ifconfig lo0 alias ${INTERFACE_PROXY}/${INTERFACE_PROXY_MASK}
-  /sbin/ifconfig lo0 alias ${INTERFACE_PROBES}/${INTERFACE_PROBES_MASK}
 }
 
 logger_debug() {

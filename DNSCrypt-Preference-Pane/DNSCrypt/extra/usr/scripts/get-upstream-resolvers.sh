@@ -19,7 +19,7 @@ done
 
 if [ "$dnscrypt_proxy_used" = 'yes' \
      -a -r "${STATES_DIR}/dnscrypt-proxy-description" ]; then
-  cat "${STATES_DIR}/dnscrypt-proxy-description" && exit 0  
+  cat "${STATES_DIR}/dnscrypt-proxy-description" && exit 0
 fi
 echo "$upstream_resolvers"
 exit 0

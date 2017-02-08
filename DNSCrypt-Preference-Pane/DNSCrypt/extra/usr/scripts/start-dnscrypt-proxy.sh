@@ -2,6 +2,8 @@
 
 . ./common.inc
 
+CERTIFICATE_MIN_VALIDITY=60
+
 DNSCRYPT_LIB_BASE_DIR="${DNSCRYPT_USR_BASE_DIR}/lib"
 export DYLD_LIBRARY_PATH="${DNSCRYPT_LIB_BASE_DIR}:${DYLD_LIBRARY_PATH}"
 
@@ -34,32 +36,15 @@ try_resolver() {
 
   logger_debug "Running a test dnscrypt proxy for [$description]"
   rm -f "${RES_DIR}/${priority}"
-  exec alarmer 3 dnscrypt-proxy --pid="$pid_file" \
+  alarmer 3 dnscrypt-proxy --pid="$pid_file" \
     --resolver-name="$RESOLVER_NAME" \
-    --local-address="${INTERFACE_PROBES}:${priority}" $args 2>&1 | \
-  while read line; do
-    case "$line" in
-      *Proxying\ from\ *)
-        logger_debug "Proxy for [$description] is up"
-
-# This doesn't send anything to Apple, and any reliable domain name can be used --
-# The following line sends a common query to the chosen DNSCrypt resolver to
-# check that it responds and can be used instead of leaving the mac without
-# a working DNS configuration.
-        answers=$(exec dig +time=1 +short +tries=2 -p $priority \
-          @"$INTERFACE_PROBES" www.apple.com. 2> /dev/null | \
-          egrep -ic '^[0-9.:]+$')
-
-        [ -r "$pid_file" ] && kill $(cat -- "$pid_file")
-        if [ $answers -gt 0 ]; then
-          logger_debug "Proxy for [$description] can be used"
-          echo "$args" > "${RES_DIR}/${priority}"
-          echo "$description" > "${DESCRIPTIONS_DIR}/${priority}"
-        fi
-        ;;
-      *) ;;
-    esac
-  done
+    --test="$CERTIFICATE_MIN_VALIDITY" $args
+  if [ $? = 0 ]; then
+    logger_debug "Certificate for [$description] received"
+    echo "$args" > "${RES_DIR}/${priority}"
+    echo "$description" > "${DESCRIPTIONS_DIR}/${priority}"
+  fi
+  rm -f "$pid_file"
 }
 
 get_plugin_args() {
@@ -82,11 +67,11 @@ logger_debug "dnscrypt-proxy should be (re)started, stopping previous instance i
 
 wait_pids=""
 
-try_resolver 5004 "${RESOLVER_NAME} using DNSCrypt over UDP" \
+try_resolver 1 "${RESOLVER_NAME} using DNSCrypt over UDP" \
   "--resolver-name=$RESOLVER_NAME" &
 wait_pids="$wait_pids $!"
 
-try_resolver 5005 "${RESOLVER_NAME} using DNSCrypt over TCP" \
+try_resolver 2 "${RESOLVER_NAME} using DNSCrypt over TCP" \
   "--resolver-name=$RESOLVER_NAME --tcp-only" &
 wait_pids="$wait_pids $!"
 
@@ -104,6 +89,8 @@ if [ x"$best_file" = "x" ]; then
   logger_debug "No usable proxy configuration has been found"
   exit 1
 fi
+
+./switch-cache-on.sh
 
 plugins_args=''
 if [ -r "${DNSCRYPT_PROXY_PLUGINS_BASE_FILE}s.enabled" ]; then
@@ -132,23 +119,6 @@ if [ $? != 0 ]; then
     exit 1
   logger_debug "dnscrypt-proxy $best_args worked after a retry"
 fi
-
-sleep 1
-logger_debug "Checking if the current configuration hijacks all DNS queries"
-i=0
-while [ $i -lt 30 ]; do
-  ./check-local-dns.sh && break
-  sleep 0.1
-  i=$((i + 1))
-done
-
-if [ $i -ge 30 ]; then
-  logger_debug "Current configuration hijacks all DNS queries, disabling DNSCrypt"
-  ./switch-to-dhcp.sh
-  exit 1
-fi
-
-logger_debug "Current configuration doesn't seem to hijack all DNS queries"
 
 mv "${DESCRIPTIONS_DIR}/${best_file}" \
    "${STATES_DIR}/dnscrypt-proxy-description" 2>/dev/null || exit 0

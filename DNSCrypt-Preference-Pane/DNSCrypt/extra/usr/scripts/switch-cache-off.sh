@@ -2,4 +2,5 @@
 
 . ./common.inc
 
-rm -f "$FALLBACK_FILE"
+rm -f "$CACHE_FILE"
+
