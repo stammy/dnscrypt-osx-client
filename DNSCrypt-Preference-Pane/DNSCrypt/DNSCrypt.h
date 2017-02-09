@@ -27,8 +27,7 @@
 
 #define kRESOLVERS_LIST_FILE kDNSCRYPT_SHARE_BASE_DIR @"/dnscrypt-proxy/dnscrypt-resolvers.csv"
 
-#define kREFRESH_DELAY 2.0
-#define kCHECKBOXES_AFTER_CHANGE_DELAY 8.0
+#define kREFRESH_DELAY 1.0
 #define kMAX_TRIES_AFTER_CHANGE (30 / kREFRESH_DELAY)
 
 typedef enum {
