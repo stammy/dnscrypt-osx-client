@@ -19,22 +19,13 @@
       Tips:
       %ul
         %li
-          If you have a firewall, open TCP and UDP ports 53, 54, 443
-          and 1053. These are the most common ports used for DNSCrypt.
+          If you have a firewall, open TCP and UDP ports 53 and 443.
+          These are the most common ports used for DNSCrypt.
         %li
-          The "Automatically disable if blocked" feature automatically disables
-          DNSCrypt when DNS queries are not able to reach the DNSCrypt
-          resolver. This can
-          happen on public WiFi networks that require going through a captive
-          portal before you can access external networks.
-          This function is only provided for conveniency.
-          When enabled, the protocol can be easily downgraded by
-          third-parties. In other words, when the "Automatically
-          disable if blocked" feature is enabled, this software doesn't
-          provide any security at all against active attackers, but it can
-          still be useful against passive attackers and in order to bypass
-          DNS censorship. Don't enable it unless you are frequently
-          roaming and you don't want to manually disable/enable DNSCrypt.
+          WiFi captive portals dont work if they can't intercept DNS queries
+          and often block DNSCrypt.
+          So on public WiFi network, disable DNSCrypt, log in, then you can
+          enable it again.
         %li
           Using Little Snitch? There are a few rules you need to establish,
           which Little Snitch should prompt for when trying to
@@ -43,6 +34,5 @@
             %li Allow any outgoing connection for system processes (dnscrypt-proxy)
             %li Allow any incoming connection for system process (dnscrypt-proxy)
             %li Allow any outgoing connection for system processes (dig)
-            %li Allow outgoing TCP connections to port 80 (http) of www.apple.com for system process (curl)
             %li For automatic updates, allow outgoing TCP connections to port 80 (http) of updates.dnscrypt.org and download.dnscrypt.org, as well as to port 443 (https) of github.com and download.dnscrypt.org for system process (curl)
           (Thanks to @cavemandaveman and @TraderStf)

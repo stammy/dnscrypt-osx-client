@@ -36,8 +36,12 @@
         Checking the "Log DNS queries" box dumps all DNS queries sent
         by your computer to a file named /var/log/dnscrypt-query.log
       %p
+        Blocked queries can also go to a log file. The file is named
+        /var/log/dnscrypt-blocked-query.log
+      %p
         The "View log" button opens it with the log viewer application
-        so that you can watch it in real time.
+        so that you can watch it in real time. The other button shows
+        the blocked queries.
     %section
       %h2 IP addresses blocking
       %p
@@ -57,19 +61,16 @@
       %p
         This is a list of domain names to be blocked.
       %p
-        "example.com" will only match this specific name, not
-        "www.example.com".
+        "example.com" will match "example.com" and "www.example.com".
       %p
-        But wildcards are also supported. "*.example.com" will match
-        any name ending with ".example.com" whereas "ads.*" will match
-        any name beginning with "ads."
+        But wildcards are also supported. "ads.*" will match any name
+        beginning with "ads."
       %p
         Wildcards can also perform substring matching. "*xxx*" will
         match any name containing the string "xxx".
       %p
-        Patterns to be blocked should be separated with spaces, and
-        the blocking takes effect immediately after you hit the Return
-        key. Flushing your DNS cache is not required.
+        Patterns to be blocked should be separated with spaces or new
+        lines. Flushing your DNS cache is not required.
       %p
         This feature is only enabled when using DNSCrypt.
     %section
@@ -81,7 +82,7 @@
         This includes local domain names provided by home routers
         (like "routerlogin.net"), local domain names provided by
         operating systems and applications (like ".local" or ".lan"),
-        local domain names served by appliances like st-top boxes, and
+        local domain names served by appliances like set-top boxes, and
         internal domains used in corporate networks.
       %p
         Domains listed here will bypass DNSCrypt in order to be sent

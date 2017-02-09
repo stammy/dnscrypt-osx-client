@@ -10,6 +10,9 @@ plugin_args=''
 [ -s "$BLACKLIST_DOMAINS_FILE" ] && \
   plugin_args="${plugin_args},--domains='${BLACKLIST_DOMAINS_FILE}'"
 
+[ -e "$BLOCKED_QUERY_LOGGING_FILE" ] && \
+  plugin_args="${plugin_args},--logfile='${BLOCKED_QUERY_LOG_FILE}'"
+
 [ -z "$plugin_args" ] && exec ./switch-blacklists-off.sh
 
 echo "libdcplugin_example_ldns_blocking.la${plugin_args}" > \

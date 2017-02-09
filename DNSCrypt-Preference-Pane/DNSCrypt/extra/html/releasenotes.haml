@@ -21,6 +21,26 @@
     %h1 Release Notes for DNSCrypt-OSXclient by AlterStep
 
     %article
+      %h2 Version 1.0.13 by AlterStep
+      %time Thu, Feb 09 2017
+      %p
+        No more "automatic fallback". We trust users to know when they
+        must disable DNSCrypt.
+      %p
+        DNS caching for improved speed.
+      %p
+        New buttons to log and view blocked queries.
+      %p
+        New system to bypass DNSCrypt using dnscrypt-proxy forwarding
+        module.
+      %p
+        Many bug fixes because old code was removed.
+      %p
+        dnscrypt-proxy 1.9.0 with support for the new ChaCha20 encryption.
+      %p
+        libsodium 1.0.11.
+
+    %article
       %h2 Version 1.0.12 by AlterStep
       %time Sun, Jul 31 2016
       %p
@@ -90,61 +110,3 @@
         Updated DNSCrypt proxy to version 1.4.3
       %p
         Updated libsodium to 1.0.1-minimal
-
-    %article
-      %h2 Version 1.0.4 by AlterStep
-      %time Thu, 19 Sep 2014
-      %p
-        Updated DNSCrypt proxy to version 1.4.1
-      %p
-        Updated libsodium to 0.7.0-minimal
-
-    %article
-      %h2 Version 1.0.3 by AlterStep
-      %time Thu, 18 Jun 2014
-      %p
-        Runs on OSX 10.8 (Mountain Lion), 10.9 (Mavericks) and 10.10 (Yosemite)
-      %p
-        New set of icons, contributed by Aaron VonderHaar
-
-    %article
-      %h2 Version 1.0.2 by AlterStep
-      %time Thu, 05 Jun 2014
-      %p
-        Improved installation scripts
-      %p
-        LDNS has been downgraded in order to work on systems without
-        Homebrew.
-
-    %article
-      %h2 Version 1.0.1 by AlterStep
-      %time Mon, 28 Apr 2014
-      %p
-        Include the release version of dnscrypt-proxy 1.4, with a new
-        OpenNIC resolver.
-      %p
-        Wait after dnscrypt-proxy has been turned on before sending a
-        query. This actually makes state changes faster.
-      %p
-        Debug log, turned off by default and deleted after every
-        reboot. In order to enable it, create an empty file named
-        %code debug.enabled
-        in
-        %code /Library/Application Support/DNSCrypt/control
-        and the debug log file itself is
-        %code /var/log/dnscrypt-osxclient-debug.log
-      %p
-        Thanks a lot for your feedback on the first version!
-
-    %article
-      %h2 Version 1.0.0 by AlterStep
-      %time Thu, 21 Apr 2014
-      %p
-        This is my first release, based on the source code of the beta
-        version written by OpenDNS.
-      %p
-        It has only been tested on OSX 10.9.
-      %p
-        It includes dnscrypt-proxy 1.4.0, libsodium 0.4.5, libldns 1.6.17.
-      %p
-        Contact me on Github: https://github.com/alterstep/dnscrypt-osx-client

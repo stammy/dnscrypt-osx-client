@@ -15,3 +15,5 @@ if [ "$servers" = "" ]; then
 else
   echo "$servers" | sed 's/^ *//;s/ *$//' > "$STATIC_RESOLVERS_FILE"
 fi
+
+exec ./switch-exceptions-on.sh

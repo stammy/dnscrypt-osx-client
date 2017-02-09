@@ -2,9 +2,22 @@
 
 . ./common.inc
 
-ifs=$(ifconfig -a | \
-  awk '/^[^     :]*:/ { sub(/:.*$/,empty); iface=$0 } /status: active/ { print iface }')
-ifs=$(echo $ifs)
+get_ifs() {
+  ifs_save="$IFS"
+  IFS=''
+  ifconfig -a | while read line; do
+    nif=$(echo "$line" | egrep -i '^[^ 	]+:\s+flags' | sed 's/:.*$//')
+    isact=$(echo "$line" | egrep -i 'status:\s*active')
+    if [ -n "$nif" ]; then
+      cif="$nif"
+    elif [ -n "$isact" -a -n "$cif" ]; then
+      echo $cif
+    fi
+  done
+  IFS="$ifs_save"
+}
+
+ifs=$(get_ifs)
 
 typeset -A found
 ips=""

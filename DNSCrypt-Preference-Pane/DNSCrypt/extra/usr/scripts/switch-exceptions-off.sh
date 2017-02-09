@@ -2,4 +2,4 @@
 
 . ./common.inc
 
-rm -f "$AAAA_BLOCKING_FILE"
+rm -f "$FORWARDING_FILE"

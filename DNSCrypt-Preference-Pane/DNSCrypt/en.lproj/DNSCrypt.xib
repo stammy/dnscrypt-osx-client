@@ -12,14 +12,14 @@
                 <outlet property="_window" destination="12" id="26"/>
                 <outlet property="aboutTabViewItem" destination="356" id="376"/>
                 <outlet property="aboutWebView" destination="358" id="359"/>
-                <outlet property="blacklistDomainsTextField" destination="404" id="446"/>
-                <outlet property="blacklistIPsTextField" destination="402" id="444"/>
+                <outlet property="blacklistDomainsTextView" destination="gRF-Cw-rp9" id="4B2-cK-eTz"/>
+                <outlet property="blacklistIPsTextView" destination="Jos-8C-r8h" id="RN8-Gu-oPA"/>
+                <outlet property="blockedQueryLoggingButton" destination="J2W-Uj-YcC" id="6K0-xb-DKk"/>
                 <outlet property="currentResolverTextField" destination="Laq-Rf-7ph" id="IoP-Tf-apC"/>
                 <outlet property="descriptionText" destination="2aF-7O-SkX" id="nM9-H2-22g"/>
                 <outlet property="disableIPv6Button" destination="ESJ-Kf-yNj" id="xFL-L3-vLp"/>
                 <outlet property="dnscryptButton" destination="179" id="363"/>
-                <outlet property="exceptionsTextField" destination="406" id="452"/>
-                <outlet property="helpWebView" destination="449" id="450"/>
+                <outlet property="exceptionsTextView" destination="YvE-Lo-YVl" id="9u8-Sn-Poo"/>
                 <outlet property="locationText" destination="e9H-pq-zb6" id="Elc-qh-Z8b"/>
                 <outlet property="providerLink" destination="323" id="Riq-Cc-CLa"/>
                 <outlet property="queryLoggingButton" destination="398" id="458"/>
@@ -106,7 +106,7 @@
                                         <button verticalHuggingPriority="750" id="323">
                                             <rect key="frame" x="274" y="10" width="269" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="push" title="http://www.dnscrypt.org" alternateTitle="Browse the OpenDNS web site" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="324">
+                                            <buttonCell key="cell" type="push" title="http://www.dnscrypt.org" alternateTitle="Browse the provider website" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="324">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="cellTitle"/>
                                             </buttonCell>
@@ -194,8 +194,8 @@
                                     <rect key="frame" x="10" y="33" width="543" height="313"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textField verticalHuggingPriority="750" id="390">
-                                            <rect key="frame" x="5" y="236" width="406" height="17"/>
+                                        <textField verticalHuggingPriority="750" misplaced="YES" id="390">
+                                            <rect key="frame" x="5" y="256" width="406" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="When not using DNSCrypt, use the following static DNS servers:" id="391">
                                                 <font key="font" metaFont="system"/>
@@ -203,8 +203,8 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField verticalHuggingPriority="750" id="392">
-                                            <rect key="frame" x="8" y="206" width="526" height="22"/>
+                                        <textField verticalHuggingPriority="750" misplaced="YES" id="392">
+                                            <rect key="frame" x="8" y="226" width="526" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" toolTip="Leave empty to use DHCP-provided servers" placeholderString="Space-separated list of IP addresses or leave blank for DHCP" drawsBackground="YES" usesSingleLineMode="YES" id="393">
                                                 <font key="font" size="13" name="Courier"/>
@@ -219,8 +219,8 @@
                                                 <action selector="staticResolversTextFieldChanged:" target="-2" id="432"/>
                                             </connections>
                                         </textField>
-                                        <button id="398">
-                                            <rect key="frame" x="7" y="281" width="126" height="18"/>
+                                        <button misplaced="YES" id="398">
+                                            <rect key="frame" x="7" y="290" width="126" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="Log DNS queries" bezelStyle="regularSquare" imagePosition="left" inset="2" id="399">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -231,10 +231,10 @@
                                             </buttonCell>
                                             <accessibility description="Log DNS queries"/>
                                         </button>
-                                        <button verticalHuggingPriority="750" id="400">
-                                            <rect key="frame" x="161" y="273" width="94" height="32"/>
+                                        <button verticalHuggingPriority="750" misplaced="YES" id="400">
+                                            <rect key="frame" x="127" y="282" width="94" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <buttonCell key="cell" type="push" title="View log" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="401">
+                                            <buttonCell key="cell" type="push" title="View query log" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="401">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
@@ -243,59 +243,8 @@
                                                 <action selector="viewLogButtonPushed:" target="-2" id="441"/>
                                             </connections>
                                         </button>
-                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="402">
-                                            <rect key="frame" x="10" y="7" width="169" height="141"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="403">
-                                                <font key="font" size="11" name="Courier"/>
-                                                <string key="placeholderString">IP addresses (IPv4/IPv6) to block.  208.67.0.255 192.0.43.10
-::1</string>
-                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                <allowedInputSourceLocales>
-                                                    <string>NSAllRomanInputSourcesLocaleIdentifier</string>
-                                                </allowedInputSourceLocales>
-                                            </textFieldCell>
-                                            <connections>
-                                                <action selector="blacklistIPsUpdated:" target="-2" id="445"/>
-                                            </connections>
-                                        </textField>
-                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="404">
-                                            <rect key="frame" x="188" y="7" width="169" height="141"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="405">
-                                                <font key="font" size="11" name="Courier"/>
-                                                <string key="placeholderString">Domain names to block.
- *sex*
-ads.*
-*.example.com suspicious.example.net</string>
-                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                <allowedInputSourceLocales>
-                                                    <string>NSAllRomanInputSourcesLocaleIdentifier</string>
-                                                </allowedInputSourceLocales>
-                                            </textFieldCell>
-                                            <connections>
-                                                <action selector="blacklistDomainsUpdated:" target="-2" id="447"/>
-                                            </connections>
-                                        </textField>
-                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="406">
-                                            <rect key="frame" x="366" y="7" width="169" height="141"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Domain names to resolve through the default resolvers instead of DNSCrypt.  localdomain mycompany.example.net" drawsBackground="YES" id="407">
-                                                <font key="font" size="11" name="Courier"/>
-                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                <allowedInputSourceLocales>
-                                                    <string>NSAllRomanInputSourcesLocaleIdentifier</string>
-                                                </allowedInputSourceLocales>
-                                            </textFieldCell>
-                                            <connections>
-                                                <action selector="exceptionsUpdated:" target="-2" id="453"/>
-                                            </connections>
-                                        </textField>
-                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="408">
-                                            <rect key="frame" x="7" y="156" width="175" height="34"/>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" id="408">
+                                            <rect key="frame" x="7" y="180" width="175" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Block replies containing any of these IP addresses:" id="409">
                                                 <font key="font" metaFont="system"/>
@@ -303,8 +252,8 @@ ads.*
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="410">
-                                            <rect key="frame" x="186" y="156" width="175" height="34"/>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" id="410">
+                                            <rect key="frame" x="186" y="180" width="175" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Block queries for the following domain names:" id="411">
                                                 <font key="font" metaFont="system"/>
@@ -312,8 +261,8 @@ ads.*
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="412">
-                                            <rect key="frame" x="363" y="156" width="175" height="34"/>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" id="412">
+                                            <rect key="frame" x="363" y="180" width="175" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Bypass DNSCrypt to resolve these domains:" id="413">
                                                 <font key="font" metaFont="system"/>
@@ -321,8 +270,8 @@ ads.*
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <button horizontalHuggingPriority="750" verticalHuggingPriority="750" id="416">
-                                            <rect key="frame" x="503" y="277" width="25" height="25"/>
+                                        <button horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" id="416">
+                                            <rect key="frame" x="511" y="286" width="25" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="417">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -332,25 +281,144 @@ ads.*
                                                 <action selector="helpButtonPressed:" target="-2" id="451"/>
                                             </connections>
                                         </button>
-                                        <textField verticalHuggingPriority="750" id="423">
-                                            <rect key="frame" x="467" y="284" width="33" height="17"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Help" id="424">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
-                                        <box verticalHuggingPriority="750" boxType="separator" id="425">
-                                            <rect key="frame" x="9" y="265" width="526" height="5"/>
+                                        <box verticalHuggingPriority="750" misplaced="YES" boxType="separator" id="425">
+                                            <rect key="frame" x="9" y="279" width="526" height="5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </box>
-                                        <webView hidden="YES" maintainsBackForwardList="NO" id="449">
-                                            <rect key="frame" x="3" y="-3" width="536" height="278"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <webPreferences key="preferences" identifier="helpWebView" defaultFontSize="12" defaultFixedFontSize="12" minimumFontSize="2" plugInsEnabled="NO" javaEnabled="NO" javaScriptEnabled="NO" javaScriptCanOpenWindowsAutomatically="NO" loadsImagesAutomatically="NO" allowsAnimatedImages="NO" allowsAnimatedImageLooping="NO"/>
-                                            <accessibility description="Static DNS resolvers"/>
-                                        </webView>
+                                        <scrollView misplaced="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="jMK-cV-G1F">
+                                            <rect key="frame" x="7" y="31" width="173" height="141"/>
+                                            <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
+                                            <clipView key="contentView" id="xbZ-5I-JUV">
+                                                <rect key="frame" x="1" y="1" width="171" height="139"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <textView importsGraphics="NO" richText="NO" usesFontPanel="YES" selectionGranularity="word" findStyle="panel" incrementalSearchingEnabled="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" smartInsertDelete="YES" id="Jos-8C-r8h" customClass="NSPlaceHolderTextView">
+                                                        <rect key="frame" x="0.0" y="0.0" width="171" height="139"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <size key="minSize" width="171" height="139"/>
+                                                        <size key="maxSize" width="463" height="10000000"/>
+                                                        <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <allowedInputSourceLocales>
+                                                            <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                        </allowedInputSourceLocales>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="-2" id="OZf-fp-jLv"/>
+                                                        </connections>
+                                                    </textView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </clipView>
+                                            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="aEl-Zj-fOn">
+                                                <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </scroller>
+                                            <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="TLo-RQ-0Ze">
+                                                <rect key="frame" x="156" y="1" width="16" height="139"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </scroller>
+                                        </scrollView>
+                                        <scrollView misplaced="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="Qko-q8-g0Z">
+                                            <rect key="frame" x="186" y="31" width="173" height="141"/>
+                                            <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
+                                            <clipView key="contentView" id="BQE-BC-kgC">
+                                                <rect key="frame" x="1" y="1" width="171" height="139"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <textView importsGraphics="NO" richText="NO" usesFontPanel="YES" findStyle="panel" incrementalSearchingEnabled="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" spellingCorrection="YES" smartInsertDelete="YES" id="gRF-Cw-rp9" customClass="NSPlaceHolderTextView">
+                                                        <rect key="frame" x="0.0" y="0.0" width="171" height="139"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <size key="minSize" width="171" height="139"/>
+                                                        <size key="maxSize" width="463" height="10000000"/>
+                                                        <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <allowedInputSourceLocales>
+                                                            <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                        </allowedInputSourceLocales>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="-2" id="bRg-GP-ktD"/>
+                                                        </connections>
+                                                    </textView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </clipView>
+                                            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="F7U-rs-cjI">
+                                                <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </scroller>
+                                            <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="I9u-BD-eBC">
+                                                <rect key="frame" x="156" y="1" width="16" height="139"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </scroller>
+                                        </scrollView>
+                                        <scrollView misplaced="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="sD4-mi-6fB">
+                                            <rect key="frame" x="365" y="31" width="173" height="141"/>
+                                            <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
+                                            <clipView key="contentView" id="UK5-2c-eqe">
+                                                <rect key="frame" x="1" y="1" width="171" height="139"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <textView importsGraphics="NO" richText="NO" usesFontPanel="YES" findStyle="panel" incrementalSearchingEnabled="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" spellingCorrection="YES" smartInsertDelete="YES" id="YvE-Lo-YVl" customClass="NSPlaceHolderTextView">
+                                                        <rect key="frame" x="0.0" y="0.0" width="171" height="139"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <size key="minSize" width="171" height="139"/>
+                                                        <size key="maxSize" width="463" height="10000000"/>
+                                                        <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <allowedInputSourceLocales>
+                                                            <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                        </allowedInputSourceLocales>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="-2" id="hUC-03-vFm"/>
+                                                        </connections>
+                                                    </textView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </clipView>
+                                            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="Wuj-rd-fFa">
+                                                <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </scroller>
+                                            <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="WdU-Ib-n7D">
+                                                <rect key="frame" x="156" y="1" width="16" height="139"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </scroller>
+                                        </scrollView>
+                                        <button verticalHuggingPriority="750" misplaced="YES" id="Ed0-Kd-FAT">
+                                            <rect key="frame" x="179" y="-4" width="187" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="Save and apply changes" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="JSd-1Q-unh">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="saveAndApplyChangesButtonPressed:" target="-2" id="541-Cq-wgy"/>
+                                            </connections>
+                                        </button>
+                                        <button misplaced="YES" id="J2W-Uj-YcC">
+                                            <rect key="frame" x="246" y="290" width="145" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" title="Log blocked queries" bezelStyle="regularSquare" imagePosition="left" inset="2" id="wk0-j2-TT6">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                                <connections>
+                                                    <action selector="blockedQueryLoggingButtonPressed:" target="-2" id="dEx-Cf-vKu"/>
+                                                </connections>
+                                            </buttonCell>
+                                            <accessibility description="Log blocked DNS queries"/>
+                                        </button>
+                                        <button verticalHuggingPriority="750" misplaced="YES" id="aHY-xb-fdb">
+                                            <rect key="frame" x="388" y="282" width="108" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="push" title="View blocked" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ScZ-t3-c3e">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <accessibility description="View the DNS query log"/>
+                                            <connections>
+                                                <action selector="viewBlockedLogButtonPushed:" target="-2" id="PNq-Sc-lOb"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -399,7 +467,7 @@ ads.*
                     </tabView>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="138.5" y="161.5"/>
+            <point key="canvasLocation" x="620.5" y="104.5"/>
         </window>
         <customObject id="263"/>
     </objects>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0932D7F61E4B324A00E8F3FC /* NSPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0932D7F51E4B324A00E8F3FC /* NSPlaceHolderTextView.m */; };
 		0946B0C613F47F53008277C6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0946B0C513F47F53008277C6 /* Cocoa.framework */; };
 		0946B0C813F47F53008277C6 /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0946B0C713F47F53008277C6 /* PreferencePanes.framework */; };
 		0946B0D213F47F53008277C6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0946B0D013F47F53008277C6 /* InfoPlist.strings */; };
@@ -29,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0932D7F51E4B324A00E8F3FC /* NSPlaceHolderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSPlaceHolderTextView.m; sourceTree = "<group>"; };
+		0932D7F71E4B327D00E8F3FC /* NSPlaceHolderTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSPlaceHolderTextView.h; sourceTree = "<group>"; };
 		0946B0C213F47F53008277C6 /* DNSCrypt.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DNSCrypt.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
 		0946B0C513F47F53008277C6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		0946B0C713F47F53008277C6 /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = System/Library/Frameworks/PreferencePanes.framework; sourceTree = SDKROOT; };
@@ -124,6 +127,7 @@
 				09AD019F15D2483500638DCE /* html */,
 				09FB094315C9DE6400B8AAB6 /* usr */,
 				0946B0CE13F47F53008277C6 /* Supporting Files */,
+				096AF93A1E4B565A003C3D67 /* UI Additions */,
 			);
 			path = DNSCrypt;
 			sourceTree = "<group>";
@@ -137,6 +141,15 @@
 				0946B0D313F47F53008277C6 /* DNSCrypt-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		096AF93A1E4B565A003C3D67 /* UI Additions */ = {
+			isa = PBXGroup;
+			children = (
+				0932D7F51E4B324A00E8F3FC /* NSPlaceHolderTextView.m */,
+				0932D7F71E4B327D00E8F3FC /* NSPlaceHolderTextView.h */,
+			);
+			name = "UI Additions";
 			sourceTree = "<group>";
 		};
 		09B1686F1906062E003FDBCC /* CHCSVParser */ = {
@@ -258,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09B168731906062E003FDBCC /* CHCSVParser.m in Sources */,
+				0932D7F61E4B324A00E8F3FC /* NSPlaceHolderTextView.m in Sources */,
 				0946B0D613F47F53008277C6 /* DNSCrypt.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

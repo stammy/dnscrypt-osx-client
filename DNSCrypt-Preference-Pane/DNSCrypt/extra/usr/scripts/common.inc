@@ -1,5 +1,5 @@
 
-CURRENT_VERSION=5
+CURRENT_VERSION=6
 
 DNSCRYPT_USR_BASE_DIR='/Library/PreferencePanes/DNSCrypt.prefPane/Contents/Resources/usr'
 DNSCRYPT_VAR_BASE_DIR='/Library/Application Support/DNSCrypt'
@@ -19,6 +19,7 @@ DNSCRYPT_FILE="${CONTROL_DIR}/dnscrypt"
 HANDLERS_LOCK_FILE="${DNSCRYPT_VAR_RUN_BASE_DIR}/dnscrypt-handlers.lock"
 DNSCRYPT_PROXY_PLUGINS_BASE_FILE="${CONTROL_DIR}/plugin"
 STATIC_RESOLVERS_FILE="${CONTROL_DIR}/static-resolvers"
+BLOCKED_QUERY_LOGGING_FILE="${CONTROL_DIR}/blocked-query-logging"
 
 DEBUG_ENABLED_FILE="${CONTROL_DIR}/debug.enabled"
 
@@ -27,7 +28,9 @@ CACHE_FILE="${CONTROL_DIR}/plugin-cache.enabled"
 QUERY_LOGGING_FILE="${CONTROL_DIR}/plugin-query-logging.enabled"
 BLOCKING_FILE="${CONTROL_DIR}/plugin-blocking.enabled"
 AAAA_BLOCKING_FILE="${CONTROL_DIR}/plugin-aaaa-blocking.enabled"
+FORWARDING_FILE="${CONTROL_DIR}/plugin-forwarding.enabled"
 
+BLOCKED_QUERY_LOG_FILE="${DNSCRYPT_LOG_BASE_DIR}/dnscrypt-blocked-query.log"
 QUERY_LOG_FILE="${DNSCRYPT_LOG_BASE_DIR}/dnscrypt-query.log"
 DEBUG_LOG_FILE="${DNSCRYPT_LOG_BASE_DIR}/dnscrypt-osxclient-debug.log"
 DEBUG_LOG_FILE_LOCK="${DEBUG_LOG_FILE}.lock"
@@ -51,10 +54,6 @@ RESOLVERS_LIST_STATE="${STATES_DIR}/resolvers-updated"
 
 INTERFACE_PROXY="127.0.0.54"
 INTERFACE_PROXY_MASK="24"
-
-DOMAINS_EXCEPTIONS='
-belkin corp domain example home host invalid lan local localdomain test freebox.fr fritz.box nowtv.com routerlogin.net l onion
-'
 
 export PATH="${DNSCRYPT_USR_BASE_DIR}/sbin:${DNSCRYPT_USR_BASE_DIR}/bin:${DNSCRYPT_USR_BASE_DIR}/scripts:$PATH"
 

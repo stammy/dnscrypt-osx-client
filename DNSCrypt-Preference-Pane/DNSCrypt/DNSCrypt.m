@@ -8,12 +8,12 @@
 @synthesize releaseNotesWebView = _releaseNotesWebView;
 @synthesize aboutWebView = _aboutWebView;
 @synthesize staticResolversTextField = _staticResolversTextField;
-@synthesize blacklistIPsTextField = _blacklistIPsTextField;
-@synthesize blacklistDomainsTextField = _blacklistDomainsTextField;
-@synthesize helpWebView = _helpWebView;
+@synthesize blacklistIPsTextView = _blacklistIPsTextView;
+@synthesize blacklistDomainsTextView = _blacklistDomainsTextView;
+@synthesize exceptionsTextView = _exceptionsTextView;
 @synthesize viewLogButton = _viewLogButton;
 @synthesize queryLoggingButton = _queryLoggingButton;
-@synthesize exceptionsTextField = _exceptionsTextField;
+@synthesize blockedQueryLoggingButton = _blockedQueryLoggingButton;
 @synthesize dnscryptButton = _dnscryptButton;
 @synthesize disableIPv6Button = _disableIPv6Button;
 @synthesize statusImageView = _statusImageView;
@@ -23,6 +23,10 @@
 
 DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 NSArray *resolversList;
+BOOL blacklistDomainsUpdated = FALSE;
+BOOL blacklistIPsUpdated = FALSE;
+BOOL exceptionsUpdated = FALSE;
+
 
 - (void) setCheckBoxesEnabled: (BOOL) enabled
 {
@@ -57,6 +61,10 @@ NSArray *resolversList;
     _dnscryptButton.state = 0;
     _disableIPv6Button.state = 0;
     
+    [_blacklistIPsTextView setPlaceHolderText: @"IP addresses to block.\n\nExamples:\n\n203.0.113.7\n198.51.100.*"];
+    [_blacklistDomainsTextView setPlaceHolderText: @"Domains and patterns to block.\n\nExamples:\n\nexample.com\nads.*\n*sex*"];
+    [_exceptionsTextView setPlaceHolderText: @"Domains bypassing DNSCrypt.\n\nExamples:\n\nlocal\nlocaldomain\nlan"];
+    
     res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && exec ./get-dnscrypt-status.sh", nil]];
     if ([res isEqualToString: @"yes"]) {
         [_dnscryptButton setState: 1];
@@ -71,18 +79,22 @@ NSArray *resolversList;
     if ([res isEqualToString: @"yes"]) {
         [_queryLoggingButton setState: 1];
     }
+    res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && exec ./get-blocked-query-logging-status.sh", nil]];
+    if ([res isEqualToString: @"yes"]) {
+        [_blockedQueryLoggingButton setState: 1];
+    }
     NSString *fileContent;
     fileContent = [NSString stringWithContentsOfFile: kDNSCRYPT_BLACKLIST_IPS_TMP_FILE encoding:NSUTF8StringEncoding error: nil];
     if (fileContent != nil) {
-        [_blacklistIPsTextField setStringValue: fileContent];
+        [_blacklistIPsTextView setString: fileContent];
     }
     fileContent = [NSString stringWithContentsOfFile: kDNSCRYPT_BLACKLIST_DOMAINS_TMP_FILE encoding:NSUTF8StringEncoding error: nil];
     if (fileContent != nil) {
-        [_blacklistDomainsTextField setStringValue: fileContent];
+        [_blacklistDomainsTextView setString: fileContent];
     }
     fileContent = [NSString stringWithContentsOfFile: kDNSCRYPT_EXCEPTIONS_TMP_FILE encoding:NSUTF8StringEncoding error: nil];
     if (fileContent != nil) {
-        [_exceptionsTextField setStringValue: fileContent];
+        [_exceptionsTextView setString: fileContent];
     }
     
     [_resolverNamesButton removeAllItems];
@@ -294,17 +306,6 @@ NSArray *resolversList;
     } else {
         [[_aboutWebView mainFrame] loadRequest:[NSURLRequest requestWithURL: aboutURL]];
     }
-    
-    [_helpWebView setDrawsBackground:false];
-    [_helpWebView setShouldUpdateWhileOffscreen:false];
-    [_helpWebView setUIDelegate:self];
-    NSURL *helpURL;
-    NSString *helpURLPath = [[NSBundle bundleForClass: [self class]] pathForResource: @"help" ofType: @"html" inDirectory: @"html"];
-    if (! helpURLPath || ! (helpURL = [NSURL fileURLWithPath: helpURLPath])) {
-        assert(0);
-    } else {
-        [[_helpWebView mainFrame] loadRequest:[NSURLRequest requestWithURL: helpURL]];
-    }
 }
 
 - (NSArray *)webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element
@@ -346,6 +347,20 @@ NSArray *resolversList;
     return TRUE;
 }
 
+- (BOOL) setBlockedQueryLoggingOn {
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-blocked-query-logging-on.sh", nil]];
+    (void) res;
+    return TRUE;
+}
+
+- (BOOL) setBlockedQueryLoggingOff {
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-blocked-query-logging-off.sh", nil]];
+    (void) res;
+    return TRUE;
+}
+
 - (IBAction)queryLoggingButtonPressed:(NSButtonCell *)sender {
     if (sender.state != 0) {
         [self setQueryLoggingOn];
@@ -354,8 +369,21 @@ NSArray *resolversList;
     }
 }
 
+- (IBAction)blockedQueryLoggingButtonPressed:(NSButtonCell *)sender {
+    if (sender.state != 0) {
+        [self setBlockedQueryLoggingOn];
+    } else {
+        [self setBlockedQueryLoggingOff];
+    }
+}
+
+
 - (IBAction)viewLogButtonPushed:(NSButton *)sender {
     [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"open /Applications/Utilities/Console.app " kDNSCRYPT_QUERY_LOG_FILE " || open " kDNSCRYPT_QUERY_LOG_FILE, nil]];
+}
+
+- (IBAction)viewBlockedLogButtonPushed:(NSButton *)sender {
+    [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"open /Applications/Utilities/Console.app " kDNSCRYPT_BLOCKED_QUERY_LOG_FILE " || open " kDNSCRYPT_BLOCKED_QUERY_LOG_FILE, nil]];
 }
 
 - (BOOL) updateBlacklistIPs {
@@ -365,8 +393,8 @@ NSArray *resolversList;
     return TRUE;
 }
 
-- (IBAction)blacklistIPsUpdated:(NSTextField *)sender {
-    NSString *content = sender.stringValue;
+- (IBAction)blacklistIPsUpdate:(NSPlaceHolderTextView *)sender {
+    NSString *content = sender.string;
     if ([content writeToFile: kDNSCRYPT_BLACKLIST_IPS_TMP_FILE atomically: YES encoding: NSUTF8StringEncoding error: nil] != YES) {
         return;
     }
@@ -380,8 +408,8 @@ NSArray *resolversList;
     return TRUE;
 }
 
-- (IBAction)blacklistDomainsUpdated:(NSTextField *)sender {
-    NSString *content = sender.stringValue;
+- (IBAction)blacklistDomainsUpdate:(NSPlaceHolderTextView *)sender {
+    NSString *content = sender.string;
     if ([content writeToFile: kDNSCRYPT_BLACKLIST_DOMAINS_TMP_FILE atomically: YES encoding: NSUTF8StringEncoding error: nil] != YES) {
         return;
     }
@@ -395,28 +423,43 @@ NSArray *resolversList;
     return TRUE;
 }
 
-- (IBAction)exceptionsUpdated:(NSTextField *)sender {
-    NSString *content = sender.stringValue;
+- (IBAction)exceptionsUpdate:(NSPlaceHolderTextView *)sender {
+    NSString *content = sender.string;
     if ([content writeToFile: kDNSCRYPT_EXCEPTIONS_TMP_FILE atomically: YES encoding: NSUTF8StringEncoding error: nil] != YES) {
         return;
     }
     [self updateExceptions];
 }
 
-- (IBAction)helpButtonPressed:(NSButton *)sender {
-    if (_helpWebView.isHidden) {
-        [_helpWebView.window makeFirstResponder: nil];
-        [_helpWebView setHidden: NO];
-        [_helpWebView setAlphaValue: 0.0F];
-        [_helpWebView.animator setAlphaValue: 1.0F];
-        [_helpWebView setDrawsBackground: TRUE];
-        [_viewLogButton setHidden: YES];
-        [_queryLoggingButton setHidden: YES];
-    } else {
-        [_helpWebView.window makeFirstResponder: nil];
-        [_helpWebView setHidden: YES];
-        [_queryLoggingButton setHidden: NO];
+- (IBAction)saveAndApplyChangesButtonPressed:(NSButton *)sender {
+    [self showSpinners];
+    if (blacklistDomainsUpdated) {
+        [self blacklistDomainsUpdate: _blacklistDomainsTextView];
     }
+    if (blacklistIPsUpdated) {
+        [self blacklistIPsUpdate: _blacklistIPsTextView];
+    }
+    if (exceptionsUpdated) {
+        [self exceptionsUpdate: _exceptionsTextView];
+    }
+    blacklistDomainsUpdated = FALSE;
+    blacklistIPsUpdated = FALSE;
+    exceptionsUpdated = FALSE;
+}
+
+-(void)textDidChange:(NSNotification *)notification {
+    if (notification.object == _blacklistDomainsTextView) {
+        blacklistDomainsUpdated = TRUE;
+    } else if (notification.object == _blacklistIPsTextView) {
+        blacklistIPsUpdated = TRUE;
+    } else if (notification.object == _exceptionsTextView) {
+        exceptionsUpdated = TRUE;
+    }
+}
+
+-(void)helpButtonPressed:(NSButton *)sender {
+    (void) sender;
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString: kDNSCRYPT_PROJECT_URL]];
 }
 
 @end
