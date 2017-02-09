@@ -4,7 +4,7 @@ OSX client for managing the DNSCrypt Proxy
 The purpose of this application is to allow the user to have a better experience controlling the DNSCrypt Proxy on OSX.
 
 [Download dnscrypt-osxclient.dmg](https://github.com/alterstep/dnscrypt-osxclient/releases/latest)
-for OSX 10.8 (Mountain Lion), OSX 10.9 (Mavericks), OSX 10.10 (Yosemite), OSX 10.11 (El Capitan) and macOS 10.12 (Sierra).
+for macOS 10.12 (Sierra).
 
 Compatible with all the DNS servers with DNSCrypt enabled.
 
