@@ -8,7 +8,7 @@ if [ ! -s "$BLACKLIST_IPS_TMP_FILE" ]; then
 fi
 
 tr -s '[:blank:]' '\n' < "$BLACKLIST_IPS_TMP_FILE" | \
-  egrep -i '^[0-9a-fA-F:.]+$' > \
+  egrep -i '^[0-9a-fA-F:.]+([.][*])?$' > \
   "${BLACKLIST_IPS_TMP_FILE}~" &&
 mv "${BLACKLIST_IPS_TMP_FILE}~" "$BLACKLIST_IPS_FILE"
 
