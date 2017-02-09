@@ -1,5 +1,5 @@
 
-CURRENT_VERSION=6
+CURRENT_VERSION=7
 
 DNSCRYPT_USR_BASE_DIR='/Library/PreferencePanes/DNSCrypt.prefPane/Contents/Resources/usr'
 DNSCRYPT_VAR_BASE_DIR='/Library/Application Support/DNSCrypt'
