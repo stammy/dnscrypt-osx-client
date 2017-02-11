@@ -4,17 +4,31 @@ mkdir -p extra/usr/bin
 cp /Library/PreferencePanes/DNSCrypt.prefPane/Contents/Resources/usr/bin/hostip \
    extra/usr/bin/
 
+nd=$(otool -L /Library/PreferencePanes/DNSCrypt.prefPane/Contents/Resources/usr/sbin/dnscrypt-proxy | wc -l)
+if [ $nd -gt 2 ]; then
+  echo '*** dnscrypt-proxy may have more dependencies than libSystem.B.dylib'
+  echo '*** make sure that libsodium was statically linked'
+  sleep 10
+fi
+
+nd=$(otool -L /Library/PreferencePanes/DNSCrypt.prefPane/Contents/Resources/usr/lib/dnscrypt-proxy/libdcplugin_example_ldns_aaaa_blocking.so | wc -l)
+if [ $nd -gt 3 ]; then
+  echo '*** plugins may have more dependencies than libSystem.B.dylib and ldns'
+  echo '*** make sure that they were linked against ldns compiled without SSL'
+  sleep 10
+fi
+
 mkdir -p extra/usr/sbin
 cp /Library/PreferencePanes/DNSCrypt.prefPane/Contents/Resources/usr/sbin/dnscrypt-proxy \
    extra/usr/sbin/
 
 mkdir -p extra/usr/lib
 
-cp /opt/ldns/lib/libldns.1.dylib \
+cp /opt/ldns/lib/libldns.2.dylib \
    extra/usr/lib/
 ( cd extra/usr/lib &&
   rm -f libldns.dylib &&
-  ln -fs libldns.1.dylib libldns.dylib )
+  ln -fs libldns.2.dylib libldns.dylib )
 
 if [ -f /usr/local/lib/libsodium.18.dylib ]; then
   echo '*** /usr/local/lib/libsodium.{dylib,la} found'

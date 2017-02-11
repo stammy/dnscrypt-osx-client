@@ -17,5 +17,8 @@ if [ ! -e "$DNSCRYPT_FILE" ]; then
   rm -f "$HANDLERS_LOCK_FILE"
   exit 0
 fi
+
+rm -f "${STATES_DIR}/controls.cksum"
+
 ./switch-to-dnscrypt-if-required.sh
 rm -f "$HANDLERS_LOCK_FILE"

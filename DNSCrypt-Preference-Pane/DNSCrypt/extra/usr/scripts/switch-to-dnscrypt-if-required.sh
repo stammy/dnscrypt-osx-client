@@ -16,6 +16,7 @@ while [ -e "$DNSCRYPT_FILE" ]; do
   current_resolvers=$(./get-current-resolvers.sh)
   if [ "$current_resolvers" = "$INTERFACE_PROXY" ]; then
     if [ ! -e "$PROXY_PID_FILE" ]; then
+      rm -f "${STATES_DIR}/controls.cksum"
       logger_debug "The proxy should be running but it isn't."
       ./switch-to-dhcp.sh
     fi
