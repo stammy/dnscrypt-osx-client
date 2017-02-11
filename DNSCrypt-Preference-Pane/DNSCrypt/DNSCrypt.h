@@ -4,7 +4,7 @@
 #import "CHCSVParser/CHCSVParser.h"
 #import "NSPlaceHolderTextView.h"
 
-#define kDNSCRYPT_PACKAGE_VERSION @"1.0.13"
+#define kDNSCRYPT_PACKAGE_VERSION @"1.0.14"
 
 #define kDNSCRYPT_PROJECT_URL @"https://dnscrypt.org/osxclient"
 

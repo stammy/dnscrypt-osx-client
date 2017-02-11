@@ -1,6 +1,6 @@
 #! /bin/sh
 
-VERSION='1.0.13'
+VERSION='1.0.14'
 
 echo '*** Do not forget to increase CURRENT_VERSION in common.inc'
 sleep 10
