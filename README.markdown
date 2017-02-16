@@ -18,5 +18,5 @@ You can also install this application using Homebrew Cask:
 brew cask install dnscrypt
 ```
 
-![Foto 1](https://raw.githubusercontent.com/alterstep/dnscrypt-osxclient/master/1.png)
-![Foto 2](https://raw.githubusercontent.com/alterstep/dnscrypt-osxclient/master/2.png)
+![Foto 1](1.png)
+![Foto 2](2.png)
