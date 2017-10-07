@@ -16,6 +16,7 @@
 @synthesize blockedQueryLoggingButton = _blockedQueryLoggingButton;
 @synthesize dnscryptButton = _dnscryptButton;
 @synthesize disableIPv6Button = _disableIPv6Button;
+@synthesize hideMenubarIcon = _hideMenubarIcon;
 @synthesize statusImageView = _statusImageView;
 @synthesize statusText = _statusText;
 @synthesize currentResolverTextField = _currentResolverTextField;
@@ -31,6 +32,7 @@ BOOL exceptionsUpdated = FALSE;
 - (void) setCheckBoxesEnabled: (BOOL) enabled
 {
     [_dnscryptButton setEnabled: enabled];
+    [_hideMenubarIcon setEnabled: enabled];
     [_disableIPv6Button setEnabled: enabled];
     [_resolverNamesButton setEnabled: enabled];
 }
@@ -59,6 +61,7 @@ BOOL exceptionsUpdated = FALSE;
     NSString *res;
 
     _dnscryptButton.state = 0;
+    _hideMenubarIcon.state = 0;
     _disableIPv6Button.state = 0;
     
     [_blacklistIPsTextView setPlaceHolderText: @"IP addresses to block.\n\nExamples:\n\n203.0.113.7\n198.51.100.*"];
@@ -68,6 +71,10 @@ BOOL exceptionsUpdated = FALSE;
     res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && exec ./get-dnscrypt-status.sh", nil]];
     if ([res isEqualToString: @"yes"]) {
         [_dnscryptButton setState: 1];
+    }
+    res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && exec ./get-hide-menubar-icon-status.sh", nil]];
+    if ([res isEqualToString: @"yes"]) {
+        [_hideMenubarIcon setState: 1];
     }
     res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && exec ./get-aaaa-blocking-status.sh", nil]];
     if ([res isEqualToString: @"yes"]) {
@@ -201,6 +208,20 @@ BOOL exceptionsUpdated = FALSE;
     return TRUE;
 }
 
+- (BOOL) setHideMenubarIconOn {
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-hide-menubar-icon-on.sh", nil]];
+    (void) res;
+    return TRUE;
+}
+
+- (BOOL) setHideMenubarIconOff {
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-hide-menubar-icon-off.sh", nil]];
+    (void) res;
+    return TRUE;
+}
+
 - (BOOL) setDisableIPv6On {
     [self showSpinners];
     NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-f", @"-c", @"cd '" kDNSCRYPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-aaaa-blocking-on.sh", nil]];
@@ -221,6 +242,15 @@ BOOL exceptionsUpdated = FALSE;
         [self setDNSCryptOn];
     } else {
         [self setDNSCryptOff];
+    }
+}
+
+- (IBAction)hideMenubarIcon:(NSButton *)sender
+{
+    if (sender.state != 0) {
+        [self setHideMenubarIconOn];
+    } else {
+        [self setHideMenubarIconOff];
     }
 }
 

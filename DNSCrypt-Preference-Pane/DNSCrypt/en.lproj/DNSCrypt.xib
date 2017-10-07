@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16E144f" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment version="1070" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="11542"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="13196"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,6 +20,7 @@
                 <outlet property="disableIPv6Button" destination="ESJ-Kf-yNj" id="xFL-L3-vLp"/>
                 <outlet property="dnscryptButton" destination="179" id="363"/>
                 <outlet property="exceptionsTextView" destination="YvE-Lo-YVl" id="9u8-Sn-Poo"/>
+                <outlet property="hideMenubarIcon" destination="Y6w-zv-NQr" id="t6p-SL-hiB"/>
                 <outlet property="locationText" destination="e9H-pq-zb6" id="Elc-qh-Z8b"/>
                 <outlet property="providerLink" destination="323" id="Riq-Cc-CLa"/>
                 <outlet property="queryLoggingButton" destination="398" id="458"/>
@@ -186,6 +187,18 @@
                                             </textFieldCell>
                                             <accessibility description="Current resolver IP addresses"/>
                                         </textField>
+                                        <button toolTip="Use the DNSCrypt protocol" misplaced="YES" id="Y6w-zv-NQr">
+                                            <rect key="frame" x="15" y="205" width="204" height="22"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" title="Hide menubar icon" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="yaC-i9-RQL">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system" size="14"/>
+                                            </buttonCell>
+                                            <accessibility description="Enable DNSCrypt"/>
+                                            <connections>
+                                                <action selector="hideMenubarIcon:" target="-2" id="7kK-mO-czX"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -292,7 +305,7 @@
                                                 <rect key="frame" x="1" y="1" width="171" height="139"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textView importsGraphics="NO" richText="NO" usesFontPanel="YES" selectionGranularity="word" findStyle="panel" incrementalSearchingEnabled="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" smartInsertDelete="YES" id="Jos-8C-r8h" customClass="NSPlaceHolderTextView">
+                                                    <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" selectionGranularity="word" findStyle="panel" incrementalSearchingEnabled="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" smartInsertDelete="YES" id="Jos-8C-r8h" customClass="NSPlaceHolderTextView">
                                                         <rect key="frame" x="0.0" y="0.0" width="171" height="139"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -325,7 +338,7 @@
                                                 <rect key="frame" x="1" y="1" width="171" height="139"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textView importsGraphics="NO" richText="NO" usesFontPanel="YES" findStyle="panel" incrementalSearchingEnabled="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" spellingCorrection="YES" smartInsertDelete="YES" id="gRF-Cw-rp9" customClass="NSPlaceHolderTextView">
+                                                    <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" incrementalSearchingEnabled="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" spellingCorrection="YES" smartInsertDelete="YES" id="gRF-Cw-rp9" customClass="NSPlaceHolderTextView">
                                                         <rect key="frame" x="0.0" y="0.0" width="171" height="139"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -358,7 +371,7 @@
                                                 <rect key="frame" x="1" y="1" width="171" height="139"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textView importsGraphics="NO" richText="NO" usesFontPanel="YES" findStyle="panel" incrementalSearchingEnabled="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" spellingCorrection="YES" smartInsertDelete="YES" id="YvE-Lo-YVl" customClass="NSPlaceHolderTextView">
+                                                    <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" incrementalSearchingEnabled="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" spellingCorrection="YES" smartInsertDelete="YES" id="YvE-Lo-YVl" customClass="NSPlaceHolderTextView">
                                                         <rect key="frame" x="0.0" y="0.0" width="171" height="139"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

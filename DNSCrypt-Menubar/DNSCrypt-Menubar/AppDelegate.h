@@ -34,5 +34,6 @@ typedef enum {
 
 - (IBAction)preferencesMenuItemPushed:(NSMenuItem *)sender;
 - (IBAction)dnscryptMenuItemPushed:(NSMenuItem *)sender;
+- (IBAction)hideMenubarIconMenuItemPushed:(NSMenuItem *)sender;
 
 @end
