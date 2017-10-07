@@ -101,6 +101,14 @@ BOOL appUpdated = FALSE;
     }
     [self updateLedStatus];
     
+    NSString *hideMenuBar = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./get-hide-menubar-icon-status.sh | ./get-upstream-resolvers.sh", nil]];
+
+    if ([hideMenuBar isEqualToString: @"yes"]) {
+        _statusItem.visible = FALSE;
+    } else if ([hideMenuBar isEqualToString: @"no"]) {
+        _statusItem.visible = TRUE;
+    }
+
     NSString *currentResolvers = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./get-current-resolvers.sh | ./get-upstream-resolvers.sh", nil]];
     _statusResolversMenuItem.title = currentResolvers;
     
@@ -211,6 +219,19 @@ BOOL appUpdated = FALSE;
         sender.state = 0;
         [self setDNSCryptOff];
     }
+}
+
+- (BOOL) setHideMenubarIconOn {
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-hide-menubar-icon-on.sh", nil]];
+    (void) res;
+    _statusItem.visible = FALSE;
+    return TRUE;
+}
+
+- (IBAction)hideMenubarIconMenuItemPushed:(NSMenuItem *)sender
+{
+    [self setHideMenubarIconOn];
 }
 
 @end

@@ -42,6 +42,7 @@ typedef enum {
     NSTabViewItem *_releaseNotesTabViewItem;
     
     NSButton *_dnscryptButton;
+    NSButton *_hideMenubarIcon;
     NSButton *_disableIPv6Button;
     
     NSTextField *_currentResolverTextField;
@@ -65,6 +66,7 @@ typedef enum {
 @property (nonatomic, strong) IBOutlet NSTabViewItem *releaseNotesTabViewItem;
 
 @property (nonatomic, strong) IBOutlet NSButton *dnscryptButton;
+@property (nonatomic, strong) IBOutlet NSButton *hideMenubarIcon;
 @property (nonatomic, strong) IBOutlet NSButton *disableIPv6Button;
 
 @property (nonatomic, strong) IBOutlet NSTextField *currentResolverTextField;
@@ -90,6 +92,7 @@ typedef enum {
 - (void) mainViewDidLoad;
 
 - (IBAction)dnscryptButtonPressed:(NSButton *)sender;
+- (IBAction)hideMenubarIcon:(NSButton *)sender;
 - (IBAction)disableIPv6ButtonPressed:(NSButton *)sender;
 - (IBAction)providerLinkPushed:(NSButton *)sender;
 - (IBAction)uninstallPushed:(NSButton *)sender;
