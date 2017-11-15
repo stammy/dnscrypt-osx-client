@@ -1,10 +1,3 @@
-//
-//  main.m
-//  DNSCrypt-Menubar
-//
-//  Created by OpenDNS, Inc. on 10/31/11.
-//  Copyright (c) 2011 OpenDNS, Inc. All rights reserved.
-//
 
 #import <Cocoa/Cocoa.h>
 

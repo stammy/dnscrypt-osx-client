@@ -7,39 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		09651148147D832D007FEE31 /* dnscrypt.icns in Resources */ = {isa = PBXBuildFile; fileRef = 09651147147D832D007FEE31 /* dnscrypt.icns */; };
-		096AEEFA1468A11E009F2AA4 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 096AEEF91468A11E009F2AA4 /* dsa_pub.pem */; };
-		09972870147CCE41004E7017 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0997286F147CCE41004E7017 /* Sparkle.framework */; };
-		09972871147CCEDC004E7017 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0997286F147CCE41004E7017 /* Sparkle.framework */; };
+		091360731C88418E00F308D3 /* dnscrypt.iconset in Resources */ = {isa = PBXBuildFile; fileRef = 091360721C88418E00F308D3 /* dnscrypt.iconset */; };
 		09A13AD2145F3B9000B227A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A13AD1145F3B9000B227A4 /* Cocoa.framework */; };
 		09A13ADC145F3B9000B227A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 09A13ADA145F3B9000B227A4 /* InfoPlist.strings */; };
 		09A13ADE145F3B9000B227A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A13ADD145F3B9000B227A4 /* main.m */; };
-		09A13AE2145F3B9000B227A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 09A13AE0145F3B9000B227A4 /* Credits.rtf */; };
 		09A13AE5145F3B9000B227A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A13AE4145F3B9000B227A4 /* AppDelegate.m */; };
 		09A13AE8145F3B9000B227A4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09A13AE6145F3B9000B227A4 /* MainMenu.xib */; };
-		09A13AF1145F3C0300B227A4 /* led_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 09A13AEE145F3C0300B227A4 /* led_green.png */; };
-		09A13AF2145F3C0300B227A4 /* led_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 09A13AEF145F3C0300B227A4 /* led_red.png */; };
-		09A13AF3145F3C0300B227A4 /* led_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 09A13AF0145F3C0300B227A4 /* led_yellow.png */; };
+		F622E21B1C88C76800721313 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F622E21A1C88C76800721313 /* Icons.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		096AEEF714689FEB009F2AA4 /* CopyFiles */ = {
+		0970EAA9160A5B0000865D5D /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				09972871147CCEDC004E7017 /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		09651147147D832D007FEE31 /* dnscrypt.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = dnscrypt.icns; path = ../dnscrypt.icns; sourceTree = "<group>"; };
-		096AEEF91468A11E009F2AA4 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
-		0997286F147CCE41004E7017 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
-		09A13ACD145F3B9000B227A4 /* DNSCrypt-Menubar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DNSCrypt-Menubar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		091360721C88418E00F308D3 /* dnscrypt.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = dnscrypt.iconset; sourceTree = "<group>"; };
+		09A13ACD145F3B9000B227A4 /* DNSCrypt Menubar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DNSCrypt Menubar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		09A13AD1145F3B9000B227A4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		09A13AD4145F3B9000B227A4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		09A13AD5145F3B9000B227A4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -48,13 +39,10 @@
 		09A13ADB145F3B9000B227A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		09A13ADD145F3B9000B227A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		09A13ADF145F3B9000B227A4 /* DNSCrypt-Menubar-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DNSCrypt-Menubar-Prefix.pch"; sourceTree = "<group>"; };
-		09A13AE1145F3B9000B227A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		09A13AE3145F3B9000B227A4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		09A13AE4145F3B9000B227A4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		09A13AE7145F3B9000B227A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		09A13AEE145F3C0300B227A4 /* led_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = led_green.png; sourceTree = "<group>"; };
-		09A13AEF145F3C0300B227A4 /* led_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = led_red.png; sourceTree = "<group>"; };
-		09A13AF0145F3C0300B227A4 /* led_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = led_yellow.png; sourceTree = "<group>"; };
+		F622E21A1C88C76800721313 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +51,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				09A13AD2145F3B9000B227A4 /* Cocoa.framework in Frameworks */,
-				09972870147CCE41004E7017 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +69,7 @@
 		09A13ACE145F3B9000B227A4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				09A13ACD145F3B9000B227A4 /* DNSCrypt-Menubar.app */,
+				09A13ACD145F3B9000B227A4 /* DNSCrypt Menubar.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -90,7 +77,6 @@
 		09A13AD0145F3B9000B227A4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0997286F147CCE41004E7017 /* Sparkle.framework */,
 				09A13AD1145F3B9000B227A4 /* Cocoa.framework */,
 				09A13AD3145F3B9000B227A4 /* Other Frameworks */,
 			);
@@ -121,16 +107,12 @@
 		09A13AD8145F3B9000B227A4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				09651147147D832D007FEE31 /* dnscrypt.icns */,
+				091360721C88418E00F308D3 /* dnscrypt.iconset */,
+				F622E21A1C88C76800721313 /* Icons.xcassets */,
 				09A13AD9145F3B9000B227A4 /* DNSCrypt-Menubar-Info.plist */,
 				09A13ADA145F3B9000B227A4 /* InfoPlist.strings */,
 				09A13ADD145F3B9000B227A4 /* main.m */,
 				09A13ADF145F3B9000B227A4 /* DNSCrypt-Menubar-Prefix.pch */,
-				09A13AE0145F3B9000B227A4 /* Credits.rtf */,
-				09A13AEE145F3C0300B227A4 /* led_green.png */,
-				09A13AEF145F3C0300B227A4 /* led_red.png */,
-				09A13AF0145F3C0300B227A4 /* led_yellow.png */,
-				096AEEF91468A11E009F2AA4 /* dsa_pub.pem */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -145,7 +127,7 @@
 				09A13AC9145F3B9000B227A4 /* Sources */,
 				09A13ACA145F3B9000B227A4 /* Frameworks */,
 				09A13ACB145F3B9000B227A4 /* Resources */,
-				096AEEF714689FEB009F2AA4 /* CopyFiles */,
+				0970EAA9160A5B0000865D5D /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -153,7 +135,7 @@
 			);
 			name = "DNSCrypt-Menubar";
 			productName = "DNSCrypt-Menubar";
-			productReference = 09A13ACD145F3B9000B227A4 /* DNSCrypt-Menubar.app */;
+			productReference = 09A13ACD145F3B9000B227A4 /* DNSCrypt Menubar.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -162,7 +144,7 @@
 		09A13AC4145F3B9000B227A4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0510;
 			};
 			buildConfigurationList = 09A13AC7145F3B9000B227A4 /* Build configuration list for PBXProject "DNSCrypt-Menubar" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -187,13 +169,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				09A13ADC145F3B9000B227A4 /* InfoPlist.strings in Resources */,
-				09A13AE2145F3B9000B227A4 /* Credits.rtf in Resources */,
 				09A13AE8145F3B9000B227A4 /* MainMenu.xib in Resources */,
-				09A13AF1145F3C0300B227A4 /* led_green.png in Resources */,
-				09A13AF2145F3C0300B227A4 /* led_red.png in Resources */,
-				09A13AF3145F3C0300B227A4 /* led_yellow.png in Resources */,
-				096AEEFA1468A11E009F2AA4 /* dsa_pub.pem in Resources */,
-				09651148147D832D007FEE31 /* dnscrypt.icns in Resources */,
+				F622E21B1C88C76800721313 /* Icons.xcassets in Resources */,
+				091360731C88418E00F308D3 /* dnscrypt.iconset in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,14 +198,6 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		09A13AE0145F3B9000B227A4 /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				09A13AE1145F3B9000B227A4 /* en */,
-			);
-			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
 		09A13AE6145F3B9000B227A4 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -243,8 +213,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_ARC = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -259,6 +235,9 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
@@ -270,9 +249,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				COPY_PHASE_STRIP = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -280,6 +265,9 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				SDKROOT = macosx;
@@ -289,14 +277,19 @@
 		09A13AEC145F3B9000B227A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/Sparkle-evkudstnytcsfdeunmxihhpyexor/Build/Products/Release\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DNSCrypt-Menubar/DNSCrypt-Menubar-Prefix.pch";
 				INFOPLIST_FILE = "DNSCrypt-Menubar/DNSCrypt-Menubar-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "DNSCrypt Menubar";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -304,14 +297,19 @@
 		09A13AED145F3B9000B227A4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../../../../../Library/Developer/Xcode/DerivedData/Sparkle-evkudstnytcsfdeunmxihhpyexor/Build/Products/Release\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DNSCrypt-Menubar/DNSCrypt-Menubar-Prefix.pch";
 				INFOPLIST_FILE = "DNSCrypt-Menubar/DNSCrypt-Menubar-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "DNSCrypt Menubar";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

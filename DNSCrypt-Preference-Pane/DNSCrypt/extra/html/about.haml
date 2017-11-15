@@ -1,0 +1,39 @@
+!!! 5
+%html{lang: "en"}
+  %head
+    %meta{charset: "utf-8"}
+    %title About DNSCrypt-OSXClient
+    :sass
+      body
+        font:
+          family: arial, helvetica, sans-serif
+          size: 14px
+        margin: 0
+      h1
+        margin: 0
+  %body
+    %h1 About DNSCrypt-OSXClient
+    %p
+      This software encrypts and authenticates DNS packets between your computer
+      and a DNS resolver using DNSCrypt.
+    %p
+      Tips:
+      %ul
+        %li
+          If you have a firewall, open TCP and UDP ports 53 and 443.
+          These are the most common ports used for DNSCrypt.
+        %li
+          WiFi captive portals dont work if they can't intercept DNS queries
+          and often block DNSCrypt.
+          So on public WiFi network, disable DNSCrypt, log in, then you can
+          enable it again.
+        %li
+          Using Little Snitch? There are a few rules you need to establish,
+          which Little Snitch should prompt for when trying to
+          activate this application:
+          %ol
+            %li Allow any outgoing connection for system processes (dnscrypt-proxy)
+            %li Allow any incoming connection for system process (dnscrypt-proxy)
+            %li Allow any outgoing connection for system processes (dig)
+            %li For automatic updates, allow outgoing TCP connections to port 80 (http) of updates.dnscrypt.org and download.dnscrypt.org, as well as to port 443 (https) of github.com and download.dnscrypt.org for system process (curl)
+          (Thanks to @cavemandaveman and @TraderStf)

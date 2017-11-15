@@ -1,23 +1,52 @@
-//
-//  AppDelegate.m
-//  DNSCrypt-Menubar
-//
-//  Created by OpenDNS, Inc. on 10/31/11.
-//  Copyright (c) 2011 OpenDNS, Inc. All rights reserved.
-//
 
 #import "AppDelegate.h"
-#import "Sparkle/Sparkle.h"
 
 @implementation AppDelegate
 @synthesize statusResolversMenuItem = _statusResolversMenuItem;
-@synthesize statusConfigurationMenuItem = _statusConfigurationMenuItem;
+@synthesize dnscryptMenuItem = _dnscryptMenuItem;
 @synthesize window = _window;
 @synthesize dnscryptMenu = _dnscryptMenu;
 @synthesize statusItem = _statusItem;
 @synthesize versionMenuItem = _versionMenuItem;
 
 DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
+BOOL appUpdated = FALSE;
+
+- (void) setCheckBoxesEnabled: (BOOL) enabled
+{
+    [_dnscryptMenuItem setEnabled: enabled];
+}
+
+- (NSString *) fromCommand: (NSString *) launchPath withArguments: (NSArray *) arguments
+{
+    NSPipe *pipe = [NSPipe pipe];
+    NSTask *task = [[NSTask alloc] init];
+    NSData *data;
+    NSString *result;
+    task.launchPath = launchPath;
+    task.arguments = arguments;
+    task.standardOutput = pipe;
+    [task launch];
+    data = [[pipe fileHandleForReading] readDataToEndOfFile];
+    [task waitUntilExit];
+    result = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
+    if ([result hasSuffix: @"\n"]) {
+        result = [result substringToIndex: result.length - 1];
+    }
+    return result;
+}
+
+- (void) initState
+{
+    NSString *res;
+
+    _dnscryptMenuItem.state = 0;
+
+    res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-dnscrypt-status.sh", nil]];
+    if ([res isEqualToString: @"yes"]) {
+        [_dnscryptMenuItem setState: 1];
+    }
+}
 
 - (BOOL) resolversForService: (NSArray *) resolversForService includeResolvers:(NSArray *) resolvers
 {
@@ -38,66 +67,56 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 
 - (void) updateLedStatus
 {
-    NSBundle *bundle = [NSBundle mainBundle];
     NSImage *led = nil;
     
     switch (currentState) {
-        case kDNS_CONFIGURATION_OPENDNS:
-            led = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"led_yellow.png"]];
-            break;
         case kDNS_CONFIGURATION_LOCALHOST:
-            led = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"led_green.png"]];
+            led = [NSImage imageNamed: @"Active"];
+            break;
+        case kDNS_CONFIGURATION_VANILLA:
+            led = [NSImage imageNamed: @"Inactive"];
             break;
         default:
-            led = [[NSImage alloc] initWithContentsOfFile: [bundle pathForImageResource: @"led_red.png"]];
+            led = [NSImage imageNamed: @"No-Network"];
     }
+    [led setTemplate:YES];
     _statusItem.image = led;
 }
 
 - (BOOL) updateStatusWithCurrentConfig
-{    
-    currentState = kDNS_CONFIGURATION_UNKNOWN;
-    NSArray *resolversForLocalhost = [NSArray arrayWithObjects: kRESOLVER_IP_LOCALHOST, nil];
-    NSArray *resolversForOpenDNS = [NSArray arrayWithObjects: kRESOLVER_IP_OPENDNS1, kRESOLVER_IP_OPENDNS2, nil];
-    
-    NSError *err;
-    NSString *resolvConf = [NSString stringWithContentsOfFile: @"/etc/resolv.conf" encoding: NSISOLatin1StringEncoding error: &err];
-    NSString *currentStateString = @"";
-    NSMutableString *resolversString = [[NSMutableString alloc] init];
-    if (! resolvConf) {
+{
+    NSString *stateDescription = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./get-current-resolvers.sh | ./get-resolvers-description.sh", nil]];
+    if ([stateDescription isEqualToString: @"DNSCrypt"]) {
+        currentState = kDNS_CONFIGURATION_LOCALHOST;
+        if (appUpdated == FALSE) {
+            appUpdated = TRUE;
+            [self appUpdate];
+        }
+    } else if ([stateDescription isEqualToString: @"None"]) {
         currentState = kDNS_CONFIGURATION_UNKNOWN;
-        currentStateString = NSLocalizedString(@"Network unavailable", @"Current state");
-        [resolversString appendString: NSLocalizedString(@"None", @"No current state")];
-    } else {
-        NSMutableArray *resolvers = [[NSMutableArray alloc] init];
-        NSArray *lines = [resolvConf componentsSeparatedByString: @"\n"];
-        for (NSString *line_ in lines) {            
-            NSString *line = [line_ stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-            NSArray *entry = [line componentsSeparatedByCharactersInSet: [NSCharacterSet whitespaceCharacterSet]];
-            if (![[entry objectAtIndex: 0U] isEqualToString: @"nameserver"]) {
-                continue;
-            }
-            NSString *resolver = [entry objectAtIndex: 1U];
-            [resolvers addObject: resolver];
-            [resolversString appendFormat: @"%s%@", (resolversString.length > 0 ? ", " : ""), resolver];            
-        }
-        if ([self resolversForService: resolvers includeResolvers: resolversForLocalhost]) {
-            currentState = kDNS_CONFIGURATION_LOCALHOST;
-            currentStateString = NSLocalizedString(@"DNSCrypt", @"Current state");
-        } else if ([self resolversForService: resolvers includeResolvers: resolversForOpenDNS]) {
-            currentStateString = NSLocalizedString(@"OpenDNS", @"Current state");        
-            currentState = kDNS_CONFIGURATION_OPENDNS;
-        } else {
-            currentStateString = NSLocalizedString(@"Default", @"Current state");
-            currentState = kDNS_CONFIGURATION_VANILLA;
-        }
-        if ([resolversString isEqualToString: kRESOLVER_IP_LOCALHOST]) {
-            resolversString = [NSString stringWithFormat: NSLocalizedString(@"%@\nusing DNSCrypt", @"Current resolver when DNSCrypt has been enabled"), kDNSCRYPT_RESOLVER];
-        }
+    } else if ([stateDescription isEqualToString: @"Updating"]) {
+        currentState = kDNS_CONFIGURATION_UNKNOWN;
+    } else if (stateDescription.length > 0) {
+        currentState = kDNS_CONFIGURATION_VANILLA;
     }
     [self updateLedStatus];
-    _statusConfigurationMenuItem.title = currentStateString;
-    _statusResolversMenuItem.title = resolversString;
+    
+    NSString *hideMenuBar = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./get-hide-menubar-icon-status.sh | ./get-upstream-resolvers.sh", nil]];
+
+    if ([hideMenuBar isEqualToString: @"yes"]) {
+        _statusItem.visible = FALSE;
+    } else if ([hideMenuBar isEqualToString: @"no"]) {
+        _statusItem.visible = TRUE;
+    }
+
+    NSString *currentResolvers = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./get-current-resolvers.sh | ./get-upstream-resolvers.sh", nil]];
+    _statusResolversMenuItem.title = currentResolvers;
+    
+    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./gui-pop-conf-change.sh menubar", nil]];
+    if ([res isEqualToString: @"yes"]) {
+        [self initState];
+    }
+    [self setCheckBoxesEnabled: TRUE];
     
     return TRUE;
 }
@@ -105,26 +124,57 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
 - (void) periodicallyUpdateStatusWithCurrentConfig {
     [self updateStatusWithCurrentConfig];
     [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(periodicallyUpdateStatusWithCurrentConfig) object: nil];
-    [self performSelector: @selector(periodicallyUpdateStatusWithCurrentConfig) withObject:nil afterDelay: 2.5];
+    [self performSelector: @selector(periodicallyUpdateStatusWithCurrentConfig) withObject:nil afterDelay: 5.0];
+}
+
+- (void) waitForUpdate {
+    NSString *res;
+    static unsigned int tries;
+    
+    res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./get-tickets-count.sh", nil]];
+    if (res.length <= 0 || [res isEqualToString: @"0"] || tries > kMAX_TRIES_AFTER_CHANGE) {
+        tries = 0U;
+        [self periodicallyUpdateStatusWithCurrentConfig];
+        return;
+    }
+    tries++;
+    [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(waitForUpdate) object: nil];
+    [self performSelector: @selector(waitForUpdate) withObject: self afterDelay:kREFRESH_DELAY];
+}
+
+- (void) showSpinners
+{
+    [self setCheckBoxesEnabled: FALSE];
+
+    NSImage *led = [NSImage imageNamed: @"No-Network"];
+    _statusItem.image = led;
+    
+    [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./gui-push-conf-change.sh prefpane", nil]];
+    
+    [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(periodicallyUpdateStatusWithCurrentConfig) object: nil];
+    [NSObject cancelPreviousPerformRequestsWithTarget: self selector: @selector(waitForUpdate) object: nil];
+    [self performSelector: @selector(waitForUpdate) withObject: self afterDelay:kREFRESH_DELAY];
 }
 
 - (void) awakeFromNib
 {
-    _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];    
+    _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     _statusItem.highlightMode = TRUE;
     _statusItem.toolTip = @"DNSCrypt";
     _statusItem.menu = _dnscryptMenu;
-    
-    NSString *versionStringFormat = NSLocalizedString(@"Client version: %@", @"Current version in the menu");
+        
+    NSString *versionStringFormat = NSLocalizedString(@"Client UI version: %@", @"Current UI version as shown in the menu");
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     _versionMenuItem.title = [NSString stringWithFormat: versionStringFormat, version];
+    
+    [self initState];
+    
     [self periodicallyUpdateStatusWithCurrentConfig];
     [self updateLedStatus];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    [[SUUpdater sharedUpdater] setSendsSystemProfile: TRUE];
 }
 
 - (IBAction)preferencesMenuItemPushed:(NSMenuItem *)sender
@@ -137,6 +187,51 @@ DNSConfigurationState currentState = kDNS_CONFIGURATION_UNKNOWN;
             return;
         }
     }
+}
+
+- (BOOL) setDNSCryptOn {
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-to-dnscrypt.sh", nil]];
+    (void) res;
+    return TRUE;
+}
+
+- (BOOL) setDNSCryptOff {
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-to-dhcp.sh", nil]];
+    (void) res;
+    return TRUE;
+}
+
+- (BOOL) appUpdate {
+    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && exec ./update-dnscrypt-app.sh", nil]];
+    (void) res;
+    return TRUE;
+}
+
+
+- (IBAction)dnscryptMenuItemPushed:(NSMenuItem *)sender
+{
+    if (sender.state == 0) {
+        sender.state = 1;
+        [self setDNSCryptOn];
+    } else {
+        sender.state = 0;
+        [self setDNSCryptOff];
+    }
+}
+
+- (BOOL) setHideMenubarIconOn {
+    [self showSpinners];
+    NSString *res = [self fromCommand: @"/bin/csh" withArguments: [NSArray arrayWithObjects: @"-c", @"cd '" kDNSCRIPT_SCRIPTS_BASE_DIR @"' && ./create-ticket.sh && ./switch-hide-menubar-icon-on.sh", nil]];
+    (void) res;
+    _statusItem.visible = FALSE;
+    return TRUE;
+}
+
+- (IBAction)hideMenubarIconMenuItemPushed:(NSMenuItem *)sender
+{
+    [self setHideMenubarIconOn];
 }
 
 @end
